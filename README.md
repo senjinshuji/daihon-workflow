@@ -1,170 +1,208 @@
-# BB-Agent: AI Creative Agent System
+# 🎯 BB-Project: MDファイルベース・マルチエージェント広告台本作成システム
 
-[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+Claude Code Communicationsを参考にした、シンプルで強力なMDファイル管理ベースの8体AIエージェント協調システム
 
-## 概要 (Overview)
+## 🎯 システム概要
 
-BB-Agent は、広告台本作成のための革新的なAIエージェントシステムです。8つの専門エージェントが協調して、ペルソナ分析から台本制作、品質評価まで自動化します。
+**MD → CD → Writers & Personas** の階層型指示システムで高品質な広告台本を自動作成
 
-BB-Agent is an innovative AI agent system for advertising script creation. Eight specialized agents collaborate to automate everything from persona analysis to script production and quality evaluation.
+### 👥 エージェント構成
 
-## ✨ 主な機能 (Key Features)
+```
+📊 bb-md セッション (1ペイン)
+└── MD: Marketing Director (戦略立案・最終選定責任者)
 
-### 🎯 8エージェント協調システム
-- **MD (Marketing Director)**: 戦略立案・ペルソナ生成・最終選定
-- **CD (Creative Director)**: 制作指示・品質管理・チーム統括  
-- **Writer1-3**: 台本制作（感情派・論理派・カジュアル派）
-- **Persona1-3**: 多角的評価・フィードバック
+📊 bb-multiagent セッション (7ペイン)  
+├── CD: Creative Director (チーム統括・品質管理)
+├── Writer1: 感情訴求型 (3本台本制作)
+├── Writer2: 論理訴求型 (3本台本制作)  
+├── Writer3: カジュアル型 (3本台本制作)
+├── Persona1: 共感重視型評価者 (30-50代主婦層視点)
+├── Persona2: 合理主義型評価者 (25-45代ビジネス層視点)
+└── Persona3: トレンド志向型評価者 (18-30代Z世代視点)
+```
 
-### 🚀 自動化機能
-- **ハイブリッド自動化**: MD手動 + 7エージェント自動実行
-- **ファイルベース通信**: メッセージ交換システム
-- **自動台本保存**: プロジェクトディレクトリへの自動保存
-- **Loop改善システム**: 継続的品質向上
+## 🚀 クイックスタート（超簡単版）
 
-### 📊 データドリブン戦略
-- **CSV分析**: 商品・ターゲット・競合分析
-- **ペルソナ自動生成**: AIベースペルソナ創出
-- **評価システム**: 100点満点評価・改善提案
-- **トップ5レポート**: 優秀台本自動選出
-
-## 🛠️ 技術スタック (Tech Stack)
-
-- **Python 3.8+**: コアエンジン
-- **Claude AI**: 各エージェントの知能
-- **tmux**: セッション管理
-- **Bash**: スクリプト自動化
-- **Markdown**: レポート生成
-
-## 📦 インストール (Installation)
+### 最速起動（1コマンド）
 
 ```bash
-# リポジトリクローン
-git clone https://github.com/senjinshuji/bb-agent.git
-cd bb-agent
-
-# 依存関係インストール
-pip install -r requirements.txt
-
-# Claude CLI設定
-# https://docs.anthropic.com/claude/docs/cli-installation
-
-# tmuxインストール（macOS）
-brew install tmux
+./start-all.sh
 ```
 
-## 🚀 使用方法 (Usage)
+これだけで全エージェントの環境構築 + Claude CLI起動まで完了！
 
-### 基本起動
+### 分割起動（3コマンド）
+
 ```bash
-# 全自動システム起動（推奨）
-./start-bb-automated.sh
+# 1. 環境構築
+./setup-bb.sh
 
-# シンプル起動
-./start-bb-simple.sh
+# 2. MD起動
+./start-md.sh
 
-# 安定版起動
-./start-bb-stable.sh
+# 3. MultiAgent一括起動  
+./start-multiagent.sh
 ```
 
-### プロジェクト設定
-1. `projects/[PROJECT_NAME]/` にCSVファイル配置
-2. MD画面でプロジェクト開始
-3. 自動でWriter・Persona エージェントが実行
-4. 結果は `projects/[PROJECT_NAME]/results/` に保存
+## 🎬 使用手順
 
-### メッセージ送信
+### 1. セッションアタッチ
+
 ```bash
-# エージェント間通信
-./agent-send.sh [相手] "[メッセージ]"
+# MDセッション（別ターミナル）
+tmux attach -t bb-md
 
-# 例: CDにメッセージ送信
-./agent-send.sh cd "台本制作開始してください"
+# MultiAgentセッション（別ターミナル）
+tmux attach -t bb-multiagent
 ```
 
-## 📁 ディレクトリ構造 (Directory Structure)
+### 2. ワンクリック全エージェント初期化 🆕
+
+**MDだけで全システム初期化！**
+
+MDエージェントで Claude CLI認証完了後、たった1回の入力で全エージェントが自動初期化：
 
 ```
-bb-agent/
-├── agents/                 # エージェントプログラム
-│   ├── md_agent.py         # マーケティングディレクター
-│   ├── cd_agent_runner.py  # クリエイティブディレクター
-│   ├── writer_agent_runner.py # ライターエージェント
-│   ├── persona_agent_runner.py # ペルソナエージェント
-│   └── message_handler.py  # メッセージハンドリング
-├── projects/               # プロジェクトデータ
-│   └── [PROJECT_NAME]/
-│       ├── [CSV_FILE]      # 商品データ
-│       ├── results/        # 台本・評価結果
-│       └── md_report/      # 戦略レポート
-├── start-bb-*.sh          # 起動スクリプト
-├── agent-send.sh           # メッセージ送信
-└── CLAUDE.md              # エージェント指示書
+あなたはMDです。指示書に従って
 ```
 
-## 🔄 ワークフロー (Workflow)
+**自動初期化チェーン:**
+1. **MD**: 宣言と同時にCDに初期化指示を送信
+2. **CD**: Writer1-3、Persona1-3に初期化指示を一括送信
+3. **Writer1-3 & Persona1-3**: 各々が自動初期化完了
+4. **CD**: MDに全員初期化完了を報告
 
-1. **MD**: CSV分析 → ペルソナ生成 → 戦略ブリーフ作成
-2. **CD**: 戦略受信 → Writer指示 → 品質管理
-3. **Writer1-3**: 台本制作（各3本） → 自動保存
-4. **Persona1-3**: 台本評価 → フィードバック
-5. **CD**: 評価集約 → 改善指示
-6. **MD**: 最終選定 → トップ5レポート
+もう8回の手動入力は不要！MDの1回だけで完了します。
 
-## 📈 Loop改善システム (Loop Improvement System)
+### 3. プロジェクト実行
 
-### Loop2改善対応
-- **Writer1**: 母娘絆進化版・友人絆強化版・恋人絆新規版
-- **Writer2**: 感情データ融合版・医療温かみ版・論理感情統合版  
-- **Writer3**: Z世代トレンド版・SNS映え強化版・コミュニティ版
+MDエージェントでプロジェクトを開始：
+```
+プロジェクト名「XXXX」でCSVデータを分析して台本作成を開始してください
+```
 
-### 自動改善フロー
-1. CD改善指示 → Writer自動検知
-2. Loop専用台本制作 → 適切命名保存
-3. 完了報告 → 次Loop準備
+## 📜 エージェント指示書
 
-## 🎯 エージェント特徴 (Agent Characteristics)
+各エージェントの詳細な役割と実行手順：
 
-| エージェント | 専門性 | 特徴 |
-|------------|--------|------|
-| **Writer1** | 感情派 | ストーリー性・共感重視 |
-| **Writer2** | 論理派 | データ・効果効能重視 |  
-| **Writer3** | カジュアル派 | 親しみやすさ・テンポ重視 |
-| **Persona1** | 実用主義 | コスパ・効率性重視 |
-| **Persona2** | 感情重視 | 共感・安心感重視 |
-| **Persona3** | トレンド志向 | 話題性・SNS映え重視 |
+- **MD**: `instructions/md.md` - 戦略立案・ペルソナ分析・最終選定
+- **CD**: `instructions/cd.md` - チーム統括・品質管理・進行管理
+- **Writer1**: `instructions/writer1.md` - 感情訴求型台本作成（3本）
+- **Writer2**: `instructions/writer2.md` - 論理訴求型台本作成（3本）
+- **Writer3**: `instructions/writer3.md` - カジュアル型台本作成（3本）
+- **Persona1**: `instructions/persona1.md` - 共感重視型評価（30-50代主婦層）
+- **Persona2**: `instructions/persona2.md` - 合理主義型評価（25-45代ビジネス層）
+- **Persona3**: `instructions/persona3.md` - トレンド志向型評価（18-30代Z世代）
 
-## 📊 成果事例 (Success Examples)
+**システム構造**: `CLAUDE.md` で全体仕様を確認
 
-- **95点台本達成**: 感情と論理の完璧バランス
-- **平均90点超え**: 継続的品質向上システム
-- **3倍効率化**: 手動制作比での時間短縮
-- **一貫性確保**: エージェント間協調による品質統一
+## 🎯 期待される動作フロー
 
-## 🤝 コントリビューション (Contributing)
+```
+🔄 初期化フェーズ:
+1. MD: 「あなたはMDです。指示書に従って」→ 自動初期化チェーン開始
+2. CD: Writer1-3、Persona1-3を一括初期化 → MD完了報告
 
-1. Fork this repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+🎯 実行フェーズ:
+1. MD: CSV分析 → 戦略ブリーフ → CDに指示送信
+2. CD: Writer1-3に台本制作指示 → 完了確認 → Persona1-3に評価指示  
+3. Writer1-3: 各3本台本制作 → 完了ファイル作成
+4. CD: 評価集約 → 承認台本選定 → MDに報告
+5. MD: 最終台本選定 → プロジェクト完了
+```
 
-## 📄 ライセンス (License)
+## 🔧 エージェント間通信
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+### bb-agent-send.sh を使った送信
 
-## 🙏 謝辞 (Acknowledgments)
+```bash
+# 基本送信
+./bb-agent-send.sh [エージェント名] [メッセージ]
 
-- [Claude AI](https://www.anthropic.com/claude) - AI エージェントエンジン
-- [tmux](https://github.com/tmux/tmux) - セッション管理
-- オープンソースコミュニティの皆様
+# 例
+./bb-agent-send.sh cd "Writer1-3に台本制作を開始してください"
+./bb-agent-send.sh md "全台本評価が完了しました"
 
-## 📞 サポート (Support)
+# エージェント一覧確認
+./bb-agent-send.sh --list
 
-- **Issues**: [GitHub Issues](https://github.com/senjinshuji/bb-agent/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/senjinshuji/bb-agent/discussions)
+# 状況確認
+./bb-agent-send.sh --status
+```
+
+## 🧪 確認・デバッグ
+
+### ログ確認
+
+```bash
+# 送信ログ確認
+cat logs/send_log.txt
+
+# 特定エージェントのログ
+grep "writer1" logs/bb-project/send_log.txt
+
+# 完了ファイル確認
+ls -la ./tmp/writer*_done.txt ./tmp/persona*_done.txt
+```
+
+### セッション状態確認
+
+```bash
+# セッション一覧
+tmux list-sessions
+
+# ペイン一覧
+tmux list-panes -t bb-md
+tmux list-panes -t bb-multiagent
+```
+
+## 🔄 環境リセット
+
+```bash
+# セッション削除
+tmux kill-session -t bb-md
+tmux kill-session -t bb-multiagent
+
+# 完了ファイル削除
+rm -f ./tmp/writer*_done.txt ./tmp/persona*_done.txt
+
+# 再構築（自動クリア付き）
+./setup-bb.sh
+```
+
+## 📁 プロジェクト構造
+
+```
+bb-project/
+├── setup-bb.sh              # 環境構築（tmuxセッション作成）
+├── start-all.sh             # 全エージェント一括起動
+├── start-md.sh              # MD専用起動
+├── start-multiagent.sh      # MultiAgent一括起動
+├── bb-agent-send.sh         # エージェント間通信
+├── instructions/            # エージェント指示書
+│   ├── md.md
+│   ├── cd.md
+│   ├── writer1.md
+│   ├── writer2.md
+│   ├── writer3.md
+│   ├── persona1.md
+│   ├── persona2.md
+│   └── persona3.md
+├── projects/                # プロジェクト成果物
+├── logs/                    # 通信ログ
+└── tmp/                     # 作業ファイル
+```
+
+## 🎯 特徴
+
+- **ワンクリック初期化**: MDの1回宣言で全8エージェント自動初期化 🆕
+- **シンプルな起動**: 1コマンドで全環境構築 + Claude CLI起動
+- **mdファイルベース**: 複雑なPythonコード不要、純粋なmdファイル管理
+- **Claude Code Communicationsライク**: 実証済みのシンプル設計を採用
+- **自動化フロー**: エージェント間の協調による高品質な台本作成
+- **柔軟な評価**: 3つの異なる視点での多角的評価
 
 ---
 
-**BB-Agent** - Revolutionizing AI-Powered Creative Content Generation
+🚀 **Claude Code Communicationsの理念を受け継いだ、ワンクリック初期化対応のシンプルで強力な広告台本作成システム！** 🤖✨
