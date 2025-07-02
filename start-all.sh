@@ -20,25 +20,16 @@ echo ""
 echo "⏳ 2秒待機中..."
 sleep 2
 
-# CD起動
-echo "🤖 CD Agent起動中..."
-./start-cd.sh
-
-echo ""
-echo "⏳ 2秒待機中..."
-sleep 2
-
-# 6エージェント一括起動
-echo "🤖 6 Agents 一括起動中..."
-./start-agents.sh
+# MultiAgent起動
+echo "🤖 MultiAgent 一括起動中..."
+./start-multiagent.sh
 
 echo ""
 echo "🎉 全エージェント起動完了！"
 echo ""
 echo "📋 セッションアタッチ方法:"
-echo "  tmux attach -t bb-md      # MDセッション"
-echo "  tmux attach -t bb-cd      # CDセッション"
-echo "  tmux attach -t bb-agents  # 6エージェントセッション"
+echo "  tmux attach -t bb-md           # MDセッション"
+echo "  tmux attach -t bb-multiagent   # MultiAgentセッション"
 echo ""
 echo "🎯 使用開始手順:"
 echo "  1. 各セッションにアタッチ"
