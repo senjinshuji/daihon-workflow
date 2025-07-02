@@ -13,7 +13,7 @@ fi
 
 # Claude CLI起動
 echo "📤 Claude CLI起動中..."
-tmux send-keys -t bb-md "/Users/shjkt/.nvm/versions/node/v24.1.0/bin/claude --dangerously-skip-permissions chat" C-m
+tmux send-keys -t bb-md "/Users/shjkt/.nvm/versions/node/v24.1.0/bin/claude --dangerously-skip-permissions" C-m
 
 echo "✅ MD Agent起動完了！"
 echo ""

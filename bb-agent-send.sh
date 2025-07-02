@@ -6,13 +6,13 @@
 get_agent_target() {
     case "$1" in
         "md") echo "bb-md" ;;
-        "cd") echo "bb-multiagent:0.0" ;;
-        "writer1") echo "bb-multiagent:0.1" ;;
-        "writer2") echo "bb-multiagent:0.2" ;;
-        "writer3") echo "bb-multiagent:0.3" ;;
-        "persona1") echo "bb-multiagent:0.4" ;;
-        "persona2") echo "bb-multiagent:0.5" ;;
-        "persona3") echo "bb-multiagent:0.6" ;;
+        "cd") echo "bb-cd" ;;
+        "persona1") echo "bb-agents:0.0" ;;
+        "persona2") echo "bb-agents:0.1" ;;
+        "persona3") echo "bb-agents:0.2" ;;
+        "writer1") echo "bb-agents:0.3" ;;
+        "writer2") echo "bb-agents:0.4" ;;
+        "writer3") echo "bb-agents:0.5" ;;
         *) echo "" ;;
     esac
 }
@@ -48,14 +48,14 @@ EOF
 show_agents() {
     echo "📋 BB-Project エージェント構成:"
     echo "========================================"
-    echo "  md       → bb-md:0           (Marketing Director)"
-    echo "  cd       → bb-multiagent:0.0 (Creative Director)"
-    echo "  writer1  → bb-multiagent:0.1 (感情訴求型ライター)"
-    echo "  writer2  → bb-multiagent:0.2 (論理訴求型ライター)"
-    echo "  writer3  → bb-multiagent:0.3 (カジュアル型ライター)"
-    echo "  persona1 → bb-multiagent:0.4 (共感重視型評価者)"
-    echo "  persona2 → bb-multiagent:0.5 (合理主義型評価者)"
-    echo "  persona3 → bb-multiagent:0.6 (トレンド志向型評価者)"
+    echo "  md       → bb-md:0        (Marketing Director)"
+    echo "  cd       → bb-cd:0        (Creative Director)"
+    echo "  persona1 → bb-agents:0.0  (共感重視型評価者)"
+    echo "  persona2 → bb-agents:0.1  (合理主義型評価者)"
+    echo "  persona3 → bb-agents:0.2  (トレンド志向型評価者)"
+    echo "  writer1  → bb-agents:0.3  (感情訴求型ライター)"
+    echo "  writer2  → bb-agents:0.4  (論理訴求型ライター)"
+    echo "  writer3  → bb-agents:0.5  (カジュアル型ライター)"
 }
 
 # システム状態確認
@@ -70,13 +70,19 @@ show_status() {
         echo "❌ MD Session: Not found"
     fi
     
-    if tmux has-session -t bb-multiagent 2>/dev/null; then
-        echo "✅ MultiAgent Session: Running"
-        # ペイン数確認
-        pane_count=$(tmux list-panes -t bb-multiagent | wc -l)
-        echo "   └─ Panes: $pane_count/7 (CD + Writer1-3 + Persona1-3)"
+    if tmux has-session -t bb-cd 2>/dev/null; then
+        echo "✅ CD Session: Running"
     else
-        echo "❌ MultiAgent Session: Not found"
+        echo "❌ CD Session: Not found"
+    fi
+    
+    if tmux has-session -t bb-agents 2>/dev/null; then
+        echo "✅ Agents Session: Running"
+        # ペイン数確認
+        pane_count=$(tmux list-panes -t bb-agents | wc -l)
+        echo "   └─ Panes: $pane_count/6 (Writer1-3 + Persona1-3)"
+    else
+        echo "❌ Agents Session: Not found"
     fi
     
     # 完了ファイル確認
@@ -135,7 +141,7 @@ check_target() {
     
     if ! tmux has-session -t "$session_name" 2>/dev/null; then
         echo "❌ セッション '$session_name' が見つかりません"
-        echo "💡 './start-bb-md.sh' でシステムを起動してください"
+        echo "💡 './setup-bb.sh' でシステムを起動してください"
         return 1
     fi
     
