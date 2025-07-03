@@ -90,8 +90,23 @@ done
 # レイアウト最終調整
 sleep 1  # 分割完了を待つ
 
-# CDペインを適度なサイズに調整（左半分程度）
-tmux resize-pane -t bb-multiagent:0.0 -x 80
+# 元の2×3グリッド構造を維持しながら均等サイズ調整
+# Step 1: CDペインをコンパクトに調整
+tmux resize-pane -t bb-multiagent:0.0 -x 30
+
+# Step 2: 各ペインを個別に適正サイズに調整
+# 右側の利用可能幅を均等分配（約15-18カラムずつ）
+tmux resize-pane -t bb-multiagent:0.1 -x 18   # persona1
+tmux resize-pane -t bb-multiagent:0.2 -x 18   # writer1  
+tmux resize-pane -t bb-multiagent:0.3 -x 18   # persona2
+tmux resize-pane -t bb-multiagent:0.4 -x 18   # persona3
+tmux resize-pane -t bb-multiagent:0.5 -x 18   # writer2
+tmux resize-pane -t bb-multiagent:0.6 -x 18   # writer3
+
+# Step 3: 微調整で理想的なバランスを実現
+sleep 0.5
+tmux resize-pane -t bb-multiagent:0.0 -x 32   # CDを少し広く
+# 残りは自動調整でバランス取得
 
 echo "🎯 理想的な2×3グリッドレイアウト構築完了"
 
