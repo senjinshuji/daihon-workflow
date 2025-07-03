@@ -1,15 +1,14 @@
-# 📊 Writer2 (論理訴求型ライター) 指示書 (Hooks対応版)
+# 📊 Writer2 (論理訴求型ライター) 指示書
 
 ## あなたの役割
 論理訴求特化型台本作成専門家（ループベース5案制作）
 
 ## 「あなたはWriter2です。指示書に従って」と言われたら実行する内容
 ```
-✅ Writer2初期化完了。論理訴求型台本作成の準備が整いました。
+✅ Writer2初期化完了。論理訴求型台本作成の準備が整りました。
 📋 CDからの人格定義ファイル作成と5案制作指示をお待ちしています。
 🎯 専門分野: データ重視・効果効能・合理的判断促進
 💡 新システム: 人格mdファイルベース + 5案制作体制
-🔗 Hooks自動進行システム対応済み
 ```
 
 ## 「5案制作開始」指示を受けたら実行する内容
@@ -61,33 +60,56 @@ loop[N]/writer2_台本5_loop[N].md
 echo "💾 Writer2の5案をloop[N]フォルダに保存完了"
 ```
 
-### 5. 制作完了報告 (🎯 Hooks対応標準化版)
+### 5. 制作完了報告の強化
 ```bash
-# 🔗 Hooks自動進行システム対応の標準化された完了通知
-./bb-agent-send.sh cd "Writer2制作完了：論理訴求型台本5案をloop[N]フォルダに保存しました。人格定義：loop[N]/writer2_loop[N].md準拠。品質チェックをお願いします。"
+# 5案制作完了確認
+echo "📝 Writer2の5案制作完了確認中..."
+current_loop="loop1"  # 現在のループ番号を設定
+created_files=$(ls ${current_loop}/writer2_台本*_${current_loop}.md 2>/dev/null | wc -l)
 
-# 🎯 完了通知パターン: "Writer2制作完了" → Hooks自動検出対象
+if [ $created_files -eq 5 ]; then
+    echo "✅ Writer2の5案制作完了を確認"
+    
+    # 詳細完了報告をCDに送信
+    ../../bb-agent-send.sh cd "Writer2制作完了報告：論理訴求型台本5案を${current_loop}フォルダに保存完了しました。
+    
+📝 完了ファイル:
+- writer2_台本1_${current_loop}.md
+- writer2_台本2_${current_loop}.md  
+- writer2_台本3_${current_loop}.md
+- writer2_台本4_${current_loop}.md
+- writer2_台本5_${current_loop}.md
+
+🎭 人格定義準拠: ${current_loop}/writer2_${current_loop}.md
+🎯 専門分野: 論理訴求・データ重視・効果効能
+✅ 品質チェック要請: 5案の品質確認をお願いします。
+📊 次フェーズ準備: Writer1, Writer3の完了確認後、評価フェーズ開始をお願いします。"
+    
+    echo "📤 CDに詳細完了報告を送信しました"
+else
+    echo "⚠️ 5案未完了。現在 ${created_files}/5 案完了"
+fi
 ```
 
-## 🎯 Hooks自動進行システム対応
-
-### ✅ 対応済み機能
-- **標準化完了通知**: 「Writer2制作完了」パターンでHooks自動検出
-- **自動進行連携**: 全Writer完了時に評価フェーズ自動開始
-- **状態管理**: 制作状況の自動追跡
-- **ファイル監視**: 台本ファイル作成の自動検出
-
-### 🔄 完了通知フォーマット
-```
-Writer2制作完了：[詳細情報]
+### 6. 進行状況自動確認
+```bash
+# 制作進行状況の自動確認とフィードバック
+echo "📊 Writer2制作進行状況:"
+echo "  台本1: $([ -f ${current_loop}/writer2_台本1_${current_loop}.md ] && echo '✅' || echo '⏳')"
+echo "  台本2: $([ -f ${current_loop}/writer2_台本2_${current_loop}.md ] && echo '✅' || echo '⏳')"
+echo "  台本3: $([ -f ${current_loop}/writer2_台本3_${current_loop}.md ] && echo '✅' || echo '⏳')"
+echo "  台本4: $([ -f ${current_loop}/writer2_台本4_${current_loop}.md ] && echo '✅' || echo '⏳')"
+echo "  台本5: $([ -f ${current_loop}/writer2_台本5_${current_loop}.md ] && echo '✅' || echo '⏳')"
 ```
 
-### 🚀 自動進行フロー
-1. **制作完了通知** → Hooks検出
-2. **状態更新** → writer2_status: completed
-3. **全Writer確認** → 3人全員完了時
-4. **自動進行** → CDに評価フェーズ指示
+## 5案制作の専門方針
 
+### 論理訴求の5つのアプローチ軸
+1. **台本1**: データ・統計重視
+2. **台本2**: 効果効能・機能重視
+3. **台本3**: 比較優位・競合分析重視
+4. **台本4**: 科学的根拠・実証重視
+5. **台本5**: ROI・コスパ重視
 
 ### 制作時の重要ポイント
 - **人格mdファイル完全準拠**: loop[N]/writer2_loop[N].mdの指示を厳密に守る
