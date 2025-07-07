@@ -37,27 +37,29 @@ log_info "📺 bb-multiagentセッション作成開始 (7ペイン)..."
 
 # 最初のペイン作成
 tmux new-session -d -s bb-multiagent -n "agents"
+tmux set-window-option -g aggressive-resize on
+
 
 # 7分割レイアウト作成 (左:CD、右:2×3グリッド)
 # スクリーンショット参考: 理想的な分割手順
 #
 # Step 1: 左右分割 (CD | 右側6ペイン領域)
-tmux split-window -h -t "bb-multiagent:0"      # 0:CD | 1:右側領域
+tmux split-window -h -p 50 -t "bb-multiagent:0"      # 0:CD | 1:右側領域
 
 # Step 2: 右側領域を上下分割 (上段3ペイン | 下段3ペイン)  
-tmux split-window -v -t "bb-multiagent:0.1"    # 1:上段 | 2:下段
+tmux split-window -v -p 50 -t "bb-multiagent:0.1"    # 1:上段 | 2:下段
 
 # Step 3: 上段を左右分割 (P1 | P2,P3)
-tmux split-window -h -t "bb-multiagent:0.1"    # 1:P1 | 3:P2,P3
+tmux split-window -h -p 70 -t "bb-multiagent:0.1"    # 1:P1 | 3:P2,P3
 
 # Step 4: P2,P3を分割 (P2 | P3)
-tmux split-window -h -t "bb-multiagent:0.3"    # 3:P2 | 4:P3
+tmux split-window -h -p 50 -t "bb-multiagent:0.2"    # 3:P2 | 4:P3
 
 # Step 5: 下段を左右分割 (W1 | W2,W3)
-tmux split-window -h -t "bb-multiagent:0.2"    # 2:W1 | 5:W2,W3
+tmux split-window -h -p 70 -t "bb-multiagent:0.4"    # 2:W1 | 5:W2,W3
 
 # Step 6: W2,W3を分割 (W2 | W3)
-tmux split-window -h -t "bb-multiagent:0.5"    # 5:W2 | 6:W3
+tmux split-window -h -p 50 -t "bb-multiagent:0.5"    # 5:W2 | 6:W3
 
 # ペインタイトル設定
 log_info "ペインタイトル設定中..."
@@ -88,27 +90,8 @@ for i in {0..6}; do
 done
 
 # レイアウト最終調整
-sleep 1  # 分割完了を待つ
-
-# 元の2×3グリッド構造を維持しながら均等サイズ調整
-# Step 1: CDペインをコンパクトに調整
-tmux resize-pane -t bb-multiagent:0.0 -x 30
-
-# Step 2: 各ペインを個別に適正サイズに調整
-# 右側の利用可能幅を均等分配（約15-18カラムずつ）
-tmux resize-pane -t bb-multiagent:0.1 -x 18   # persona1
-tmux resize-pane -t bb-multiagent:0.2 -x 18   # writer1  
-tmux resize-pane -t bb-multiagent:0.3 -x 18   # persona2
-tmux resize-pane -t bb-multiagent:0.4 -x 18   # persona3
-tmux resize-pane -t bb-multiagent:0.5 -x 18   # writer2
-tmux resize-pane -t bb-multiagent:0.6 -x 18   # writer3
-
-# Step 3: 微調整で理想的なバランスを実現
-sleep 0.5
-tmux resize-pane -t bb-multiagent:0.0 -x 32   # CDを少し広く
-# 残りは自動調整でバランス取得
-
-echo "🎯 理想的な2×3グリッドレイアウト構築完了"
+# CDペインの幅を調整し、残りを自動均等配置に任せる
+#  tmux resize-pane -t bb-multiagent:0.0 -x 40
 
 log_success "✅ bb-multiagentセッション作成完了"
 echo ""
