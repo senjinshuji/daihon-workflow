@@ -1,17 +1,17 @@
- ❯ 1. Dark mode✔
-   2. Light mode
-   3. Dark mode (colorblind-friendly)
-   4. Light mode (colorblind-friendly)
-   5. Dark mode (ANSI colors only)
-   6. Light mode (ANSI colors only)
+  ✅ Persona1-3の人格MDファイル作成（30-50代主婦層、25-
+  45代ビジネス層、18-30代Z世代）
+  ✅ Writer1-3への台本制作指示送信
+
+  現在、Writer1-3が各5本ずつ、計15本の台本を制作中です
+  。制作完了後、Persona1-3による評価フェーズに移行しま
+  す。
+
+╭──────────────────────────────────────────────────────────╮
+│ >                                                        │
+╰──────────────────────────────────────────────────────────╯
+  ? for          Approaching Opus usage limit · /model to
+  shortcuts      use best available model
+                                     Bypassing Permissions
 
 
- Preview
- ╭────────────────────────────────────────────────────────────╮
- │   1   function greet() {                                   │
- │   2 -    console.log("Hello, World!");                     │
- │     - World!");                                            │
- │   2 +    console.log("Hello, Claude!");                    │
- │     + Claude!");                                           │
- │   3   }                                                    │
- ╰────────────────────────────────────────────────────────────╯
+(\[\033[1;31m\]cd\[\033[0m\]) \[\033[1;32m\]\w\[\033[0m\]$

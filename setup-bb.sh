@@ -50,13 +50,13 @@ tmux split-window -h -p 50 -t "bb-multiagent:0"      # 0:CD | 1:右側領域
 tmux split-window -v -p 50 -t "bb-multiagent:0.1"    # 1:上段 | 2:下段
 
 # Step 3: 上段を左右分割 (P1 | P2,P3)
-tmux split-window -h -p 70 -t "bb-multiagent:0.1"    # 1:P1 | 3:P2,P3
+tmux split-window -h -p 80 -t "bb-multiagent:0.1"    # 1:P1 | 3:P2,P3
 
 # Step 4: P2,P3を分割 (P2 | P3)
 tmux split-window -h -p 50 -t "bb-multiagent:0.2"    # 3:P2 | 4:P3
 
 # Step 5: 下段を左右分割 (W1 | W2,W3)
-tmux split-window -h -p 70 -t "bb-multiagent:0.4"    # 2:W1 | 5:W2,W3
+tmux split-window -h -p 80 -t "bb-multiagent:0.4"    # 2:W1 | 5:W2,W3
 
 # Step 6: W2,W3を分割 (W2 | W3)
 tmux split-window -h -p 50 -t "bb-multiagent:0.5"    # 5:W2 | 6:W3
