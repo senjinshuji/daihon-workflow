@@ -1,8 +1,0 @@
-=== Loop 4 Results ===
-Timestamp: 2025-06-27T21:03:51.871016
-Approved Scripts: 0
-
---- Writer Scores ---
-writer1: 63.0
-writer2: 61.3
-writer3: 58.7

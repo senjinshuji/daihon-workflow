@@ -72,21 +72,11 @@ echo "✅ 品質チェック完了。"
 
 #### ✅ 2. CDへの完了報告
 ```bash
-echo "📤 CDに詳細な完了報告を送信します..."
-./bb-agent-send.sh cd "Persona2評価完了報告：25-45代ビジネス層の視点で全15案の評価が完了しました。
-
-📊 評価結果サマリー:
-- 完了ファイル: ${current_loop}/persona2_evaluation_${current_loop}.md
-
-🏆 ビジネス層からの評価ハイライト:
-- 最高評価台本: [台本名] ([点数]点)
-- 高評価の理由: [論理的・効率的なポイント]
-- ビジネス層推奨台本: [推奨台本リスト]
-
-次の指示をお待ちしています。"
-echo "✅ CDへの報告完了。これにてPersona2のタスクは一旦終了です。"
+echo "📤 [Persona2] CDへの報告処理を監督役に委任します。"
+echo "✅ [Persona2] 自身の完了ステータスをファイルに書き込みます..."
+echo "persona2_done" > tmp/persona2_done.txt
+echo "🎉 [Persona2] 評価プロセス完了。監督役の指示を待ちます。"
 ```
-
 
 ### 評価時の重要ポイント
 - **人格mdファイル完全準拠**: loop[N]/persona2_loop[N].mdの視点を厳密に守る
