@@ -7,7 +7,7 @@ SESSION="bb-multiagent"
 # 引数チェック
 if [ "$#" -ne 2 ]; then
   echo "使用方法: $0 <ターゲットペイン名> <送信するコマンド>"
-  echo "ターゲット: MD, CD, Writer1, Writer2, Writer3, Persona1, Persona2, Persona3"
+  echo "ターゲット: MD/md, CD/cd, Writer1/writer1, Writer2/writer2, Writer3/writer3, Persona1/persona1, Persona2/persona2, Persona3/persona3"
   exit 1
 fi
 
@@ -22,13 +22,25 @@ case "$TARGET_NAME" in
     tmux send-keys -t "bb-md:0.0" "$COMMAND" Enter
     exit 0
     ;;
+  "md")
+    # MDは別セッションのため、ここで直接処理
+    tmux send-keys -t "bb-md:0.0" "$COMMAND" Enter
+    exit 0
+    ;;
   "CD") PANE_INDEX=0 ;;
-  "Writer1") PANE_INDEX=2 ;;
-  "Writer2") PANE_INDEX=5 ;;
-  "Writer3") PANE_INDEX=6 ;;
-  "Persona1") PANE_INDEX=1 ;;
-  "Persona2") PANE_INDEX=3 ;;
-  "Persona3") PANE_INDEX=4 ;;
+  "cd") PANE_INDEX=0 ;;
+  "Writer1") PANE_INDEX=1 ;;
+  "writer1") PANE_INDEX=1 ;;
+  "Writer2") PANE_INDEX=2 ;;
+  "writer2") PANE_INDEX=2 ;;
+  "Writer3") PANE_INDEX=3 ;;
+  "writer3") PANE_INDEX=3 ;;
+  "Persona1") PANE_INDEX=4 ;;
+  "persona1") PANE_INDEX=4 ;;
+  "Persona2") PANE_INDEX=5 ;;
+  "persona2") PANE_INDEX=5 ;;
+  "Persona3") PANE_INDEX=6 ;;
+  "persona3") PANE_INDEX=6 ;;
   *)
     echo "エラー: 不明なターゲットペイン名です: $TARGET_NAME"
     exit 1

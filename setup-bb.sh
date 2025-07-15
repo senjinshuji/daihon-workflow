@@ -63,8 +63,9 @@ tmux split-window -h -p 50 -t "bb-multiagent:0.5"    # 5:W2 | 6:W3
 
 # ペインタイトル設定
 log_info "ペインタイトル設定中..."
-PANE_TITLES=("cd" "persona1" "writer1" "persona2" "persona3" "writer2" "writer3")
-PANE_DESCRIPTIONS=("Creative Director" "共感重視型" "感情訴求型" "合理主義型" "トレンド志向型" "論理訴求型" "カジュアル型")
+# 上段: Writer1-3、下段: Persona1-3
+PANE_TITLES=("cd" "writer1" "writer2" "writer3" "persona1" "persona2" "persona3")
+PANE_DESCRIPTIONS=("Creative Director" "感情訴求型" "論理訴求型" "カジュアル型" "共感重視型" "合理主義型" "トレンド志向型")
 
 for i in {0..6}; do
     tmux select-pane -t "bb-multiagent:0.$i" -T "${PANE_TITLES[$i]}"
@@ -72,16 +73,19 @@ for i in {0..6}; do
     # 作業ディレクトリ設定
     tmux send-keys -t "bb-multiagent:0.$i" "cd $(pwd)" C-m
     
-    # カラープロンプト設定（新しいペイン順序対応）
+    # ペインタイトル固定化（変更されないように）
+    tmux set-option -t "bb-multiagent:0.$i" pane-border-status top
+    
+    # カラープロンプト設定（上段Writer、下段Persona）
     if [ $i -eq 0 ]; then
         # CD: 赤色
         tmux send-keys -t "bb-multiagent:0.$i" "export PS1='(\[\033[1;31m\]${PANE_TITLES[$i]}\[\033[0m\]) \[\033[1;32m\]\w\[\033[0m\]\$ '" C-m
-    elif [ $i -eq 1 ] || [ $i -eq 3 ] || [ $i -eq 4 ]; then
-        # Personas (1,3,4): 紫色
-        tmux send-keys -t "bb-multiagent:0.$i" "export PS1='(\[\033[1;35m\]${PANE_TITLES[$i]}\[\033[0m\]) \[\033[1;32m\]\w\[\033[0m\]\$ '" C-m
-    else
-        # Writers (2,5,6): 青色
+    elif [ $i -eq 1 ] || [ $i -eq 2 ] || [ $i -eq 3 ]; then
+        # Writers (1,2,3): 青色
         tmux send-keys -t "bb-multiagent:0.$i" "export PS1='(\[\033[1;34m\]${PANE_TITLES[$i]}\[\033[0m\]) \[\033[1;32m\]\w\[\033[0m\]\$ '" C-m
+    else
+        # Personas (4,5,6): 紫色
+        tmux send-keys -t "bb-multiagent:0.$i" "export PS1='(\[\033[1;35m\]${PANE_TITLES[$i]}\[\033[0m\]) \[\033[1;32m\]\w\[\033[0m\]\$ '" C-m
     fi
     
     # ウェルカムメッセージ
@@ -129,12 +133,12 @@ echo "    Pane 0: MD        (Marketing Director)"
 echo ""
 echo "  bb-multiagentセッション（7ペイン - 左:CD、右:2×3グリッド）:"
 echo "    Pane 0: CD        (Creative Director)      ← 左半分"
-echo "    Pane 1: Persona1  (共感重視型)            ← 右上左"
-echo "    Pane 2: Writer1   (感情訴求型)            ← 右下左"
-echo "    Pane 3: Persona2  (合理主義型)            ← 右上中"
-echo "    Pane 4: Persona3  (トレンド志向型)        ← 右上右"
-echo "    Pane 5: Writer2   (論理訴求型)            ← 右下中"
-echo "    Pane 6: Writer3   (カジュアル型)          ← 右下右"
+echo "    Pane 1: Writer1   (感情訴求型)            ← 右上左"
+echo "    Pane 2: Writer2   (論理訴求型)            ← 右上中"
+echo "    Pane 3: Writer3   (カジュアル型)          ← 右上右"
+echo "    Pane 4: Persona1  (共感重視型)            ← 右下左"
+echo "    Pane 5: Persona2  (合理主義型)            ← 右下中"
+echo "    Pane 6: Persona3  (トレンド志向型)        ← 右下右"
 
 echo ""
 log_success "🎉 BB-Project Environment セットアップ完了！"

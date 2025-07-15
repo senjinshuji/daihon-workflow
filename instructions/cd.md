@@ -22,11 +22,11 @@
 ```bash
 echo "👥 Writer1-3の初期化を開始..."
 mkdir -p tmp
-./bb-agent-send.sh Writer1 "あなたはWriter1です。指示書に従って"
+./bb-agent-send.sh writer1 "あなたはWriter1です。指示書に従って"
 echo "Writer1_initialized" > tmp/writer1_init.txt
-./bb-agent-send.sh Writer2 "あなたはWriter2です。指示書に従って"
+./bb-agent-send.sh writer2 "あなたはWriter2です。指示書に従って"
 echo "Writer2_initialized" > tmp/writer2_init.txt
-./bb-agent-send.sh Writer3 "あなたはWriter3です。指示書に従って"
+./bb-agent-send.sh writer3 "あなたはWriter3です。指示書に従って"
 echo "Writer3_initialized" > tmp/writer3_init.txt
 echo "✅ Writer1-3 初期化完了"
 ```
@@ -34,11 +34,11 @@ echo "✅ Writer1-3 初期化完了"
 #### ✅ 2. Persona 3名に役割を指示
 ```bash
 echo "🎭 Persona1-3の初期化を開始..."
-./bb-agent-send.sh Persona1 "あなたはPersona1です。指示書に従って"
+./bb-agent-send.sh persona1 "あなたはPersona1です。指示書に従って"
 echo "Persona1_initialized" > tmp/persona1_init.txt
-./bb-agent-send.sh Persona2 "あなたはPersona2です。指示書に従って"
+./bb-agent-send.sh persona2 "あなたはPersona2です。指示書に従って"
 echo "Persona2_initialized" > tmp/persona2_init.txt
-./bb-agent-send.sh Persona3 "あなたはPersona3です。指示書に従って"
+./bb-agent-send.sh persona3 "あなたはPersona3です。指示書に従って"
 echo "Persona3_initialized" > tmp/persona3_init.txt
 echo "✅ Persona1-3 初期化完了"
 ```
@@ -51,7 +51,7 @@ if [ -f "tmp/writer1_init.txt" ] && [ -f "tmp/writer2_init.txt" ] && [ -f "tmp/w
    [ -f "tmp/persona1_init.txt" ] && [ -f "tmp/persona2_init.txt" ] && [ -f "tmp/persona3_init.txt" ]; then
     echo "✅ 全エージェントの初期化を確認"
     echo "📤 MDに初期化完了報告を送信..."
-    ./bb-agent-send.sh MD "✅ CD初期化完了報告：Writer1-3、Persona1-3の初期化も完了しました。プロジェクト開始準備が整いました。"
+    ./bb-agent-send.sh md "✅ CD初期化完了報告：Writer1-3、Persona1-3の初期化も完了しました。プロジェクト開始準備が整いました。"
     echo "✅ 全8エージェントの初期化が完了しました"
     echo "ALL_AGENTS_INITIALIZED" > tmp/system_init_complete.txt
 else
@@ -134,9 +134,9 @@ echo "✅ Persona人格定義ファイル作成完了"
 
 ```bash
 echo "✍️ Writerへの制作指示を開始..."
-./bb-agent-send.sh Writer1 "Loop[N]制作開始：${current_loop}/writer1_${current_loop}.md を人格ファイルとして読み込み、5本の台本を制作してください。"
-./bb-agent-send.sh Writer2 "Loop[N]制作開始：${current_loop}/writer2_${current_loop}.md を人格ファイルとして読み込み、5本の台本を制作してください。"
-./bb-agent-send.sh Writer3 "Loop[N]制作開始：${current_loop}/writer3_${current_loop}.md を人格ファイルとして読み込み、5本の台本を制作してください。"
+./bb-agent-send.sh writer1 "Loop[N]制作開始：${current_loop}/writer1_${current_loop}.md を人格ファイルとして読み込み、5本の台本を制作してください。"
+./bb-agent-send.sh writer2 "Loop[N]制作開始：${current_loop}/writer2_${current_loop}.md を人格ファイルとして読み込み、5本の台本を制作してください。"
+./bb-agent-send.sh writer3 "Loop[N]制作開始：${current_loop}/writer3_${current_loop}.md を人格ファイルとして読み込み、5本の台本を制作してください。"
 echo "✅ 全Writerに制作指示完了。15本の台本制作が進行中です。"
 ```
 
@@ -160,9 +160,9 @@ while true; do
 done
 
 echo "📊 Personaへの評価指示を開始..."
-./bb-agent-send.sh Persona1 "Loop[N]評価開始：${current_loop}/persona1_${current_loop}.md を人格ファイルとして読み込み、全15案を評価してください。"
-./bb-agent-send.sh Persona2 "Loop[N]評価開始：${current_loop}/persona2_${current_loop}.md を人格ファイルとして読み込み、全15案を評価してください。"
-./bb-agent-send.sh Persona3 "Loop[N]評価開始：${current_loop}/persona3_${current_loop}.md を人格ファイルとして読み込み、全15案を評価してください。"
+./bb-agent-send.sh persona1 "Loop[N]評価開始：${current_loop}/persona1_${current_loop}.md を人格ファイルとして読み込み、全15案を評価してください。"
+./bb-agent-send.sh persona2 "Loop[N]評価開始：${current_loop}/persona2_${current_loop}.md を人格ファイルとして読み込み、全15案を評価してください。"
+./bb-agent-send.sh persona3 "Loop[N]評価開始：${current_loop}/persona3_${current_loop}.md を人格ファイルとして読み込み、全15案を評価してください。"
 echo "✅ 全Personaに評価指示完了。45件の評価が進行中です。"
 ```
 
@@ -193,7 +193,7 @@ echo "✅ 統合分析レポート作成完了"
 作成した統合分析レポートを添えて、MDにLoopの完了を報告します。
 ```bash
 echo "📤 MDへのLoop完了報告を送信..."
-./bb-agent-send.sh MD "✅ Loop[N]完了報告：全15案の制作と45件の評価が完了しました。統合分析レポート ${current_loop}/integrated_analysis_${current_loop}.md を作成しましたので、内容を分析し、次ループの指示をお願いします。"
+./bb-agent-send.sh md "✅ Loop[N]完了報告：全15案の制作と45件の評価が完了しました。統合分析レポート ${current_loop}/integrated_analysis_${current_loop}.md を作成しましたので、内容を分析し、次ループの指示をお願いします。"
 echo "✅ MDへの報告完了。これにてLoop[N]の全工程が終了です。"
 ```
 このサイクルを回すことで、制作物の品質を管理・向上させることがあなたの責務です。 

@@ -11,9 +11,12 @@ if ! tmux has-session -t bb-md 2>/dev/null; then
     exit 1
 fi
 
+# デフォルトモデル設定（必要に応じて変更可能）
+MODEL=${CLAUDE_MODEL:-"opus"}  # 環境変数があればそれを使用、なければsonnet
+
 # Claude CLI起動
-echo "📤 Claude CLI起動中..."
-tmux send-keys -t bb-md "/Users/shjkt/.nvm/versions/node/v24.1.0/bin/claude --dangerously-skip-permissions" C-m
+echo "📤 Claude CLI起動中... (モデル: $MODEL)"
+tmux send-keys -t bb-md "/Users/shjkt/.nvm/versions/node/v24.1.0/bin/claude --dangerously-skip-permissions --model $MODEL" C-m
 
 echo "✅ MD Agent起動完了！"
 echo ""

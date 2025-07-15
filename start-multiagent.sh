@@ -11,16 +11,19 @@ if ! tmux has-session -t bb-multiagent 2>/dev/null; then
     exit 1
 fi
 
+# デフォルトモデル設定（必要に応じて変更可能）
+MODEL=${CLAUDE_MODEL:-"sonnet"}  # 環境変数があればそれを使用、なければsonnet
+
 # エージェント名定義
 AGENTS=("cd" "writer1" "writer2" "writer3" "persona1" "persona2" "persona3")
 
 # 各エージェントでClaude CLI起動
-echo "📤 7エージェントでClaude CLI起動中..."
+echo "📤 7エージェントでClaude CLI起動中... (モデル: $MODEL)"
 
 for i in {0..6}; do
     agent_name=${AGENTS[$i]}
     echo "  └─ $agent_name 起動中..."
-    tmux send-keys -t "bb-multiagent:0.$i" "/Users/shjkt/.nvm/versions/node/v24.1.0/bin/claude --dangerously-skip-permissions" C-m
+    tmux send-keys -t "bb-multiagent:0.$i" "/Users/shjkt/.nvm/versions/node/v24.1.0/bin/claude --dangerously-skip-permissions --model $MODEL" C-m
     sleep 0.5  # 起動間隔を少し空ける
 done
 

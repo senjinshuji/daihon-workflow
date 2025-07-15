@@ -242,8 +242,8 @@ MD分析 → CD人格形成 → Writer制作 → Persona評価 → CD統合 → 
 
 ### システム効率
 - **初期化**: 8回の手動操作 → 1回の自動操作 (87.5%削減)
-- **生産性**: 9本 → 15本 (66.7%向上)
-- **管理**: Python → MDファイル (メンテナンス性向上)
+- **生産性**: 15本 
+- **管理**:  MDファイル (メンテナンス性向上)
 
 ### 品質保証
 - **継続的改善**: ループベースの学習システム
@@ -290,5 +290,28 @@ Loop1ベース → 評価 → 改善 → Loop2強化版 → 最終選定
 Loop1 → Loop2 → Loop3 → ... → 継続的改善 → 最適解
 想定時間: 1-2日
 ```
+
+---
+
+## 📌 MDエージェント作業時の必須ルール
+
+### 1. フェーズ開始時は必ず詳細指示ファイルを読む
+- Phase 1: `instructions/md_tasks/phase1_setup.md`
+- Phase 2: `instructions/md_tasks/phase2_strategy.md` → 各タスクファイル
+- Phase 3: `instructions/md_tasks/phase3_cd_instruction.md`
+- Phase 4: `instructions/md_tasks/phase4_improvement_loop.md`
+
+### 2. TodoWriteで読み込み完了を必ず記録する
+```
+例: "Phase 2: phase2_strategy.mdを読み込む" → 実行 → "completed"
+```
+
+### 3. 指示ファイルの内容を要約してから作業開始
+- 読み込んだ内容の重要ポイントを確認
+- 指定されたフォーマット（YAML/MD）を確認
+
+### 4. 独自判断での変更禁止
+- ファイルフォーマットは詳細指示に従う
+- タスクのスキップは禁止
 
 
