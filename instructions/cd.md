@@ -102,30 +102,54 @@ echo "✅ 戦略ファイルの分析完了"
 ```
 
 #### ✅ 2. Writer人格ファイルの作成
-`copywriter_instructions.md` を基に、各ライターの個性を具体化した人格ファイル `writer[1-3]_loop[N].md` を作成します。
+`copywriter_instructions.md` を基に、各ライターの個性を具体化した人格ファイルを各Writerディレクトリ内に作成します。
 ```bash
 echo "👥 Writer人格定義ファイルを作成中..."
-# (ここにWriter1, 2, 3の人格定義ファイル作成コマンド)
-# 例:
-cat > ${current_loop}/writer1_${current_loop}.md << 'EOF'
+# 各Writerディレクトリ内に人格ファイルを作成
+# Writer1
+cat > ${current_loop}/writer1/writer1_${current_loop}.md << 'EOF'
 # Writer1 人格定義 (感情訴求特化型)
 (指示書と戦略を基に具体的人格を記述)
 EOF
-# ... (Writer2, 3も同様)
+
+# Writer2
+cat > ${current_loop}/writer2/writer2_${current_loop}.md << 'EOF'
+# Writer2 人格定義 (論理訴求特化型)
+(指示書と戦略を基に具体的人格を記述)
+EOF
+
+# Writer3
+cat > ${current_loop}/writer3/writer3_${current_loop}.md << 'EOF'
+# Writer3 人格定義 (カジュアル訴求特化型)
+(指示書と戦略を基に具体的人格を記述)
+EOF
+
 echo "✅ Writer人格定義ファイル作成完了"
 ```
 
 #### ✅ 3. Persona人格ファイルの作成
-`persona_evaluation_criteria.md` を基に、各評価者の視点を具体化した人格ファイル `persona[1-3]_loop[N].md` を作成します。
+`persona_evaluation_criteria.md` を基に、各評価者の視点を具体化した人格ファイルを各Personaディレクトリ内に作成します。
 ```bash
 echo "🎭 Persona人格定義ファイルを作成中..."
-# (ここにPersona1, 2, 3の人格定義ファイル作成コマンド)
-# 例:
-cat > ${current_loop}/persona1_${current_loop}.md << 'EOF'
+# 各Personaディレクトリ内に人格ファイルを作成
+# Persona1
+cat > ${current_loop}/persona1/persona1_${current_loop}.md << 'EOF'
 # Persona1 人格定義 (30-50代主婦層)
 (評価基準とターゲット分析を基に具体的人格を記述)
 EOF
-# ... (Persona2, 3も同様)
+
+# Persona2
+cat > ${current_loop}/persona2/persona2_${current_loop}.md << 'EOF'
+# Persona2 人格定義 (25-45代ビジネス層)
+(評価基準とターゲット分析を基に具体的人格を記述)
+EOF
+
+# Persona3
+cat > ${current_loop}/persona3/persona3_${current_loop}.md << 'EOF'
+# Persona3 人格定義 (18-30代Z世代)
+(評価基準とターゲット分析を基に具体的人格を記述)
+EOF
+
 echo "✅ Persona人格定義ファイル作成完了"
 ```
 
@@ -134,9 +158,9 @@ echo "✅ Persona人格定義ファイル作成完了"
 
 ```bash
 echo "✍️ Writerへの制作指示を開始..."
-./bb-agent-send.sh writer1 "Loop[N]制作開始：${current_loop}/writer1_${current_loop}.md を人格ファイルとして読み込み、5本の台本を制作してください。"
-./bb-agent-send.sh writer2 "Loop[N]制作開始：${current_loop}/writer2_${current_loop}.md を人格ファイルとして読み込み、5本の台本を制作してください。"
-./bb-agent-send.sh writer3 "Loop[N]制作開始：${current_loop}/writer3_${current_loop}.md を人格ファイルとして読み込み、5本の台本を制作してください。"
+./bb-agent-send.sh writer1 "Loop[N]制作開始：${current_loop}/writer1/writer1_${current_loop}.md を人格ファイルとして読み込み、5本の台本を制作してください。"
+./bb-agent-send.sh writer2 "Loop[N]制作開始：${current_loop}/writer2/writer2_${current_loop}.md を人格ファイルとして読み込み、5本の台本を制作してください。"
+./bb-agent-send.sh writer3 "Loop[N]制作開始：${current_loop}/writer3/writer3_${current_loop}.md を人格ファイルとして読み込み、5本の台本を制作してください。"
 echo "✅ 全Writerに制作指示完了。15本の台本制作が進行中です。"
 ```
 
@@ -160,9 +184,9 @@ while true; do
 done
 
 echo "📊 Personaへの評価指示を開始..."
-./bb-agent-send.sh persona1 "Loop[N]評価開始：${current_loop}/persona1_${current_loop}.md を人格ファイルとして読み込み、全15案を評価してください。"
-./bb-agent-send.sh persona2 "Loop[N]評価開始：${current_loop}/persona2_${current_loop}.md を人格ファイルとして読み込み、全15案を評価してください。"
-./bb-agent-send.sh persona3 "Loop[N]評価開始：${current_loop}/persona3_${current_loop}.md を人格ファイルとして読み込み、全15案を評価してください。"
+./bb-agent-send.sh persona1 "Loop[N]評価開始：${current_loop}/persona1/persona1_${current_loop}.md を人格ファイルとして読み込み、全15案を評価してください。"
+./bb-agent-send.sh persona2 "Loop[N]評価開始：${current_loop}/persona2/persona2_${current_loop}.md を人格ファイルとして読み込み、全15案を評価してください。"
+./bb-agent-send.sh persona3 "Loop[N]評価開始：${current_loop}/persona3/persona3_${current_loop}.md を人格ファイルとして読み込み、全15案を評価してください。"
 echo "✅ 全Personaに評価指示完了。45件の評価が進行中です。"
 ```
 

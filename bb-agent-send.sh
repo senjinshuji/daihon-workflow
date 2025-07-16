@@ -19,12 +19,30 @@ PANE_INDEX=-1
 case "$TARGET_NAME" in
   "MD")
     # MDは別セッションのため、ここで直接処理
-    tmux send-keys -t "bb-md:0.0" "$COMMAND" Enter
+    # Claude Codeのプロンプトを一度クリア
+    tmux send-keys -t "bb-md:0.0" C-c
+    sleep 0.3
+    # メッセージ送信
+    tmux send-keys -t "bb-md:0.0" "$COMMAND"
+    sleep 0.5
+    # エンター押下
+    tmux send-keys -t "bb-md:0.0" C-m
+    sleep 0.5
+    echo "コマンドをペイン MD (PANE: bb-md:0.0) に送信しました。"
     exit 0
     ;;
   "md")
     # MDは別セッションのため、ここで直接処理
-    tmux send-keys -t "bb-md:0.0" "$COMMAND" Enter
+    # Claude Codeのプロンプトを一度クリア
+    tmux send-keys -t "bb-md:0.0" C-c
+    sleep 0.3
+    # メッセージ送信
+    tmux send-keys -t "bb-md:0.0" "$COMMAND"
+    sleep 0.5
+    # エンター押下
+    tmux send-keys -t "bb-md:0.0" C-m
+    sleep 0.5
+    echo "コマンドをペイン MD (PANE: bb-md:0.0) に送信しました。"
     exit 0
     ;;
   "CD") PANE_INDEX=0 ;;
@@ -56,7 +74,7 @@ sleep 0.3
 
 # メッセージ送信
 tmux send-keys -t "$TARGET_PANE" "$COMMAND"
-sleep 0.1
+sleep 0.5
 
 # エンター押下
 tmux send-keys -t "$TARGET_PANE" C-m

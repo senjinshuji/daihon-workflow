@@ -34,7 +34,16 @@ NEXT_LOOP="loop${NEXT_LOOP_NUM}"
 # 次ループ用ディレクトリを作成
 mkdir -p projects/$PROJECT_NAME/$NEXT_LOOP
 
+# 各エージェントの成果物用ディレクトリを作成
+cd projects/$PROJECT_NAME/$NEXT_LOOP
+mkdir -p writer1 writer2 writer3
+mkdir -p persona1 persona2 persona3
+
 echo "📁 次ループ用ディレクトリを作成: projects/$PROJECT_NAME/$NEXT_LOOP"
+echo "📁 各エージェント用サブディレクトリを作成: writer1-3, persona1-3"
+
+# プロジェクトディレクトリに戻る
+cd ../../..
 ```
 
 ### ✅ タスク3: 改善版ファイルの作成
@@ -61,7 +70,7 @@ EOF
 #### 3-2: 評価基準の更新
 ```bash
 # より精緻化された評価基準を作成
-cat > projects/$PROJECT_NAME/$NEXT_LOOP/persona_evaluation_criteria.yaml << 'EOF'
+cat > projects/$PROJECT_NAME/$NEXT_LOOP/persona_evaluation_criteria.md << 'EOF'
 # 更新された評価基準
 [前回の評価結果を踏まえた新基準]
 EOF
@@ -99,7 +108,7 @@ echo "✅ 監督役が起動しました (PID: ${supervisor_pid})"
 
 📁 更新ファイル：
 - copywriter_instructions.md
-- persona_evaluation_criteria.yaml
+- persona_evaluation_criteria.md
 - creative_strategy.md
 
 🎯 これらの新指示書で${NEXT_LOOP}の制作を開始してください。"

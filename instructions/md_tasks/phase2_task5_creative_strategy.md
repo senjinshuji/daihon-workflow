@@ -10,16 +10,25 @@
 echo "🎯 総合クリエイティブ戦略を策定します..."
 
 # これまでに作成したファイルの情報を統合
-# - market_analysis.yaml
-# - target_analysis.yaml
+# - market_analysis.md
+# - target_analysis.md
 # - copywriter_instructions.md
-# - persona_evaluation_criteria.yaml
+# - persona_evaluation_criteria.md
 ```
 
 ### ステップ2: creative_strategy.mdファイルの作成
 
 ```bash
 cat > projects/$PROJECT_NAME/loop1/creative_strategy.md << 'EOF'
+# 総合クリエイティブ戦略
+
+### ステップ2: creative_strategy.mdファイルへの書き込み
+
+**重要**: ファイルへの書き込みは、MDエージェントが直接edit_fileツールを使用して行ってください。
+
+以下の内容をcreative_strategy.mdファイルに書き込んでください：
+
+```markdown
 # 総合クリエイティブ戦略
 
 ## プロジェクト概要
@@ -31,8 +40,8 @@ cat > projects/$PROJECT_NAME/loop1/creative_strategy.md << 'EOF'
 ## ブランドポジショニング
 
 ### 現在地分析
-- **市場での位置**: [market_analysis.yamlの競合分析から]
-- **認知状況**: [target_analysis.yamlの既存認知から]
+- **市場での位置**: [market_analysis.mdの競合分析から]
+- **認知状況**: [target_analysis.mdの既存認知から]
 - **課題**: [解決すべき認知のギャップ]
 
 ### 目指すポジション
@@ -43,9 +52,9 @@ cat > projects/$PROJECT_NAME/loop1/creative_strategy.md << 'EOF'
 ## クリエイティブコンセプト
 
 ### 核となるメッセージ
-**コンセプト**: [target_analysis.yamlのコンセプトから]
+**コンセプト**: [target_analysis.mdのコンセプトから]
 
-**キャッチコピー**: [target_analysis.yamlのキャッチコピーから]
+**キャッチコピー**: [target_analysis.mdのキャッチコピーから]
 
 ### 認知変化の設計
 **既存認知**:
@@ -140,7 +149,7 @@ cat > projects/$PROJECT_NAME/loop1/creative_strategy.md << 'EOF'
 ## 付録：参考情報
 
 ### 成功事例の特徴
-[market_analysis.yamlから抽出した成功パターン]
+[market_analysis.mdから抽出した成功パターン]
 
 ### 業界トレンド
 [最新の動画広告トレンド]
@@ -149,23 +158,8 @@ cat > projects/$PROJECT_NAME/loop1/creative_strategy.md << 'EOF'
 [法規制や業界ガイドラインなど]
 EOF
 
-echo "✅ creative_strategy.md 作成完了"
+echo "✅ creative_strategy.md 書き込み完了"
 ```
 
 ### 完了確認
-```bash
-if [ -f "projects/$PROJECT_NAME/loop1/creative_strategy.md" ]; then
-    echo "✅ Phase 2 タスク5: creative_strategy.md の作成が完了しました"
-    echo "🎯 総合クリエイティブ戦略の策定が完了しました"
-    echo ""
-    echo "📊 Phase 2 全タスク完了！"
-    echo "作成されたファイル:"
-    echo "  ✓ market_analysis.yaml"
-    echo "  ✓ target_analysis.yaml"
-    echo "  ✓ copywriter_instructions.md"
-    echo "  ✓ persona_evaluation_criteria.yaml"
-    echo "  ✓ creative_strategy.md"
-else
-    echo "❌ エラー: creative_strategy.md の作成に失敗しました"
-fi
-``` 
+```

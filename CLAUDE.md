@@ -39,6 +39,31 @@ ClaudeがWebSearchツールを使用する際、自動的にGemini CLIを呼び�
 <ClaudeとGeminiの結果を統合した最終回答>
 
 
+## 📝 ファイル作成時の必須プロセス
+
+### 文字化け防止のための標準手順
+MDエージェントがファイルを作成する際は、以下の手順を必ず実行：
+
+1. **既存ファイルの削除**（存在する場合）
+   ```bash
+   rm -f /path/to/file.md
+   ```
+
+2. **Writeツールで新規作成**
+   - 絶対パスを使用
+   - Readツールでの事前確認は不要
+
+3. **作成後の確認**
+   ```bash
+   file -I /path/to/file.md && head -n 5 /path/to/file.md
+   ```
+
+### 禁止事項
+- touchコマンドでの空ファイル作成は禁止
+- 既存ファイルへの直接書き込みは避ける
+
+---
+
 # 🤖 BB-Project: AIエージェント協調型プラットフォーム仕様書
 
 ## 概要
@@ -132,10 +157,7 @@ flowchart TD
 
 ### Phase 4: 多角的評価
 **担当**: Persona 1-3
-各ペルソナは全15本の台本を評価（各100点満点）:
-- **Persona1**: 共感性(40), 親近感(30), 購買意欲(30)
-- **Persona2**: 論理性(40), 効率性(30), 信頼性(30)
-- **Persona3**: トレンド性(40), SNS訴求力(30), 話題性(30)
+各ペルソナは全15本の台本を評価
 
 1ループあたりの合計評価数: **45件**
 
@@ -171,11 +193,28 @@ projects/[プロジェクト名]/
 │   ├── persona_evaluation_criteria.md
 │   └── creative_strategy.md
 ├── 📁 loop1/
-│   ├── 👥 人格ファイル/
-│   │   ├── writer[1-3]_loop1.md
-│   │   └── persona[1-3]_loop1.md
-│   ├── 📝 台本 (計15本)/
-│   ├── 📊 評価/
+│   ├── 📁 writer1/           # Writer1用ディレクトリ（MDが作成）
+│   │   ├── writer1_loop1.md  # Writer1の人格ファイル（CDが作成）
+│   │   ├── 台本1_loop1.md
+│   │   ├── 台本2_loop1.md
+│   │   ├── 台本3_loop1.md
+│   │   ├── 台本4_loop1.md
+│   │   └── 台本5_loop1.md
+│   ├── 📁 writer2/           # Writer2用ディレクトリ（MDが作成）
+│   │   ├── writer2_loop1.md  # Writer2の人格ファイル（CDが作成）
+│   │   └── (同様に5つの台本)
+│   ├── 📁 writer3/           # Writer3用ディレクトリ（MDが作成）
+│   │   ├── writer3_loop1.md  # Writer3の人格ファイル（CDが作成）
+│   │   └── (同様に5つの台本)
+│   ├── 📁 persona1/          # Persona1用ディレクトリ（MDが作成）
+│   │   ├── persona1_loop1.md # Persona1の人格ファイル（CDが作成）
+│   │   └── 評価ファイル
+│   ├── 📁 persona2/          # Persona2用ディレクトリ（MDが作成）
+│   │   ├── persona2_loop1.md # Persona2の人格ファイル（CDが作成）
+│   │   └── 評価ファイル
+│   ├── 📁 persona3/          # Persona3用ディレクトリ（MDが作成）
+│   │   ├── persona3_loop1.md # Persona3の人格ファイル（CDが作成）
+│   │   └── 評価ファイル
 │   └── 📈 integrated_analysis_loop1.md
 ├── 📁 loop2/
 └── 📁 loop3/

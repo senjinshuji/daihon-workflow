@@ -51,10 +51,10 @@
 **重要**: Phase 2は5つの個別タスクに分割されています。phase2_strategy.mdを読み込んだ後、各タスクの詳細指示ファイルを順番に参照してください。
 
 主なタスク：
-- タスク1: CSV分析とproduct_analysis.yaml作成 → `phase2_task1_product_analysis.md`
-- タスク2: ターゲット分析（target_analysis.yaml） → `phase2_task2_target_analysis.md`
+- タスク1: CSV分析とproduct_analysis.md作成 → `phase2_task1_product_analysis.md`
+- タスク2: ターゲット分析（target_analysis.md） → `phase2_task2_target_analysis.md`
 - タスク3: ライター向け指示書（copywriter_instructions.md） → `phase2_task3_copywriter_instructions.md`
-- タスク4: ペルソナ評価基準（persona_evaluation_criteria.yaml） → `phase2_task4_persona_criteria.md`
+- タスク4: ペルソナ評価基準（persona_evaluation_criteria.md） → `phase2_task4_persona_criteria.md`
 - タスク5: 総合クリエイティブ戦略（creative_strategy.md） → `phase2_task5_creative_strategy.md`
 
 ### Phase 3: CDへの制作指示
@@ -114,13 +114,13 @@
 ```
 - [ ] "Phase 2: phase2_strategy.mdを読み込む"
 - [ ] "Task 1: phase2_task1_product_analysis.mdを読み込む"
-- [ ] "Task 1: product_analysis.yamlを作成"
+- [ ] "Task 1: product_analysis.mdを作成"
 - [ ] "Task 2: phase2_task2_target_analysis.mdを読み込む"
-- [ ] "Task 2: target_analysis.yamlを作成"
+- [ ] "Task 2: target_analysis.mdを作成"
 - [ ] "Task 3: phase2_task3_copywriter_instructions.mdを読み込む"
 - [ ] "Task 3: copywriter_instructions.mdを作成"
 - [ ] "Task 4: phase2_task4_persona_criteria.mdを読み込む"
-- [ ] "Task 4: persona_evaluation_criteria.yamlを作成"
+- [ ] "Task 4: persona_evaluation_criteria.mdを作成"
 - [ ] "Task 5: phase2_task5_creative_strategy.mdを読み込む"
 - [ ] "Task 5: creative_strategy.mdを作成"
 ```
@@ -142,7 +142,7 @@
 ### 実行ルール
 1. **読み込み確認**: 各詳細指示ファイルを読んだら、TodoWriteで「完了」とマーク
 2. **作業前確認**: ファイル作成前に、必ず対応する詳細指示を確認済みであること
-3. **フォーマット遵守**: 詳細指示に記載されたフォーマット（YAML/MD）を厳守
+3. **フォーマット遵守**: 詳細指示に記載されたフォーマット（MD）を厳守
 
 ### 禁止事項
 - 詳細指示を読まずに作業を開始すること

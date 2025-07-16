@@ -23,17 +23,11 @@ PROJECT_NAME="[CSVファイル名から拡張子を除いた名前]"
 mkdir -p projects/$PROJECT_NAME/loop1
 cd projects/$PROJECT_NAME
 
-# プロジェクト直下に作成するファイル（loop共通で使用）
-touch product_analysis.yaml
-touch target_analysis.yaml
+# ファイルは後でWriteツールで作成するため、ここでは作成しない
+# （touchコマンドによる空ファイル作成は文字化けの原因となるため禁止）
 
 # loop1ディレクトリに移動
 cd loop1
-
-# loop1直下に作成するファイル（loop固有）
-touch copywriter_instructions.md
-touch persona_evaluation_criteria.yaml
-touch creative_strategy.md
 
 # 各エージェントの成果物用ディレクトリ
 mkdir -p writer1 writer2 writer3

@@ -31,10 +31,10 @@ echo "📤 CDに制作指示を送信..."
 ./bb-agent-send.sh cd "Loop1制作開始：プロジェクト準備ファイル作成完了しました。
 
 📋 作成済みファイル:
-- market_analysis.yaml（CSV分析と商品分析）
-- target_analysis.yaml（ペルソナ深層心理分析） 
+- market_analysis.md（CSV分析と商品分析）
+- target_analysis.md（ペルソナ深層心理分析） 
 - copywriter_instructions.md（ライター向け指示書）
-- persona_evaluation_criteria.yaml（評価基準）
+- persona_evaluation_criteria.md（評価基準）
 - creative_strategy.md（総合戦略）
 
 🎯 次のアクション:
