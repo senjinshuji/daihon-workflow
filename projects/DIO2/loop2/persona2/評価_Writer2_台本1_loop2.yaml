@@ -1,0 +1,84 @@
+# Writer2 台本1 評価レポート
+writer: "Writer2"
+script_number: 1
+evaluator: "Persona2（コスパ重視）"
+evaluation_date: "2025-01-17"
+
+# 総合評価
+summary:
+  total_score: 98/110  # Persona2重視項目のウェイト調整後
+  percentage: "89.1%"
+  grade: "A"
+  one_line_comment: "投資理論による完璧な論理構成でビジネス層の投資判断を完全サポート"
+
+# 各評価項目（10点満点）
+evaluation_items:
+  appeal-clarity-and-consistency:
+    score: 9
+    reason: "効果訴求が明確で、『リスクゼロ投資』から『やらない理由がない』まで投資理論で一貫"
+  
+  guarantee-system-persuasiveness:
+    score: 10  # ×1.1倍重視
+    reason: "全額返金＋脂肪買取を『失敗しても損失ゼロ』と投資理論で完璧に説明。『1kg減らなければ1万円』の具体性が抜群"
+  
+  fat-cell-destruction-scientific-explanation:
+    score: 9
+    reason: "脂肪細胞の物理的破壊と419万通りの科学的根拠が明確で、投資対象の理解に最適"
+  
+  unique-value-proposition-strength:
+    score: 10  # ×1.1倍重視
+    reason: "リスクゼロ投資機会という独自価値提案が完璧。419万通りオーダーメイドも差別化要素として機能"
+  
+  opening-hook-intensity:
+    score: 9
+    reason: "『リスクゼロで最大リターン』の投資機会提示が3秒でビジネスパーソンの注意を完全に獲得"
+  
+  sales-pitch-elimination:
+    score: 9
+    reason: "投資理論による合理的提案で、売り込み感が完全に排除。論理的必然性を感じさせる"
+  
+  medical-safety-trust-building:
+    score: 9
+    reason: "99%成功率の科学的根拠と医師管理で医療安全性を完璧に構築"
+  
+  persona-compatibility:
+    score: 10
+    reason: "ビジネスパーソン向けの投資理論アプローチで、論理的判断を完全サポート"
+  
+  numbers-data-effective-use:
+    score: 10  # ×1.2倍重視
+    reason: "99%vs30-50%の比較、419万通り、1kg1万円の具体的数値が投資判断に最適"
+  
+  action-urgency:
+    score: 7
+    reason: "『滅多にない投資機会』という表現はあるが、期間限定性の明確化が不足"
+  
+  emotion-logic-balance:
+    score: 10
+    reason: "忙しさへの共感と投資理論の論理性が完璧にバランスされている"
+
+# 改善提案
+improvement_suggestions:
+  - suggestion: "投資機会の期間限定性強化"
+    details: 
+      - "先着5名の限定性を投資機会として明確化"
+      - "100万円分無料の期間限定性を投資価値として提示"
+      - "機会損失のリスクを投資理論で説明"
+  
+  - suggestion: "ROI計算の具体化"
+    details:
+      - "投資金額と期待リターンの具体的数値"
+      - "時間投資効率の定量化"
+      - "他の投資商品との比較分析"
+  
+  - suggestion: "リスクヘッジの詳細化"
+    details:
+      - "保証制度の法的根拠と実効性"
+      - "リスクゼロ投資の条件詳細"
+      - "投資リスク管理の具体的手法"
+  
+  - suggestion: "投資判断支援情報の追加"
+    details:
+      - "投資回収期間の明確化"
+      - "長期的投資価値の定量化"
+      - "投資成功確率の統計的根拠"

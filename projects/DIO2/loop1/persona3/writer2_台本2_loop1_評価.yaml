@@ -1,0 +1,76 @@
+# Writer2 台本2 評価レポート
+writer: "Writer2"
+script_number: 2
+evaluator: "Persona3（効果重視）"
+evaluation_date: "2025-07-17"
+
+# 総合評価
+summary:
+  total_score: 83/110
+  percentage: "75%"
+  grade: "B"
+  one_line_comment: "論理的で分かりやすい比較だけど、もう少し親しみやすさがあると良い"
+
+# 各評価項目（10点満点）
+evaluation_items:
+  appeal-clarity-and-consistency:
+    score: 8
+    reason: "オーダーメイドの効果訴求で一貫してる。419万通りの数字が具体的で良い"
+  
+  differentiation-clarity:
+    score: 9
+    reason: "画一的アプローチとの違いが超分かりやすい。比較の仕方が論理的で説得力ある"
+  
+  unique-value-proposition:
+    score: 8
+    reason: "419万通りオーダーメイドは確実にユニーク。個人差への対応って価値提案も魅力的"
+  
+  clear-selection-reason:
+    score: 8
+    reason: "体質に合わせる必要性の説明が論理的で納得できる。科学的根拠がしっかりしてる"
+  
+  opening-hook-impact:
+    score: 7
+    reason: "疑問形の導入は良いけど、もう少しインパクトがあると嬉しい"
+  
+  sales-pitch-elimination:
+    score: 7
+    reason: "比較検証型だから客観的だけど、やっぱり少し宣伝感がある"
+  
+  character-edge:
+    score: 6
+    reason: "論理的な分析家って感じは伝わるけど、もう少し親近感が欲しい"
+  
+  strategic-integration:
+    score: 8
+    reason: "比較分析の戦略が効果的に組み込まれてる。論理的な構成が良い"
+  
+  natural-flow:
+    score: 8
+    reason: "疑問→原因→解決策→結果の流れが自然で分かりやすい"
+  
+  emotional-impact:
+    score: 6
+    reason: "論理的な説得力はあるけど、感情に響く部分が少ない。もう少し体験談があると良い"
+  
+  trust-building:
+    score: 8
+    reason: "30万人実証のデータと医師の個別診断で信頼感ある"
+
+# 改善提案
+improvement_suggestions:
+  - suggestion: "もう少しエモーショナルな要素を"
+    details: 
+      - "実際に成功した人の声や体験談を入れる"
+      - "変化の喜びを表現する部分を追加"
+      - "『うれしい』『感動』みたいな感情表現も"
+  
+  - suggestion: "Z世代に響く表現に変更"
+    details:
+      - "『当然なんです』じゃなく『当たり前だよね』みたいに"
+      - "もう少しカジュアルで親しみやすい口調に"
+  
+  - suggestion: "具体的な成功例を追加"
+    details:
+      - "実際の変化の数字や期間"
+      - "どんな人がどう変わったかの具体例"

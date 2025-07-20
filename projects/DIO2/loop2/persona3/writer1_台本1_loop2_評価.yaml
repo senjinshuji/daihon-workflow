@@ -1,0 +1,77 @@
+# Writer1 台本1 評価レポート（Loop2）
+writer: "Writer1"
+script_number: 1
+evaluator: "Persona3（効果重視・Loop2進化版）"
+evaluation_date: "2025-07-17"
+
+# 総合評価
+summary:
+  total_score: 91/110
+  percentage: "83%"
+  grade: "A"
+  one_line_comment: "家族思いの設定は良いけど、Z世代にはちょっと重い。保証制度はもう少しカジュアルに説明してほしい"
+
+# 各評価項目（11点満点）
+evaluation_items:
+  appeal-clarity-and-consistency:
+    score: 9
+    reason: "効果訴求で一貫してる。『完全にリスクゼロ』って表現が明確で良い。でも30代主婦向けって感じ"
+  
+  guarantee-system-persuasiveness:
+    score: 8
+    reason: "全額返金+脂肪買取の説明はある。でも『家計への負担も心配なし』って表現が堅い。もう少しカジュアルに"
+  
+  fat-cell-destruction-scientific-explanation:
+    score: 8
+    reason: "脂肪細胞破壊の根本解決は分かる。でも『医師が管理』って部分をもう少し親しみやすく説明して"
+  
+  unique-value-proposition:
+    score: 8
+    reason: "完全リスクゼロは魅力的。でも419万通りオーダーメイドの説明が薄い"
+  
+  opening-hook-impact:
+    score: 7
+    reason: "夫の一言は分かるけど、Z世代には響きにくい。もう少し若い世代向けの設定が良い"
+  
+  sales-pitch-elimination:
+    score: 8
+    reason: "家族愛から自然に発生してて売り込み感は少ない。でも全体的に真面目すぎる"
+  
+  medical-safety-trust-building:
+    score: 9
+    reason: "30万人実績と医師管理で信頼感ある。医療の安全性もしっかり説明されてる"
+  
+  persona-compatibility:
+    score: 6
+    reason: "30代主婦層向けって感じで、Z世代にはちょっと距離感ある。言葉遣いも堅い"
+  
+  data-utilization:
+    score: 8
+    reason: "99%成功率と30万人実績は印象的。でも100万円分無料の説明がない"
+  
+  action-urgency:
+    score: 7
+    reason: "緊急性が薄い。『今度こそ最後』って表現だけで、限定性が弱い"
+  
+  emotion-logic-balance:
+    score: 8
+    reason: "家族への愛情と医療の根拠がバランス良い。でももう少し感情的な部分を"
+
+# 改善提案
+improvement_suggestions:
+  - suggestion: "Z世代向けの表現に変更"
+    details: 
+      - "夫の一言より、友達やSNSでの気づきに"
+      - "『家計への負担』より『お金の心配なし』みたいにカジュアルに"
+      - "もう少し若い世代の悩みを入れる"
+  
+  - suggestion: "保証制度をもっと魅力的に"
+    details:
+      - "脂肪買取のメリットを具体的に"
+      - "『完全にリスクゼロ』をもっと強調"
+      - "100万円分無料の説明も追加"
+  
+  - suggestion: "419万通りオーダーメイドの説明を"
+    details:
+      - "なぜそんなに種類があるのか"
+      - "自分に合った方法が見つかる安心感"

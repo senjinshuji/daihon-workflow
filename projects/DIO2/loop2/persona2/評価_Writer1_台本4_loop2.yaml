@@ -1,0 +1,90 @@
+# Writer1 台本4 評価レポート
+writer: "Writer1"
+script_number: 4
+evaluator: "Persona2（コスパ重視）"
+evaluation_date: "2025-01-17"
+
+# 総合評価
+summary:
+  total_score: 89/110  # Persona2重視項目のウェイト調整後
+  percentage: "80.9%"
+  grade: "B"
+  one_line_comment: "健康投資の論理性とオーダーメイド医療の差別化が投資判断に有効"
+
+# 各評価項目（10点満点）
+evaluation_items:
+  appeal-clarity-and-consistency:
+    score: 9
+    reason: "効果訴求が明確で、医師の警告から『医師が管理する医療』まで健康改善で一貫"
+  
+  guarantee-system-persuasiveness:
+    score: 8  # ×1.1倍重視
+    reason: "全額返金＋脂肪買取制度が40-50秒で『安心だった』として説明されているが、健康投資の文脈での説得力が不足"
+  
+  fat-cell-destruction-scientific-explanation:
+    score: 8
+    reason: "脂肪細胞破壊による『健康リスクも解決』という医学的根拠が明確で、根本解決を強調"
+  
+  unique-value-proposition-strength:
+    score: 9  # ×1.1倍重視
+    reason: "419万通りオーダーメイド医療が明確に差別化要素として提示され、健康リスク解決も含む"
+  
+  opening-hook-intensity:
+    score: 9
+    reason: "医師の『生活習慣病のリスクが高い』という警告は3秒で健康への危機感を強烈に表現"
+  
+  sales-pitch-elimination:
+    score: 9
+    reason: "健康危機から自然に発生する医療への信頼で、売り込み感が完全に排除"
+  
+  medical-safety-trust-building:
+    score: 9
+    reason: "医師監修、30万人実績、健康診断数値改善で医療安全性と効果を強力に構築"
+  
+  persona-compatibility:
+    score: 7
+    reason: "健康投資の論理性はビジネス層に響くが、感情的要素がやや強い"
+  
+  numbers-data-effective-use:
+    score: 8  # ×1.2倍重視
+    reason: "30万人実績、健康診断数値改善は提示されているが、投資金額とROIの具体的数値が不明"
+  
+  action-urgency:
+    score: 6
+    reason: "『最後の決断』という表現はあるが、限定性や機会損失の明確な提示が不足"
+  
+  emotion-logic-balance:
+    score: 9
+    reason: "健康危機という感情と医療の論理性、オーダーメイドの合理性が完璧にバランス"
+
+# 改善提案
+improvement_suggestions:
+  - suggestion: "健康投資のROI明確化"
+    details: 
+      - "生活習慣病治療費との比較分析"
+      - "健康投資としての長期的リターン計算"
+      - "医療費削減効果の具体的数値提示"
+  
+  - suggestion: "ビジネス層向けの論理性強化"
+    details:
+      - "419万通りオーダーメイドの科学的根拠"
+      - "健康リスク解決の医学的エビデンス"
+      - "投資判断に必要な費用対効果データ"
+  
+  - suggestion: "保証制度の健康投資文脈での説明"
+    details:
+      - "健康改善が得られない場合の保証詳細"
+      - "健康投資のリスクヘッジとしての保証制度"
+      - "医療投資の安全性を裏付ける具体的条件"
+  
+  - suggestion: "緊急性の健康文脈での強化"
+    details:
+      - "健康リスクの進行による機会損失"
+      - "早期治療の重要性と限定性"
+      - "健康投資の最適タイミングの論理的提示"
+  
+  - suggestion: "データ活用の専門化"
+    details:
+      - "健康診断数値改善の統計的根拠"
+      - "生活習慣病予防効果の医学的データ"
+      - "健康投資効果の長期追跡結果"

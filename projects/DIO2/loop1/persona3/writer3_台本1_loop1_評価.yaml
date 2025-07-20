@@ -1,0 +1,76 @@
+# Writer3 台本1 評価レポート
+writer: "Writer3"
+script_number: 1
+evaluator: "Persona3（効果重視）"
+evaluation_date: "2025-07-17"
+
+# 総合評価
+summary:
+  total_score: 95/110
+  percentage: "86%"
+  grade: "A"
+  one_line_comment: "めちゃくちゃ良い！SNSっぽくて親しみやすいし、データもしっかりしてて信頼できる"
+
+# 各評価項目（10点満点）
+evaluation_items:
+  appeal-clarity-and-consistency:
+    score: 9
+    reason: "99%成功率の効果訴求で一貫してる。『別次元』って表現で効果の凄さが伝わる"
+  
+  differentiation-clarity:
+    score: 9
+    reason: "医療vs従来ダイエットの違いが分かりやすい。『脂肪細胞ごと破壊』って説明も納得"
+  
+  unique-value-proposition:
+    score: 9
+    reason: "脂肪細胞破壊でリバウンドしないってユニーク。しかも医療だから安心って価値も魅力的"
+  
+  clear-selection-reason:
+    score: 9
+    reason: "99%成功率と医療技術で選ぶ理由が明確。『別次元』って表現で納得感ある"
+  
+  opening-hook-impact:
+    score: 10
+    reason: "『マジでヤバくない？』って冒頭、完全にZ世代の言葉で刺さる。16kg減量のインパクトも大"
+  
+  sales-pitch-elimination:
+    score: 9
+    reason: "友達が興奮して教えてくれてる感じで売り込み感ゼロ。自然な流れで情報が入ってくる"
+  
+  character-edge:
+    score: 10
+    reason: "インフルエンサー風の親しみやすさが完璧。等身大の女性って感じで超親近感ある"
+  
+  strategic-integration:
+    score: 9
+    reason: "SNSバズ系の戦略が効果的に組み込まれてる。ターゲット設定もドンピシャ"
+  
+  natural-flow:
+    score: 8
+    reason: "驚き→共感→発見→納得→行動の流れが自然。でも最後の勧誘部分がちょっと急"
+  
+  emotional-impact:
+    score: 9
+    reason: "『諦めモード』から『別次元』への感情変化がリアル。驚きと興奮が伝わってくる"
+  
+  trust-building:
+    score: 8
+    reason: "30万件実績と保証制度で安心感ある。でも数字の説明をもう少し詳しく"
+
+# 改善提案
+improvement_suggestions:
+  - suggestion: "保証制度をもう少し詳しく"
+    details: 
+      - "脂肪買取の仕組みをもう少し具体的に"
+      - "全額返金の条件とかも軽く触れる"
+      - "安心感をもっと強調"
+  
+  - suggestion: "最後の行動喚起をもう少し自然に"
+    details:
+      - "急に勧誘っぽくならないように"
+      - "『気になる人はチェックしてみて』くらいの軽さで"
+  
+  - suggestion: "リアルな体験談要素を追加"
+    details:
+      - "実際に施術を受けた時の感想とか"
+      - "変化を実感した瞬間の描写も"

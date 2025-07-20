@@ -1,0 +1,78 @@
+# Writer1 台本5 評価レポート（Loop2）
+writer: "Writer1"
+script_number: 5
+evaluator: "Persona3（効果重視・Loop2進化版）"
+evaluation_date: "2025-07-17"
+
+# 総合評価
+summary:
+  total_score: 96/110
+  percentage: "87%"
+  grade: "A"
+  one_line_comment: "友達の成功体験めちゃくちゃ響く！口コミ重視のZ世代にドンピシャで、保証制度も安心できる"
+
+# 各評価項目（11点満点）
+evaluation_items:
+  appeal-clarity-and-consistency:
+    score: 9
+    reason: "体験者信頼の効果訴求で一貫してる。『私も同じように成功できる』って確信が伝わる"
+  
+  guarantee-system-persuasiveness:
+    score: 9
+    reason: "友達の『損することは絶対にない』って言葉が説得力ある。保証制度の説明も自然"
+  
+  fat-cell-destruction-scientific-explanation:
+    score: 8
+    reason: "脂肪細胞破壊の根本解決は分かる。友達も同じ説明を受けたって信頼感ある"
+  
+  unique-value-proposition:
+    score: 8
+    reason: "友達も体験した安全性と保証制度は魅力的。でも419万通りの説明が薄い"
+  
+  opening-hook-impact:
+    score: 10
+    reason: "友達の劇的変化に驚く冒頭、めちゃくちゃリアル。『別人みたい』って表現が刺さる"
+  
+  sales-pitch-elimination:
+    score: 9
+    reason: "友達の体験から自然に発生してて売り込み感ゼロ。口コミベースで信頼できる"
+  
+  medical-safety-trust-building:
+    score: 9
+    reason: "友達の『安心だった』って言葉と30万人実績で信頼感ある。医療の安全性も伝わる"
+  
+  persona-compatibility:
+    score: 9
+    reason: "友達の体験を重視するZ世代にドンピシャ。口コミを信頼する世代の感性にマッチ"
+  
+  data-utilization:
+    score: 8
+    reason: "99%成功率と30万人実績は印象的。でも100万円分無料の説明がない"
+  
+  action-urgency:
+    score: 7
+    reason: "友達と同じ体験への憧れはあるけど、限定性が弱い。もう少し緊急性を"
+  
+  emotion-logic-balance:
+    score: 9
+    reason: "友達への憧れと医療の根拠がバランス良い。感情から入って論理で納得させる流れが良い"
+
+# 改善提案
+improvement_suggestions:
+  - suggestion: "419万通りオーダーメイドの説明を"
+    details: 
+      - "友達も自分に合った方法を選んでもらったとか"
+      - "なぜそんなに種類があるのか"
+      - "個別対応の魅力をもっと"
+  
+  - suggestion: "緊急性の演出を追加"
+    details:
+      - "友達と同じ特典があるのは今だけとか"
+      - "100万円分無料の説明も"
+      - "先着5名の限定性を入れる"
+  
+  - suggestion: "Z世代の友達関係をもっと"
+    details:
+      - "SNSで友達の変化を見たとか"
+      - "一緒にインスタ映えする写真を撮ったとか"
+      - "友達関係の現代的な要素を"

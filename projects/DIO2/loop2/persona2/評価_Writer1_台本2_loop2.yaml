@@ -1,0 +1,90 @@
+# Writer1 台本2 評価レポート
+writer: "Writer1"
+script_number: 2
+evaluator: "Persona2（コスパ重視）"
+evaluation_date: "2025-01-17"
+
+# 総合評価
+summary:
+  total_score: 82/110  # Persona2重視項目のウェイト調整後
+  percentage: "74.5%"
+  grade: "B"
+  one_line_comment: "母性愛と医療安全性の組み合わせは良いが、投資判断材料として不十分"
+
+# 各評価項目（10点満点）
+evaluation_items:
+  appeal-clarity-and-consistency:
+    score: 8
+    reason: "効果訴求が明確で、娘の質問から『医療だから家族も安心』まで家族配慮で一貫している"
+  
+  guarantee-system-persuasiveness:
+    score: 8  # ×1.1倍重視
+    reason: "全額返金＋脂肪買取制度が40-50秒で『家計への負担も心配なし』として説明されているが、具体的条件が不明"
+  
+  fat-cell-destruction-scientific-explanation:
+    score: 8
+    reason: "脂肪細胞破壊の『根本解決』と医師管理による『副作用なし・ダウンタイムなし』が明確に説明されている"
+  
+  unique-value-proposition-strength:
+    score: 7  # ×1.1倍重視
+    reason: "副作用なし・ダウンタイムなしは差別化要素だが、419万通りオーダーメイドの言及がない"
+  
+  opening-hook-intensity:
+    score: 9
+    reason: "娘の『お腹の赤ちゃん、いつ生まれる？』は母親の現実認識を3秒で強烈に表現"
+  
+  sales-pitch-elimination:
+    score: 9
+    reason: "母親の責任感から自然に発生する動機で、売り込み感が完全に排除されている"
+  
+  medical-safety-trust-building:
+    score: 9
+    reason: "医師管理、30万人実績、副作用なし・ダウンタイムなしで医療安全性を強力に構築"
+  
+  persona-compatibility:
+    score: 6
+    reason: "主婦層には最適だが、ビジネス層には感情的すぎる。論理的投資判断材料が不足"
+  
+  numbers-data-effective-use:
+    score: 6  # ×1.2倍重視
+    reason: "30万人実績は提示されているが、費用対効果、ROI、具体的な投資金額が不明"
+  
+  action-urgency:
+    score: 5
+    reason: "緊急性の表現が弱い。『最後の決断』はあるが、限定性や機会損失の言及がない"
+  
+  emotion-logic-balance:
+    score: 8
+    reason: "母性愛と医療安全性のバランスは良いが、論理的投資判断材料が不足"
+
+# 改善提案
+improvement_suggestions:
+  - suggestion: "投資判断材料の具体化"
+    details: 
+      - "治療費用と期待リターンの明確な提示"
+      - "ROI計算の根拠となる数値データの追加"
+      - "競合他社との費用対効果比較"
+  
+  - suggestion: "ビジネス層向けの論理性強化"
+    details:
+      - "時間効率性（忙しい母親でも可能）を数値で表現"
+      - "機会損失のリスクを論理的に提示"
+      - "419万通りオーダーメイドの差別化要素を追加"
+  
+  - suggestion: "保証制度の詳細化"
+    details:
+      - "全額返金の具体的条件を明示"
+      - "脂肪買取制度の詳細（1kg1万円）を説明"
+      - "保証期間と対象範囲を明確化"
+  
+  - suggestion: "緊急性の強化"
+    details:
+      - "先着5名の限定性を明確に表示"
+      - "100万円分無料の期間限定性を強調"
+      - "夏前の季節的緊急性を活用"
+  
+  - suggestion: "データ活用の最適化"
+    details:
+      - "99%成功率の統計的根拠を詳細化"
+      - "平均減量数値（-16kg等）を具体的に提示"
+      - "実績データの信頼性を強化"

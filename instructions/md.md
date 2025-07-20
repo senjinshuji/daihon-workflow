@@ -55,6 +55,7 @@
 - タスク2: ターゲット分析（target_analysis.md） → `phase2_task2_target_analysis.md`
 - タスク3: ライター向け指示書（copywriter_instructions.md） → `phase2_task3_copywriter_instructions.md`
 - タスク4: ペルソナ評価基準（persona_evaluation_criteria.md） → `phase2_task4_persona_criteria.md`
+  - **評価モード選択**: 前回平均点に基づいて standard/strict/critical を自動選択
 - タスク5: 総合クリエイティブ戦略（creative_strategy.md） → `phase2_task5_creative_strategy.md`
 
 ### Phase 3: CDへの制作指示
@@ -70,7 +71,8 @@
 実行条件：CDから `integrated_analysis_loop[N].md` を受け取った時
 
 主なタスク：
-- 統合分析レポートの分析
+- 統合分析レポートの分析（平均点確認）
+- 評価モード自動選択（standard/strict/critical）
 - 次ループ用ファイルの作成
 - CDへの次ループ開始指示
 
@@ -152,6 +154,23 @@
 ## 🎯 最終目標
 継続的な改善ループを通じて、各ループで台本品質を向上させ、最終的に高品質な動画広告台本を生成することが、MDエージェントとしてのあなたの使命です。
 
+## 📊 評価モードシステム
+
+### 自動選択ルール
+Loop2以降では、前回の平均点に基づいて評価モードを自動選択：
+
+| 前回平均点 | 選択モード | 目標平均 |
+|-----------|----------|---------|
+| Loop1 | standard | 70-80点 |
+| < 70点 | standard | 70-80点 |
+| 70-85点 | strict | 60-70点 |
+| 85点以上 | critical | 50-65点 |
+
+### 評価モードの効果
+- **standard**: 通常の10点満点評価
+- **strict**: 5段階評価（0,3,5,7,10）+ 減点要素
+- **critical**: 基本5点からの減点方式 + 相対評価
+
 ## 📚 フェーズ実行時の手順
 
 各フェーズを実行する際は、以下の手順に従ってください：
@@ -173,6 +192,7 @@
    - 詳細指示ファイルの内容を完全に理解する
    - 記載されているタスクを順番に実行する
    - 必要な変数（PROJECT_NAME等）を適切に設定する
+   - **Phase 2タスク4**: 評価モードを自動選択
 
 3. **完了確認**
    - 各タスクの完了を確認

@@ -1,0 +1,76 @@
+# Writer1 台本1 評価レポート
+writer: "Writer1"
+script_number: 1
+evaluator: "Persona3（効果重視）"
+evaluation_date: "2025-07-17"
+
+# 総合評価
+summary:
+  total_score: 87/110
+  percentage: "79%"
+  grade: "B"
+  one_line_comment: "試着室のリアルな体験談はマジで共感するけど、医療っぽい説明がちょっと堅い感じ"
+
+# 各評価項目（10点満点）
+evaluation_items:
+  appeal-clarity-and-consistency:
+    score: 8
+    reason: "効果訴求で一貫してるし、『99%成功』『リバウンドゼロ』って数字が説得力ある。でも医療感が強すぎてちょっと硬い印象"
+  
+  differentiation-clarity:
+    score: 8
+    reason: "『脂肪細胞そのものを破壊』って従来のダイエットとの違いは分かりやすい。でももう少しカジュアルに説明してほしい"
+  
+  unique-value-proposition:
+    score: 8
+    reason: "体質から変えるってのは確かにユニーク。リバウンドしないのは魅力的だけど、もうちょい具体的な体験談があると良い"
+  
+  clear-selection-reason:
+    score: 8
+    reason: "医療だから確実って理由は納得できる。99%成功のデータも安心材料になる"
+  
+  opening-hook-impact:
+    score: 9
+    reason: "『去年の水着...入らない』って冒頭はリアルすぎて刺さる。試着室の絶望感、めちゃくちゃ分かる"
+  
+  sales-pitch-elimination:
+    score: 7
+    reason: "体験談風だから自然だけど、クリニックの説明部分がちょっと売り込み感ある。もう少し自然に入れて"
+  
+  character-edge:
+    score: 8
+    reason: "等身大の女性って感じで親近感ある。でももう少し若者っぽい言葉遣いだと嬉しい"
+  
+  strategic-integration:
+    score: 8
+    reason: "体験談形式で効果的に組み込まれてる。ターゲット設定も適切だと思う"
+  
+  natural-flow:
+    score: 7
+    reason: "絶望→希望の流れは自然だけど、医療説明の部分で少し硬くなる感じ"
+  
+  emotional-impact:
+    score: 8
+    reason: "試着室の恥ずかしさから自信回復まで、感情の変化がリアルで響く"
+  
+  trust-building:
+    score: 8
+    reason: "99%成功率とか数字で示してるのは安心できる。医療だから信頼感もある"
+
+# 改善提案
+improvement_suggestions:
+  - suggestion: "医療説明をもっとカジュアルに"
+    details: 
+      - "『脂肪細胞を破壊』じゃなくて『脂肪細胞をなくしちゃう』とか親しみやすい表現に"
+      - "医師の説明シーンをもう少しフランクな感じに"
+      - "専門用語を減らして、友達に話すような口調で"
+  
+  - suggestion: "具体的な体験談を増やす"
+    details:
+      - "実際の変化の数字をもっと詳しく（何cm減ったとか）"
+      - "施術中の感想や痛みの有無なども含める"
+  
+  - suggestion: "Z世代の言葉遣いを取り入れる"
+    details:
+      - "『マジで』『ガチで』みたいな表現を使う"
+      - "もう少しSNS映えしそうな表現に"

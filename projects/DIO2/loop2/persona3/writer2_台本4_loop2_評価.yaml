@@ -1,0 +1,78 @@
+# Writer2 台本4 評価レポート（Loop2）
+writer: "Writer2"
+script_number: 4
+evaluator: "Persona3（効果重視・Loop2進化版）"
+evaluation_date: "2025-07-17"
+
+# 総合評価
+summary:
+  total_score: 87/110
+  percentage: "79%"
+  grade: "B"
+  one_line_comment: "時間効率の視点は面白い！でもビジネスパーソン向けすぎて、Z世代には響きにくい"
+
+# 各評価項目（11点満点）
+evaluation_items:
+  appeal-clarity-and-consistency:
+    score: 8
+    reason: "時間効率の効果訴求で一貫してる。『最も効率的な自己投資』って表現は分かりやすい"
+  
+  guarantee-system-persuasiveness:
+    score: 7
+    reason: "保証制度の説明が薄い。時間効率の話に集中しすぎてリスクゼロの安心感が弱い"
+  
+  fat-cell-destruction-scientific-explanation:
+    score: 8
+    reason: "脂肪細胞の物理的破壊の説明は分かりやすい。419万通りの最適化も魅力的"
+  
+  unique-value-proposition:
+    score: 9
+    reason: "時間投資効率の圧倒的優位性は魅力的。従来の1/10の時間って具体的で良い"
+  
+  opening-hook-impact:
+    score: 8
+    reason: "『1日10分×3ヶ月で人生が変わる』って冒頭は興味深い。でもZ世代にはちょっと堅い"
+  
+  sales-pitch-elimination:
+    score: 7
+    reason: "時間効率分析って感じで客観的だけど、投資理論が宣伝っぽい"
+  
+  medical-safety-trust-building:
+    score: 8
+    reason: "99%成功率と30万人実績で信頼感ある。医師の治療プロセスも安心できる"
+  
+  persona-compatibility:
+    score: 6
+    reason: "ビジネスパーソン向けって感じで、Z世代にはピンとこない。投資理論は堅すぎる"
+  
+  data-utilization:
+    score: 9
+    reason: "時間効率のグラフと具体的な数字が印象的。データの使い方が上手い"
+  
+  action-urgency:
+    score: 7
+    reason: "『時間は有限』って表現はあるけど、限定性が弱い。もう少し緊急性を"
+  
+  emotion-logic-balance:
+    score: 7
+    reason: "論理重視で感情的要素が少ない。Z世代にはもう少し感情に訴える要素を"
+
+# 改善提案
+improvement_suggestions:
+  - suggestion: "Z世代向けの時間感覚に変更"
+    details: 
+      - "ビジネス時間より、プライベート時間の効率化に"
+      - "投資理論より、コスパの良さに変更"
+      - "もう少しカジュアルな表現で"
+  
+  - suggestion: "保証制度をもっと強調"
+    details:
+      - "時間効率だけじゃなく、リスクゼロの安心感も"
+      - "全額返金と脂肪買取の説明を追加"
+      - "100万円分無料の説明も"
+  
+  - suggestion: "感情的要素を追加"
+    details:
+      - "時間を有効活用できた喜び"
+      - "効率的に変化できた感動"
+      - "もう少し人間味のある表現を"

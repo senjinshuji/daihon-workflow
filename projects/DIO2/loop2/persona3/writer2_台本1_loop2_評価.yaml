@@ -1,0 +1,78 @@
+# Writer2 台本1 評価レポート（Loop2）
+writer: "Writer2"
+script_number: 1
+evaluator: "Persona3（効果重視・Loop2進化版）"
+evaluation_date: "2025-07-17"
+
+# 総合評価
+summary:
+  total_score: 85/110
+  percentage: "77%"
+  grade: "B"
+  one_line_comment: "投資理論は面白いけど、ビジネスパーソン向けすぎてZ世代には堅い。もう少しカジュアルに"
+
+# 各評価項目（11点満点）
+evaluation_items:
+  appeal-clarity-and-consistency:
+    score: 8
+    reason: "リスクゼロ投資の効果訴求で一貫してる。『やらない理由がない』って論理は説得力ある"
+  
+  guarantee-system-persuasiveness:
+    score: 9
+    reason: "投資理論での保証制度説明が面白い。『失敗しても損失ゼロ』って表現が分かりやすい"
+  
+  fat-cell-destruction-scientific-explanation:
+    score: 8
+    reason: "脂肪細胞の物理的破壊の説明は科学的で納得できる。419万通りの個別最適化も魅力的"
+  
+  unique-value-proposition:
+    score: 8
+    reason: "リスクゼロ投資機会って価値提案はユニーク。でもビジネス用語が多すぎるかも"
+  
+  opening-hook-impact:
+    score: 7
+    reason: "『リスクゼロで最大リターン』はインパクトあるけど、Z世代には響きにくい表現"
+  
+  sales-pitch-elimination:
+    score: 7
+    reason: "投資分析って感じで客観的だけど、やっぱり少し宣伝感がある"
+  
+  medical-safety-trust-building:
+    score: 8
+    reason: "科学的根拠と99%成功率で信頼感ある。医師の選択も安心できる"
+  
+  persona-compatibility:
+    score: 6
+    reason: "ビジネスパーソン向けって感じで、Z世代にはピンとこない。投資理論は堅すぎる"
+  
+  data-utilization:
+    score: 9
+    reason: "統計グラフと成功率比較が印象的。数字の使い方が上手い"
+  
+  action-urgency:
+    score: 7
+    reason: "『滅多にない投資機会』って表現はあるけど、限定性が弱い"
+  
+  emotion-logic-balance:
+    score: 7
+    reason: "論理重視で感情的要素が少ない。Z世代にはもう少し感情に訴える要素を"
+
+# 改善提案
+improvement_suggestions:
+  - suggestion: "Z世代向けの表現に変更"
+    details: 
+      - "投資理論より、コスパの良さに変更"
+      - "『ROI』より『お得感』みたいに親しみやすく"
+      - "ビジネス用語を減らして、カジュアルに"
+  
+  - suggestion: "感情的要素を追加"
+    details:
+      - "実際の成功者の喜びの声"
+      - "変化を実感した瞬間の描写"
+      - "もう少し人間味のある表現を"
+  
+  - suggestion: "緊急性の演出を強化"
+    details:
+      - "先着5名の限定性を追加"
+      - "100万円分無料の説明も"
+      - "今すぐ行動する理由を明確に"

@@ -1,0 +1,90 @@
+# Writer2 台本2 評価レポート
+writer: "Writer2"
+script_number: 2
+evaluator: "Persona2（コスパ重視）"
+evaluation_date: "2025-01-17"
+
+# 総合評価
+summary:
+  total_score: 95/110  # Persona2重視項目のウェイト調整後
+  percentage: "86.4%"
+  grade: "A"
+  one_line_comment: "共感導入と論理構築の完璧なバランスで親しみやすさと専門性を両立"
+
+# 各評価項目（10点満点）
+evaluation_items:
+  appeal-clarity-and-consistency:
+    score: 9
+    reason: "効果訴求が明確で、『忙しくて無理』から『科学の力』まで論理的な流れで一貫"
+  
+  guarantee-system-persuasiveness:
+    score: 8  # ×1.1倍重視
+    reason: "保証制度の直接的言及はないが、99%成功率と科学的根拠で確実性を証明"
+  
+  fat-cell-destruction-scientific-explanation:
+    score: 9
+    reason: "脂肪細胞の物理的破壊と『運動なしでも確実に効果』の科学的説明が明確"
+  
+  unique-value-proposition-strength:
+    score: 9  # ×1.1倍重視
+    reason: "忙しい人の生活パターン分析＋419万通りオーダーメイドの差別化が完璧"
+  
+  opening-hook-intensity:
+    score: 8
+    reason: "『忙しくて運動なんて無理』はビジネスパーソンに強い共感を呼ぶ効果的なフック"
+  
+  sales-pitch-elimination:
+    score: 9
+    reason: "共感から科学的解決策への自然な流れで、売り込み感が完全に排除"
+  
+  medical-safety-trust-building:
+    score: 9
+    reason: "医師の個別診断、99%成功率、30万人実績で医療安全性を完璧に構築"
+  
+  persona-compatibility:
+    score: 10
+    reason: "忙しいビジネスパーソンの悩みに完全に適合した親しみやすいアプローチ"
+  
+  numbers-data-effective-use:
+    score: 9  # ×1.2倍重視
+    reason: "419万通り、99%成功率、30万人実績の効果的活用。具体的投資金額の提示が惜しい"
+  
+  action-urgency:
+    score: 6
+    reason: "『もう時間がないことを理由にあきらめる必要はない』はあるが、限定性が不明確"
+  
+  emotion-logic-balance:
+    score: 10
+    reason: "忙しさへの共感と科学的解決策の論理が完璧にバランスされている"
+
+# 改善提案
+improvement_suggestions:
+  - suggestion: "保証制度の明確化"
+    details: 
+      - "全額返金＋脂肪買取制度の具体的説明"
+      - "忙しい人向けの安心保証の提示"
+      - "投資リスクゼロの論理的説明"
+  
+  - suggestion: "投資価値の具体化"
+    details:
+      - "忙しい人の時間価値を金銭換算"
+      - "効率性投資としてのROI計算"
+      - "時間投資効率の具体的数値"
+  
+  - suggestion: "緊急性の強化"
+    details:
+      - "忙しい人向けの特別限定性"
+      - "時間的制約を理由とした機会損失"
+      - "効率的投資機会の期間限定性"
+  
+  - suggestion: "生活パターン分析の詳細化"
+    details:
+      - "忙しいビジネスパーソン向けの専用プログラム"
+      - "生活パターンに応じた治療計画"
+      - "時間効率性の科学的根拠"
+  
+  - suggestion: "データ活用の最適化"
+    details:
+      - "忙しい人の成功事例データ"
+      - "効率性重視の統計分析"
+      - "時間投資効率の比較データ"

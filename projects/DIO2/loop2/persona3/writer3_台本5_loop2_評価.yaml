@@ -1,0 +1,78 @@
+# Writer3 台本5 評価レポート（Loop2）
+writer: "Writer3"
+script_number: 5
+evaluator: "Persona3（効果重視・Loop2進化版）"
+evaluation_date: "2025-07-17"
+
+# 総合評価
+summary:
+  total_score: 97/110
+  percentage: "88%"
+  grade: "A"
+  one_line_comment: "科学的根拠をカジュアルに説明するバランスが神レベル！理解してから行動したい人にピッタリ"
+
+# 各評価項目（11点満点）
+evaluation_items:
+  appeal-clarity-and-consistency:
+    score: 9
+    reason: "科学的根拠の効果訴求で一貫してる。『科学的に証明された方法』って表現が説得力ある"
+  
+  guarantee-system-persuasiveness:
+    score: 9
+    reason: "『科学的にも経済的にもリスクゼロ』って表現が完璧。論理的で安心できる"
+  
+  fat-cell-destruction-scientific-explanation:
+    score: 10
+    reason: "脂肪細胞破壊の仕組みをカジュアルに説明。『科学的に証明されてる』って根拠が強い"
+  
+  unique-value-proposition:
+    score: 9
+    reason: "科学的根拠と419万通りオーダーメイドの組み合わせが魅力的。納得感のある価値提案"
+  
+  opening-hook-impact:
+    score: 9
+    reason: "『科学的に証明された方法で16kg』って冒頭、説得力と結果が同時に伝わる"
+  
+  sales-pitch-elimination:
+    score: 9
+    reason: "教育的エンターテイメントって感じで売り込み感ゼロ。学べる体験談が自然"
+  
+  medical-safety-trust-building:
+    score: 10
+    reason: "30万件実績データと医師監修で信頼感抜群。科学的根拠が完璧"
+  
+  persona-compatibility:
+    score: 9
+    reason: "全年齢層に響く。理解してから行動したい人の心理を完全に理解してる"
+  
+  data-utilization:
+    score: 9
+    reason: "科学的データと特典情報のバランスが良い。『コスパ最強』って表現も魅力的"
+  
+  action-urgency:
+    score: 8
+    reason: "『科学的に確実で経済的にもお得』って論理的緊急性はあるけど、もう少し感情的要素を"
+  
+  emotion-logic-balance:
+    score: 9
+    reason: "科学的根拠と納得感のバランスが完璧。理解してから行動したい人にドンピシャ"
+
+# 改善提案
+improvement_suggestions:
+  - suggestion: "419万通りオーダーメイドをもっと詳しく"
+    details: 
+      - "なぜそんなに種類があるのか科学的に説明"
+      - "個別最適化の重要性を根拠付きで"
+      - "オーダーメイドの効果を数字で"
+  
+  - suggestion: "もう少し感情的要素を"
+    details:
+      - "科学的に変化した時の感動"
+      - "根拠があることの安心感"
+      - "理解できた時の納得感をもっと"
+  
+  - suggestion: "具体的な科学的データを"
+    details:
+      - "脂肪細胞破壊の具体的なメカニズム"
+      - "99%成功率の科学的根拠"
+      - "リバウンドしない理由をより詳しく"

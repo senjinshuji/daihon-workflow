@@ -1,0 +1,78 @@
+# Writer3 台本3 評価レポート（Loop2）
+writer: "Writer3"
+script_number: 3
+evaluator: "Persona3（効果重視・Loop2進化版）"
+evaluation_date: "2025-07-17"
+
+# 総合評価
+summary:
+  total_score: 92/110
+  percentage: "84%"
+  grade: "A"
+  one_line_comment: "主婦の気持ちは分かるけど、Z世代には少し遠い。でも家計配慮の保証制度は魅力的"
+
+# 各評価項目（11点満点）
+evaluation_items:
+  appeal-clarity-and-consistency:
+    score: 8
+    reason: "家計に負担をかけない効果訴求で一貫してる。『ママでも諦めなくて大丈夫』って表現が優しい"
+  
+  guarantee-system-persuasiveness:
+    score: 9
+    reason: "家計への配慮を込めた保証制度の説明が良い。『家計に負担かけずに済む』って安心感ある"
+  
+  fat-cell-destruction-scientific-explanation:
+    score: 8
+    reason: "『寝てるだけ』で『家事の合間でもOK』って説明が主婦にピッタリ。医師監修の安全性も"
+  
+  unique-value-proposition:
+    score: 8
+    reason: "家計に負担をかけない確実な結果は魅力的。主婦層には響く価値提案"
+  
+  opening-hook-impact:
+    score: 7
+    reason: "『子育て中でも-16kg』は主婦には響くけど、Z世代にはピンとこない"
+  
+  sales-pitch-elimination:
+    score: 9
+    reason: "先輩ママが教えてくれてる感じで売り込み感ゼロ。体験談が自然で信頼できる"
+  
+  medical-safety-trust-building:
+    score: 9
+    reason: "医師監修の安全性と99%成功率で信頼感ある。家族への配慮も感じられる"
+  
+  persona-compatibility:
+    score: 7
+    reason: "25-40歳主婦層にはピッタリだけど、Z世代には関係ない話。もう少し若い世代向けの要素を"
+  
+  data-utilization:
+    score: 9
+    reason: "特典情報が家族思いで魅力的。旅行券20万円で家族旅行って発想が良い"
+  
+  action-urgency:
+    score: 9
+    reason: "先着5名の限定性がしっかりしてる。家計のメリットを強調した緊急性も効いてる"
+  
+  emotion-logic-balance:
+    score: 8
+    reason: "産後太りの悩みから解決への感情変化と医療の根拠がバランス良い"
+
+# 改善提案
+improvement_suggestions:
+  - suggestion: "Z世代の視点を追加"
+    details: 
+      - "将来子供を持ちたい女性の視点も"
+      - "家計の話より、自分への投資って感覚も"
+      - "もう少し若い世代の価値観を"
+  
+  - suggestion: "自分時間の価値を強調"
+    details:
+      - "家事の合間の自分時間の大切さ"
+      - "自分をケアする重要性"
+      - "ママでも自分らしくいられる喜び"
+  
+  - suggestion: "具体的な家計メリットを"
+    details:
+      - "保証制度で実際にどのくらい安心なのか"
+      - "他のダイエット方法との費用比較"
+      - "家計に優しい理由をもっと詳しく"

@@ -1,0 +1,96 @@
+# Writer3 台本4 評価レポート
+writer: "Writer3"
+script_number: 4
+evaluator: "Persona2（コスパ重視）"
+evaluation_date: "2025-01-17"
+
+# 総合評価
+summary:
+  total_score: 79/110  # Persona2重視項目のウェイト調整後
+  percentage: "71.8%"
+  grade: "B"
+  one_line_comment: "Z世代向けの表現は親しみやすいが、ビジネス投資判断には不適切"
+
+# 各評価項目（10点満点）
+evaluation_items:
+  appeal-clarity-and-consistency:
+    score: 8
+    reason: "効果訴求が明確で、ハッシュタグから『神サービス』まで一貫している"
+  
+  guarantee-system-persuasiveness:
+    score: 9  # ×1.1倍重視
+    reason: "全額返金＋脂肪買取を『1kg1万円』で具体的に説明し、『神サービス』として強調"
+  
+  fat-cell-destruction-scientific-explanation:
+    score: 7
+    reason: "脂肪細胞破壊と根本的変化は言及されているが、科学的詳細が不足"
+  
+  unique-value-proposition-strength:
+    score: 8  # ×1.1倍重視
+    reason: "SNS映え＋医療確実性＋保証制度の組み合わせは差別化要素として機能"
+  
+  opening-hook-intensity:
+    score: 9
+    reason: "『#医療痩身 #16kg減 #リスクゼロ』のハッシュタグは3秒で強烈なインパクト"
+  
+  sales-pitch-elimination:
+    score: 7
+    reason: "SNS風の自然な表現だが、やや宣伝的な要素が残っている"
+  
+  medical-safety-trust-building:
+    score: 8
+    reason: "医師監修、99%成功率、30万人実績で医療安全性を構築"
+  
+  persona-compatibility:
+    score: 4
+    reason: "Z世代には最適だが、ビジネス層には幼稚で不適切"
+  
+  numbers-data-effective-use:
+    score: 7  # ×1.2倍重視
+    reason: "99%成功率、30万人実績は提示されているが、投資価値の説明不足"
+  
+  action-urgency:
+    score: 9
+    reason: "100万円分タダ＋特典の限定性が『バグレベルでお得』として効果的"
+  
+  emotion-logic-balance:
+    score: 6
+    reason: "感情的要素が強すぎて、論理的判断材料が不足"
+
+# 改善提案
+improvement_suggestions:
+  - suggestion: "ビジネス層向けの表現修正"
+    details: 
+      - "専門的で洗練された表現への変更"
+      - "投資判断に適した論理的説明"
+      - "ハッシュタグ表現の適切化"
+  
+  - suggestion: "投資価値の具体化"
+    details:
+      - "ROI計算の具体的数値"
+      - "投資判断材料の論理的提示"
+      - "費用対効果の科学的分析"
+  
+  - suggestion: "科学的根拠の強化"
+    details:
+      - "脂肪細胞破壊の医学的説明"
+      - "99%成功率の統計的根拠"
+      - "419万通りオーダーメイドの差別化"
+  
+  - suggestion: "専門性の向上"
+    details:
+      - "医療技術の専門的説明"
+      - "Z世代向けでも論理的な根拠"
+      - "投資対象としての理解促進"
+  
+  - suggestion: "保証制度の投資視点での説明"
+    details:
+      - "リスクヘッジとしての保証制度"
+      - "投資理論による合理性"
+      - "保証制度の法的根拠"
+  
+  - suggestion: "ターゲット適応の改善"
+    details:
+      - "ビジネス層にも響く表現"
+      - "年齢層に応じた適切な語彙"
+      - "投資判断支援情報の追加"

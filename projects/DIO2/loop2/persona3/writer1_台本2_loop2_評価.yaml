@@ -1,0 +1,78 @@
+# Writer1 台本2 評価レポート（Loop2）
+writer: "Writer1"
+script_number: 2
+evaluator: "Persona3（効果重視・Loop2進化版）"
+evaluation_date: "2025-07-17"
+
+# 総合評価
+summary:
+  total_score: 88/110
+  percentage: "80%"
+  grade: "A"
+  one_line_comment: "母親の愛情は伝わるけど、Z世代には重すぎる設定。もう少し軽やかな感じが良い"
+
+# 各評価項目（11点満点）
+evaluation_items:
+  appeal-clarity-and-consistency:
+    score: 8
+    reason: "効果訴求で一貫してる。『家族に迷惑をかけない』って動機は分かるけど、Z世代には響きにくい"
+  
+  guarantee-system-persuasiveness:
+    score: 8
+    reason: "全額返金と脂肪買取の説明はある。でも『家計への負担も心配なし』って表現が堅い"
+  
+  fat-cell-destruction-scientific-explanation:
+    score: 8
+    reason: "脂肪細胞破壊の根本解決は分かる。『副作用もダウンタイムもなし』って説明は安心できる"
+  
+  unique-value-proposition:
+    score: 7
+    reason: "副作用なし・ダウンタイムなしは魅力的。でも他との違いをもう少し明確に"
+  
+  opening-hook-impact:
+    score: 7
+    reason: "娘の質問は可愛いけど、Z世代には関係ない話。もう少し若い世代の悩みを"
+  
+  sales-pitch-elimination:
+    score: 8
+    reason: "母性愛から自然に発生してて売り込み感は少ない。でも全体的に真面目すぎる"
+  
+  medical-safety-trust-building:
+    score: 9
+    reason: "30万人実績と医師管理で信頼感ある。副作用への配慮も良い"
+  
+  persona-compatibility:
+    score: 6
+    reason: "子育て中の母親向けって感じで、Z世代にはピンとこない。言葉遣いも堅い"
+  
+  data-utilization:
+    score: 8
+    reason: "30万人実績は印象的。でも99%成功率と100万円分無料の説明がない"
+  
+  action-urgency:
+    score: 6
+    reason: "緊急性が全然ない。『最後の決断』って表現だけで、限定性が弱い"
+  
+  emotion-logic-balance:
+    score: 8
+    reason: "母性愛と医療の根拠がバランス良い。でもZ世代には感情移入しにくい"
+
+# 改善提案
+improvement_suggestions:
+  - suggestion: "Z世代向けの設定に変更"
+    details: 
+      - "子育ての話より、将来への不安や自分磨きに"
+      - "『家族に迷惑』より『自分に自信が持てない』みたいに"
+      - "もう少し若い世代の価値観を反映"
+  
+  - suggestion: "データの活用を強化"
+    details:
+      - "99%成功率をもっと強調"
+      - "100万円分無料の説明も追加"
+      - "具体的な変化の数字も"
+  
+  - suggestion: "緊急性の演出を強化"
+    details:
+      - "先着5名の限定性を入れる"
+      - "時間制限のある特典を"
+      - "『今すぐ』行動する理由を明確に"

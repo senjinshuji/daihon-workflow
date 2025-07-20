@@ -1,0 +1,78 @@
+# Writer3 台本4 評価レポート（Loop2）
+writer: "Writer3"
+script_number: 4
+evaluator: "Persona3（効果重視・Loop2進化版）"
+evaluation_date: "2025-07-17"
+
+# 総合評価
+summary:
+  total_score: 100/110
+  percentage: "91%"
+  grade: "A+"
+  one_line_comment: "神レベル！Z世代の感性を完全に理解してる。ハッシュタグから始まる発想が天才的"
+
+# 各評価項目（11点満点）
+evaluation_items:
+  appeal-clarity-and-consistency:
+    score: 10
+    reason: "Z世代向けの効果訴求で完璧に一貫してる。『エモすぎない？』って表現が刺さる"
+  
+  guarantee-system-persuasiveness:
+    score: 10
+    reason: "『Z世代にとって神サービス』って表現が完璧。保証制度の説明もZ世代の価値観にマッチ"
+  
+  fat-cell-destruction-scientific-explanation:
+    score: 9
+    reason: "『根本から変わる』って説明がZ世代にも分かりやすい。医師監修の信頼性も伝わる"
+  
+  unique-value-proposition:
+    score: 10
+    reason: "SNS映えする結果と医療の確実性の組み合わせが完璧。Z世代にとって最強の価値提案"
+  
+  opening-hook-impact:
+    score: 10
+    reason: "ハッシュタグから始まる冒頭が天才的。Z世代の心を一瞬で掴む完璧なフック"
+  
+  sales-pitch-elimination:
+    score: 10
+    reason: "同世代のインフルエンサーが教えてくれてる感じで売り込み感ゼロ。完全に自然"
+  
+  medical-safety-trust-building:
+    score: 9
+    reason: "30万人実績と医師監修で信頼感ある。Z世代にも納得できる根拠"
+  
+  persona-compatibility:
+    score: 10
+    reason: "18-25歳Z世代にドンピシャ。SNS感覚とトレンド要素が完璧にマッチ"
+  
+  data-utilization:
+    score: 9
+    reason: "特典情報が魅力的。『バグレベルでお得』って表現がZ世代らしい"
+  
+  action-urgency:
+    score: 10
+    reason: "『ストーリーで拡散して』って行動喚起が完璧。Z世代の行動パターンを理解してる"
+  
+  emotion-logic-balance:
+    score: 9
+    reason: "『エモい』感情と医療の根拠がバランス良い。Z世代が求める両方を満たしてる"
+
+# 改善提案
+improvement_suggestions:
+  - suggestion: "419万通りオーダーメイドをZ世代風に"
+    details: 
+      - "『自分専用カスタマイズ』みたいな表現で"
+      - "パーソナライズの魅力をもっと"
+      - "オーダーメイドの凄さをZ世代に響く言葉で"
+  
+  - suggestion: "具体的な変化期間を"
+    details:
+      - "1か月の変化って言ってるけど、もう少し詳しく"
+      - "どのくらいで効果を実感できるのか"
+      - "Z世代が気になる即効性について"
+  
+  - suggestion: "フォロワーとの交流要素を"
+    details:
+      - "コメントで質問に答えるとか"
+      - "フォロワーの反応も入れる"
+      - "もっとSNSらしい双方向性を"

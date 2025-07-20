@@ -1,0 +1,90 @@
+# Writer1 台本3 評価レポート
+writer: "Writer1"
+script_number: 3
+evaluator: "Persona2（コスパ重視）"
+evaluation_date: "2025-01-17"
+
+# 総合評価
+summary:
+  total_score: 85/110  # Persona2重視項目のウェイト調整後
+  percentage: "77.3%"
+  grade: "B"
+  one_line_comment: "失敗恐怖の解消と保証制度は投資心理に効果的だが、データ面で不足"
+
+# 各評価項目（10点満点）
+evaluation_items:
+  appeal-clarity-and-consistency:
+    score: 9
+    reason: "効果訴求が明確で、『また失敗するかも』から『もう失敗を恐れなくていい』まで恐怖解消で一貫"
+  
+  guarantee-system-persuasiveness:
+    score: 9  # ×1.1倍重視
+    reason: "全額返金＋脂肪買取で『損することは絶対にない』が20-40秒で明確に説明され、投資リスクゼロを強調"
+  
+  fat-cell-destruction-scientific-explanation:
+    score: 7
+    reason: "脂肪細胞破壊と医師管理は言及されているが、科学的メカニズムの詳細説明が不足"
+  
+  unique-value-proposition-strength:
+    score: 8  # ×1.1倍重視
+    reason: "完全リスクゼロの保証制度は強力な差別化要素だが、419万通りオーダーメイドの言及なし"
+  
+  opening-hook-intensity:
+    score: 8
+    reason: "『また失敗するかも』という恐怖心は3秒で多くの女性の共感を獲得する強力なフック"
+  
+  sales-pitch-elimination:
+    score: 9
+    reason: "失敗恐怖から自然に発生する安心への欲求で、売り込み感が完全に排除"
+  
+  medical-safety-trust-building:
+    score: 8
+    reason: "99%成功率、30万人実績、医師管理で信頼性構築。医療安全性が明確"
+  
+  persona-compatibility:
+    score: 6
+    reason: "失敗恐怖は共感できるが、ビジネス層には論理的投資判断材料が不足"
+  
+  numbers-data-effective-use:
+    score: 7  # ×1.2倍重視
+    reason: "99%成功率、30万人実績は提示されているが、ROIや具体的投資金額が不明"
+  
+  action-urgency:
+    score: 6
+    reason: "『最後のダイエット』という表現はあるが、限定性や機会損失の明確な提示なし"
+  
+  emotion-logic-balance:
+    score: 8
+    reason: "失敗恐怖という感情と保証制度の論理がバランス良く組み合わされている"
+
+# 改善提案
+improvement_suggestions:
+  - suggestion: "投資判断材料の具体化"
+    details: 
+      - "治療費用と期待リターンの明確な数値提示"
+      - "過去の失敗で失った金額との比較分析"
+      - "ROI計算の根拠となるデータの追加"
+  
+  - suggestion: "科学的根拠の強化"
+    details:
+      - "脂肪細胞破壊のメカニズムをより詳細に説明"
+      - "なぜ99%成功するのかの医学的根拠"
+      - "419万通りオーダーメイドの差別化要素を追加"
+  
+  - suggestion: "ビジネス層向けの論理性追加"
+    details:
+      - "失敗による機会損失の論理的分析"
+      - "時間効率性の具体的数値化"
+      - "競合他社との投資価値比較"
+  
+  - suggestion: "緊急性の明確化"
+    details:
+      - "先着5名の限定性を明確に表示"
+      - "100万円分無料の期間限定性を強調"
+      - "失敗恐怖の解消機会の限定性をアピール"
+  
+  - suggestion: "保証制度の詳細化"
+    details:
+      - "脂肪買取制度の具体的条件（1kg1万円）を明示"
+      - "保証期間と対象範囲の明確化"
+      - "保証制度の法的根拠と実績データ"

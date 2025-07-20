@@ -135,15 +135,15 @@ flowchart TD
 **担当**: CD (Creative Director)
 1. **Writer人格MDファイル作成**
    ```bash
-   writer1_loop[N].md  # 感情訴求型の人格
-   writer2_loop[N].md  # 論理訴求型の人格
-   writer3_loop[N].md  # カジュアル型の人格
+   writer1_loop[N].md  
+   writer2_loop[N].md  
+   writer3_loop[N].md  
    ```
 2. **Persona人格MDファイル作成**
    ```bash
-   persona1_loop[N].md  # 30-50代主婦層の評価者
-   persona2_loop[N].md  # 25-45代ビジネス層の評価者
-   persona3_loop[N].md  # 18-30代Z世代の評価者
+   persona1_loop[N].md  
+   persona2_loop[N].md 
+   persona3_loop[N].md  
    ```
 
 ### Phase 3: 大量制作
@@ -189,10 +189,10 @@ projects/[プロジェクト名]/
 ├── 📋 MD戦略ファイル/
 │   ├── product_analysis.md
 │   ├── target_analysis.md
+├── 📁 loop1/
 │   ├── copywriter_instructions.md
 │   ├── persona_evaluation_criteria.md
 │   └── creative_strategy.md
-├── 📁 loop1/
 │   ├── 📁 writer1/           # Writer1用ディレクトリ（MDが作成）
 │   │   ├── writer1_loop1.md  # Writer1の人格ファイル（CDが作成）
 │   │   ├── 台本1_loop1.md

@@ -1,0 +1,84 @@
+# Writer1 台本1 評価レポート
+writer: "Writer1"
+script_number: 1
+evaluator: "Persona2（コスパ重視）"
+evaluation_date: "2025-01-17"
+
+# 総合評価
+summary:
+  total_score: 84/110  # Persona2重視項目のウェイト調整後
+  percentage: "76.4%"
+  grade: "B"
+  one_line_comment: "家族愛と保証制度の組み合わせは良いが、ビジネス思考には感情偏重"
+
+# 各評価項目（10点満点）
+evaluation_items:
+  appeal-clarity-and-consistency:
+    score: 8
+    reason: "効果訴求が明確で、冒頭の『運動しなくていいの？』から最後の『損することは絶対にない』まで一貫している"
+  
+  guarantee-system-persuasiveness:
+    score: 9  # ×1.1倍重視
+    reason: "全額返金＋脂肪買取制度が20-40秒で明確に説明され、『完全にリスクゼロ』と断言している点が投資判断に有効"
+  
+  fat-cell-destruction-scientific-explanation:
+    score: 7
+    reason: "脂肪細胞破壊について『医師が管理して』という安全性は示されているが、科学的メカニズムの説明が浅い"
+  
+  unique-value-proposition-strength:
+    score: 8  # ×1.1倍重視
+    reason: "419万通りの言及はないが、医師管理＋完全保証制度の組み合わせは他との差別化として機能"
+  
+  opening-hook-intensity:
+    score: 8
+    reason: "夫の一言『運動しなくていいの？』は家族関係の現実を3秒で表現し、主婦層に強い共感を呼ぶ"
+  
+  sales-pitch-elimination:
+    score: 9
+    reason: "家族への配慮から自然に発生する動機で、売り込み感が完全に排除されている"
+  
+  medical-safety-trust-building:
+    score: 8
+    reason: "医師管理、30万人実績、99%成功率で信頼性構築。家族も安心という視点が効果的"
+  
+  persona-compatibility:
+    score: 6
+    reason: "主婦層には最適だが、ビジネス層には感情的すぎる。論理的判断材料が不足"
+  
+  numbers-data-effective-use:
+    score: 7  # ×1.2倍重視
+    reason: "99%成功率、30万人実績は提示されているが、ROIや費用対効果の具体的数値が不明"
+  
+  action-urgency:
+    score: 6
+    reason: "緊急性の表現が弱い。『今度こそ最後』という表現はあるが、限定性が不明確"
+  
+  emotion-logic-balance:
+    score: 8
+    reason: "家族愛という感情と保証制度の論理が適切にバランスされている"
+
+# 改善提案
+improvement_suggestions:
+  - suggestion: "ビジネス層向けの論理性強化"
+    details: 
+      - "費用対効果の具体的数値（投資金額とリターン）を明示"
+      - "時間効率性（忙しい人でも可能）をアピール"
+      - "競合他社との具体的比較データを追加"
+  
+  - suggestion: "科学的根拠の詳細化"
+    details:
+      - "脂肪細胞破壊のメカニズムをより詳しく説明"
+      - "なぜリバウンドしないのかの医学的根拠を強化"
+      - "419万通りオーダーメイドの言及を追加"
+  
+  - suggestion: "緊急性の強化"
+    details:
+      - "先着5名の限定性を明確に表示"
+      - "100万円分無料の期間限定性を強調"
+      - "機会損失のリスクを論理的に提示"
+  
+  - suggestion: "データ活用の最適化"
+    details:
+      - "投資判断に必要な数値情報を体系的に提示"
+      - "ROI計算の根拠となる具体的金額を明示"
+      - "成功率99%の統計的根拠を詳細化"

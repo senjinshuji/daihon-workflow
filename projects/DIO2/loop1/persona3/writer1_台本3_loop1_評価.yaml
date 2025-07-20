@@ -1,0 +1,76 @@
+# Writer1 台本3 評価レポート
+writer: "Writer1"
+script_number: 3
+evaluator: "Persona3（効果重視）"
+evaluation_date: "2025-07-17"
+
+# 総合評価
+summary:
+  total_score: 92/110
+  percentage: "84%"
+  grade: "A"
+  one_line_comment: "SNSでの劣等感めちゃくちゃ分かる！自信回復の流れも自然で、一番共感できる台本"
+
+# 各評価項目（10点満点）
+evaluation_items:
+  appeal-clarity-and-consistency:
+    score: 8
+    reason: "自信回復の効果訴求で一貫してる。『もう比較して落ち込まない』って結論が明確で良い"
+  
+  differentiation-clarity:
+    score: 8
+    reason: "医療による根本解決vs一時的改善の違いは分かりやすい。体質改善って説明も納得できる"
+  
+  unique-value-proposition:
+    score: 8
+    reason: "脂肪細胞破壊・体質改善はユニーク。『もう比較に怯えない』って表現が刺さる"
+  
+  clear-selection-reason:
+    score: 8
+    reason: "確実な変化には医療が必要って理由は説得力ある。99%成功データも安心材料"
+  
+  opening-hook-impact:
+    score: 10
+    reason: "『私はいつも写真の端っこで隠れてる』って冒頭、マジで刺さる。SNS劣等感あるある過ぎて共感しかない"
+  
+  sales-pitch-elimination:
+    score: 9
+    reason: "感情的な心境変化で自然に流れてる。売り込み感全然ない、体験談って感じ"
+  
+  character-edge:
+    score: 9
+    reason: "SNS世代の等身大女性って設定がドンピシャ。親近感めちゃくちゃある"
+  
+  strategic-integration:
+    score: 9
+    reason: "現代的悩みから効果的に統合されてる。ターゲット設定も完璧"
+  
+  natural-flow:
+    score: 8
+    reason: "劣等感→希望→自信回復の流れが自然。感情の変化が分かりやすい"
+  
+  emotional-impact:
+    score: 9
+    reason: "SNSでの劣等感から自信回復まで、感情の変化がリアルで響く。『写真の真ん中にいる』って表現が素敵"
+  
+  trust-building:
+    score: 8
+    reason: "99%成功データで安心感ある。実際の変化も具体的で信頼できる"
+
+# 改善提案
+improvement_suggestions:
+  - suggestion: "より具体的なSNS体験を追加"
+    details: 
+      - "インスタのストーリーやTikTokでの体験も入れる"
+      - "ハッシュタグとかもっとリアルなSNS要素を"
+      - "友達からの反応とかも盛り込む"
+  
+  - suggestion: "変化の具体性を強化"
+    details:
+      - "何kg減ったとか具体的な数字を"
+      - "どんな服が着られるようになったかも"
+  
+  - suggestion: "Z世代らしい表現をもっと"
+    details:
+      - "『エモい』『バズった』みたいな表現も使って"
+      - "もう少しカジュアルな言葉遣いで"

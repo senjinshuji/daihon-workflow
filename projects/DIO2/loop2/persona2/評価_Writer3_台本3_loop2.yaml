@@ -1,0 +1,96 @@
+# Writer3 台本3 評価レポート
+writer: "Writer3"
+script_number: 3
+evaluator: "Persona2（コスパ重視）"
+evaluation_date: "2025-01-17"
+
+# 総合評価
+summary:
+  total_score: 75/110  # Persona2重視項目のウェイト調整後
+  percentage: "68.2%"
+  grade: "C"
+  one_line_comment: "主婦層への配慮は良いが、投資判断に必要な論理性と専門性が不足"
+
+# 各評価項目（10点満点）
+evaluation_items:
+  appeal-clarity-and-consistency:
+    score: 8
+    reason: "効果訴求が明確で、家計配慮から『損しない保証』まで主婦視点で一貫"
+  
+  guarantee-system-persuasiveness:
+    score: 8  # ×1.1倍重視
+    reason: "全額返金＋脂肪買取を『家計に負担かけない』文脈で説明。主婦の価値観に適合"
+  
+  fat-cell-destruction-scientific-explanation:
+    score: 6
+    reason: "脂肪細胞破壊の言及はあるが、科学的メカニズムの説明が簡潔すぎる"
+  
+  unique-value-proposition-strength:
+    score: 7  # ×1.1倍重視
+    reason: "家計負担なしで確実な結果は差別化要素だが、医療技術の専門性が不足"
+  
+  opening-hook-intensity:
+    score: 8
+    reason: "『子育て中でも-16kg』は主婦層に強い共感を呼ぶ効果的なフック"
+  
+  sales-pitch-elimination:
+    score: 8
+    reason: "主婦の悩みから自然に発生する解決策で、売り込み感が軽減"
+  
+  medical-safety-trust-building:
+    score: 8
+    reason: "医師監修、99%成功率で医療安全性を構築。家族への配慮も含む"
+  
+  persona-compatibility:
+    score: 6
+    reason: "主婦層には響くが、ビジネス層の投資判断には対象外"
+  
+  numbers-data-effective-use:
+    score: 6  # ×1.2倍重視
+    reason: "99%成功率は提示されているが、ROIや投資価値の説明が不足"
+  
+  action-urgency:
+    score: 8
+    reason: "100万円分タダ＋家族旅行券の限定性が家計配慮と組み合わされて効果的"
+  
+  emotion-logic-balance:
+    score: 7
+    reason: "主婦の感情的配慮と医療の安全性はバランスされているが、論理性が不足"
+
+# 改善提案
+improvement_suggestions:
+  - suggestion: "家計投資の論理性強化"
+    details: 
+      - "家計投資としてのROI計算"
+      - "家族への長期的メリット"
+      - "家計負担軽減の具体的数値"
+  
+  - suggestion: "科学的根拠の詳細化"
+    details:
+      - "脂肪細胞破壊の医学的説明"
+      - "安全性の科学的根拠"
+      - "419万通りオーダーメイドの差別化"
+  
+  - suggestion: "投資判断材料の追加"
+    details:
+      - "家計への投資価値分析"
+      - "費用対効果の論理的説明"
+      - "保証制度の投資リスク軽減効果"
+  
+  - suggestion: "専門性の向上"
+    details:
+      - "医療技術の専門的説明"
+      - "主婦向けの分かりやすい科学的根拠"
+      - "投資対象としての理解促進"
+  
+  - suggestion: "ビジネス層への適応"
+    details:
+      - "家計管理の投資理論"
+      - "主婦の投資判断支援情報"
+      - "論理的説得力の強化"
+  
+  - suggestion: "データ活用の最適化"
+    details:
+      - "家計投資効果の統計データ"
+      - "主婦層の成功事例数値"
+      - "家族満足度の定量化"

@@ -1,0 +1,76 @@
+# Writer2 台本3 評価レポート
+writer: "Writer2"
+script_number: 3
+evaluator: "Persona3（効果重視）"
+evaluation_date: "2025-07-17"
+
+# 総合評価
+summary:
+  total_score: 85/110
+  percentage: "77%"
+  grade: "B"
+  one_line_comment: "医学的根拠はしっかりしてて説得力あるけど、やっぱり堅い感じ。もう少し親しみやすく"
+
+# 各評価項目（10点満点）
+evaluation_items:
+  appeal-clarity-and-consistency:
+    score: 8
+    reason: "脂肪細胞破壊による根本解決の効果訴求で一貫してる。医学的根拠がしっかりしてる"
+  
+  differentiation-clarity:
+    score: 9
+    reason: "根本的解決vs一時的減量の違いが超分かりやすい。リバウンドの理由説明も納得"
+  
+  unique-value-proposition:
+    score: 8
+    reason: "脂肪細胞破壊による根本解決はユニーク。4つの治療法の組み合わせも魅力的"
+  
+  clear-selection-reason:
+    score: 8
+    reason: "医学的メカニズムの説明で選ぶ理由が明確。根本解決の必要性が納得できる"
+  
+  opening-hook-impact:
+    score: 8
+    reason: "リバウンドの医学的理由って疑問提起は興味深い。でももう少しキャッチーでも良い"
+  
+  sales-pitch-elimination:
+    score: 7
+    reason: "医学解説型だから客観的だけど、やっぱり宣伝感がちょっとある"
+  
+  character-edge:
+    score: 6
+    reason: "医学専門家って感じは伝わるけど、親近感が少ない。もう少しフレンドリーに"
+  
+  strategic-integration:
+    score: 8
+    reason: "医学的エビデンス重視の戦略が効果的。科学的な根拠が一貫してる"
+  
+  natural-flow:
+    score: 8
+    reason: "問題提起→原因解明→解決法→実績の流れが論理的で自然"
+  
+  emotional-impact:
+    score: 6
+    reason: "科学的説得力はあるけど、感情に響く部分が少ない。もう少し人間味があると良い"
+  
+  trust-building:
+    score: 9
+    reason: "30万件実績と医師による分析で信頼感高い。99%成功率も説得力ある"
+
+# 改善提案
+improvement_suggestions:
+  - suggestion: "もう少し親しみやすい表現に"
+    details: 
+      - "医学用語をもう少し分かりやすく"
+      - "『ご存知ですか？』より『知ってた？』みたいにカジュアルに"
+      - "友達に説明するような口調で"
+  
+  - suggestion: "体験談や感情的要素を追加"
+    details:
+      - "実際にリバウンドしなかった人の声"
+      - "変化を実感した時の喜びの表現"
+  
+  - suggestion: "若い世代の関心を引く要素"
+    details:
+      - "SNSでの変化報告とかも盛り込む"
+      - "もう少しトレンド感のある表現で"

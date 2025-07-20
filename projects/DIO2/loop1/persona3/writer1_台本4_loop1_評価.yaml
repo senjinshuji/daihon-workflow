@@ -1,0 +1,76 @@
+# Writer1 台本4 評価レポート
+writer: "Writer1"
+script_number: 4
+evaluator: "Persona3（効果重視）"
+evaluation_date: "2025-07-17"
+
+# 総合評価
+summary:
+  total_score: 84/110
+  percentage: "76%"
+  grade: "B"
+  one_line_comment: "20年間の挫折って重すぎる話で、若い世代には響きにくいかも。もう少し明るい感じが良い"
+
+# 各評価項目（10点満点）
+evaluation_items:
+  appeal-clarity-and-consistency:
+    score: 8
+    reason: "人生変革の効果訴求で一貫してる。『最後のダイエット』って表現も明確で良い"
+  
+  differentiation-clarity:
+    score: 8
+    reason: "医療の科学性vs精神論的ダイエットの違いは分かりやすい。『意志力に頼らない』って説明も納得"
+  
+  unique-value-proposition:
+    score: 8
+    reason: "全額返金保証は安心できる。脂肪細胞破壊の根本解決もユニーク"
+  
+  clear-selection-reason:
+    score: 7
+    reason: "科学的アプローチの必要性は分かるけど、もう少し具体的な説明があると良い"
+  
+  opening-hook-impact:
+    score: 7
+    reason: "諦めの気持ちは分かるけど、20年間って重すぎる。若い世代にはピンとこないかも"
+  
+  sales-pitch-elimination:
+    score: 7
+    reason: "人生ドキュメンタリー風で自然だけど、全額返金の部分が少し売り込み感ある"
+  
+  character-edge:
+    score: 6
+    reason: "長年挫折してきた女性って設定は分かるけど、もう少し若々しさや親近感が欲しい"
+  
+  strategic-integration:
+    score: 8
+    reason: "人生転換テーマで効果的に統合されてる。ターゲット設定も明確"
+  
+  natural-flow:
+    score: 7
+    reason: "諦め→希望→人生変革の流れは自然だけど、全体的に重い印象"
+  
+  emotional-impact:
+    score: 8
+    reason: "人生を諦めてた状態から変化する感動は響く。でももう少し明るい要素も欲しい"
+  
+  trust-building:
+    score: 8
+    reason: "全額返金保証と99%成功データで安心感ある。医療の信頼性も高い"
+
+# 改善提案
+improvement_suggestions:
+  - suggestion: "もう少し明るいトーンに"
+    details: 
+      - "20年間の失敗じゃなく、もう少し軽めの挫折体験に"
+      - "『諦めてた』より『モヤモヤしてた』くらいの表現で"
+      - "変化後の楽しい要素をもっと強調"
+  
+  - suggestion: "若い世代の視点を追加"
+    details:
+      - "年齢を感じさせない表現に変更"
+      - "SNSでの変化発信とかも盛り込む"
+  
+  - suggestion: "具体的な変化を強化"
+    details:
+      - "どんな風に人生が変わったか具体的に"
+      - "新しくできるようになったことも入れる"

@@ -1,0 +1,78 @@
+# Writer2 台本3 評価レポート（Loop2）
+writer: "Writer2"
+script_number: 3
+evaluator: "Persona3（効果重視・Loop2進化版）"
+evaluation_date: "2025-07-17"
+
+# 総合評価
+summary:
+  total_score: 92/110
+  percentage: "84%"
+  grade: "A"
+  one_line_comment: "成功者の声が説得力ある！具体的な数字と体験談のバランスが良くて信頼できる"
+
+# 各評価項目（11点満点）
+evaluation_items:
+  appeal-clarity-and-consistency:
+    score: 9
+    reason: "成功者の証言による権威性訴求で一貫してる。『30万人が証明』って表現が強い"
+  
+  guarantee-system-persuasiveness:
+    score: 7
+    reason: "保証制度の説明が薄い。成功者の話だけじゃなく、リスクゼロの安心感も欲しい"
+  
+  fat-cell-destruction-scientific-explanation:
+    score: 9
+    reason: "成功者の言葉で『脂肪細胞を破壊するから、今度こそリバウンドしない』って説明が分かりやすい"
+  
+  unique-value-proposition:
+    score: 8
+    reason: "30万人の成功者が証明する確実性は魅力的。でも419万通りの説明が薄い"
+  
+  opening-hook-impact:
+    score: 9
+    reason: "『3ヶ月で-16kg』の具体的な数字が刺さる。成功者のリアルな体験が興味引く"
+  
+  sales-pitch-elimination:
+    score: 8
+    reason: "成功者の証言だから客観的で売り込み感少ない。でも最後の勧誘部分が少し宣伝っぽい"
+  
+  medical-safety-trust-building:
+    score: 9
+    reason: "30万人実績と成功者の声で信頼感ある。医師の科学的アプローチも安心できる"
+  
+  persona-compatibility:
+    score: 8
+    reason: "成功者の体験談はZ世代にも響く。でももう少し若い世代の成功例があると良い"
+  
+  data-utilization:
+    score: 9
+    reason: "具体的な数字（-16kg、-13.7kg）が印象的。年代別の成功例も説得力ある"
+  
+  action-urgency:
+    score: 7
+    reason: "『次の成功者はあなたかも』って表現はあるけど、限定性が弱い"
+  
+  emotion-logic-balance:
+    score: 9
+    reason: "成功者の感情的な体験談と科学的根拠がバランス良い。人間味があって響く"
+
+# 改善提案
+improvement_suggestions:
+  - suggestion: "保証制度の説明を追加"
+    details: 
+      - "成功者も安心できた保証制度の話を"
+      - "全額返金と脂肪買取の説明も"
+      - "リスクゼロで挑戦できた体験談を"
+  
+  - suggestion: "Z世代の成功例を追加"
+    details:
+      - "20代の成功者の声も入れる"
+      - "SNSでの反響とかも含めて"
+      - "若い世代の価値観を反映した体験談"
+  
+  - suggestion: "緊急性の演出を強化"
+    details:
+      - "先着5名の限定性を追加"
+      - "100万円分無料の説明も"
+      - "今すぐ行動する理由を明確に"

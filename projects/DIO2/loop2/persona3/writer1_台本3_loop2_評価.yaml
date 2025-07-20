@@ -1,0 +1,78 @@
+# Writer1 台本3 評価レポート（Loop2）
+writer: "Writer1"
+script_number: 3
+evaluator: "Persona3（効果重視・Loop2進化版）"
+evaluation_date: "2025-07-17"
+
+# 総合評価
+summary:
+  total_score: 94/110
+  percentage: "85%"
+  grade: "A"
+  one_line_comment: "失敗への恐怖めちゃくちゃ分かる！保証制度の説明も安心できるし、共感しやすい"
+
+# 各評価項目（11点満点）
+evaluation_items:
+  appeal-clarity-and-consistency:
+    score: 9
+    reason: "効果訴求で一貫してる。『もう失敗を恐れなくていい』って表現が心に響く"
+  
+  guarantee-system-persuasiveness:
+    score: 9
+    reason: "全額返金+脂肪買取で『損することは絶対にない』って説明が説得力ある。安心感が伝わる"
+  
+  fat-cell-destruction-scientific-explanation:
+    score: 8
+    reason: "脂肪細胞破壊の根本解決は分かる。医師管理の安心感も良い"
+  
+  unique-value-proposition:
+    score: 8
+    reason: "完全リスクゼロの保証制度は魅力的。『失敗しても損しない』って価値提案が分かりやすい"
+  
+  opening-hook-impact:
+    score: 9
+    reason: "『また失敗するかも』って冒頭、めちゃくちゃ共感できる。ダイエット失敗経験者の心に刺さる"
+  
+  sales-pitch-elimination:
+    score: 9
+    reason: "恐怖心から自然に発生してて売り込み感ゼロ。不安から安心への流れが自然"
+  
+  medical-safety-trust-building:
+    score: 9
+    reason: "30万人実績と99%成功率で信頼感ある。医師管理の安心感も強い"
+  
+  persona-compatibility:
+    score: 8
+    reason: "失敗への恐怖はZ世代にも響く。でももう少し若い世代の表現があると良い"
+  
+  data-utilization:
+    score: 8
+    reason: "99%成功率と30万人実績は印象的。でも100万円分無料の説明がない"
+  
+  action-urgency:
+    score: 7
+    reason: "『最後のダイエット』って表現はあるけど、限定性が弱い。もう少し緊急性を"
+  
+  emotion-logic-balance:
+    score: 9
+    reason: "恐怖心と医療の根拠がバランス良い。感情から入って論理で納得させる流れが良い"
+
+# 改善提案
+improvement_suggestions:
+  - suggestion: "Z世代向けの表現を追加"
+    details: 
+      - "『マジで』『ガチで』みたいな表現も混ぜる"
+      - "SNSでの失敗体験とかも入れる"
+      - "もう少しカジュアルな口調で"
+  
+  - suggestion: "緊急性の演出を強化"
+    details:
+      - "先着5名の限定性を追加"
+      - "100万円分無料の説明も"
+      - "時間制限のある特典を明確に"
+  
+  - suggestion: "具体的な成功例を増やす"
+    details:
+      - "実際の変化の数字や期間"
+      - "失敗から成功への転換エピソード"
+      - "同世代の成功例も"
