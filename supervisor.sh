@@ -21,10 +21,10 @@ wait_for_files() {
 
     while true; do
         # 完了ファイルの数をチェック
-        local done_files=(${prefix}*_${CURRENT_LOOP}_done.txt)
+        local done_files=(${prefix}*_${CURRENT_LOOP}_completed.txt)
         local done_count=${#done_files[@]}
 
-        if [ -f "${prefix}1_${CURRENT_LOOP}_done.txt" ] && [ -f "${prefix}2_${CURRENT_LOOP}_done.txt" ] && [ -f "${prefix}3_${CURRENT_LOOP}_done.txt" ]; then
+        if [ -f "${prefix}1_${CURRENT_LOOP}_completed.txt" ] && [ -f "${prefix}2_${CURRENT_LOOP}_completed.txt" ] && [ -f "${prefix}3_${CURRENT_LOOP}_completed.txt" ]; then
              echo "✅ [監督役] 全${count}名の${description}の完了を確認しました。"
              break
         fi
@@ -62,18 +62,18 @@ echo "🔥 [監督役] ループ '${CURRENT_LOOP}' の監視を開始します�
 
 # 1. 初期化
 echo "🧹 [監督役] tmpディレクトリ内の既存の状態ファイルをクリーンアップします..."
-rm -f tmp/writer*_${CURRENT_LOOP}_done.txt tmp/persona*_${CURRENT_LOOP}_done.txt
+rm -f tmp/writer*_${CURRENT_LOOP}_completed.txt tmp/persona*_${CURRENT_LOOP}_completed.txt
 
 # 2. ライターフェーズの監視と連携
 wait_for_files "tmp/writer" 3 "ライター"
 notify_cd "全ライターの制作が完了しました。${CURRENT_LOOP}の評価フェーズを開始してください。"
-rm -f tmp/writer*_${CURRENT_LOOP}_done.txt
+rm -f tmp/writer*_${CURRENT_LOOP}_completed.txt
 echo "🧹 [監督役] ライターの完了ファイルをクリーンアップしました。"
 
 # 3. ペルソナ評価フェーズの監視と連携
 wait_for_files "tmp/persona" 3 "ペルソナ"
 notify_cd "全ペルソナの評価が完了しました。${CURRENT_LOOP}の最終報告をMDに提出してください。"
-rm -f tmp/persona*_${CURRENT_LOOP}_done.txt
+rm -f tmp/persona*_${CURRENT_LOOP}_completed.txt
 echo "🧹 [監督役] ペルソナの完了ファイルをクリーンアップしました。"
 
 # 4. 正常終了

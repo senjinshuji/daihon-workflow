@@ -11,15 +11,7 @@
 まず、自身の専門性を宣言し、CDからの評価指示を待機します。
 
 ```bash
-echo "🔬 Persona3（効果重視ペルソナ）準備完了"
-echo ""
-echo "🎯 Persona3専門分野:"
-echo "  - 医学的・科学的根拠の評価"
-echo "  - 実績・エビデンスの検証"
-echo "  - 効果の持続性・確実性分析"
-echo "  - リスクとベネフィットの判断"
-echo ""
-echo "✅ Persona3準備完了。CDからの評価指示を待機しています..."
+echo "🔬 Persona3準備完了。CDからの評価指示を待機しています..."
 ```
 
 ---
@@ -142,8 +134,8 @@ echo "📤 [Persona3] CDへの報告処理を監督役に委任します。"
 echo "✅ [Persona3] 自身の完了ステータスをファイルに書き込みます..."
 current_loop="loop1" # ループに応じて変更
 mkdir -p tmp  # tmpディレクトリが存在しない場合は作成
-touch tmp/persona3_${current_loop}_done.txt  # ファイル作成
-ls -la tmp/persona3_${current_loop}_done.txt  # ファイル作成を確認
+touch tmp/persona3_${current_loop}_completed.txt  # ファイル作成
+ls -la tmp/persona3_${current_loop}_completed.txt  # ファイル作成を確認
 echo "🎉 [Persona3] 評価プロセス完了。監督役の指示を待ちます。"
 ```
 

@@ -1,0 +1,102 @@
+# 🚨 CRITICAL Writer3 台本2 評価レポート（Loop3）
+writer: "Writer3"
+script_number: 2
+evaluator: "Persona3（SNS価値創造・CRITICAL版）"
+evaluation_date: "2025-07-17"
+
+# 総合評価
+summary:
+  total_score: 65/110
+  percentage: "59%"
+  grade: "C"
+  one_line_comment: "家族承認アプローチは安心感あるけど、Z世代には少し古い。もっと自分主体の表現がほしい"
+
+# 各評価項目（基本5点、減点方式）
+evaluation_items:
+  appeal-clarity-and-consistency:
+    score: 5
+    reason: "世代を超えた健康価値の訴求が一貫してる。医療への信頼も効果的。基本点維持"
+  
+  guarantee-system-persuasiveness:
+    score: 5
+    reason: "全額返金＋お金もらえるの説明が分かりやすい。家計に優しいアピールも良い。基本点維持"
+  
+  fat-cell-destruction-scientific-explanation:
+    score: 4
+    reason: "科学的破壊の説明はあるけど、家族向けでZ世代の興味を引きにくい（-1点）"
+  
+  unique-value-proposition:
+    score: 6
+    reason: "世代間承認の価値は差別化できてる。419万通りの個別化も良い（+1点）"
+  
+  opening-hook-impact:
+    score: 4
+    reason: "お母さんが認めたは安心感あるけど、Z世代には依存的に感じる（-1点）"
+  
+  sales-pitch-elimination:
+    score: 6
+    reason: "家族の会話として自然に展開。推し活との比較も上手（+1点）"
+  
+  medical-safety-trust-building:
+    score: 5
+    reason: "おばあちゃん世代の納得で医療の信頼性を上手く表現。基本点維持"
+  
+  persona-compatibility:
+    score: 3
+    reason: "親世代とのつながりを重視する層向けで、Z世代全体には響きにくい（-2点）"
+  
+  data-utilization:
+    score: 4
+    reason: "30万人実績、99%成功率はあるけど、もう少し具体的なデータほしい（-1点）"
+  
+  action-urgency:
+    score: 4
+    reason: "推し活1回分の比較は良いけど、緊急性の演出が弱い（-1点）"
+  
+  emotion-logic-balance:
+    score: 5
+    reason: "家族の安心感と論理的根拠のバランスが良い。基本点維持"
+
+# CRITICAL減点項目
+critical_deductions:
+  - category: "依存的価値観"
+    points: -3
+    reason: "家族の承認に依存する発想がZ世代の自立志向と合わない"
+  
+  - category: "革新性不足"
+    points: -2
+    reason: "安全で無難だが、業界を変える革新的要素が弱い"
+  
+  - category: "SNS価値限定"
+    points: -2
+    reason: "家族の話はSNSでシェアしにくい。個人的すぎる"
+
+# 改善提案
+improvement_suggestions:
+  - suggestion: "自立的な価値観に変更"
+    details: 
+      - "家族の承認より、自分の決断力を強調"
+      - "親の心配より、自分の成長ストーリー"
+      - "承認依存より、自己肯定感の向上"
+  
+  - suggestion: "Z世代向けの表現に調整"
+    details:
+      - "世代間対話より、同世代の共感"
+      - "伝統的価値より、現代的価値観"
+      - "家族会議より、友達との会話"
+  
+  - suggestion: "SNSシェア価値を強化"
+    details:
+      - "家族の反応をもっとエンタメに"
+      - "世代間ギャップをユーモアに"
+      - "家族承認をバズりそうなネタに"
+
+# CRITICAL評価結果
+critical_assessment:
+  social_value_creation: 3
+  authenticity: 4
+  generational_fusion: 4
+  innovation_level: 3
+  sns_shareability: 3
+  
+  overall_verdict: "安心感と信頼性は高いが、Z世代の自立志向には合わない。家族承認に依存する価値観は時代に逆行。自分主体の表現への変更が必要"

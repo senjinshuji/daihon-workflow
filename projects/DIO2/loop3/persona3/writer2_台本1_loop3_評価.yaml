@@ -1,0 +1,102 @@
+# 🚨 CRITICAL Writer2 台本1 評価レポート（Loop3）
+writer: "Writer2"
+script_number: 1
+evaluator: "Persona3（SNS価値創造・CRITICAL版）"
+evaluation_date: "2025-07-17"
+
+# 総合評価
+summary:
+  total_score: 35/110
+  percentage: "32%"
+  grade: "D"
+  one_line_comment: "99.7%成功率は強いけど、完全に理系おじさん向け。Z世代には堅すぎてSNSで絶対シェアされない"
+
+# 各評価項目（基本5点、減点方式）
+evaluation_items:
+  appeal-clarity-and-consistency:
+    score: 4
+    reason: "個別成功率の訴求は一貫してるけど、感情的な魅力がない（-1点）"
+  
+  guarantee-system-persuasiveness:
+    score: 3
+    reason: "99.7%の数字は強いけど、保証の具体的な説明なし（-2点）"
+  
+  fat-cell-destruction-scientific-explanation:
+    score: 5
+    reason: "周波数で脂肪細胞破壊は科学的で革新的。基本点維持"
+  
+  unique-value-proposition:
+    score: 8
+    reason: "419万通りビッグデータは超革新的。AI診断システムも具体的（+3点）"
+  
+  opening-hook-impact:
+    score: 2
+    reason: "体質コードM9H2K7、99.7%は数字好きには刺さるけど、Z世代には退屈（-3点）"
+  
+  sales-pitch-elimination:
+    score: 2
+    reason: "完全に営業トーク。投資理論とか説教臭すぎ（-3点）"
+  
+  medical-safety-trust-building:
+    score: 4
+    reason: "ハーバード大学の投資理論は権威あるけど、医療の信頼性が薄い（-1点）"
+  
+  persona-compatibility:
+    score: 1
+    reason: "データ好きの合理的判断者限定。Z世代には全く響かない（-4点）"
+  
+  data-utilization:
+    score: 5
+    reason: "30万件、419万通り、99.7%など数字が豊富。基本点維持"
+  
+  action-urgency:
+    score: 3
+    reason: "1日5,500円損失は分かりやすいけど、論理的すぎて感情に響かない（-2点）"
+  
+  emotion-logic-balance:
+    score: 3
+    reason: "論理偏重で感情が不足。データだけで心が動かない（-2点）"
+
+# CRITICAL減点項目
+critical_deductions:
+  - category: "ターゲット限定性"
+    points: -4
+    reason: "完全に理系・データ好き限定。Z世代の感性に全く合わない"
+  
+  - category: "SNS価値不足"
+    points: -3
+    reason: "投資理論や成功率の話は堅すぎてSNSでシェアしたくない"
+  
+  - category: "感情訴求不足"
+    points: -2
+    reason: "数字ばかりで心が動かない。Z世代は感情で動く"
+
+# 改善提案
+improvement_suggestions:
+  - suggestion: "感情的な要素を追加"
+    details: 
+      - "99.7%の成功体験談をドラマチックに"
+      - "数字より変化のビフォーアフター"
+      - "もっと感動的なストーリー展開"
+  
+  - suggestion: "Z世代向けの表現に変更"
+    details:
+      - "投資理論より、自分らしさの実現に"
+      - "合理的判断者より、夢を追う人に"
+      - "SNSでシェアしたくなる内容に"
+  
+  - suggestion: "エンタメ要素を強化"
+    details:
+      - "AIの診断をもっとワクワクする体験に"
+      - "科学データをクールでカッコいい演出に"
+      - "バズりそうな革新性をアピール"
+
+# CRITICAL評価結果
+critical_assessment:
+  social_value_creation: 2
+  authenticity: 3
+  generational_fusion: 1
+  innovation_level: 5
+  sns_shareability: 1
+  
+  overall_verdict: "科学的革新性は業界トップレベルだが、感情的魅力ゼロでZ世代には響かない。SNS価値創造には大幅改善が必要"

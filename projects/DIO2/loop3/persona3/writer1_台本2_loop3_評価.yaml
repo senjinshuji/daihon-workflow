@@ -1,0 +1,102 @@
+# 🚨 CRITICAL Writer1 台本2 評価レポート（Loop3）
+writer: "Writer1"
+script_number: 2
+evaluator: "Persona3（SNS価値創造・CRITICAL版）"
+evaluation_date: "2025-07-17"
+
+# 総合評価
+summary:
+  total_score: 44/110
+  percentage: "40%"
+  grade: "D"
+  one_line_comment: "時間逆行って発想は面白いけど、結婚10年目の話はZ世代には全然関係ない"
+
+# 各評価項目（基本5点、減点方式）
+evaluation_items:
+  appeal-clarity-and-consistency:
+    score: 5
+    reason: "時間価値回復の訴求は一貫してる。でも既婚女性限定で範囲が狭い"
+  
+  guarantee-system-persuasiveness:
+    score: 2
+    reason: "10年前体質復元プログラムは面白いけど、保証制度の説明なし（-3点）"
+  
+  fat-cell-destruction-scientific-explanation:
+    score: 4
+    reason: "細胞記憶理論は興味深いけど、科学的根拠が薄い（-1点）"
+  
+  unique-value-proposition:
+    score: 7
+    reason: "10年前の代謝パターン再現は革新的。体質コードM5H8L3も具体的（+2点）"
+  
+  opening-hook-impact:
+    score: 4
+    reason: "結婚式ドレスの導入は感動的だけど、Z世代には響かない（-1点）"
+  
+  sales-pitch-elimination:
+    score: 5
+    reason: "時間との再会として詩的に展開。基本点は維持"
+  
+  medical-safety-trust-building:
+    score: 3
+    reason: "医師の言葉はあるけど、実績データや安全性の説明不足（-2点）"
+  
+  persona-compatibility:
+    score: 2
+    reason: "35-42歳の既婚女性限定。Z世代には全く響かない（-3点）"
+  
+  data-utilization:
+    score: 3
+    reason: "体質コード以外の数字なし。10年という期間以外データ不足（-2点）"
+  
+  action-urgency:
+    score: 4
+    reason: "先着5名と時間制限はあるけど、緊急性の理由が弱い（-1点）"
+  
+  emotion-logic-balance:
+    score: 5
+    reason: "感情と時間科学のバランス。基本点は維持"
+
+# CRITICAL減点項目
+critical_deductions:
+  - category: "既視感・凡庸さ"
+    points: -2
+    reason: "結婚式ドレスの思い出話は広告でよくあるパターン"
+  
+  - category: "世代限定性"
+    points: -3
+    reason: "完全に既婚女性限定。Z世代への配慮ゼロ"
+  
+  - category: "SNS価値不足"
+    points: -1
+    reason: "時間逆行は話題性あるけど、シェア価値は低い"
+
+# 改善提案
+improvement_suggestions:
+  - suggestion: "Z世代向けに設定変更"
+    details: 
+      - "結婚式より、高校時代や大学時代の思い出に"
+      - "『あの頃の自分に戻りたい』をもっとカジュアルに"
+      - "SNSで昔の写真を見た時の気持ちを使う"
+  
+  - suggestion: "科学的根拠を強化"
+    details:
+      - "細胞記憶理論の具体的説明"
+      - "10年前の代謝パターンって何かを詳しく"
+      - "なぜ可能なのかの科学的根拠"
+  
+  - suggestion: "保証制度の詳細を追加"
+    details:
+      - "時間逆行失敗時の保証内容"
+      - "リスクゼロの安心感"
+      - "具体的な金額や期間"
+
+# CRITICAL評価結果
+critical_assessment:
+  social_value_creation: 3
+  authenticity: 4
+  generational_fusion: 1
+  innovation_level: 4
+  sns_shareability: 2
+  
+  overall_verdict: "時間逆行という革新的発想はあるが、既婚女性限定でZ世代には響かない。SNS価値創造には不十分"

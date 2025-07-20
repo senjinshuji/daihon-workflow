@@ -1,0 +1,105 @@
+# 🚨 CRITICAL評価レポート - Writer1 台本5
+writer: "Writer1"
+script_number: 5
+evaluator: "Persona2（CRITICALモード - 投資価値極致判定）"
+evaluation_date: "2025-01-17"
+
+# 総合評価（減点方式・基本5点）
+summary:
+  total_score: 66/110  # CRITICAL重視項目のウェイト調整後
+  percentage: "60.0%"
+  grade: "D"
+  one_line_comment: "夫婦愛再生は感動的だが、投資判断には感情的すぎて不適切"
+
+# 各評価項目（基本5点からの減点方式）
+evaluation_items:
+  appeal-clarity-and-consistency:
+    score: 7  # 基本5点+2点
+    reason: "夫婦愛再生で一貫し、感動的な物語性がある。感情的訴求としては秀逸（+2点）"
+  
+  guarantee-system-persuasiveness:
+    score: 2  # ×1.3倍重視 - 基本5点-3点
+    reason: "保証制度への言及が皆無。投資リスク分析なし。致命的欠陥（-3点）"
+  
+  fat-cell-destruction-scientific-explanation:
+    score: 4  # 基本5点-1点
+    reason: "脂肪細胞破壊とホルモンバランス言及はあるが、夫婦愛との科学的関連性が薄い（-1点）"
+  
+  unique-value-proposition-strength:
+    score: 8  # ×1.2倍重視 - 基本5点+3点
+    reason: "夫婦関係改善特化は業界初。愛情再生プログラムは独創的価値提案（+3点）"
+  
+  opening-hook-intensity:
+    score: 9  # 基本5点+4点
+    reason: "10年ぶりの夫の言葉は極めて強烈。夫婦関係の価値を瞬時に表現（+4点）"
+  
+  sales-pitch-elimination:
+    score: 9  # 基本5点+4点
+    reason: "夫婦愛の再生として自然に展開。売り込み感の完全排除で感動的（+4点）"
+  
+  medical-safety-trust-building:
+    score: 5  # 基本5点±0点
+    reason: "医師の言葉はあるが、夫婦愛再生の医療安全性の具体的説明不足（±0点）"
+  
+  persona-compatibility:
+    score: 4  # 基本5点-1点
+    reason: "夫婦問題は普遍的だが、ビジネス投資判断には感情的すぎる（-1点）"
+  
+  numbers-data-effective-use:
+    score: 3  # ×1.3倍重視 - 基本5点-2点
+    reason: "419万通りの活用はあるが、夫婦関係のROI・投資価値データなし（-2点）"
+  
+  action-urgency:
+    score: 6  # 基本5点+1点
+    reason: "先着5名・期限の限定性は明確。夫婦愛の緊急性で効果的（+1点）"
+  
+  emotion-logic-balance:
+    score: 3  # ×1.2倍重視 - 基本5点-2点
+    reason: "感情偏重で論理性不足。投資判断には不適切なバランス（-2点）"
+
+# CRITICAL減点項目（追加減点）
+critical_deductions:
+  - category: "投資理論の革新性"
+    score: 2  # 基本5点-3点
+    reason: "夫婦関係のROI計算なし、投資理論として不完全（-3点）"
+  
+  - category: "419万通りのビジネス価値"
+    score: 5  # 基本5点±0点
+    reason: "夫婦愛特化の独創性はあるが、ビジネス価値の説明不足（±0点）"
+  
+  - category: "機会損失の定量化"
+    score: 2  # 基本5点-3点
+    reason: "夫婦関係改善の時間価値計算なし、機会損失の定量化皆無（-3点）"
+
+# 厳格な改善提案（CRITICALレベル）
+improvement_suggestions:
+  - suggestion: "夫婦関係投資理論の構築"
+    details: 
+      - "夫婦関係改善による生活品質投資理論"
+      - "愛情復活投資のROI計算"
+      - "夫婦関係投資の長期価値分析"
+  
+  - suggestion: "保証制度の夫婦愛特化説明"
+    details:
+      - "夫婦関係改善保証の具体的条件"
+      - "愛情投資のリスクヘッジ制度"
+      - "夫婦関係投資の安全性確保"
+  
+  - suggestion: "科学的根拠の関係性強化"
+    details:
+      - "外見変化が夫婦関係に与える心理学的効果"
+      - "ホルモンバランスと魅力度の医学的相関"
+      - "愛される体質の科学的定義"
+  
+  - suggestion: "夫婦投資家への適応"
+    details:
+      - "夫婦共同投資としての価値提案"
+      - "関係性投資の経済合理性"
+      - "パートナーシップ向上投資の論理構成"
+
+# CRITICALモード総評
+critical_assessment:
+  investment_value: "低" 
+  business_logic: "感情的で不明確"
+  innovation_level: "関係性革新あり、投資革新なし"
+  recommendation: "投資価値の論理的再構築が必要"

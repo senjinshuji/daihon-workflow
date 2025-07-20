@@ -1,0 +1,102 @@
+# 🚨 CRITICAL Writer1 台本4 評価レポート（Loop3）
+writer: "Writer1"
+script_number: 4
+evaluator: "Persona3（SNS価値創造・CRITICAL版）"
+evaluation_date: "2025-07-17"
+
+# 総合評価
+summary:
+  total_score: 46/110
+  percentage: "42%"
+  grade: "D"
+  one_line_comment: "自己愛再生は現代的だけど、40-45歳向けでZ世代には重い。SNS映えしない内容"
+
+# 各評価項目（基本5点、減点方式）
+evaluation_items:
+  appeal-clarity-and-consistency:
+    score: 5
+    reason: "自己愛再生の訴求は一貫してる。現代的なテーマで基本点維持"
+  
+  guarantee-system-persuasiveness:
+    score: 2
+    reason: "自己愛再生プログラムは面白いけど、具体的な保証制度なし（-3点）"
+  
+  fat-cell-destruction-scientific-explanation:
+    score: 4
+    reason: "心と体の同時変革は興味深いけど、科学的根拠が薄い（-1点）"
+  
+  unique-value-proposition:
+    score: 7
+    reason: "世界初の自己愛再生プログラムは革新的。体質コードS6T1R8も具体的（+2点）"
+  
+  opening-hook-impact:
+    score: 4
+    reason: "自己嫌悪の表現は刺さるけど、40代向けでZ世代には重い（-1点）"
+  
+  sales-pitch-elimination:
+    score: 5
+    reason: "哲学的に展開してるけど、少し説教臭い。基本点は維持"
+  
+  medical-safety-trust-building:
+    score: 3
+    reason: "医師の『美しくなる義務』は印象的だけど、実績データなし（-2点）"
+  
+  persona-compatibility:
+    score: 2
+    reason: "40-45歳の自己犠牲型女性限定。Z世代には響かない（-3点）"
+  
+  data-utilization:
+    score: 3
+    reason: "20年という期間と体質コード以外、数字なし（-2点）"
+  
+  action-urgency:
+    score: 4
+    reason: "先着5名はあるけど、自己愛の緊急性が弱い（-1点）"
+  
+  emotion-logic-balance:
+    score: 4
+    reason: "感情重視で論理が薄い。自己愛だけに頼りすぎ（-1点）"
+
+# CRITICAL減点項目
+critical_deductions:
+  - category: "既視感・凡庸さ"
+    points: -2
+    reason: "自己嫌悪→自己受容の流れは自己啓発でよくあるパターン"
+  
+  - category: "世代限定性"
+    points: -3
+    reason: "40代女性の人生後半戦の話。Z世代には全く響かない"
+  
+  - category: "SNS価値不足"
+    points: -2
+    reason: "自己愛の話は重すぎてSNSでシェアしにくい"
+
+# 改善提案
+improvement_suggestions:
+  - suggestion: "Z世代向けの自己愛に変更"
+    details: 
+      - "20年の自己犠牲より、自分らしさの追求に"
+      - "『自分を愛する権利』をもっとポップに表現"
+      - "SNSでの自己表現と絡める"
+  
+  - suggestion: "心と体の同時変革を科学的に"
+    details:
+      - "なぜ心も変わるのかの医学的根拠"
+      - "ホルモンバランスと自己肯定感の関係"
+      - "具体的なメカニズムの説明"
+  
+  - suggestion: "保証制度の詳細を追加"
+    details:
+      - "自己愛が戻らない場合の保証"
+      - "心の変化への具体的な取り組み"
+      - "リスクゼロの安心感"
+
+# CRITICAL評価結果
+critical_assessment:
+  social_value_creation: 3
+  authenticity: 4
+  generational_fusion: 1
+  innovation_level: 4
+  sns_shareability: 2
+  
+  overall_verdict: "自己愛再生は革新的だが、40代向けでZ世代には重すぎる。SNS価値創造には不適合"

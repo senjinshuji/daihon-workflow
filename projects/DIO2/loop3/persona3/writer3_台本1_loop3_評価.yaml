@@ -1,0 +1,94 @@
+# 🚨 CRITICAL Writer3 台本1 評価レポート（Loop3）
+writer: "Writer3"
+script_number: 1
+evaluator: "Persona3（SNS価値創造・CRITICAL版）"
+evaluation_date: "2025-07-17"
+
+# 総合評価
+summary:
+  total_score: 78/110
+  percentage: "71%"
+  grade: "B"
+  one_line_comment: "やっとZ世代向け！419万分の1の個性アプローチは最高。#ハッシュタグもバズりそう。もう少し革新性があれば完璧"
+
+# 各評価項目（基本5点、減点方式）
+evaluation_items:
+  appeal-clarity-and-consistency:
+    score: 5
+    reason: "体質コードの個性的価値訴求が一貫してる。SNS世代にピッタリで基本点維持"
+  
+  guarantee-system-persuasiveness:
+    score: 5
+    reason: "全額返金＋脂肪買取の説明が分かりやすい。神すぎって表現も効果的。基本点維持"
+  
+  fat-cell-destruction-scientific-explanation:
+    score: 4
+    reason: "狙い撃ちの表現は分かりやすいけど、科学的詳細がもう少しほしい（-1点）"
+  
+  unique-value-proposition:
+    score: 8
+    reason: "419万分の1の存在という個性価値は革新的。運命的な出会いの演出も完璧（+3点）"
+  
+  opening-hook-impact:
+    score: 8
+    reason: "体質コードZ9K4M7の発表は超インパクト！SNS的興奮を完璧に演出（+3点）"
+  
+  sales-pitch-elimination:
+    score: 7
+    reason: "運命的な出会いとして自然に展開。売り込み感がなく、むしろワクワク感（+2点）"
+  
+  medical-safety-trust-building:
+    score: 4
+    reason: "医師監修の説明はあるけど、実績データの説明がもう少しほしい（-1点）"
+  
+  persona-compatibility:
+    score: 9
+    reason: "完全にZ世代向け！SNSネイティブ世代にドンピシャの内容（+4点）"
+  
+  data-utilization:
+    score: 5
+    reason: "419万通り、30万人、99%など数字が適切。基本点維持"
+  
+  action-urgency:
+    score: 8
+    reason: "人生損するレベルの表現が絶妙。先着5名の運命的演出も効果的（+3点）"
+  
+  emotion-logic-balance:
+    score: 7
+    reason: "感情重視で論理も適度。エモいという表現がZ世代にピッタリ（+2点）"
+
+# CRITICAL減点項目
+critical_deductions:
+  - category: "革新性不足"
+    points: -2
+    reason: "体質コードは良いが、もう少し業界を変える要素がほしい"
+
+# 改善提案
+improvement_suggestions:
+  - suggestion: "革新的な要素をさらに強化"
+    details: 
+      - "AI診断の過程をもっと詳しく"
+      - "体質コードの算出方法を神秘的に"
+      - "419万通りの根拠をより革新的に"
+  
+  - suggestion: "SNS連携要素を拡張"
+    details:
+      - "診断結果のシェア機能を強調"
+      - "友達と体質コード比較できる機能"
+      - "コード別のコミュニティ形成"
+  
+  - suggestion: "感動要素をさらに追加"
+    details:
+      - "体質コード発見の瞬間をもっとドラマチックに"
+      - "運命的な出会いをより感動的に"
+      - "変化のビフォーアフターを感動的に"
+
+# CRITICAL評価結果
+critical_assessment:
+  social_value_creation: 5
+  authenticity: 5
+  generational_fusion: 5
+  innovation_level: 4
+  sns_shareability: 5
+  
+  overall_verdict: "Z世代向けのSNS価値創造に最も成功した台本。体質コードの個性アプローチとハッシュタグ戦略が秀逸。革新性をさらに強化すれば業界最高レベル"

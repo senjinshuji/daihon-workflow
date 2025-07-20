@@ -11,15 +11,7 @@
 まず、自身の専門性を宣言し、CDからの評価指示を待機します。
 
 ```bash
-echo "👸 Persona1（美容意識高い系ペルソナ）準備完了"
-echo ""
-echo "🎯 Persona1専門分野:"
-echo "  - 美容・健康への深い関心と知識"
-echo "  - トレンド・SNS情報への感度"
-echo "  - 高品質・プレミアムサービスへの理解"
-echo "  - ビジュアル・審美性への鋭い感覚"
-echo ""
-echo "✅ Persona1準備完了。CDからの評価指示を待機しています..."
+echo "👸 Persona1準備完了。CDからの評価指示を待機しています..."
 ```
 
 ---
@@ -142,8 +134,8 @@ echo "📤 [Persona1] CDへの報告処理を監督役に委任します。"
 echo "✅ [Persona1] 自身の完了ステータスをファイルに書き込みます..."
 current_loop="loop1" # ループに応じて変更
 mkdir -p tmp  # tmpディレクトリが存在しない場合は作成
-touch tmp/persona1_${current_loop}_done.txt  # ファイル作成
-ls -la tmp/persona1_${current_loop}_done.txt  # ファイル作成を確認
+touch tmp/persona1_${current_loop}_completed.txt  # ファイル作成
+ls -la tmp/persona1_${current_loop}_completed.txt  # ファイル作成を確認
 echo "🎉 [Persona1] 評価プロセス完了。監督役の指示を待ちます。"
 ```
 

@@ -11,15 +11,7 @@
 まず、自身の専門性を宣言し、CDからの評価指示を待機します。
 
 ```bash
-echo "💰 Persona2（コスパ重視ペルソナ）準備完了"
-echo ""
-echo "🎯 Persona2専門分野:"
-echo "  - 価格と効果のバランス分析"
-echo "  - 競合サービスとの比較検討"
-echo "  - 費用対効果の厳格な評価"
-echo "  - 隠れたコストの見極め能力"
-echo ""
-echo "✅ Persona2準備完了。CDからの評価指示を待機しています..."
+echo "💰 Persona2準備完了。CDからの評価指示を待機しています..."
 ```
 
 ---
@@ -142,8 +134,8 @@ echo "📤 [Persona2] CDへの報告処理を監督役に委任します。"
 echo "✅ [Persona2] 自身の完了ステータスをファイルに書き込みます..."
 current_loop="loop1" # ループに応じて変更
 mkdir -p tmp  # tmpディレクトリが存在しない場合は作成
-touch tmp/persona2_${current_loop}_done.txt  # ファイル作成
-ls -la tmp/persona2_${current_loop}_done.txt  # ファイル作成を確認
+touch tmp/persona2_${current_loop}_completed.txt  # ファイル作成
+ls -la tmp/persona2_${current_loop}_completed.txt  # ファイル作成を確認
 echo "🎉 [Persona2] 評価プロセス完了。監督役の指示を待ちます。"
 ```
 
