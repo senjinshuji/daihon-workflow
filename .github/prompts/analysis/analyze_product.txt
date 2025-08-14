@@ -1,4 +1,4 @@
-商品「{PRODUCT_NAME}」について、WHO-FMT-USPフレームワークを用いた包括的な分析を実施し、2つの詳細レポートを作成してください。
+商品「{PRODUCT_NAME}」について、WHO-FMT-USPフレームワークを用いた包括的な分析を実施し、詳細レポートを作成してください。
 
 入力データ:
 - {PRODUCT_NAME}/data/market_bestsellers.csv（市場ベストセラーデータ）
@@ -7,7 +7,7 @@
 - {PRODUCT_NAME}/data/internal_bottom_group.csv（社内下位グループデータ）
 - {PRODUCT_NAME}/artifacts/web_search_summary.md（Web検索結果）
 
-## 1. 市場分析レポート: {PRODUCT_NAME}/artifacts/market_analysis.md
+## 市場分析レポート: {PRODUCT_NAME}/artifacts/market_analysis.md
 
 このレポートではWHO-FMT-USPフレームワークを用いて、売れる台本の要素分析とフォーマット分類を実行してください。
 
@@ -87,25 +87,7 @@
 4. **信頼性・実績（40-50秒）**：データ・事例による納得感
 5. **オファー・CTA（50-60秒）**：自然な行動促進
 
-## 2. 商品分析レポート: {PRODUCT_NAME}/artifacts/product_analysis.md
 
-### 商品特性分析
-- コア機能と付加価値
-- 品質と信頼性の評価
-- 価格ポジショニング
-- ブランドパーセプション
-
-### ターゲット顧客分析（WHO分析の詳細版）
-- プライマリーターゲットの定義
-- セカンダリーターゲットの特定
-- 顧客ニーズマッピング
-- ペインポイントと解決策
-
-### 競合環境分析
-- 主要競合との比較マトリックス
-- 差別化要因の明確化（USPとの連携）
-- 市場ポジショニングマップ
-- SWOT分析
 
 ### 成功パターン分析
 - **市場成功事例**: market_bestsellers.csvから業界トップパフォーマンスを分析

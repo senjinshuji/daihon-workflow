@@ -34,6 +34,25 @@ jobs:
       - name: Install Claude Code SDK
         run: npm install -g @anthropic-ai/claude-code
       
+      - name: Download data artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: ${{ inputs.product_name }}-data
+          path: ${{ inputs.product_name }}/data/
+      
+      - name: Download web search artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: ${{ inputs.product_name }}-web-search
+          path: ${{ inputs.product_name }}/artifacts/
+        continue-on-error: true
+      
+      - name: Download analysis artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: ${{ inputs.product_name }}-analysis
+          path: ${{ inputs.product_name }}/artifacts/
+      
       - name: Execute Target 1 Analysis
         id: analyze
         env:
@@ -76,3 +95,11 @@ jobs:
           fi
           
           echo "::endgroup::"
+      
+      - name: Upload target analysis artifacts
+        if: steps.analyze.outputs.analysis_completed == 'true'
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ inputs.product_name }}-target1
+          path: ${{ inputs.product_name }}/artifacts/target_analysis_1.md
+          retention-days: 1

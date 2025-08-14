@@ -48,3 +48,11 @@ jobs:
           else
             echo "completed=false" >> $GITHUB_OUTPUT
           fi
+      
+      - name: Upload data artifacts
+        if: steps.execute.outputs.completed == 'true'
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ inputs.product_name }}-data
+          path: ${{ inputs.product_name }}/data/
+          retention-days: 1

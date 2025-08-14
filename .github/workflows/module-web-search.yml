@@ -110,3 +110,11 @@ jobs:
           fi
           
           echo "::endgroup::"
+      
+      - name: Upload web search artifacts
+        if: steps.web-search.outputs.summary_created == 'true'
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ inputs.product_name }}-web-search
+          path: ${{ inputs.product_name }}/artifacts/web_search_summary.md
+          retention-days: 1
