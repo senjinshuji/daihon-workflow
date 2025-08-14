@@ -19,17 +19,17 @@ permissions:
 
 jobs:
   # Step 1: データ取得 (並列実行)
-  fetch-data:
+  fetch_data:
     uses: ./.github/workflows/module-fetch-data.yml
     with:
       product_name: ${{ inputs.product_name }}
-      sheets_id: ${{ inputs.sheets_id || secrets.GOOGLE_SHEETS_ID }}
+      sheets_id: ${{ inputs.sheets_id }}
     secrets:
       google_sheets_api_key: ${{ secrets.GOOGLE_SHEETS_API_KEY }}
       anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
 
   # Step 2: Web検索 (並列実行)
-  web-search:
+  web_search:
     uses: ./.github/workflows/module-web-search.yml
     with:
       product_name: ${{ inputs.product_name }}
@@ -38,8 +38,8 @@ jobs:
       anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
 
   # Step 3: 商品分析 (データ取得完了後)
-  analyze-product:
-    needs: [fetch-data, web-search]
+  analyze_product:
+    needs: [fetch_data, web_search]
     uses: ./.github/workflows/module-product-analysis.yml
     with:
       product_name: ${{ inputs.product_name }}
@@ -47,8 +47,8 @@ jobs:
       anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
 
   # Step 3: ターゲット1分析 (商品分析完了後)
-  analyze-target1:
-    needs: analyze-product
+  analyze_target1:
+    needs: analyze_product
     uses: ./.github/workflows/module-target1-analysis.yml
     with:
       product_name: ${{ inputs.product_name }}
@@ -56,8 +56,8 @@ jobs:
       anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
 
   # Step 3: ターゲット2分析 (商品分析完了後)
-  analyze-target2:
-    needs: analyze-product
+  analyze_target2:
+    needs: analyze_product
     uses: ./.github/workflows/module-target2-analysis.yml
     with:
       product_name: ${{ inputs.product_name }}
@@ -65,8 +65,8 @@ jobs:
       anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
 
   # Step 3: ターゲット3分析 (商品分析完了後)
-  analyze-target3:
-    needs: analyze-product
+  analyze_target3:
+    needs: analyze_product
     uses: ./.github/workflows/module-target3-analysis.yml
     with:
       product_name: ${{ inputs.product_name }}
@@ -74,8 +74,8 @@ jobs:
       anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
 
   # Step 4: ペルソナ生成 (分析完了後)
-  generate-personas:
-    needs: [analyze-target1, analyze-target2, analyze-target3]
+  generate_personas:
+    needs: [analyze_target1, analyze_target2, analyze_target3]
     uses: ./.github/workflows/module-generate-personas.yml
     with:
       product_name: ${{ inputs.product_name }}
@@ -83,8 +83,8 @@ jobs:
       anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
 
   # Step 5: ライター生成 (分析完了後)
-  generate-writers:
-    needs: [analyze-target1, analyze-target2, analyze-target3]
+  generate_writers:
+    needs: [analyze_target1, analyze_target2, analyze_target3]
     uses: ./.github/workflows/module-generate-writers.yml
     with:
       product_name: ${{ inputs.product_name }}
@@ -92,8 +92,8 @@ jobs:
       anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
 
   # Step 6: 初期評価基準設定 (ペルソナ・ライター完了後)
-  initialize-criteria:
-    needs: [generate-personas, generate-writers]
+  initialize_criteria:
+    needs: [generate_personas, generate_writers]
     uses: ./.github/workflows/module-initialize-criteria.yml
     with:
       product_name: ${{ inputs.product_name }}
@@ -102,7 +102,7 @@ jobs:
 
   # Step 7: 結果集計とコミット
   finalize:
-    needs: [analyze-product, analyze-target1, analyze-target2, analyze-target3, generate-personas, generate-writers, initialize-criteria]
+    needs: [analyze_product, analyze_target1, analyze_target2, analyze_target3, generate_personas, generate_writers, initialize_criteria]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -125,14 +125,14 @@ jobs:
           echo "## ✅ Phase 1 完了: 分析・ペルソナ・ライター生成" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "### 📊 実行結果" >> $GITHUB_STEP_SUMMARY
-          echo "- データ取得: ${{ needs.fetch-data.outputs.completed }}" >> $GITHUB_STEP_SUMMARY
-          echo "- Web検索: ${{ needs.web-search.outputs.completed }}" >> $GITHUB_STEP_SUMMARY
-          echo "- 商品分析: ${{ needs.analyze-product.outputs.analysis_completed }}" >> $GITHUB_STEP_SUMMARY
-          echo "- ターゲット1分析: ${{ needs.analyze-target1.outputs.analysis_completed }}" >> $GITHUB_STEP_SUMMARY
-          echo "- ターゲット2分析: ${{ needs.analyze-target2.outputs.analysis_completed }}" >> $GITHUB_STEP_SUMMARY
-          echo "- ターゲット3分析: ${{ needs.analyze-target3.outputs.analysis_completed }}" >> $GITHUB_STEP_SUMMARY
-          echo "- ペルソナ生成: ${{ needs.generate-personas.outputs.personas_generated }}個" >> $GITHUB_STEP_SUMMARY
-          echo "- ライター生成: ${{ needs.generate-writers.outputs.writers_generated }}個" >> $GITHUB_STEP_SUMMARY
+          echo "- データ取得: ${{ needs.fetch_data.outputs.completed }}" >> $GITHUB_STEP_SUMMARY
+          echo "- Web検索: ${{ needs.web_search.outputs.completed }}" >> $GITHUB_STEP_SUMMARY
+          echo "- 商品分析: ${{ needs.analyze_product.outputs.analysis_completed }}" >> $GITHUB_STEP_SUMMARY
+          echo "- ターゲット1分析: ${{ needs.analyze_target1.outputs.analysis_completed }}" >> $GITHUB_STEP_SUMMARY
+          echo "- ターゲット2分析: ${{ needs.analyze_target2.outputs.analysis_completed }}" >> $GITHUB_STEP_SUMMARY
+          echo "- ターゲット3分析: ${{ needs.analyze_target3.outputs.analysis_completed }}" >> $GITHUB_STEP_SUMMARY
+          echo "- ペルソナ生成: ${{ needs.generate_personas.outputs.personas_generated }}個" >> $GITHUB_STEP_SUMMARY
+          echo "- ライター生成: ${{ needs.generate_writers.outputs.writers_generated }}個" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "### 🚀 次のステップ" >> $GITHUB_STEP_SUMMARY
           echo "Phase 2（評価基準最適化）を実行してください:" >> $GITHUB_STEP_SUMMARY

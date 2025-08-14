@@ -1,26 +1,42 @@
-商品「{PRODUCT_NAME}」のGoogle Sheetsデータを取得し、CSVファイルとして保存してください。
+商品「{PRODUCT_NAME}」のDIOデータ（Google Sheets）を取得し、CSVファイルとして保存してください。
 
 入力:
-- Google Sheets ID: {SHEETS_ID}
+- Google Sheets ID: 1Bm8xgoAeocPhiPoisVt1uMc0MTEuH70SDME4N1bg6mo
 - API Key: 環境変数 GOOGLE_SHEETS_API_KEY
+- 対象シート: https://docs.google.com/spreadsheets/d/1Bm8xgoAeocPhiPoisVt1uMc0MTEuH70SDME4N1bg6mo/edit?gid=372030184#gid=372030184
 
 出力先:
 - {PRODUCT_NAME}/data/
 
-取得するデータ:
+取得するデータ（各タブから動画広告台本データを抽出）:
 1. 市場ベストセラーデータ（market_bestsellers.csv）
+   - タブ「ローデータ」から上位パフォーマンス台本を抽出
 2. 社内上位グループデータ（internal_top_group.csv）
+   - タブ「【配信結果】上位」から高パフォーマンス台本を抽出
 3. 社内中位グループデータ（internal_middle_group.csv）
+   - タブ「【配信結果】中位」から中パフォーマンス台本を抽出
 4. 社内下位グループデータ（internal_bottom_group.csv）
+   - タブ「【配信結果】下位」から低パフォーマンス台本を抽出
 
 各CSVファイルには以下の処理を行ってください:
 - データクリーニング（空白行の削除、形式の統一）
 - エンコーディングをUTF-8に統一
-- ヘッダー行の正規化
-- 日付形式の統一（YYYY-MM-DD）
+- ヘッダー行の正規化（script_id, content, performance_score など）
+- 台本内容の前処理（改行コードの統一、特殊文字の正規化）
+
+データ構造の想定:
+- カラムA: ID/番号
+- カラムB: カテゴリ/分類
+- カラムC: 台本本文（動画広告台本例）
+- 追加カラム: パフォーマンス指標、配信結果など
 
 処理の詳細:
 - Google Sheets APIを使用してデータを取得
-- 必要に応じて .github/scripts/python/fetch_google_sheets.py を使用または改良
+- 台本データの特性を考慮した前処理を実装
+- 医療ダイエット、美容、マーケティング関連の台本データとして解析
 - エラーハンドリングを適切に実装
-- 取得したデータのサマリーを表示
+- 取得したデータのサマリーを表示（台本数、文字数統計など）
+
+注意事項:
+- 台本は実際の広告クリエイティブデータとして扱い、機密性に配慮
+- パフォーマンスデータ（配信結果）も合わせて取得・分析
