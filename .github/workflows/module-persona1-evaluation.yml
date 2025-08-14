@@ -28,6 +28,36 @@ jobs:
           node-version: '20'
       - run: npm install -g @anthropic-ai/claude-code
 
+      - name: Download required artifacts
+        uses: actions/download-artifact@v3
+        with:
+          path: ./
+      
+      - name: Organize downloaded artifacts
+        run: |
+          # Create necessary directories
+          mkdir -p "${{ inputs.product_name }}/data" "${{ inputs.product_name }}/artifacts" "${{ inputs.product_name }}/personas"
+          
+          # Move data files
+          if [ -d "${{ inputs.product_name }}-data" ]; then
+            cp -r "${{ inputs.product_name }}-data"/* "${{ inputs.product_name }}/data/" 2>/dev/null || true
+          fi
+          
+          # Move criteria
+          if [ -d "${{ inputs.product_name }}-criteria" ]; then
+            cp -r "${{ inputs.product_name }}-criteria"/* "${{ inputs.product_name }}/artifacts/" 2>/dev/null || true
+          fi
+          
+          # Move personas
+          if [ -d "${{ inputs.product_name }}-personas" ]; then
+            cp -r "${{ inputs.product_name }}-personas"/* "${{ inputs.product_name }}/personas/" 2>/dev/null || true
+          fi
+          
+          # Move sample scripts (for Phase 2)
+          if [ -d "${{ inputs.product_name }}-sample-scripts" ]; then
+            cp -r "${{ inputs.product_name }}-sample-scripts"/* "${{ inputs.product_name }}/artifacts/" 2>/dev/null || true
+          fi
+
       - id: evaluate-persona1
         env:
           ANTHROPIC_API_KEY: ${{ secrets.anthropic_api_key }}
@@ -108,3 +138,11 @@ jobs:
             echo "completed=false" >> $GITHUB_OUTPUT
             echo "❌ ペルソナ1評価に失敗しました"
           fi
+      
+      - name: Upload evaluation artifact
+        if: steps.evaluate-persona1.outputs.completed == 'true'
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ inputs.product_name }}-persona1-evaluation
+          path: ${{ inputs.product_name }}/artifacts/persona1_evaluation.json
+          retention-days: 1

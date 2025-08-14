@@ -30,6 +30,37 @@ jobs:
           node-version: '20'
       - run: npm install -g @anthropic-ai/claude-code
       
+      - name: Download required artifacts
+        uses: actions/download-artifact@v3
+        with:
+          path: ./
+      
+      - name: Organize downloaded artifacts
+        run: |
+          mkdir -p "${{ inputs.product_name }}/bulk_scripts" "${{ inputs.product_name }}/personas" "${{ inputs.product_name }}/artifacts" "${{ inputs.product_name }}/evaluations"
+          
+          # Move scripts from all writers
+          for writer in writer1 writer2 writer3; do
+            if [ -d "${{ inputs.product_name }}-scripts-${writer}" ]; then
+              cp -r "${{ inputs.product_name }}-scripts-${writer}"/* "${{ inputs.product_name }}/bulk_scripts/" 2>/dev/null || true
+            fi
+          done
+          
+          # Move personas
+          if [ -d "${{ inputs.product_name }}-personas" ]; then
+            cp -r "${{ inputs.product_name }}-personas"/* "${{ inputs.product_name }}/personas/" 2>/dev/null || true
+          fi
+          
+          # Move criteria
+          if [ -d "${{ inputs.product_name }}-criteria" ]; then
+            cp -r "${{ inputs.product_name }}-criteria"/* "${{ inputs.product_name }}/artifacts/" 2>/dev/null || true
+          fi
+          
+          # Move approval threshold (from Phase 2)
+          if [ -d "${{ inputs.product_name }}-threshold" ]; then
+            cp -r "${{ inputs.product_name }}-threshold"/* "${{ inputs.product_name }}/artifacts/" 2>/dev/null || true
+          fi
+      
       - id: evaluate
         env:
           ANTHROPIC_API_KEY: ${{ secrets.anthropic_api_key }}
@@ -110,6 +141,14 @@ jobs:
             echo "completed=false" >> $GITHUB_OUTPUT
             echo "❌ Persona1 evaluation failed"
           fi
+      
+      - name: Upload evaluation artifact
+        if: steps.evaluate.outputs.completed == 'true'
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ inputs.product_name }}-persona1-script-eval
+          path: ${{ inputs.product_name }}/evaluations/persona1_script_evaluation.json
+          retention-days: 1
 
   evaluate-persona2:
     runs-on: ubuntu-latest
@@ -121,6 +160,37 @@ jobs:
         with:
           node-version: '20'
       - run: npm install -g @anthropic-ai/claude-code
+      
+      - name: Download required artifacts
+        uses: actions/download-artifact@v3
+        with:
+          path: ./
+      
+      - name: Organize downloaded artifacts
+        run: |
+          mkdir -p "${{ inputs.product_name }}/bulk_scripts" "${{ inputs.product_name }}/personas" "${{ inputs.product_name }}/artifacts" "${{ inputs.product_name }}/evaluations"
+          
+          # Move scripts from all writers
+          for writer in writer1 writer2 writer3; do
+            if [ -d "${{ inputs.product_name }}-scripts-${writer}" ]; then
+              cp -r "${{ inputs.product_name }}-scripts-${writer}"/* "${{ inputs.product_name }}/bulk_scripts/" 2>/dev/null || true
+            fi
+          done
+          
+          # Move personas
+          if [ -d "${{ inputs.product_name }}-personas" ]; then
+            cp -r "${{ inputs.product_name }}-personas"/* "${{ inputs.product_name }}/personas/" 2>/dev/null || true
+          fi
+          
+          # Move criteria
+          if [ -d "${{ inputs.product_name }}-criteria" ]; then
+            cp -r "${{ inputs.product_name }}-criteria"/* "${{ inputs.product_name }}/artifacts/" 2>/dev/null || true
+          fi
+          
+          # Move approval threshold (from Phase 2)
+          if [ -d "${{ inputs.product_name }}-threshold" ]; then
+            cp -r "${{ inputs.product_name }}-threshold"/* "${{ inputs.product_name }}/artifacts/" 2>/dev/null || true
+          fi
       
       - id: evaluate
         env:
@@ -202,6 +272,14 @@ jobs:
             echo "completed=false" >> $GITHUB_OUTPUT
             echo "❌ Persona2 evaluation failed"
           fi
+      
+      - name: Upload evaluation artifact
+        if: steps.evaluate.outputs.completed == 'true'
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ inputs.product_name }}-persona2-script-eval
+          path: ${{ inputs.product_name }}/evaluations/persona2_script_evaluation.json
+          retention-days: 1
 
   evaluate-persona3:
     runs-on: ubuntu-latest
@@ -213,6 +291,37 @@ jobs:
         with:
           node-version: '20'
       - run: npm install -g @anthropic-ai/claude-code
+      
+      - name: Download required artifacts
+        uses: actions/download-artifact@v3
+        with:
+          path: ./
+      
+      - name: Organize downloaded artifacts
+        run: |
+          mkdir -p "${{ inputs.product_name }}/bulk_scripts" "${{ inputs.product_name }}/personas" "${{ inputs.product_name }}/artifacts" "${{ inputs.product_name }}/evaluations"
+          
+          # Move scripts from all writers
+          for writer in writer1 writer2 writer3; do
+            if [ -d "${{ inputs.product_name }}-scripts-${writer}" ]; then
+              cp -r "${{ inputs.product_name }}-scripts-${writer}"/* "${{ inputs.product_name }}/bulk_scripts/" 2>/dev/null || true
+            fi
+          done
+          
+          # Move personas
+          if [ -d "${{ inputs.product_name }}-personas" ]; then
+            cp -r "${{ inputs.product_name }}-personas"/* "${{ inputs.product_name }}/personas/" 2>/dev/null || true
+          fi
+          
+          # Move criteria
+          if [ -d "${{ inputs.product_name }}-criteria" ]; then
+            cp -r "${{ inputs.product_name }}-criteria"/* "${{ inputs.product_name }}/artifacts/" 2>/dev/null || true
+          fi
+          
+          # Move approval threshold (from Phase 2)
+          if [ -d "${{ inputs.product_name }}-threshold" ]; then
+            cp -r "${{ inputs.product_name }}-threshold"/* "${{ inputs.product_name }}/artifacts/" 2>/dev/null || true
+          fi
       
       - id: evaluate
         env:
@@ -294,6 +403,14 @@ jobs:
             echo "completed=false" >> $GITHUB_OUTPUT
             echo "❌ Persona3 evaluation failed"
           fi
+      
+      - name: Upload evaluation artifact
+        if: steps.evaluate.outputs.completed == 'true'
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ inputs.product_name }}-persona3-script-eval
+          path: ${{ inputs.product_name }}/evaluations/persona3_script_evaluation.json
+          retention-days: 1
 
   # Step 2: 平均値計算
   calculate-averages:
@@ -304,6 +421,22 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: pip install pandas numpy
+      
+      - name: Download evaluation artifacts
+        uses: actions/download-artifact@v3
+        with:
+          path: ./
+      
+      - name: Organize evaluation files
+        run: |
+          mkdir -p "${{ inputs.product_name }}/evaluations"
+          
+          # Move persona evaluations
+          for i in 1 2 3; do
+            if [ -d "${{ inputs.product_name }}-persona${i}-script-eval" ]; then
+              cp -r "${{ inputs.product_name }}-persona${i}-script-eval"/* "${{ inputs.product_name }}/evaluations/" 2>/dev/null || true
+            fi
+          done
       
       - id: calculate
         run: |
@@ -322,6 +455,14 @@ jobs:
             echo "completed=false" >> $GITHUB_OUTPUT
             echo "❌ Average calculation failed"
           fi
+      
+      - name: Upload averaged evaluation artifact
+        if: steps.calculate.outputs.completed == 'true'
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ inputs.product_name }}-averaged-eval
+          path: ${{ inputs.product_name }}/evaluations/averaged_script_evaluation.json
+          retention-days: 1
 
   # Step 3: フィルタリング判定
   filter-scripts:
@@ -334,7 +475,32 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: pip install pandas numpy
-      - run: mkdir -p "${{ inputs.product_name }}/approved_scripts"
+      
+      - name: Download required artifacts
+        uses: actions/download-artifact@v3
+        with:
+          path: ./
+      
+      - name: Organize artifacts for filtering
+        run: |
+          mkdir -p "${{ inputs.product_name }}/evaluations" "${{ inputs.product_name }}/artifacts" "${{ inputs.product_name }}/approved_scripts" "${{ inputs.product_name }}/bulk_scripts"
+          
+          # Move averaged evaluation
+          if [ -d "${{ inputs.product_name }}-averaged-eval" ]; then
+            cp -r "${{ inputs.product_name }}-averaged-eval"/* "${{ inputs.product_name }}/evaluations/" 2>/dev/null || true
+          fi
+          
+          # Move threshold from Phase 2
+          if [ -d "${{ inputs.product_name }}-threshold" ]; then
+            cp -r "${{ inputs.product_name }}-threshold"/* "${{ inputs.product_name }}/artifacts/" 2>/dev/null || true
+          fi
+          
+          # Move scripts for copying approved ones
+          for writer in writer1 writer2 writer3; do
+            if [ -d "${{ inputs.product_name }}-scripts-${writer}" ]; then
+              cp -r "${{ inputs.product_name }}-scripts-${writer}"/* "${{ inputs.product_name }}/bulk_scripts/" 2>/dev/null || true
+            fi
+          done
       
       - id: filter
         run: |
@@ -368,6 +534,16 @@ jobs:
             echo "writer_adjustment_needed=true" >> $GITHUB_OUTPUT
             echo "❌ Filtering failed"
           fi
+      
+      - name: Upload filtering results
+        if: steps.filter.outputs.approved_count != ''
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ inputs.product_name }}-filtering-results
+          path: |
+            ${{ inputs.product_name }}/artifacts/filtering_results.json
+            ${{ inputs.product_name }}/approved_scripts/
+          retention-days: 1
 
   # Step 4: Writer調整（必要時のみ）
   adjust-writers:
@@ -382,6 +558,30 @@ jobs:
         with:
           node-version: '20'
       - run: npm install -g @anthropic-ai/claude-code
+      
+      - name: Download required artifacts for adjustment
+        uses: actions/download-artifact@v3
+        with:
+          path: ./
+      
+      - name: Organize artifacts for writer adjustment
+        run: |
+          mkdir -p "${{ inputs.product_name }}/evaluations" "${{ inputs.product_name }}/artifacts" "${{ inputs.product_name }}/writers"
+          
+          # Move filtering results
+          if [ -d "${{ inputs.product_name }}-filtering-results" ]; then
+            cp -r "${{ inputs.product_name }}-filtering-results"/* "${{ inputs.product_name }}/" 2>/dev/null || true
+          fi
+          
+          # Move averaged evaluation
+          if [ -d "${{ inputs.product_name }}-averaged-eval" ]; then
+            cp -r "${{ inputs.product_name }}-averaged-eval"/* "${{ inputs.product_name }}/evaluations/" 2>/dev/null || true
+          fi
+          
+          # Move existing writers
+          if [ -d "${{ inputs.product_name }}-writers" ]; then
+            cp -r "${{ inputs.product_name }}-writers"/* "${{ inputs.product_name }}/writers/" 2>/dev/null || true
+          fi
       
       - id: adjust
         env:
@@ -450,3 +650,11 @@ jobs:
             echo "completed=false" >> $GITHUB_OUTPUT
             echo "❌ Writer adjustment failed"
           fi
+      
+      - name: Upload adjusted writers
+        if: steps.adjust.outputs.completed == 'true'
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ inputs.product_name }}-writers-adjusted
+          path: ${{ inputs.product_name }}/writers/
+          retention-days: 1

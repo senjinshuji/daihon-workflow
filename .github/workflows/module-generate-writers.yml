@@ -135,3 +135,11 @@ jobs:
           fi
           
           echo "::endgroup::"
+      
+      - name: Upload writers artifact
+        if: steps.generate-writers.outputs.completed == 'true'
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ inputs.product_name }}-writers
+          path: ${{ inputs.product_name }}/writers/
+          retention-days: 1

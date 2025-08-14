@@ -24,7 +24,41 @@ jobs:
         with:
           node-version: '20'
       - run: npm install -g @anthropic-ai/claude-code
-      - run: mkdir -p "${{ inputs.product_name }}/bulk_scripts"
+      
+      - name: Download required artifacts
+        uses: actions/download-artifact@v3
+        with:
+          path: ./
+      
+      - name: Organize downloaded artifacts
+        run: |
+          # Create necessary directories
+          mkdir -p "${{ inputs.product_name }}/writers" "${{ inputs.product_name }}/personas" "${{ inputs.product_name }}/artifacts" "${{ inputs.product_name }}/bulk_scripts"
+          
+          # Move writers
+          if [ -d "${{ inputs.product_name }}-writers" ]; then
+            cp -r "${{ inputs.product_name }}-writers"/* "${{ inputs.product_name }}/writers/" 2>/dev/null || true
+          fi
+          
+          # Move personas
+          if [ -d "${{ inputs.product_name }}-personas" ]; then
+            cp -r "${{ inputs.product_name }}-personas"/* "${{ inputs.product_name }}/personas/" 2>/dev/null || true
+          fi
+          
+          # Move analysis and criteria
+          if [ -d "${{ inputs.product_name }}-analysis" ]; then
+            cp -r "${{ inputs.product_name }}-analysis"/* "${{ inputs.product_name }}/artifacts/" 2>/dev/null || true
+          fi
+          if [ -d "${{ inputs.product_name }}-criteria" ]; then
+            cp -r "${{ inputs.product_name }}-criteria"/* "${{ inputs.product_name }}/artifacts/" 2>/dev/null || true
+          fi
+          
+          # Move target analysis
+          for i in 1 2 3; do
+            if [ -d "${{ inputs.product_name }}-target${i}" ]; then
+              cp -r "${{ inputs.product_name }}-target${i}"/* "${{ inputs.product_name }}/artifacts/" 2>/dev/null || true
+            fi
+          done
       
       - id: generate-scripts
         env:
@@ -60,3 +94,11 @@ jobs:
             echo "count=0" >> $GITHUB_OUTPUT
             echo "❌ No Writer2 scripts generated"
           fi
+      
+      - name: Upload generated scripts
+        if: steps.generate-scripts.outputs.count != '0'
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ inputs.product_name }}-scripts-writer2
+          path: ${{ inputs.product_name }}/bulk_scripts/writer2_*.md
+          retention-days: 1

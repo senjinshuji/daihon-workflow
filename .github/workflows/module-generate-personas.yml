@@ -135,3 +135,11 @@ jobs:
           fi
           
           echo "::endgroup::"
+      
+      - name: Upload personas artifact
+        if: steps.generate-personas.outputs.completed == 'true'
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ inputs.product_name }}-personas
+          path: ${{ inputs.product_name }}/personas/
+          retention-days: 1

@@ -25,6 +25,33 @@ jobs:
           node-version: '20'
       - run: npm install -g @anthropic-ai/claude-code
       
+      - name: Download target analysis artifacts
+        uses: actions/download-artifact@v3
+        with:
+          path: ./
+      
+      - name: Organize downloaded artifacts
+        run: |
+          # Move artifacts to correct locations
+          mkdir -p "${{ inputs.product_name }}/artifacts" "${{ inputs.product_name }}/personas"
+          
+          # Move target analysis files
+          for i in 1 2 3; do
+            if [ -d "${{ inputs.product_name }}-target${i}" ]; then
+              cp -r "${{ inputs.product_name }}-target${i}"/* "${{ inputs.product_name }}/artifacts/" 2>/dev/null || true
+            fi
+          done
+          
+          # Move product analysis
+          if [ -d "${{ inputs.product_name }}-analysis" ]; then
+            cp -r "${{ inputs.product_name }}-analysis"/* "${{ inputs.product_name }}/artifacts/" 2>/dev/null || true
+          fi
+          
+          # Move personas
+          if [ -d "${{ inputs.product_name }}-personas" ]; then
+            cp -r "${{ inputs.product_name }}-personas"/* "${{ inputs.product_name }}/personas/" 2>/dev/null || true
+          fi
+      
       - id: create-criteria
         env:
           ANTHROPIC_API_KEY: ${{ secrets.anthropic_api_key }}
@@ -166,3 +193,11 @@ jobs:
           else
             echo "completed=false" >> $GITHUB_OUTPUT
           fi
+      
+      - name: Upload criteria artifact
+        if: steps.create-criteria.outputs.completed == 'true'
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ inputs.product_name }}-criteria
+          path: ${{ inputs.product_name }}/artifacts/criteria.json
+          retention-days: 1
