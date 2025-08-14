@@ -97,5 +97,4 @@ jobs:
           name: ${{ inputs.product_name }}-analysis
           path: |
             ${{ inputs.product_name }}/artifacts/product_analysis.md
-            ${{ inputs.product_name }}/artifacts/market_analysis.md
           retention-days: 1

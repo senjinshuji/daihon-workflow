@@ -7,7 +7,7 @@
 - {PRODUCT_NAME}/data/internal_bottom_group.csv（社内下位グループデータ）
 - {PRODUCT_NAME}/artifacts/web_search_summary.md（Web検索結果）
 
-## 市場分析レポート: {PRODUCT_NAME}/artifacts/market_analysis.md
+## 市場分析レポート: {PRODUCT_NAME}/artifacts/product_analysis.md
 
 このレポートではWHO-FMT-USPフレームワークを用いて、売れる台本の要素分析とフォーマット分類を実行してください。
 
