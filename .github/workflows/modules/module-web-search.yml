@@ -1,0 +1,112 @@
+name: module-web-search
+
+on:
+  workflow_call:
+    inputs:
+      product_name:
+        description: '商品名'
+        required: true
+        type: string
+    outputs:
+      completed:
+        description: '完了ステータス'
+        value: ${{ jobs.search.outputs.completed }}
+      summary_created:
+        description: 'サマリー作成ステータス'
+        value: ${{ jobs.search.outputs.summary_created }}
+    secrets:
+      gemini_api_key:
+        description: 'Google Gemini API Key'
+        required: true
+      anthropic_api_key:
+        description: 'Anthropic API Key'
+        required: true
+
+jobs:
+  search:
+    runs-on: ubuntu-latest
+    outputs:
+      completed: ${{ steps.web-search.outputs.completed }}
+      summary_created: ${{ steps.web-search.outputs.summary_created }}
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      
+      - name: Install Claude Code SDK
+        run: npm install -g @anthropic-ai/claude-code
+      
+      - name: Create artifacts directory
+        run: |
+          mkdir -p "${{ inputs.product_name }}/artifacts"
+          echo "✅ Created artifacts directory: ${{ inputs.product_name }}/artifacts"
+      
+      - name: Execute Web Search with Claude Code SDK
+        id: web-search
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.anthropic_api_key }}
+          GEMINI_API_KEY: ${{ secrets.gemini_api_key }}
+        run: |
+          echo "::group::🔍 Executing web search for ${{ inputs.product_name }}"
+          
+          # プロンプトを外部ファイルから読み込み
+          if [ -f ".github/prompts/analysis/web_search.txt" ]; then
+            PROMPT_TEMPLATE=$(cat .github/prompts/analysis/web_search.txt)
+          else
+            echo "⚠️ Prompt file not found, using inline prompt"
+            PROMPT_TEMPLATE="商品「{PRODUCT_NAME}」に関するWeb検索を実行し、
+            結果を {PRODUCT_NAME}/artifacts/web_search_summary.md に保存してください。
+            
+            以下の観点で検索を行ってください：
+            1. 商品レビューと評判
+            2. 特徴とメリット・デメリット
+            3. 競合商品との比較
+            4. ターゲット層
+            5. マーケティング戦略
+            
+            Gemini API キーは環境変数 GEMINI_API_KEY に設定されています。
+            必要に応じて .github/scripts/python/web_search.py を使用または改良してください。
+            
+            出力形式:
+            - マークダウン形式で構造化
+            - 各観点ごとにセクションを分ける
+            - 重要な発見を箇条書きでまとめる
+            - 最後に総合的な分析を含める"
+          fi
+          
+          # プレースホルダーを置換
+          PROMPT="${PROMPT_TEMPLATE//\{PRODUCT_NAME\}/${{ inputs.product_name }}}"
+          
+          echo "📝 Executing Claude Code SDK..."
+          
+          # Claude Code SDKの実行
+          npx @anthropic-ai/claude-code \
+            --allowedTools "Read,Write,Bash" \
+            --max-turns 35 \
+            --verbose \
+            --permission-mode "acceptEdits" \
+            -p "$PROMPT" || {
+              echo "::error::❌ Claude Code SDK execution failed"
+              exit 1
+            }
+          
+          # 生成されたファイルの確認
+          echo ""
+          echo "📂 Checking generated summary..."
+          if [ -f "${{ inputs.product_name }}/artifacts/web_search_summary.md" ]; then
+            echo "::notice::✅ Web search summary created"
+            echo "File size: $(ls -lh "${{ inputs.product_name }}/artifacts/web_search_summary.md" | awk '{print $5}')"
+            echo "completed=true" >> $GITHUB_OUTPUT
+            echo "summary_created=true" >> $GITHUB_OUTPUT
+          else
+            echo "::warning::⚠️ Web search summary not found"
+            echo "completed=true" >> $GITHUB_OUTPUT
+            echo "summary_created=false" >> $GITHUB_OUTPUT
+          fi
+          
+          echo "::endgroup::"

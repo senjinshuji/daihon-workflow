@@ -1,0 +1,116 @@
+name: module-generate-personas
+
+on:
+  workflow_call:
+    inputs:
+      product_name:
+        description: '商品名'
+        required: true
+        type: string
+    outputs:
+      personas_generated:
+        description: '生成されたペルソナ数'
+        value: ${{ jobs.generate.outputs.personas_generated }}
+      completed:
+        description: '完了ステータス'
+        value: ${{ jobs.generate.outputs.completed }}
+    secrets:
+      anthropic_api_key:
+        description: 'Anthropic API Key'
+        required: true
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    outputs:
+      personas_generated: ${{ steps.generate-personas.outputs.count }}
+      completed: ${{ steps.generate-personas.outputs.completed }}
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      
+      - name: Install Claude Code SDK
+        run: npm install -g @anthropic-ai/claude-code
+      
+      - name: Create personas directory
+        run: |
+          mkdir -p "${{ inputs.product_name }}/personas"
+          echo "✅ Created personas directory: ${{ inputs.product_name }}/personas"
+      
+      - name: Generate Personas with Claude Code SDK
+        id: generate-personas
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.anthropic_api_key }}
+        run: |
+          echo "::group::👥 Generating personas for ${{ inputs.product_name }}"
+          
+          # プロンプトを外部ファイルから読み込み
+          if [ -f ".github/prompts/generation/generate_personas.txt" ]; then
+            PROMPT_TEMPLATE=$(cat .github/prompts/generation/generate_personas.txt)
+          else
+            echo "⚠️ Prompt file not found, using inline prompt"
+            PROMPT_TEMPLATE="分析レポートを基に、商品「{PRODUCT_NAME}」のペルソナを3つ生成してください。
+            
+            入力:
+            - {PRODUCT_NAME}/artifacts/product_analysis.md
+            - {PRODUCT_NAME}/artifacts/market_analysis.md
+            
+            生成するファイル:
+            
+            【ペルソナ3名】{PRODUCT_NAME}/personas/
+            - persona1.md: プライマリターゲット（実用性重視）
+            - persona2.md: アーリーアダプター（革新性重視）
+            - persona3.md: マスマーケット（安定志向）
+            
+            各ペルソナには以下を含める:
+            - デモグラフィック/サイコグラフィック
+            - 商品への態度と期待
+            - 広告評価の視点
+            - 台本評価の重み付け
+            
+            詳細で実践的な人格定義を作成してください。"
+          fi
+          
+          # プレースホルダーを置換
+          PROMPT="${PROMPT_TEMPLATE//\{PRODUCT_NAME\}/${{ inputs.product_name }}}"
+          
+          echo "📝 Executing Claude Code SDK for persona generation..."
+          
+          # Claude Code SDKの実行
+          npx @anthropic-ai/claude-code \
+            --allowedTools "Read,Write" \
+            --max-turns 40 \
+            --verbose \
+            --permission-mode "acceptEdits" \
+            -p "$PROMPT" || {
+              echo "::error::❌ Claude Code SDK execution failed"
+              exit 1
+            }
+          
+          # 生成されたペルソナ数をカウント
+          echo ""
+          echo "📂 Checking generated personas..."
+          if [ -d "${{ inputs.product_name }}/personas" ]; then
+            PERSONA_COUNT=$(ls -1 "${{ inputs.product_name }}/personas/"*.md 2>/dev/null | wc -l)
+            echo "::notice::✅ Generated $PERSONA_COUNT personas"
+            ls -la "${{ inputs.product_name }}/personas/"
+            
+            if [ "$PERSONA_COUNT" -gt 0 ]; then
+              echo "count=$PERSONA_COUNT" >> $GITHUB_OUTPUT
+              echo "completed=true" >> $GITHUB_OUTPUT
+            else
+              echo "::error::❌ No personas were generated"
+              exit 1
+            fi
+          else
+            echo "::error::❌ Personas directory not found"
+            exit 1
+          fi
+          
+          echo "::endgroup::"

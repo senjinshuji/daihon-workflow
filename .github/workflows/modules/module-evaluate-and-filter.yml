@@ -1,0 +1,452 @@
+name: module-evaluate-and-filter
+
+on:
+  workflow_call:
+    inputs:
+      product_name:
+        required: true
+        type: string
+    outputs:
+      approved_count:
+        value: ${{ jobs.filter-scripts.outputs.approved_count }}
+      approval_rate:
+        value: ${{ jobs.filter-scripts.outputs.approval_rate }}
+      writer_adjustment_needed:
+        value: ${{ jobs.filter-scripts.outputs.writer_adjustment_needed }}
+    secrets:
+      anthropic_api_key:
+        required: true
+
+jobs:
+  # Step 1: ペルソナ評価（並列実行）
+  evaluate-persona1:
+    runs-on: ubuntu-latest
+    outputs:
+      completed: ${{ steps.evaluate.outputs.completed }}
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm install -g @anthropic-ai/claude-code
+      
+      - id: evaluate
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.anthropic_api_key }}
+        run: |
+          cat << 'EOF' > evaluate_persona1_prompt.txt
+          ペルソナ1として15本の台本を評価してください：
+          
+          ## あなたの役割
+          {PRODUCT_NAME}/personas/persona1.md で定義されたペルソナ1として、人格定義を読み込んでから評価を実行してください。
+          
+          ## 評価対象
+          {PRODUCT_NAME}/bulk_scripts/ の全台本（15本）
+          
+          ## 評価基準
+          {PRODUCT_NAME}/artifacts/criteria.json から評価軸と重み付けを動的に読み込み、その基準に従って評価してください。
+          
+          ## 評価プロセス
+          1. ペルソナ1の人格定義を理解
+          2. criteria.jsonの評価基準を確認
+          3. 各台本を評価基準に従って採点（各項目10点満点）
+          4. 重み付けを適用して総合スコアを算出
+          
+          ## 出力ファイル
+          {PRODUCT_NAME}/evaluations/persona1_script_evaluation.json
+          
+          ## 出力フォーマット
+          ```json
+          {
+            "evaluator": "persona1",
+            "evaluation_date": "YYYY-MM-DD HH:MM:SS",
+            "criteria_used": {
+              "version": 1,
+              "weights": {...}
+            },
+            "script_evaluations": [
+              {
+                "script_file": "writer1_target1_script_01.md",
+                "writer": "writer1",
+                "detailed_scores": {
+                  "appeal_direction_clarity": {"score": 8, "feedback": "..."},
+                  "differentiation_clarity": {"score": 7, "feedback": "..."},
+                  ...
+                },
+                "weighted_score": 79.5,
+                "persona_perspective": "ペルソナ1としての具体的な感想・評価理由"
+              },
+              ...
+            ],
+            "summary": {
+              "total_scripts": 15,
+              "average_score": 75.2,
+              "highest_score": 89.1,
+              "lowest_score": 62.3
+            }
+          }
+          ```
+          
+          ペルソナ1の深層心理特性を反映した評価を行ってください。
+          EOF
+          
+          PROMPT=$(cat evaluate_persona1_prompt.txt)
+          PROMPT="${PROMPT//\{PRODUCT_NAME\}/${{ inputs.product_name }}}"
+          
+          echo "🎭 Persona1 evaluating scripts for ${{ inputs.product_name }}..."
+          
+          npx @anthropic-ai/claude-code \
+            --allowedTools "Read,Write" \
+            --max-turns 40 \
+            --verbose \
+            --permission-mode "acceptEdits" \
+            -p "$PROMPT"
+          
+          # 完了確認
+          if [ -f "${{ inputs.product_name }}/evaluations/persona1_script_evaluation.json" ]; then
+            echo "completed=true" >> $GITHUB_OUTPUT
+            echo "✅ Persona1 evaluation completed"
+          else
+            echo "completed=false" >> $GITHUB_OUTPUT
+            echo "❌ Persona1 evaluation failed"
+          fi
+
+  evaluate-persona2:
+    runs-on: ubuntu-latest
+    outputs:
+      completed: ${{ steps.evaluate.outputs.completed }}
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm install -g @anthropic-ai/claude-code
+      
+      - id: evaluate
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.anthropic_api_key }}
+        run: |
+          cat << 'EOF' > evaluate_persona2_prompt.txt
+          ペルソナ2として15本の台本を評価してください：
+          
+          ## あなたの役割
+          {PRODUCT_NAME}/personas/persona2.md で定義されたペルソナ2として、人格定義を読み込んでから評価を実行してください。
+          
+          ## 評価対象
+          {PRODUCT_NAME}/bulk_scripts/ の全台本（15本）
+          
+          ## 評価基準
+          {PRODUCT_NAME}/artifacts/criteria.json から評価軸と重み付けを動的に読み込み、その基準に従って評価してください。
+          
+          ## 評価プロセス
+          1. ペルソナ2の人格定義を理解
+          2. criteria.jsonの評価基準を確認
+          3. 各台本を評価基準に従って採点（各項目10点満点）
+          4. 重み付けを適用して総合スコアを算出
+          
+          ## 出力ファイル
+          {PRODUCT_NAME}/evaluations/persona2_script_evaluation.json
+          
+          ## 出力フォーマット
+          ```json
+          {
+            "evaluator": "persona2",
+            "evaluation_date": "YYYY-MM-DD HH:MM:SS",
+            "criteria_used": {
+              "version": 1,
+              "weights": {...}
+            },
+            "script_evaluations": [
+              {
+                "script_file": "writer1_target1_script_01.md",
+                "writer": "writer1",
+                "detailed_scores": {
+                  "appeal_direction_clarity": {"score": 8, "feedback": "..."},
+                  "differentiation_clarity": {"score": 7, "feedback": "..."},
+                  ...
+                },
+                "weighted_score": 79.5,
+                "persona_perspective": "ペルソナ2としての具体的な感想・評価理由"
+              },
+              ...
+            ],
+            "summary": {
+              "total_scripts": 15,
+              "average_score": 75.2,
+              "highest_score": 89.1,
+              "lowest_score": 62.3
+            }
+          }
+          ```
+          
+          ペルソナ2の深層心理特性を反映した評価を行ってください。
+          EOF
+          
+          PROMPT=$(cat evaluate_persona2_prompt.txt)
+          PROMPT="${PROMPT//\{PRODUCT_NAME\}/${{ inputs.product_name }}}"
+          
+          echo "🎭 Persona2 evaluating scripts for ${{ inputs.product_name }}..."
+          
+          npx @anthropic-ai/claude-code \
+            --allowedTools "Read,Write" \
+            --max-turns 40 \
+            --verbose \
+            --permission-mode "acceptEdits" \
+            -p "$PROMPT"
+          
+          # 完了確認
+          if [ -f "${{ inputs.product_name }}/evaluations/persona2_script_evaluation.json" ]; then
+            echo "completed=true" >> $GITHUB_OUTPUT
+            echo "✅ Persona2 evaluation completed"
+          else
+            echo "completed=false" >> $GITHUB_OUTPUT
+            echo "❌ Persona2 evaluation failed"
+          fi
+
+  evaluate-persona3:
+    runs-on: ubuntu-latest
+    outputs:
+      completed: ${{ steps.evaluate.outputs.completed }}
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm install -g @anthropic-ai/claude-code
+      
+      - id: evaluate
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.anthropic_api_key }}
+        run: |
+          cat << 'EOF' > evaluate_persona3_prompt.txt
+          ペルソナ3として15本の台本を評価してください：
+          
+          ## あなたの役割
+          {PRODUCT_NAME}/personas/persona3.md で定義されたペルソナ3として、人格定義を読み込んでから評価を実行してください。
+          
+          ## 評価対象
+          {PRODUCT_NAME}/bulk_scripts/ の全台本（15本）
+          
+          ## 評価基準
+          {PRODUCT_NAME}/artifacts/criteria.json から評価軸と重み付けを動的に読み込み、その基準に従って評価してください。
+          
+          ## 評価プロセス
+          1. ペルソナ3の人格定義を理解
+          2. criteria.jsonの評価基準を確認
+          3. 各台本を評価基準に従って採点（各項目10点満点）
+          4. 重み付けを適用して総合スコアを算出
+          
+          ## 出力ファイル
+          {PRODUCT_NAME}/evaluations/persona3_script_evaluation.json
+          
+          ## 出力フォーマット
+          ```json
+          {
+            "evaluator": "persona3",
+            "evaluation_date": "YYYY-MM-DD HH:MM:SS",
+            "criteria_used": {
+              "version": 1,
+              "weights": {...}
+            },
+            "script_evaluations": [
+              {
+                "script_file": "writer1_target1_script_01.md",
+                "writer": "writer1",
+                "detailed_scores": {
+                  "appeal_direction_clarity": {"score": 8, "feedback": "..."},
+                  "differentiation_clarity": {"score": 7, "feedback": "..."},
+                  ...
+                },
+                "weighted_score": 79.5,
+                "persona_perspective": "ペルソナ3としての具体的な感想・評価理由"
+              },
+              ...
+            ],
+            "summary": {
+              "total_scripts": 15,
+              "average_score": 75.2,
+              "highest_score": 89.1,
+              "lowest_score": 62.3
+            }
+          }
+          ```
+          
+          ペルソナ3の深層心理特性を反映した評価を行ってください。
+          EOF
+          
+          PROMPT=$(cat evaluate_persona3_prompt.txt)
+          PROMPT="${PROMPT//\{PRODUCT_NAME\}/${{ inputs.product_name }}}"
+          
+          echo "🎭 Persona3 evaluating scripts for ${{ inputs.product_name }}..."
+          
+          npx @anthropic-ai/claude-code \
+            --allowedTools "Read,Write" \
+            --max-turns 40 \
+            --verbose \
+            --permission-mode "acceptEdits" \
+            -p "$PROMPT"
+          
+          # 完了確認
+          if [ -f "${{ inputs.product_name }}/evaluations/persona3_script_evaluation.json" ]; then
+            echo "completed=true" >> $GITHUB_OUTPUT
+            echo "✅ Persona3 evaluation completed"
+          else
+            echo "completed=false" >> $GITHUB_OUTPUT
+            echo "❌ Persona3 evaluation failed"
+          fi
+
+  # Step 2: 平均値計算
+  calculate-averages:
+    needs: [evaluate-persona1, evaluate-persona2, evaluate-persona3]
+    runs-on: ubuntu-latest
+    outputs:
+      completed: ${{ steps.calculate.outputs.completed }}
+    steps:
+      - uses: actions/checkout@v3
+      - run: pip install pandas numpy
+      
+      - id: calculate
+        run: |
+          echo "📊 Calculating average scores for ${{ inputs.product_name }}..."
+          
+          python .github/scripts/python/calculate_script_averages.py \
+            --product-name "${{ inputs.product_name }}" \
+            --input-dir "${{ inputs.product_name }}/evaluations" \
+            --output-file "${{ inputs.product_name }}/evaluations/averaged_script_evaluation.json"
+          
+          # 完了確認
+          if [ -f "${{ inputs.product_name }}/evaluations/averaged_script_evaluation.json" ]; then
+            echo "completed=true" >> $GITHUB_OUTPUT
+            echo "✅ Average calculation completed"
+          else
+            echo "completed=false" >> $GITHUB_OUTPUT
+            echo "❌ Average calculation failed"
+          fi
+
+  # Step 3: フィルタリング判定
+  filter-scripts:
+    needs: calculate-averages
+    runs-on: ubuntu-latest
+    outputs:
+      approved_count: ${{ steps.filter.outputs.approved_count }}
+      approval_rate: ${{ steps.filter.outputs.approval_rate }}
+      writer_adjustment_needed: ${{ steps.filter.outputs.writer_adjustment_needed }}
+    steps:
+      - uses: actions/checkout@v3
+      - run: pip install pandas numpy
+      - run: mkdir -p "${{ inputs.product_name }}/approved_scripts"
+      
+      - id: filter
+        run: |
+          echo "🔍 Filtering scripts for ${{ inputs.product_name }}..."
+          
+          python .github/scripts/python/filter_approved_scripts.py \
+            --product-name "${{ inputs.product_name }}" \
+            --evaluation-file "${{ inputs.product_name }}/evaluations/averaged_script_evaluation.json" \
+            --threshold-file "${{ inputs.product_name }}/artifacts/approval_threshold.txt" \
+            --output-dir "${{ inputs.product_name }}/approved_scripts" \
+            --results-file "${{ inputs.product_name }}/artifacts/filtering_results.json"
+          
+          # 結果出力
+          RESULTS_FILE="${{ inputs.product_name }}/artifacts/filtering_results.json"
+          if [ -f "$RESULTS_FILE" ]; then
+            APPROVED=$(python -c "import json; data=json.load(open('$RESULTS_FILE')); print(data.get('approved_count', 0))")
+            RATE=$(python -c "import json; data=json.load(open('$RESULTS_FILE')); print(data.get('approval_rate', 0))")
+            ADJUSTMENT=$(python -c "import json; data=json.load(open('$RESULTS_FILE')); print(str(data.get('writer_adjustment_needed', False)).lower())")
+            
+            echo "approved_count=$APPROVED" >> $GITHUB_OUTPUT
+            echo "approval_rate=$RATE" >> $GITHUB_OUTPUT
+            echo "writer_adjustment_needed=$ADJUSTMENT" >> $GITHUB_OUTPUT
+            
+            echo "✅ Filtering completed: $APPROVED approved ($RATE%)"
+            if [ "$ADJUSTMENT" = "true" ]; then
+              echo "⚠️ Writer adjustment needed"
+            fi
+          else
+            echo "approved_count=0" >> $GITHUB_OUTPUT
+            echo "approval_rate=0" >> $GITHUB_OUTPUT
+            echo "writer_adjustment_needed=true" >> $GITHUB_OUTPUT
+            echo "❌ Filtering failed"
+          fi
+
+  # Step 4: Writer調整（必要時のみ）
+  adjust-writers:
+    needs: filter-scripts
+    if: needs.filter-scripts.outputs.writer_adjustment_needed == 'true'
+    runs-on: ubuntu-latest
+    outputs:
+      completed: ${{ steps.adjust.outputs.completed }}
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm install -g @anthropic-ai/claude-code
+      
+      - id: adjust
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.anthropic_api_key }}
+        run: |
+          echo "🔧 Adjusting writer personalities for ${{ inputs.product_name }}..."
+          
+          # 外部プロンプトファイルの読み込み
+          if [ -f ".github/prompts/generation/generate_writers.txt" ]; then
+            PROMPT=$(cat .github/prompts/generation/generate_writers.txt)
+          else
+            echo "::error::Prompt file not found: .github/prompts/generation/generate_writers.txt"
+            exit 1
+          fi
+          
+          # Writer調整指示を追加
+          cat << 'EOF' >> writer_adjustment_instruction.txt
+          
+          ## Writer調整指示
+          
+          前回生成されたWriterの台本評価結果を参考に、承認台本数が不足しているWriterの人格を調整してください：
+          
+          ### 評価結果参照
+          - {PRODUCT_NAME}/evaluations/averaged_script_evaluation.json（平均評価結果）
+          - {PRODUCT_NAME}/artifacts/filtering_results.json（フィルタリング結果）
+          
+          ### 調整方針
+          1. **承認台本数が3本未満のWriter**を特定
+          2. **評価が低かった要因**を分析（criteria.jsonの各項目スコア）
+          3. **Writer人格の問題点**を特定（キャラクター設定・口調・アプローチ方法）
+          4. **ターゲット深層心理との整合性**を再検証
+          5. **改善されたWriter人格**を再生成
+          
+          ### 調整内容
+          - **キャラクター設定**: より信頼性・共感性の高い人物像
+          - **口調・言葉遣い**: ターゲットに響く表現方法
+          - **訴求アプローチ**: 深層心理により効果的な手法
+          - **戦略パッケージ**: WHO-FMT-USP-コンセプト-キャッチコピーの最適化
+          
+          ### 品質向上要件
+          - 前回の評価で低スコアだった項目を重点改善
+          - ターゲットの本能・インサイト・認知転換により効果的にアプローチ
+          - 他のWriterとの差別化を維持しつつ、独自の強みを強化
+          
+          既存のWriter定義ファイルを上書きして、改善されたWriter人格を生成してください。
+          EOF
+          
+          ADJUSTMENT_INSTRUCTION=$(cat writer_adjustment_instruction.txt)
+          FULL_PROMPT="$PROMPT\n\n$ADJUSTMENT_INSTRUCTION"
+          FULL_PROMPT="${FULL_PROMPT//\{PRODUCT_NAME\}/${{ inputs.product_name }}}"
+          
+          npx @anthropic-ai/claude-code \
+            --allowedTools "Read,Write" \
+            --max-turns 60 \
+            --verbose \
+            --permission-mode "acceptEdits" \
+            -p "$FULL_PROMPT"
+          
+          # 完了確認
+          if [ -f "${{ inputs.product_name }}/writers/writer1.md" ] && \
+             [ -f "${{ inputs.product_name }}/writers/writer2.md" ] && \
+             [ -f "${{ inputs.product_name }}/writers/writer3.md" ]; then
+            echo "completed=true" >> $GITHUB_OUTPUT
+            echo "✅ Writer adjustment completed"
+          else
+            echo "completed=false" >> $GITHUB_OUTPUT
+            echo "❌ Writer adjustment failed"
+          fi

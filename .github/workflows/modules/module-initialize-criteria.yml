@@ -1,0 +1,168 @@
+name: module-initialize-criteria
+
+on:
+  workflow_call:
+    inputs:
+      product_name:
+        required: true
+        type: string
+    outputs:
+      completed:
+        value: ${{ jobs.initialize.outputs.completed }}
+    secrets:
+      anthropic_api_key:
+        required: true
+
+jobs:
+  initialize:
+    runs-on: ubuntu-latest
+    outputs:
+      completed: ${{ steps.create-criteria.outputs.completed }}
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm install -g @anthropic-ai/claude-code
+      
+      - id: create-criteria
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.anthropic_api_key }}
+        run: |
+          cat << 'EOF' > init_criteria_prompt.txt
+          商品「{PRODUCT_NAME}」の初期評価基準を作成してください：
+          
+          以下のファイルを参照して、適切な評価重み付けを決定：
+          - {PRODUCT_NAME}/artifacts/target_analysis_1.md
+          - {PRODUCT_NAME}/artifacts/target_analysis_2.md  
+          - {PRODUCT_NAME}/artifacts/target_analysis_3.md
+          - {PRODUCT_NAME}/artifacts/product_analysis.md
+          - {PRODUCT_NAME}/personas/persona1.md
+          - {PRODUCT_NAME}/personas/persona2.md
+          - {PRODUCT_NAME}/personas/persona3.md
+          
+          {PRODUCT_NAME}/artifacts/criteria.json に以下の11項目評価基準で保存：
+          
+          ```json
+          {
+            "version": 1,
+            "created_at": "YYYY-MM-DD",
+            "description": "台本評価基準（11項目・各10点満点）",
+            "weights": {
+              "appeal_direction_clarity": 0.12,
+              "differentiation_clarity": 0.11,
+              "usp_strength": 0.12,
+              "selection_reason_clarity": 0.11,
+              "opening_hook_intensity": 0.10,
+              "sales_pitch_elimination": 0.08,
+              "character_edge": 0.08,
+              "who_fmt_usp_integration": 0.09,
+              "flow_naturalness": 0.08,
+              "right_brain_impact": 0.06,
+              "trust_building": 0.05
+            },
+            "criteria_details": {
+              "appeal_direction_clarity": {
+                "name": "訴求方向性の明確性・一貫性",
+                "description": "価格・権威性・効果のいずれかが明確で一貫しているか",
+                "max_score": 10
+              },
+              "differentiation_clarity": {
+                "name": "他選択肢との差別化の明確性",
+                "description": "競合サービス・代替手段との違いが明確に示されているか",
+                "max_score": 10
+              },
+              "usp_strength": {
+                "name": "独自価値提案(USP)の強度",
+                "description": "この商品独自の価値・ユニークさが際立っているか",
+                "max_score": 10
+              },
+              "selection_reason_clarity": {
+                "name": "選ばれる理由の決定的明確性",
+                "description": "なぜこれを選ぶべきか決定的な理由が示されているか",
+                "max_score": 10
+              },
+              "opening_hook_intensity": {
+                "name": "冒頭フックの強烈さ",
+                "description": "最初の5秒で興味を引き、続きを見たくなるか",
+                "max_score": 10
+              },
+              "sales_pitch_elimination": {
+                "name": "売り込み感の排除度",
+                "description": "自然な流れで商品が登場し、押し売り感がないか",
+                "max_score": 10
+              },
+              "character_edge": {
+                "name": "キャラクターのエッジ立ち",
+                "description": "語り手の個性が明確で、ターゲットに合った口調か",
+                "max_score": 10
+              },
+              "who_fmt_usp_integration": {
+                "name": "WHO-FMT-USP戦略的統合性",
+                "description": "ターゲット・フォーマット・USPが戦略的に統合されているか",
+                "max_score": 10
+              },
+              "flow_naturalness": {
+                "name": "構成フローの自然さ",
+                "description": "各パートの繋がりが自然で最後まで飽きずに見られるか",
+                "max_score": 10
+              },
+              "right_brain_impact": {
+                "name": "右脳直撃インパクト",
+                "description": "感情に訴え、理屈より感覚に響き行動したくなる衝動があるか",
+                "max_score": 10
+              },
+              "trust_building": {
+                "name": "先回り対処による信頼構築",
+                "description": "想定される不安・疑問を先回りして解消し信頼を構築しているか",
+                "max_score": 10
+              }
+            },
+            "structure_weights": {
+              "opening_hook": 0.30,
+              "development": 0.25,
+              "solution": 0.25,
+              "trust": 0.10,
+              "cta": 0.10
+            }
+          }
+          ```
+          
+          ## 重み付け設定の指針
+          
+          商品分析とターゲット分析を基に、以下を考慮して重み付けを調整してください：
+          
+          1. **商品特性による調整**:
+             - 高価格帯商品 → trust_building, usp_strengthの重みを上げる
+             - 競合激戦区 → differentiation_clarity, selection_reason_clarityを重視
+             - 新カテゴリ商品 → opening_hook_intensity, right_brain_impactを強化
+          
+          2. **ターゲット特性による調整**:
+             - 論理重視層 → selection_reason_clarity, who_fmt_usp_integrationを重視
+             - 感情重視層 → right_brain_impact, character_edgeを強化
+             - 慎重派 → trust_building, sales_pitch_eliminationを重視
+          
+          3. **フォーマット特性による調整**:
+             - ショート動画 → opening_hook_intensity, flow_naturalnessを最重視
+             - 解説系 → appeal_direction_clarity, usp_strengthを重視
+             - ストーリー系 → character_edge, right_brain_impactを強化
+          
+          上記の指針に基づき、{PRODUCT_NAME}に最適化された重み付けで criteria.json を作成してください。
+          EOF
+          
+          PROMPT=$(cat init_criteria_prompt.txt)
+          PROMPT="${PROMPT//\{PRODUCT_NAME\}/${{ inputs.product_name }}}"
+          
+          npx @anthropic-ai/claude-code \
+            --allowedTools "Read,Write" \
+            --max-turns 20 \
+            --verbose \
+            --permission-mode "acceptEdits" \
+            -p "$PROMPT"
+          
+          # 成功確認
+          if [ -f "${{ inputs.product_name }}/artifacts/criteria.json" ]; then
+            echo "completed=true" >> $GITHUB_OUTPUT
+          else
+            echo "completed=false" >> $GITHUB_OUTPUT
+          fi

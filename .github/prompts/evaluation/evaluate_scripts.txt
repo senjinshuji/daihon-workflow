@@ -1,0 +1,211 @@
+台本「{SCRIPT_PATH}」をペルソナ「{PERSONA_NAME}」の視点から評価してください。
+
+入力:
+- 台本: {SCRIPT_PATH}
+- ペルソナ定義: {PRODUCT_NAME}/personas/{PERSONA_NAME}.md
+- 評価基準: {PRODUCT_NAME}/artifacts/criteria.json
+- 市場分析: {PRODUCT_NAME}/artifacts/market_analysis.md（WHO-FMT-USP分析参照）
+
+評価は以下の11項目について、各10点満点で採点してください：
+
+## 必須評価項目（各10点満点）
+
+### 1. 訴求方向性の明確性・一貫性 (appeal_direction_clarity)
+**チェックポイント**:
+- 価格・権威性・効果のいずれかが明確か
+- 最初から最後まで一貫しているか
+- 混在して曖昧になっていないか
+
+### 2. 他選択肢との差別化の明確性 (differentiation_clarity)
+**チェックポイント**:
+- 競合サービスとの違いが明確か
+- 代替手段との違いが示されているか
+- なぜ他ではダメなのかが分かるか
+
+### 3. 独自価値提案(USP)の強度 (usp_strength)
+**チェックポイント**:
+- この商品独自の価値が明確か
+- ユニークさが際立っているか
+- 記憶に残る独自性があるか
+
+### 4. 選ばれる理由の決定的明確性 (selection_reason_clarity)
+**チェックポイント**:
+- なぜこれを選ぶべきか明確か
+- 決定的な理由が示されているか
+- 納得感のある根拠があるか
+
+### 5. 冒頭フックの強烈さ (opening_hook_intensity)
+**チェックポイント**:
+- 最初の5秒で興味を引けるか
+- 続きを見たくなるか
+- 右脳に直接訴えかけるか
+
+### 6. 売り込み感の排除度 (sales_pitch_elimination)
+**チェックポイント**:
+- 自然な流れで商品が登場するか
+- 押し売り感がないか
+- 視聴者が自発的に興味を持つか
+
+### 7. キャラクターのエッジ立ち (character_edge)
+**チェックポイント**:
+- 語り手の個性が明確か
+- ターゲットに合った口調か
+- 信頼感や親近感があるか
+
+### 8. WHO-FMT-USP戦略的統合性 (who_fmt_usp_integration)
+**チェックポイント**:
+- ターゲット設定が適切か
+- フォーマットが効果的か
+- USPが戦略的に組み込まれているか
+
+### 9. 構成フローの自然さ (flow_naturalness)
+**チェックポイント**:
+- 各パートの繋がりが自然か
+- 情報の出し方が適切か
+- 最後まで飽きずに見られるか
+
+### 10. 右脳直撃インパクト (right_brain_impact)
+**チェックポイント**:
+- 感情に訴える要素があるか
+- 理屈より感覚に響くか
+- 行動したくなる衝動があるか
+
+### 11. 先回り対処による信頼構築 (trust_building)
+**チェックポイント**:
+- 想定される不安に答えているか
+- 疑問を先回りして解消しているか
+- 信頼できる根拠が示されているか
+
+## 台本構成の評価ポイント
+
+### 冒頭フック（0-5秒）
+**重要度**: 最重要
+- 視聴者が「なんで？」と感じるか
+- 強い興味を引く要素があるか
+- 見る理由＝買う理由になっているか
+
+### 展開部（5-20秒）
+**重要度**: 重要
+- 冒頭の疑問に答えているか
+- 共感や納得を生んでいるか
+- ターゲットの悩みに寄り添っているか
+
+### 解決策提示（20-40秒）
+**重要度**: 重要
+- 解決策が明確に示されているか
+- 独自性が伝わっているか
+- 他の選択肢との違いが分かるか
+
+### 信頼性構築（40-50秒）
+**重要度**: 標準
+- 信頼できる根拠があるか
+- 実績や事例が示されているか
+- 不安が解消されるか
+
+### CTA（50-60秒）
+**重要度**: 重要
+- 行動を促す仕掛けがあるか
+- 限定性・緊急性が示されているか
+- 具体的なアクションが明確か
+
+## 総合評価の算出
+
+評価基準JSONファイルの重み付け（weights）に基づいて、各項目のスコアを加重平均して総合スコアを算出してください。
+
+出力形式（JSON）:
+```json
+{
+  "script": "{SCRIPT_NAME}",
+  "writer": "{WRITER_NAME}",
+  "persona": "{PERSONA_NAME}",
+  "timestamp": "YYYY-MM-DD HH:MM:SS",
+  "detailed_scores": {
+    "appeal_direction_clarity": {
+      "score": 8,
+      "feedback": "価格訴求が明確で一貫している"
+    },
+    "differentiation_clarity": {
+      "score": 7,
+      "feedback": "競合との違いはあるが、もう少し強調が必要"
+    },
+    "usp_strength": {
+      "score": 9,
+      "feedback": "独自の〇〇技術が印象的"
+    },
+    "selection_reason_clarity": {
+      "score": 8,
+      "feedback": "選ぶべき理由が論理的に示されている"
+    },
+    "opening_hook_intensity": {
+      "score": 9,
+      "feedback": "冒頭の「え、まだ〇〇してるの？」が強烈"
+    },
+    "sales_pitch_elimination": {
+      "score": 7,
+      "feedback": "後半やや売り込み感が出ている"
+    },
+    "character_edge": {
+      "score": 8,
+      "feedback": "体験者としてのリアリティがある"
+    },
+    "who_fmt_usp_integration": {
+      "score": 8,
+      "feedback": "ターゲットとUSPがうまく連携している"
+    },
+    "flow_naturalness": {
+      "score": 9,
+      "feedback": "ストーリーの流れが自然で見やすい"
+    },
+    "right_brain_impact": {
+      "score": 8,
+      "feedback": "感情に訴える要素が効果的"
+    },
+    "trust_building": {
+      "score": 7,
+      "feedback": "基本的な信頼要素はあるが、もう少し具体的な実績が欲しい"
+    }
+  },
+  "weighted_score": 79.5,
+  "structure_evaluation": {
+    "opening_hook": "非常に効果的 - 3秒で興味を引く",
+    "development": "良好 - 共感を生んでいる",
+    "solution": "効果的 - USPが明確",
+    "trust": "標準 - 基本的な要素は満たしている",
+    "cta": "良好 - 行動を促す要素あり"
+  },
+  "strengths": [
+    "冒頭フックが非常に強力",
+    "USPが明確に伝わる",
+    "ストーリーの流れが自然"
+  ],
+  "improvements": [
+    "売り込み感をもう少し抑える",
+    "信頼性を高める具体的実績の追加",
+    "競合との差別化をより強調"
+  ],
+  "recommendations": [
+    {
+      "priority": "high",
+      "area": "sales_pitch_elimination",
+      "suggestion": "後半の商品紹介をより自然な流れに調整"
+    },
+    {
+      "priority": "medium",
+      "area": "trust_building",
+      "suggestion": "具体的な利用者数や満足度データを追加"
+    },
+    {
+      "priority": "low",
+      "area": "differentiation_clarity",
+      "suggestion": "競合製品名を出さずに差別化を暗示する表現を検討"
+    }
+  ]
+}
+```
+
+評価の注意点:
+- 各項目は必ず0-10点の範囲で採点
+- ペルソナの特性を考慮した評価を行う
+- 具体的で建設的なフィードバックを提供
+- 改善提案は実行可能で具体的な内容にする
+- 台本がmarket_analysis.mdの訴求方向性に合致しているか確認

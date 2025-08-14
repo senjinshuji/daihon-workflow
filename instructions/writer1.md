@@ -21,15 +21,8 @@ CDからの制作指示に基づき、あなたに与えられた人格ファイ
 理解し、感情を揺さぶる5つの台本を制作します。
 
 **⚡ 最初に必ず実行：TodoWriteでチェックリスト作成**
-```
-プロジェクト開始時は必ず以下のコマンドを実行してください：
-TodoWriteツールで全フェーズのチェックリストを作成
-
-- [ ] Phase 1: 人格ファイルの読み込み
-- [ ] Phase 2: 5つの異なるアプローチで台本を制作
-- [ ] Phase 3: 指定形式でのファイル保存
-- [ ] Phase 4: 初期化完了をMDに報告
-
+```bash
+# TodoWrite: "Phase 1: 人格ファイルの読み込み", "Phase 2: 5つの異なるアプローチで台本を制作", "Phase 3: 指定形式でのファイル保存", "Phase 4: 作成完了をファイルに保存"
 ```
 
 ### Phase 1: 人格ファイルの読み込み
@@ -79,17 +72,17 @@ echo "💾 制作した台本をファイルに保存します..."
 echo "✅ 5案すべてのファイル保存完了。"
 ```
 
-### Phase 4: 初期化完了をCDに報告
-5案すべての制作・保存が完了したら、CDに詳細な完了報告を行います。
+### Phase 4: 作成完了をファイルに保存
+5案すべての台本作成・保存が完了したら、自身の完了ステータスをファイルに書き込みます。
+【重要】必ずこのファイル名を守ってください。
+writer1_completed.txt
 
 ```bash
-echo "📤 [Writer1] CDへの報告処理を監督役に委任します。"
 echo "✅ [Writer1] 自身の完了ステータスをファイルに書き込みます..."
-current_loop="loop1" # ループに応じて変更
-mkdir -p tmp  # tmpディレクトリが存在しない場合は作成
-touch tmp/writer1_${current_loop}_completed.txt  # ファイル作成
-ls -la tmp/writer1_${current_loop}_completed.txt  # ファイル作成を確認
-echo "🎉 [Writer1] 制作プロセス完了。監督役の指示を待ちます。"
+mkdir -p tmp
+touch tmp/writer1_completed.txt
+ls -la tmp/writer1_completed.txt
+echo "🎉 [Writer1] 台本作成プロセス完了。監督役の指示を待ちます。"
 ```
 
 ## 5案制作の専門方針

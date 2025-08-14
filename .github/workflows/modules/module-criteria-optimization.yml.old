@@ -1,0 +1,97 @@
+name: module-criteria-optimization
+
+on:
+  workflow_call:
+    inputs:
+      product_name:
+        required: true
+        type: string
+    outputs:
+      precision_rate:
+        value: ${{ jobs.optimize.outputs.precision_rate }}
+      next_action:
+        value: ${{ jobs.optimize.outputs.next_action }}
+    secrets:
+      anthropic_api_key:
+        required: true
+
+jobs:
+  optimize:
+    runs-on: ubuntu-latest
+    outputs:
+      precision_rate: ${{ steps.check-precision.outputs.precision_rate }}
+      next_action: ${{ steps.check-precision.outputs.next_action }}
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm install -g @anthropic-ai/claude-code
+      - run: pip install pandas numpy
+      
+      - name: Execute Criteria Optimization
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.anthropic_api_key }}
+        run: |
+          cat << 'EOF' > criteria_optimization_prompt.txt
+          評価基準の精度検証と最適化を実行してください：
+          
+          ## 1. データ抽出
+          {PRODUCT_NAME}/data/ から各ファイル5本ずつ、計15本の台本を抽出：
+          - internal_top_group.csv (上位5本)
+          - internal_middle_group.csv (中位5本)  
+          - internal_bottom_group.csv (下位5本)
+          
+          ## 2. ランキング評価
+          現在の評価基準 {PRODUCT_NAME}/artifacts/criteria.json を使用して15本をランキング付け
+          
+          ## 3. 精度確認
+          ペルソナランキングと元グループを比較し、精度を計算
+          
+          ## 4. 結果保存
+          {PRODUCT_NAME}/artifacts/precision_check.json に保存：
+          ```json
+          {
+            "precision_rate": [精度%],
+            "fifth_place_score": [5番目のスコア],
+            "ranking_results": [...]
+          }
+          ```
+          
+          ## 5. 次アクション決定
+          - 精度80%以上: approval_threshold.txt に5番目のスコアを保存
+          - 精度80%未満: criteria.json を最適化して更新
+          EOF
+          
+          PROMPT=$(cat criteria_optimization_prompt.txt)
+          PROMPT="${PROMPT//\{PRODUCT_NAME\}/${{ inputs.product_name }}}"
+          
+          npx @anthropic-ai/claude-code \
+            --allowedTools "Read,Write" \
+            --max-turns 50 \
+            --verbose \
+            --permission-mode "acceptEdits" \
+            -p "$PROMPT"
+      
+      - id: check-precision
+        run: |
+          PRECISION_FILE="${{ inputs.product_name }}/artifacts/precision_check.json"
+          if [ -f "$PRECISION_FILE" ]; then
+            PRECISION=$(python -c "import json; data=json.load(open('$PRECISION_FILE')); print(data.get('precision_rate', 0))")
+            echo "precision_rate=$PRECISION" >> $GITHUB_OUTPUT
+            
+            if (( $(echo "$PRECISION >= 80" | bc -l) )); then
+              echo "next_action=success" >> $GITHUB_OUTPUT
+              # 次のワークフローを起動
+              gh workflow run '3-script-generation.yml' -f product_name=${{ inputs.product_name }}
+            else
+              echo "next_action=optimize" >> $GITHUB_OUTPUT
+              # 自分自身を再起動
+              gh workflow run '2-criteria-optimization.yml' -f product_name=${{ inputs.product_name }}
+            fi
+          else
+            echo "precision_rate=0" >> $GITHUB_OUTPUT
+            echo "next_action=error" >> $GITHUB_OUTPUT
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

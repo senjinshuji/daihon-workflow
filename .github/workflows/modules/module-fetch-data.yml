@@ -1,0 +1,67 @@
+name: module-fetch-data
+
+on:
+  workflow_call:
+    inputs:
+      product_name:
+        required: true
+        type: string
+      sheets_id:
+        required: true
+        type: string
+    outputs:
+      completed:
+        value: ${{ jobs.fetch.outputs.completed }}
+    secrets:
+      google_sheets_api_key:
+        required: true
+      anthropic_api_key:
+        required: true
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    outputs:
+      completed: ${{ steps.execute.outputs.completed }}
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm install -g @anthropic-ai/claude-code
+      - run: mkdir -p "${{ inputs.product_name }}/data"
+      
+      - id: execute
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.anthropic_api_key }}
+          GOOGLE_SHEETS_API_KEY: ${{ secrets.google_sheets_api_key }}
+        run: |
+          cat << 'EOF' > fetch_data_prompt.txt
+          Google Sheets（ID: {SHEETS_ID}）から4つのCSVファイルを取得してください：
+          
+          1. market_bestsellers.csv
+          2. internal_top_group.csv
+          3. internal_middle_group.csv
+          4. internal_bottom_group.csv
+          
+          取得したデータを {PRODUCT_NAME}/data/ ディレクトリに保存し、
+          データクリーニング（空白行削除、UTF-8統一、ヘッダー正規化）を実行してください。
+          EOF
+          
+          PROMPT=$(cat fetch_data_prompt.txt)
+          PROMPT="${PROMPT//\{PRODUCT_NAME\}/${{ inputs.product_name }}}"
+          PROMPT="${PROMPT//\{SHEETS_ID\}/${{ inputs.sheets_id }}}"
+          
+          npx @anthropic-ai/claude-code \
+            --allowedTools "Read,Write,Bash" \
+            --max-turns 30 \
+            --verbose \
+            --permission-mode "acceptEdits" \
+            -p "$PROMPT"
+          
+          # 成功確認
+          if [ -f "${{ inputs.product_name }}/data/market_bestsellers.csv" ]; then
+            echo "completed=true" >> $GITHUB_OUTPUT
+          else
+            echo "completed=false" >> $GITHUB_OUTPUT
+          fi

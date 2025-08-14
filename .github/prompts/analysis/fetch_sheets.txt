@@ -1,0 +1,26 @@
+商品「{PRODUCT_NAME}」のGoogle Sheetsデータを取得し、CSVファイルとして保存してください。
+
+入力:
+- Google Sheets ID: {SHEETS_ID}
+- API Key: 環境変数 GOOGLE_SHEETS_API_KEY
+
+出力先:
+- {PRODUCT_NAME}/data/
+
+取得するデータ:
+1. 市場ベストセラーデータ（market_bestsellers.csv）
+2. 社内上位グループデータ（internal_top_group.csv）
+3. 社内中位グループデータ（internal_middle_group.csv）
+4. 社内下位グループデータ（internal_bottom_group.csv）
+
+各CSVファイルには以下の処理を行ってください:
+- データクリーニング（空白行の削除、形式の統一）
+- エンコーディングをUTF-8に統一
+- ヘッダー行の正規化
+- 日付形式の統一（YYYY-MM-DD）
+
+処理の詳細:
+- Google Sheets APIを使用してデータを取得
+- 必要に応じて .github/scripts/python/fetch_google_sheets.py を使用または改良
+- エラーハンドリングを適切に実装
+- 取得したデータのサマリーを表示

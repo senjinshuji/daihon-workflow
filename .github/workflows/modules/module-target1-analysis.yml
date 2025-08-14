@@ -1,0 +1,78 @@
+name: module-target1-analysis
+
+on:
+  workflow_call:
+    inputs:
+      product_name:
+        description: '商品名'
+        required: true
+        type: string
+    outputs:
+      analysis_completed:
+        description: 'ターゲット1分析完了ステータス'
+        value: ${{ jobs.analyze.outputs.analysis_completed }}
+    secrets:
+      anthropic_api_key:
+        description: 'Anthropic API Key'
+        required: true
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    outputs:
+      analysis_completed: ${{ steps.analyze.outputs.analysis_completed }}
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      
+      - name: Install Claude Code SDK
+        run: npm install -g @anthropic-ai/claude-code
+      
+      - name: Execute Target 1 Analysis
+        id: analyze
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.anthropic_api_key }}
+        run: |
+          echo "::group::🎯 Analyzing Target 1 for ${{ inputs.product_name }}"
+          
+          # 外部プロンプトファイルの読み込み
+          if [ -f ".github/prompts/analysis/analyze_target1.txt" ]; then
+            PROMPT=$(cat .github/prompts/analysis/analyze_target1.txt)
+          else
+            echo "::error::Prompt file not found: .github/prompts/analysis/analyze_target1.txt"
+            exit 1
+          fi
+          
+          PROMPT="${PROMPT//\{PRODUCT_NAME\}/${{ inputs.product_name }}}"
+          
+          echo "📝 Executing Claude Code SDK for Target 1 analysis..."
+
+          npx @anthropic-ai/claude-code \
+            --allowedTools "Read,Write" \
+            --max-turns 40 \
+            --verbose \
+            --permission-mode "acceptEdits" \
+            -p "$PROMPT" || {
+              echo "::error::❌ Claude Code SDK (Target 1) execution failed"
+              exit 1
+            }
+          
+          # 生成されたファイルの確認
+          echo ""
+          echo "📂 Checking generated Target 1 analysis report..."
+          
+          if [ -f "${{ inputs.product_name }}/artifacts/target_analysis_1.md" ]; then
+            echo "::notice::✅ Target 1 analysis report created"
+            echo "analysis_completed=true" >> $GITHUB_OUTPUT
+          else
+            echo "::warning::⚠️ Target 1 analysis report not found"
+            echo "analysis_completed=false" >> $GITHUB_OUTPUT
+          fi
+          
+          echo "::endgroup::"

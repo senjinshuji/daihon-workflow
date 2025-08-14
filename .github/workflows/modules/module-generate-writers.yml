@@ -1,0 +1,116 @@
+name: module-generate-writers
+
+on:
+  workflow_call:
+    inputs:
+      product_name:
+        description: '商品名'
+        required: true
+        type: string
+    outputs:
+      writers_generated:
+        description: '生成されたライター数'
+        value: ${{ jobs.generate.outputs.writers_generated }}
+      completed:
+        description: '完了ステータス'
+        value: ${{ jobs.generate.outputs.completed }}
+    secrets:
+      anthropic_api_key:
+        description: 'Anthropic API Key'
+        required: true
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    outputs:
+      writers_generated: ${{ steps.generate-writers.outputs.count }}
+      completed: ${{ steps.generate-writers.outputs.completed }}
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      
+      - name: Install Claude Code SDK
+        run: npm install -g @anthropic-ai/claude-code
+      
+      - name: Create writers directory
+        run: |
+          mkdir -p "${{ inputs.product_name }}/writers"
+          echo "✅ Created writers directory: ${{ inputs.product_name }}/writers"
+      
+      - name: Generate Writers with Claude Code SDK
+        id: generate-writers
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.anthropic_api_key }}
+        run: |
+          echo "::group::✍️ Generating writers for ${{ inputs.product_name }}"
+          
+          # プロンプトを外部ファイルから読み込み
+          if [ -f ".github/prompts/generation/generate_writers.txt" ]; then
+            PROMPT_TEMPLATE=$(cat .github/prompts/generation/generate_writers.txt)
+          else
+            echo "⚠️ Prompt file not found, using inline prompt"
+            PROMPT_TEMPLATE="分析レポートを基に、商品「{PRODUCT_NAME}」の広告台本を作成するライター人格を3つ生成してください。
+            
+            入力:
+            - {PRODUCT_NAME}/artifacts/product_analysis.md
+            - {PRODUCT_NAME}/artifacts/market_analysis.md
+            
+            生成するファイル:
+            
+            【ライター3名】{PRODUCT_NAME}/writers/
+            - writer1.md: 感情訴求型（ストーリーテリング重視）
+            - writer2.md: 論理訴求型（データと論理重視）
+            - writer3.md: ハイブリッド型（エンタメと実用性）
+            
+            各ライターには以下を含める:
+            - クリエイティブ哲学
+            - メッセージ戦略
+            - 表現スタイル
+            - 制作ガイドライン
+            
+            詳細で実践的な人格定義を作成してください。"
+          fi
+          
+          # プレースホルダーを置換
+          PROMPT="${PROMPT_TEMPLATE//\{PRODUCT_NAME\}/${{ inputs.product_name }}}"
+          
+          echo "📝 Executing Claude Code SDK for writer generation..."
+          
+          # Claude Code SDKの実行
+          npx @anthropic-ai/claude-code \
+            --allowedTools "Read,Write" \
+            --max-turns 40 \
+            --verbose \
+            --permission-mode "acceptEdits" \
+            -p "$PROMPT" || {
+              echo "::error::❌ Claude Code SDK execution failed"
+              exit 1
+            }
+          
+          # 生成されたライター数をカウント
+          echo ""
+          echo "📂 Checking generated writers..."
+          if [ -d "${{ inputs.product_name }}/writers" ]; then
+            WRITER_COUNT=$(ls -1 "${{ inputs.product_name }}/writers/"*.md 2>/dev/null | wc -l)
+            echo "::notice::✅ Generated $WRITER_COUNT writers"
+            ls -la "${{ inputs.product_name }}/writers/"
+            
+            if [ "$WRITER_COUNT" -gt 0 ]; then
+              echo "count=$WRITER_COUNT" >> $GITHUB_OUTPUT
+              echo "completed=true" >> $GITHUB_OUTPUT
+            else
+              echo "::error::❌ No writers were generated"
+              exit 1
+            fi
+          else
+            echo "::error::❌ Writers directory not found"
+            exit 1
+          fi
+          
+          echo "::endgroup::"

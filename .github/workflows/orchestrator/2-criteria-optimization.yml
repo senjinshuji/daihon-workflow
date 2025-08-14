@@ -1,0 +1,216 @@
+name: 2. 評価基準最適化ループ
+
+on:
+  workflow_dispatch:
+    inputs:
+      product_name:
+        description: '商品名'
+        required: true
+        type: string
+
+permissions:
+  contents: write
+  pull-requests: write
+  actions: read
+
+jobs:
+  # Step 1: データ抽出（Pythonコード）
+  extract-sample-data:
+    runs-on: ubuntu-latest
+    outputs:
+      scripts_extracted: ${{ steps.extract.outputs.scripts_count }}
+      extraction_completed: ${{ steps.extract.outputs.completed }}
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      - run: pip install pandas numpy
+
+      - id: extract
+        run: |
+          python .github/scripts/python/extract_sample_scripts.py \
+            --product-name "${{ inputs.product_name }}" \
+            --data-dir "${{ inputs.product_name }}/data" | \
+          while read line; do
+            echo "$line" >> $GITHUB_OUTPUT
+          done
+
+  # Step 2: ペルソナ評価（並列実行）
+  evaluate-persona1:
+    needs: extract-sample-data
+    if: needs.extract-sample-data.outputs.extraction_completed == 'true'
+    uses: ../.github/workflows/modules/module-persona1-evaluation.yml
+    with:
+      product_name: ${{ inputs.product_name }}
+    secrets:
+      anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+
+  evaluate-persona2:
+    needs: extract-sample-data
+    if: needs.extract-sample-data.outputs.extraction_completed == 'true'
+    uses: ../.github/workflows/modules/module-persona2-evaluation.yml
+    with:
+      product_name: ${{ inputs.product_name }}
+    secrets:
+      anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+
+  evaluate-persona3:
+    needs: extract-sample-data
+    if: needs.extract-sample-data.outputs.extraction_completed == 'true'
+    uses: ../.github/workflows/modules/module-persona3-evaluation.yml
+    with:
+      product_name: ${{ inputs.product_name }}
+    secrets:
+      anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+
+  # Step 2.5: ペルソナ評価平均値計算
+  calculate-averages:
+    needs: [evaluate-persona1, evaluate-persona2, evaluate-persona3]
+    runs-on: ubuntu-latest
+    outputs:
+      calculation_completed: ${{ steps.calc-averages.outputs.calculation_completed }}
+      scripts_processed: ${{ steps.calc-averages.outputs.scripts_processed }}
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      - run: pip install pandas numpy
+
+      - id: calc-averages
+        run: |
+          python .github/scripts/python/calculate_persona_averages.py \
+            --product-name "${{ inputs.product_name }}" | \
+          while read line; do
+            echo "$line" >> $GITHUB_OUTPUT
+          done
+
+  # Step 3: 精度確認（Pythonコード）
+  check-precision:
+    needs: [extract-sample-data, calculate-averages]
+    runs-on: ubuntu-latest
+    outputs:
+      precision_check: ${{ steps.precision.outputs.precision_check }}
+      accuracy_rate: ${{ steps.precision.outputs.accuracy_rate }}
+      needs_optimization: ${{ steps.precision.outputs.needs_optimization }}
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      - run: pip install pandas numpy
+
+      - id: precision
+        run: |
+          python .github/scripts/python/check_evaluation_precision.py \
+            --product-name "${{ inputs.product_name }}" | \
+          while read line; do
+            echo "$line" >> $GITHUB_OUTPUT
+          done
+
+  # Step 4: 条件分岐とアクション（Pythonコード）
+  execute-next-action:
+    needs: [extract-sample-data, calculate-averages, check-precision]
+    runs-on: ubuntu-latest
+    outputs:
+      final_action: ${{ steps.action.outputs.final_action }}
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      - run: pip install pandas numpy
+      - run: npm install -g @anthropic-ai/claude-code
+
+      - id: action
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # 精度確認結果に基づくアクション実行
+          if [ "${{ needs.check-precision.outputs.precision_check }}" = "pass" ]; then
+            # 精度達成: 承認閾値を設定してPhase 3起動
+            python .github/scripts/python/execute_next_action.py \
+              --product-name "${{ inputs.product_name }}" \
+              --precision-check "${{ needs.check-precision.outputs.precision_check }}" \
+              --accuracy-rate "${{ needs.check-precision.outputs.accuracy_rate }}" | \
+            while read line; do
+              echo "$line" >> $GITHUB_OUTPUT
+            done
+          else
+            # 精度不足: 評価基準最適化
+            echo "⚠️ 精度が不足しています。評価基準を最適化します..."
+            
+            # Claude Code SDKで評価基準最適化
+            cat << 'EOF' > optimize_criteria_prompt.txt
+            評価基準の最適化を実行してください：
+            
+            ## 現状分析
+            {PRODUCT_NAME}/artifacts/precision_check.json の結果を詳細分析し、
+            精度向上のために {PRODUCT_NAME}/artifacts/criteria.json の重み付けを最適化してください。
+            
+            ## 最適化要件
+            - 目標精度: 80%以上
+            - 各グループで3本以上の差分をなくす
+            - version番号をインクリメント
+            - 変更理由をdescriptionに記録
+            
+            ## 出力
+            最適化された criteria.json を保存してください。
+            EOF
+            
+            PROMPT=$(cat optimize_criteria_prompt.txt)
+            PROMPT="${PROMPT//\{PRODUCT_NAME\}/${{ inputs.product_name }}}"
+            
+            npx @anthropic-ai/claude-code \
+              --allowedTools "Read,Write" \
+              --max-turns 30 \
+              --verbose \
+              --permission-mode "acceptEdits" \
+              -p "$PROMPT"
+            
+            # Phase 2を再実行
+            echo "🔄 Phase 2を再実行します..."
+            gh workflow run orchestrator/2-criteria-optimization.yml -f product_name=${{ inputs.product_name }}
+            
+            echo "final_action=phase2_rerun" >> $GITHUB_OUTPUT
+          fi
+
+  # Step 5: 結果集計
+  finalize:
+    needs: [extract-sample-data, calculate-averages, check-precision, execute-next-action]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Commit Results
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "📊 [${{ inputs.product_name }}] Phase 2: 評価基準最適化実行" || {
+            echo "No changes to commit"
+          }
+          git push || {
+            echo "Nothing to push"
+          }
+      
+      - name: Generate Summary
+        run: |
+          echo "## 📊 Phase 2 完了: 評価基準最適化" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 📈 実行結果" >> $GITHUB_STEP_SUMMARY
+          echo "- 抽出台本数: ${{ needs.extract-sample-data.outputs.scripts_extracted }}本" >> $GITHUB_STEP_SUMMARY
+          echo "- ペルソナ評価: 3つのペルソナで並列実行完了" >> $GITHUB_STEP_SUMMARY
+          echo "- 平均値計算: ${{ needs.calculate-averages.outputs.scripts_processed }}本処理" >> $GITHUB_STEP_SUMMARY
+          echo "- 精度確認: ${{ needs.check-precision.outputs.accuracy_rate }}%" >> $GITHUB_STEP_SUMMARY
+          echo "- 最適化必要: ${{ needs.check-precision.outputs.needs_optimization }}" >> $GITHUB_STEP_SUMMARY
+          echo "- 実行アクション: ${{ needs.execute-next-action.outputs.final_action }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          if [ "${{ needs.execute-next-action.outputs.final_action }}" = "phase3_triggered" ]; then
+            echo "### 🚀 次のステップ" >> $GITHUB_STEP_SUMMARY
+            echo "✅ 精度要件を満たしました。Phase 3（台本生成）が自動起動されました。" >> $GITHUB_STEP_SUMMARY
+          elif [ "${{ needs.execute-next-action.outputs.final_action }}" = "phase2_rerun" ]; then
+            echo "### 🔄 継続実行" >> $GITHUB_STEP_SUMMARY
+            echo "⚠️ 精度が不足しています。評価基準を最適化してPhase 2を再実行しました。" >> $GITHUB_STEP_SUMMARY
+          fi

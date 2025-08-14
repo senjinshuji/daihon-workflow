@@ -1,0 +1,110 @@
+name: module-persona3-evaluation
+
+on:
+  workflow_call:
+    inputs:
+      product_name:
+        required: true
+        type: string
+    outputs:
+      evaluation_completed:
+        value: ${{ jobs.evaluate.outputs.evaluation_completed }}
+      persona_id:
+        value: ${{ jobs.evaluate.outputs.persona_id }}
+    secrets:
+      anthropic_api_key:
+        required: true
+
+jobs:
+  evaluate:
+    runs-on: ubuntu-latest
+    outputs:
+      evaluation_completed: ${{ steps.evaluate-persona3.outputs.completed }}
+      persona_id: "persona3"
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm install -g @anthropic-ai/claude-code
+
+      - id: evaluate-persona3
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.anthropic_api_key }}
+        run: |
+          cat << 'EOF' > persona3_evaluation_prompt.txt
+          ペルソナ3による台本評価を実行してください：
+          
+          ## 評価者の設定
+          {PRODUCT_NAME}/personas/persona3.md を詳細に読み込み、ペルソナ3の人格になりきって評価してください。
+          
+          ## 評価対象
+          {PRODUCT_NAME}/artifacts/sample_scripts_for_evaluation.json に含まれる全ての台本
+          
+          ## 評価プロセス
+          1. **人格理解**: persona3.mdを深く読み込み、その人格の価値観・悩み・欲求を理解
+          2. **評価基準確認**: {PRODUCT_NAME}/artifacts/criteria.json を読み込み、評価軸と重み付けを確認
+          3. **台本分析**: 各台本をペルソナ3の視点で詳細に分析
+          4. **基準に基づく評価**: criteria.jsonで定義された評価軸で0-100点評価
+          5. **重み付け計算**: criteria.jsonの重みを適用して総合スコア算出
+          6. **詳細理由**: なぜそのスコアなのかを詳細に説明
+          
+          ## 評価観点（ペルソナ3視点）
+          - このペルソナとして本当に魅力を感じるか
+          - このペルソナの深層心理に響くか
+          - このペルソナの課題解決につながるか
+          - このペルソナの認知を変える力があるか
+          
+          ## 出力フォーマット
+          {PRODUCT_NAME}/artifacts/persona3_evaluation.json に以下形式で保存：
+          
+          ```json
+          {
+            "persona_id": "persona3",
+            "persona_summary": "ペルソナ3の特徴・価値観・悩みの要約",
+            "evaluation_timestamp": "YYYY-MM-DDTHH:MM:SS",
+            "criteria_used": "criteria.jsonから読み込んだ評価基準をそのまま記録",
+            "evaluations": {
+              "script_id": {
+                "各評価軸": "criteria.jsonで定義された軸ごとのスコア(0-100点)",
+                "total_score": "重み付け適用後の総合スコア",
+                "evaluation_reason": "ペルソナ3視点での詳細な評価理由と感じ方"
+              }
+            },
+            "evaluation_metadata": {
+              "total_scripts_evaluated": 15,
+              "average_score": "計算された平均スコア",
+              "score_distribution": {
+                "high": "80点以上の台本数",
+                "medium": "60-79点の台本数", 
+                "low": "60点未満の台本数"
+              }
+            }
+          }
+          ```
+          
+          **重要**: criteria.jsonで定義された評価軸と重み付けを必ず使用してください。
+          固定の4軸ではなく、criteria.jsonの内容に従って評価を実行してください。
+          
+          ペルソナ3の深層心理に基づいた一貫性のある評価を実行してください。
+          EOF
+          
+          PROMPT=$(cat persona3_evaluation_prompt.txt)
+          PROMPT="${PROMPT//\{PRODUCT_NAME\}/${{ inputs.product_name }}}"
+          
+          npx @anthropic-ai/claude-code \
+            --allowedTools "Read,Write" \
+            --max-turns 60 \
+            --verbose \
+            --permission-mode "acceptEdits" \
+            -p "$PROMPT"
+          
+          # 評価完了確認
+          RESULTS_FILE="${{ inputs.product_name }}/artifacts/persona3_evaluation.json"
+          if [ -f "$RESULTS_FILE" ]; then
+            echo "completed=true" >> $GITHUB_OUTPUT
+            echo "✅ ペルソナ3評価完了"
+          else
+            echo "completed=false" >> $GITHUB_OUTPUT
+            echo "❌ ペルソナ3評価に失敗しました"
+          fi

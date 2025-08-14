@@ -1,0 +1,189 @@
+name: 3. 台本生成とフィルタリング
+
+on:
+  workflow_dispatch:
+    inputs:
+      product_name:
+        description: '商品名'
+        required: true
+        type: string
+
+permissions:
+  contents: write
+  pull-requests: write
+  actions: read
+
+jobs:
+  # Step 1: 台本生成（並列実行）
+  generate-scripts-writer1:
+    uses: ../.github/workflows/modules/module-generate-scripts-writer1.yml
+    with:
+      product_name: ${{ inputs.product_name }}
+    secrets:
+      anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+
+  generate-scripts-writer2:
+    uses: ../.github/workflows/modules/module-generate-scripts-writer2.yml
+    with:
+      product_name: ${{ inputs.product_name }}
+    secrets:
+      anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+
+  generate-scripts-writer3:
+    uses: ../.github/workflows/modules/module-generate-scripts-writer3.yml
+    with:
+      product_name: ${{ inputs.product_name }}
+    secrets:
+      anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+
+  # Step 2: 台本評価とフィルタリング
+  evaluate-and-filter:
+    needs: [generate-scripts-writer1, generate-scripts-writer2, generate-scripts-writer3]
+    uses: ../.github/workflows/modules/module-evaluate-and-filter.yml
+    with:
+      product_name: ${{ inputs.product_name }}
+    secrets:
+      anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+
+  # Step 3: Writer調整（必要時のみ）
+  adjust-writers:
+    needs: evaluate-and-filter
+    if: needs.evaluate-and-filter.outputs.writer_adjustment_needed == 'true'
+    runs-on: ubuntu-latest
+    outputs:
+      adjustment_completed: ${{ steps.adjust.outputs.completed }}
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm install -g @anthropic-ai/claude-code
+      
+      - id: adjust
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          echo "🔧 Adjusting writer personalities for ${{ inputs.product_name }}..."
+          
+          # 外部プロンプトファイルの読み込み
+          if [ -f ".github/prompts/generation/generate_writers.txt" ]; then
+            PROMPT=$(cat .github/prompts/generation/generate_writers.txt)
+          else
+            echo "::error::Prompt file not found: .github/prompts/generation/generate_writers.txt"
+            exit 1
+          fi
+          
+          # Writer調整指示を追加
+          cat << 'EOF' > writer_adjustment_instruction.txt
+          
+          ## Writer調整指示
+          
+          前回生成されたWriterの台本評価結果を参考に、承認台本数が不足しているWriterの人格を調整してください：
+          
+          ### 評価結果参照
+          - {PRODUCT_NAME}/evaluations/averaged_script_evaluation.json（平均評価結果）
+          - {PRODUCT_NAME}/artifacts/filtering_results.json（フィルタリング結果）
+          
+          ### 調整方針
+          1. **承認台本数が3本未満のWriter**を特定
+          2. **評価が低かった要因**を分析（criteria.jsonの各項目スコア）
+          3. **Writer人格の問題点**を特定（キャラクター設定・口調・アプローチ方法）
+          4. **ターゲット深層心理との整合性**を再検証
+          5. **改善されたWriter人格**を再生成
+          
+          ### 調整内容
+          - **キャラクター設定**: より信頼性・共感性の高い人物像
+          - **口調・言葉遣い**: ターゲットに響く表現方法
+          - **訴求アプローチ**: 深層心理により効果的な手法
+          - **戦略パッケージ**: WHO-FMT-USP-コンセプト-キャッチコピーの最適化
+          
+          既存のWriter定義ファイルを上書きして、改善されたWriter人格を生成してください。
+          EOF
+          
+          ADJUSTMENT_INSTRUCTION=$(cat writer_adjustment_instruction.txt)
+          FULL_PROMPT="$PROMPT\n\n$ADJUSTMENT_INSTRUCTION"
+          FULL_PROMPT="${FULL_PROMPT//\{PRODUCT_NAME\}/${{ inputs.product_name }}}"
+          
+          npx @anthropic-ai/claude-code \
+            --allowedTools "Read,Write" \
+            --max-turns 60 \
+            --verbose \
+            --permission-mode "acceptEdits" \
+            -p "$FULL_PROMPT"
+          
+          # 完了確認
+          if [ -f "${{ inputs.product_name }}/writers/writer1.md" ] && \
+             [ -f "${{ inputs.product_name }}/writers/writer2.md" ] && \
+             [ -f "${{ inputs.product_name }}/writers/writer3.md" ]; then
+            echo "completed=true" >> $GITHUB_OUTPUT
+            echo "✅ Writer adjustment completed"
+          else
+            echo "completed=false" >> $GITHUB_OUTPUT
+            echo "❌ Writer adjustment failed"
+          fi
+
+  # Step 4: 再実行判定（Writer調整後）
+  trigger-retry:
+    needs: [evaluate-and-filter, adjust-writers]
+    if: needs.evaluate-and-filter.outputs.writer_adjustment_needed == 'true' && needs.adjust-writers.outputs.adjustment_completed == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Trigger Phase 3 Retry
+        run: |
+          echo "🔄 Triggering Phase 3 retry after writer adjustment..."
+          
+          # GitHub CLIを使用してワークフローを再実行
+          gh workflow run "3-script-generation.yml" \
+            -f product_name="${{ inputs.product_name }}" \
+            --repo ${{ github.repository }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  # Step 5: 結果集計とコミット
+  finalize:
+    needs: [evaluate-and-filter, adjust-writers]
+    if: needs.evaluate-and-filter.outputs.writer_adjustment_needed == 'false' || (needs.evaluate-and-filter.outputs.writer_adjustment_needed == 'true' && needs.adjust-writers.outputs.adjustment_completed == 'false')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Commit Results
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "📝 [${{ inputs.product_name }}] Phase 3 実行完了: 台本生成とフィルタリング" || {
+            echo "No changes to commit"
+          }
+          git push || {
+            echo "Nothing to push"
+          }
+      
+      - name: Generate Summary
+        run: |
+          echo "## 📝 Phase 3 実行完了: 台本生成とフィルタリング" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 📊 実行結果" >> $GITHUB_STEP_SUMMARY
+          echo "- **Writer1台本数**: ${{ needs.generate-scripts-writer1.outputs.scripts_generated }}本" >> $GITHUB_STEP_SUMMARY
+          echo "- **Writer2台本数**: ${{ needs.generate-scripts-writer2.outputs.scripts_generated }}本" >> $GITHUB_STEP_SUMMARY
+          echo "- **Writer3台本数**: ${{ needs.generate-scripts-writer3.outputs.scripts_generated }}本" >> $GITHUB_STEP_SUMMARY
+          echo "- **承認台本数**: ${{ needs.evaluate-and-filter.outputs.approved_count }}本" >> $GITHUB_STEP_SUMMARY
+          echo "- **承認率**: ${{ needs.evaluate-and-filter.outputs.approval_rate }}%" >> $GITHUB_STEP_SUMMARY
+          echo "- **Writer調整必要**: ${{ needs.evaluate-and-filter.outputs.writer_adjustment_needed }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          if [ "${{ needs.evaluate-and-filter.outputs.writer_adjustment_needed }}" = "false" ]; then
+            echo "### 🎉 Phase 4準備完了!" >> $GITHUB_STEP_SUMMARY
+            echo "全てのWriterで3本以上の承認台本が生成されました。" >> $GITHUB_STEP_SUMMARY
+            echo "承認済み台本を確認して制作を開始してください。" >> $GITHUB_STEP_SUMMARY
+          elif [ "${{ needs.evaluate-and-filter.outputs.writer_adjustment_needed }}" = "true" ]; then
+            if [ "${{ needs.adjust-writers.outputs.adjustment_completed }}" = "true" ]; then
+              echo "### 🔄 Writer調整完了 - 再実行中" >> $GITHUB_STEP_SUMMARY
+              echo "Writer人格を調整しました。Phase 3を再実行しています。" >> $GITHUB_STEP_SUMMARY
+            else
+              echo "### ❌ Writer調整失敗" >> $GITHUB_STEP_SUMMARY
+              echo "Writer調整に失敗しました。手動での確認が必要です。" >> $GITHUB_STEP_SUMMARY
+            fi
+          fi

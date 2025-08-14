@@ -1,0 +1,148 @@
+name: 1. 分析・ペルソナ・ライター生成フェーズ
+
+on:
+  workflow_dispatch:
+    inputs:
+      product_name:
+        description: '商品名'
+        required: true
+        type: string
+      sheets_id:
+        description: 'Google Sheets ID (オプション)'
+        required: false
+        type: string
+
+permissions:
+  contents: write
+  pull-requests: write
+  actions: read
+
+jobs:
+  # Step 1: データ取得 (並列実行)
+  fetch-data:
+    uses: ../.github/workflows/modules/module-fetch-data.yml
+    with:
+      product_name: ${{ inputs.product_name }}
+      sheets_id: ${{ inputs.sheets_id || secrets.GOOGLE_SHEETS_ID }}
+    secrets:
+      google_sheets_api_key: ${{ secrets.GOOGLE_SHEETS_API_KEY }}
+      anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+
+  # Step 2: Web検索 (並列実行)
+  web-search:
+    uses: ../.github/workflows/modules/module-web-search.yml
+    with:
+      product_name: ${{ inputs.product_name }}
+    secrets:
+      gemini_api_key: ${{ secrets.GEMINI_API_KEY }}
+      anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+
+  # Step 3: 商品分析 (データ取得完了後)
+  analyze-product:
+    needs: [fetch-data, web-search]
+    uses: ../.github/workflows/modules/module-product-analysis.yml
+    with:
+      product_name: ${{ inputs.product_name }}
+    secrets:
+      anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+
+  # Step 3: ターゲット1分析 (商品分析完了後)
+  analyze-target1:
+    needs: analyze-product
+    uses: ../.github/workflows/modules/module-target1-analysis.yml
+    with:
+      product_name: ${{ inputs.product_name }}
+    secrets:
+      anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+
+  # Step 3: ターゲット2分析 (商品分析完了後)
+  analyze-target2:
+    needs: analyze-product
+    uses: ../.github/workflows/modules/module-target2-analysis.yml
+    with:
+      product_name: ${{ inputs.product_name }}
+    secrets:
+      anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+
+  # Step 3: ターゲット3分析 (商品分析完了後)
+  analyze-target3:
+    needs: analyze-product
+    uses: ../.github/workflows/modules/module-target3-analysis.yml
+    with:
+      product_name: ${{ inputs.product_name }}
+    secrets:
+      anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+
+  # Step 4: ペルソナ生成 (分析完了後)
+  generate-personas:
+    needs: [analyze-target1, analyze-target2, analyze-target3]
+    uses: ../.github/workflows/modules/module-generate-personas.yml
+    with:
+      product_name: ${{ inputs.product_name }}
+    secrets:
+      anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+
+  # Step 5: ライター生成 (分析完了後)
+  generate-writers:
+    needs: [analyze-target1, analyze-target2, analyze-target3]
+    uses: ../.github/workflows/modules/module-generate-writers.yml
+    with:
+      product_name: ${{ inputs.product_name }}
+    secrets:
+      anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+
+  # Step 6: 初期評価基準設定 (ペルソナ・ライター完了後)
+  initialize-criteria:
+    needs: [generate-personas, generate-writers]
+    uses: ../.github/workflows/modules/module-initialize-criteria.yml
+    with:
+      product_name: ${{ inputs.product_name }}
+    secrets:
+      anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+
+  # Step 7: 結果集計とコミット
+  finalize:
+    needs: [analyze-product, analyze-target1, analyze-target2, analyze-target3, generate-personas, generate-writers, initialize-criteria]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      
+      - name: Commit Phase 1 Results
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "✅ [${{ inputs.product_name }}] Phase 1 完了: 分析・ペルソナ・ライター生成" || {
+            echo "No changes to commit"
+          }
+          git push || {
+            echo "Nothing to push"
+          }
+      
+      - name: Generate Summary
+        run: |
+          echo "## ✅ Phase 1 完了: 分析・ペルソナ・ライター生成" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 📊 実行結果" >> $GITHUB_STEP_SUMMARY
+          echo "- データ取得: ${{ needs.fetch-data.outputs.completed }}" >> $GITHUB_STEP_SUMMARY
+          echo "- Web検索: ${{ needs.web-search.outputs.completed }}" >> $GITHUB_STEP_SUMMARY
+          echo "- 商品分析: ${{ needs.analyze-product.outputs.analysis_completed }}" >> $GITHUB_STEP_SUMMARY
+          echo "- ターゲット1分析: ${{ needs.analyze-target1.outputs.analysis_completed }}" >> $GITHUB_STEP_SUMMARY
+          echo "- ターゲット2分析: ${{ needs.analyze-target2.outputs.analysis_completed }}" >> $GITHUB_STEP_SUMMARY
+          echo "- ターゲット3分析: ${{ needs.analyze-target3.outputs.analysis_completed }}" >> $GITHUB_STEP_SUMMARY
+          echo "- ペルソナ生成: ${{ needs.generate-personas.outputs.personas_generated }}個" >> $GITHUB_STEP_SUMMARY
+          echo "- ライター生成: ${{ needs.generate-writers.outputs.writers_generated }}個" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 🚀 次のステップ" >> $GITHUB_STEP_SUMMARY
+          echo "Phase 2（評価基準最適化）を実行してください:" >> $GITHUB_STEP_SUMMARY
+          echo '```bash' >> $GITHUB_STEP_SUMMARY
+          echo 'gh workflow run 2-criteria-optimization.yml -f product_name=${{ inputs.product_name }}' >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+      
+      - name: Trigger Next Phase
+        run: |
+          echo "🚀 Phase 2 (評価基準最適化) を自動起動します..."
+          gh workflow run 2-criteria-optimization.yml -f product_name=${{ inputs.product_name }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

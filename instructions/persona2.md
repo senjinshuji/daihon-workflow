@@ -21,28 +21,19 @@ CDからの評価指示に基づき、あなたに与えられた人格ファイ
 理解し、コスパを重視する視聴者の視点から15案の台本を評価します。
 
 **⚡ 最初に必ず実行：TodoWriteでチェックリスト作成**
-```
-プロジェクト開始時は必ず以下のコマンドを実行してください：
-TodoWriteツールで全フェーズのチェックリストを作成
-
-- [ ] Phase 1: 人格ファイルと指示の読み込み
-- [ ] Phase 2: 15案の台本を詳細に評価
-- [ ] Phase 3: 評価結果をファイルに保存
-- [ ] Phase 4: 評価完了をCDに報告
-
-```
-
-### Phase 1: 人格ファイルと指示の読み込み
-今回のループでのあなたの思考の核となる人格ファイル`persona2_loop[N].md` を読み込み、その人格に完全になりきってください。
 ```bash
-echo "📖 人格ファイルと評価基準を読み込み、評価者人格を形成します..."
-current_loop="loop1" # ループに応じて変更
-cd projects/[プロジェクト名]
-cat ${current_loop}/persona2/persona2_${current_loop}.md
+# TodoWrite: "Phase 1: 人格ファイルと指示の読み込み", "Phase 2: 15案の台本を詳細に評価", "Phase 3: 評価結果をファイルに保存", "Phase 4: 評価完了をファイルに保存"
+```
+
+### Phase 1: 人格ファイルの読み込み
+今回のループでのあなたの思考の核となる、固定の人格ファイル `projects/[プロジェクト名]/persona2.md` を読み込み、その人格に完全になりきってください。この人格はループ間で一貫しています。
+```bash
+echo "📖 固定人格ファイル projects/[プロジェクト名]/persona2.md を読み込み、人格を形成します..."
+cat projects/[プロジェクト名]/persona2.md
 echo "✅ 人格形成完了。評価を開始します。"
 ```
 
-### Phase 2: 15案の台本を詳細に評価
+### Phase 2: 全ライターの全台本の読み込みと評価
 「あなたは動画広告台本の評価専門家です。**現在のループの `persona_evaluation_criteria.md` を熟読し、そこに定義された評価基準に従って**、15案すべての台本を詳細に評価してください。」
 
 **重要な評価指針:**
@@ -126,16 +117,16 @@ echo "💾 評価結果をファイルに保存します..."
 echo "✅ 15案すべての評価ファイル保存完了。"
 ```
 
-### Phase 4: 評価完了をCDに報告
-15案すべての評価・保存が完了したら、CDに詳細な完了報告を行います。
+### Phase 4: 評価完了をファイルに保存
+全台本の評価・保存が完了したら、自身の完了ステータスをファイルに書き込みます。
+【重要】必ずこのファイル名を守ってください。
+persona3_completed.txt
 
 ```bash
-echo "📤 [Persona2] CDへの報告処理を監督役に委任します。"
 echo "✅ [Persona2] 自身の完了ステータスをファイルに書き込みます..."
-current_loop="loop1" # ループに応じて変更
-mkdir -p tmp  # tmpディレクトリが存在しない場合は作成
-touch tmp/persona2_${current_loop}_completed.txt  # ファイル作成
-ls -la tmp/persona2_${current_loop}_completed.txt  # ファイル作成を確認
+mkdir -p tmp
+touch tmp/persona2_completed.txt
+ls -la tmp/persona2_completed.txt
 echo "🎉 [Persona2] 評価プロセス完了。監督役の指示を待ちます。"
 ```
 

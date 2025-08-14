@@ -1,0 +1,78 @@
+name: module-product-analysis
+
+on:
+  workflow_call:
+    inputs:
+      product_name:
+        description: '商品名'
+        required: true
+        type: string
+    outputs:
+      analysis_completed:
+        description: '商品分析完了ステータス'
+        value: ${{ jobs.analyze.outputs.analysis_completed }}
+    secrets:
+      anthropic_api_key:
+        description: 'Anthropic API Key'
+        required: true
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    outputs:
+      analysis_completed: ${{ steps.analyze.outputs.analysis_completed }}
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      
+      - name: Install Claude Code SDK
+        run: npm install -g @anthropic-ai/claude-code
+      
+      - name: Execute Product Analysis
+        id: analyze
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.anthropic_api_key }}
+        run: |
+          echo "::group::📈 Analyzing product for ${{ inputs.product_name }}"
+          
+          # 商品分析プロンプトの読み込み
+          if [ -f ".github/prompts/analysis/analyze_product.txt" ]; then
+            PROMPT_PRODUCT=$(cat .github/prompts/analysis/analyze_product.txt)
+          else
+            echo "::error::Prompt file not found: .github/prompts/analysis/analyze_product.txt"
+            exit 1
+          fi
+
+          PROMPT_PRODUCT="${PROMPT_PRODUCT//\{PRODUCT_NAME\}/${{ inputs.product_name }}}"
+
+          echo "📝 Executing Claude Code SDK for product analysis..."
+
+          npx @anthropic-ai/claude-code \
+            --allowedTools "Read,Write" \
+            --max-turns 40 \
+            --verbose \
+            --permission-mode "acceptEdits" \
+            -p "$PROMPT_PRODUCT" || {
+              echo "::error::❌ Claude Code SDK (product) execution failed"
+              exit 1
+            }
+          
+          # 生成されたファイルの確認
+          echo ""
+          echo "📂 Checking generated product analysis report..."
+          
+          if [ -f "${{ inputs.product_name }}/artifacts/product_analysis.md" ]; then
+            echo "::notice::✅ Product analysis report created"
+            echo "analysis_completed=true" >> $GITHUB_OUTPUT
+          else
+            echo "::warning::⚠️ Product analysis report not found"
+            echo "analysis_completed=false" >> $GITHUB_OUTPUT
+          fi
+          
+          echo "::endgroup::"

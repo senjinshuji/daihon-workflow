@@ -1,0 +1,145 @@
+評価結果を分析し、評価基準の重み付けを最適化してください。
+
+入力:
+- 評価結果: {PRODUCT_NAME}/evaluations/*.json または ranking_results.json
+- 現在の基準: {PRODUCT_NAME}/artifacts/criteria.json
+- ループ番号またはイテレーション: {LOOP_NUMBER}
+
+出力:
+- 更新された基準: {PRODUCT_NAME}/artifacts/criteria.json（上書き更新）
+
+重要な制約:
+- **評価項目は固定**: 以下の11項目は変更不可
+  1. appeal_direction_clarity (訴求方向性の明確性・一貫性)
+  2. differentiation_clarity (他選択肢との差別化の明確性)
+  3. usp_strength (独自価値提案(USP)の強度)
+  4. selection_reason_clarity (選ばれる理由の決定的明確性)
+  5. opening_hook_intensity (冒頭フックの強烈さ)
+  6. sales_pitch_elimination (売り込み感の排除度)
+  7. character_edge (キャラクターのエッジ立ち)
+  8. who_fmt_usp_integration (WHO-FMT-USP戦略的統合性)
+  9. flow_naturalness (構成フローの自然さ)
+  10. right_brain_impact (右脳直撃インパクト)
+  11. trust_building (先回り対処による信頼構築)
+
+- **重み付けのみ調整可能**: 各項目の重み（weights）のみを変更
+- **重みの合計は1.0**: 全ての重みの合計が必ず1.0になるように正規化
+
+分析プロセス:
+
+## 1. 評価結果の分析
+
+### Phase 2の場合（ランキング精度改善）
+- 正しくランキングされていない台本の特徴を分析
+- topグループが上位に来ていない理由を特定
+- middleグループが中位に来ていない理由を特定
+- bottomグループが下位に来ていない理由を特定
+
+### Phase 3の場合（台本品質改善）
+- 高評価台本の成功要因を分析
+- 低評価台本の問題点を特定
+- ペルソナごとの評価傾向を分析
+
+## 2. 重み付け調整の戦略
+
+### 調整の原則
+```python
+def optimize_weights(current_weights, analysis_results):
+    """
+    重み付けを最適化する
+    - 評価項目は変更しない
+    - 重みのみを調整
+    - 合計が1.0になるように正規化
+    """
+    
+    # 各項目の重要度スコアを計算
+    importance_scores = {}
+    
+    for item in current_weights.keys():
+        # Phase 2: ランキング精度への寄与度を評価
+        # Phase 3: 台本品質への寄与度を評価
+        importance_scores[item] = calculate_importance(item, analysis_results)
+    
+    # 新しい重みを計算
+    new_weights = {}
+    total_importance = sum(importance_scores.values())
+    
+    for item, importance in importance_scores.items():
+        # 重要度に基づいて重みを調整
+        # 急激な変化を避けるため、現在の重みも考慮
+        current = current_weights[item]
+        target = importance / total_importance
+        new_weights[item] = current * 0.7 + target * 0.3  # 30%ずつ調整
+    
+    # 正規化（合計を1.0にする）
+    total_weight = sum(new_weights.values())
+    for item in new_weights:
+        new_weights[item] = new_weights[item] / total_weight
+    
+    return new_weights
+```
+
+### 重み調整の指針
+
+#### 強化すべき項目の特定
+- ランキング精度に大きく影響する項目
+- 台本の成功/失敗を分ける決定的要因
+- ペルソナが特に重視する要素
+
+#### 調整幅の決定
+- 小幅調整（±0.01～0.02）: 微調整が必要な場合
+- 中幅調整（±0.03～0.05）: 明確な改善が必要な場合
+- 大幅調整（±0.06～0.10）: 根本的な見直しが必要な場合
+
+## 3. 出力フォーマット
+
+### 更新された基準（JSON）
+```json
+{
+  "version": {VERSION + 1},
+  "weights": {
+    "appeal_direction_clarity": 0.10,
+    "differentiation_clarity": 0.10,
+    "usp_strength": 0.10,
+    "selection_reason_clarity": 0.10,
+    "opening_hook_intensity": 0.10,
+    "sales_pitch_elimination": 0.09,
+    "character_edge": 0.09,
+    "who_fmt_usp_integration": 0.09,
+    "flow_naturalness": 0.09,
+    "right_brain_impact": 0.09,
+    "trust_building": 0.05
+  },
+  "criteria_names": {
+    "appeal_direction_clarity": "訴求方向性の明確性・一貫性",
+    "differentiation_clarity": "他選択肢との差別化の明確性",
+    "usp_strength": "独自価値提案(USP)の強度",
+    "selection_reason_clarity": "選ばれる理由の決定的明確性",
+    "opening_hook_intensity": "冒頭フックの強烈さ",
+    "sales_pitch_elimination": "売り込み感の排除度",
+    "character_edge": "キャラクターのエッジ立ち",
+    "who_fmt_usp_integration": "WHO-FMT-USP戦略的統合性",
+    "flow_naturalness": "構成フローの自然さ",
+    "right_brain_impact": "右脳直撃インパクト",
+    "trust_building": "先回り対処による信頼構築"
+  },
+  "max_score": 10,
+  "iteration": {ITERATION + 1},
+  "adjustment_reason": "理由を簡潔に記載"
+}
+```
+
+## 4. 調整理由の記録
+
+各重み調整について、以下を明確に記述:
+- なぜその項目の重みを増減したか
+- どのような効果を期待しているか
+- 前回からの改善点
+
+## 注意事項
+
+1. **評価項目は絶対に変更しない**: 11項目は固定
+2. **重みの合計は必ず1.0**: 自動的に正規化する
+3. **極端な調整は避ける**: 1回の調整で0.1以上の変更は避ける
+4. **バランスを考慮**: 特定の項目に偏りすぎないように注意
+5. **段階的な最適化**: 急激な変更より段階的な改善を優先

@@ -1,0 +1,62 @@
+name: module-generate-scripts-writer1
+
+on:
+  workflow_call:
+    inputs:
+      product_name:
+        required: true
+        type: string
+    outputs:
+      scripts_generated:
+        value: ${{ jobs.generate.outputs.scripts_generated }}
+    secrets:
+      anthropic_api_key:
+        required: true
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    outputs:
+      scripts_generated: ${{ steps.generate-scripts.outputs.count }}
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm install -g @anthropic-ai/claude-code
+      - run: mkdir -p "${{ inputs.product_name }}/bulk_scripts"
+      
+      - id: generate-scripts
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.anthropic_api_key }}
+        run: |
+          echo "🎬 Generating Writer1 scripts for ${{ inputs.product_name }}..."
+          
+          # 外部プロンプトファイルの読み込み
+          if [ -f ".github/prompts/generation/generate_scripts.txt" ]; then
+            PROMPT=$(cat .github/prompts/generation/generate_scripts.txt)
+          else
+            echo "::error::Prompt file not found: .github/prompts/generation/generate_scripts.txt"
+            exit 1
+          fi
+          
+          # プレースホルダーの置換
+          PROMPT="${PROMPT//\{PRODUCT_NAME\}/${{ inputs.product_name }}}"
+          PROMPT="${PROMPT//\{WRITER_NAME\}/writer1}"
+          
+          npx @anthropic-ai/claude-code \
+            --allowedTools "Read,Write" \
+            --max-turns 50 \
+            --verbose \
+            --permission-mode "acceptEdits" \
+            -p "$PROMPT"
+          
+          # 生成数カウント（Writer1のみ）
+          if [ -d "${{ inputs.product_name }}/bulk_scripts" ]; then
+            COUNT=$(ls -1 "${{ inputs.product_name }}/bulk_scripts/writer1_"*.md 2>/dev/null | wc -l)
+            echo "count=$COUNT" >> $GITHUB_OUTPUT
+            echo "✅ Writer1 scripts generated: $COUNT"
+          else
+            echo "count=0" >> $GITHUB_OUTPUT
+            echo "❌ No Writer1 scripts generated"
+          fi
