@@ -9,6 +9,7 @@
 import json
 import argparse
 import os
+import sys
 from datetime import datetime
 from typing import Dict, List, Any
 import pandas as pd
@@ -20,10 +21,10 @@ def load_persona_evaluation(file_path: str) -> Dict[str, Any]:
         with open(file_path, 'r', encoding='utf-8') as f:
             return json.load(f)
     except FileNotFoundError:
-        print(f"Warning: Evaluation file not found: {file_path}")
+        print(f"Warning: Evaluation file not found: {file_path}", file=sys.stderr)
         return None
     except json.JSONDecodeError as e:
-        print(f"Error: Invalid JSON in {file_path}: {e}")
+        print(f"Error: Invalid JSON in {file_path}: {e}", file=sys.stderr)
         return None
 
 def extract_evaluation_axes(persona_data: Dict[str, Any]) -> List[str]:
@@ -52,7 +53,7 @@ def calculate_averages(persona1_data: Dict[str, Any],
     if not evaluation_axes:
         raise ValueError("No evaluation axes found in any persona data")
     
-    print(f"Found evaluation axes: {evaluation_axes}")
+    print(f"Found evaluation axes: {evaluation_axes}", file=sys.stderr)
     
     # 台本別の評価データを収集
     script_evaluations = {}
@@ -64,7 +65,7 @@ def calculate_averages(persona1_data: Dict[str, Any],
         ('persona3', persona3_data)
     ]:
         if not persona_data or 'script_evaluations' not in persona_data:
-            print(f"Warning: No evaluations found for {persona_name}")
+            print(f"Warning: No evaluations found for {persona_name}", file=sys.stderr)
             continue
             
         for eval_data in persona_data['script_evaluations']:
@@ -190,7 +191,7 @@ def main():
     
     args = parser.parse_args()
     
-    print(f"Calculating average scores for product: {args.product_name}")
+    print(f"Calculating average scores for product: {args.product_name}", file=sys.stderr)
     
     # ペルソナ評価ファイルを読み込み
     persona1_file = os.path.join(args.input_dir, 'persona1_script_evaluation.json')
@@ -218,10 +219,10 @@ def main():
     with open(args.output_file, 'w', encoding='utf-8') as f:
         json.dump(averaged_results, f, ensure_ascii=False, indent=2)
     
-    print(f"✅ Average calculation completed")
-    print(f"   Total scripts: {averaged_results['total_scripts']}")
-    print(f"   Overall average: {averaged_results['summary_statistics']['overall_average']:.2f}")
-    print(f"   Results saved to: {args.output_file}")
+    print(f"Average calculation completed", file=sys.stderr)
+    print(f"   Total scripts: {averaged_results['total_scripts']}", file=sys.stderr)
+    print(f"   Overall average: {averaged_results['summary_statistics']['overall_average']:.2f}", file=sys.stderr)
+    print(f"   Results saved to: {args.output_file}", file=sys.stderr)
 
 if __name__ == '__main__':
     main()

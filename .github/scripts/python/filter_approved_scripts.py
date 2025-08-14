@@ -10,6 +10,7 @@ Writer調整の必要性を判定する。
 import json
 import argparse
 import os
+import sys
 import shutil
 from datetime import datetime
 from typing import Dict, List, Any
@@ -20,10 +21,10 @@ def load_json(file_path: str) -> Dict[str, Any]:
         with open(file_path, 'r', encoding='utf-8') as f:
             return json.load(f)
     except FileNotFoundError:
-        print(f"Error: File not found: {file_path}")
+        print(f"Error: File not found: {file_path}", file=sys.stderr)
         return {}
     except json.JSONDecodeError as e:
-        print(f"Error: Invalid JSON in {file_path}: {e}")
+        print(f"Error: Invalid JSON in {file_path}: {e}", file=sys.stderr)
         return {}
 
 def load_threshold(threshold_file: str) -> float:
@@ -33,7 +34,7 @@ def load_threshold(threshold_file: str) -> float:
             threshold_str = f.read().strip()
             return float(threshold_str)
     except (FileNotFoundError, ValueError) as e:
-        print(f"Warning: Could not load threshold from {threshold_file}: {e}")
+        print(f"Warning: Could not load threshold from {threshold_file}: {e}", file=sys.stderr)
         return 70.0  # デフォルト閾値
 
 def copy_script_file(script_file: str, product_name: str, output_dir: str) -> bool:
@@ -46,7 +47,7 @@ def copy_script_file(script_file: str, product_name: str, output_dir: str) -> bo
             shutil.copy2(source_path, dest_path)
             return True
         else:
-            print(f"Warning: Script file not found: {source_path}")
+            print(f"Warning: Script file not found: {source_path}", file=sys.stderr)
             return False
     except Exception as e:
         print(f"Error copying {source_path} to {dest_path}: {e}")
@@ -100,7 +101,7 @@ def filter_scripts(evaluation_data: Dict[str, Any],
             # ファイルをコピー
             copy_success = copy_script_file(script_file, product_name, output_dir)
             if not copy_success:
-                print(f"Warning: Failed to copy approved script: {script_file}")
+                print(f"Warning: Failed to copy approved script: {script_file}", file=sys.stderr)
         else:
             # 却下台本
             writer_breakdown[writer]['rejected_files'].append({
@@ -248,14 +249,14 @@ def main():
     with open(report_file, 'w', encoding='utf-8') as f:
         f.write(report_content)
     
-    print(f"✅ Filtering completed")
+    print(f" Filtering completed")
     print(f"   Approved scripts: {results['approved_count']}/{results['total_generated']} ({results['approval_rate']}%)")
     print(f"   Writer adjustment needed: {results['writer_adjustment_needed']}")
     print(f"   Results saved to: {args.results_file}")
     print(f"   Report saved to: {report_file}")
     
     if results['writer_adjustment_needed']:
-        print(f"⚠️  The following writers need adjustment:")
+        print(f"  The following writers need adjustment:")
         for writer_info in results['insufficient_writers']:
             print(f"     - {writer_info['writer']}: {writer_info['approved_count']}/5 approved")
 
