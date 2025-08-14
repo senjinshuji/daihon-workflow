@@ -40,7 +40,7 @@ jobs:
   evaluate-persona1:
     needs: extract-sample-data
     if: needs.extract-sample-data.outputs.extraction_completed == 'true'
-    uses: ../.github/workflows/modules/module-persona1-evaluation.yml
+    uses: ./.github/workflows/module-persona1-evaluation.yml
     with:
       product_name: ${{ inputs.product_name }}
     secrets:
@@ -49,7 +49,7 @@ jobs:
   evaluate-persona2:
     needs: extract-sample-data
     if: needs.extract-sample-data.outputs.extraction_completed == 'true'
-    uses: ../.github/workflows/modules/module-persona2-evaluation.yml
+    uses: ./.github/workflows/module-persona2-evaluation.yml
     with:
       product_name: ${{ inputs.product_name }}
     secrets:
@@ -58,7 +58,7 @@ jobs:
   evaluate-persona3:
     needs: extract-sample-data
     if: needs.extract-sample-data.outputs.extraction_completed == 'true'
-    uses: ../.github/workflows/modules/module-persona3-evaluation.yml
+    uses: ./.github/workflows/module-persona3-evaluation.yml
     with:
       product_name: ${{ inputs.product_name }}
     secrets:

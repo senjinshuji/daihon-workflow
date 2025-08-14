@@ -20,7 +20,7 @@ permissions:
 jobs:
   # Step 1: データ取得 (並列実行)
   fetch-data:
-    uses: ../.github/workflows/modules/module-fetch-data.yml
+    uses: ./.github/workflows/module-fetch-data.yml
     with:
       product_name: ${{ inputs.product_name }}
       sheets_id: ${{ inputs.sheets_id || secrets.GOOGLE_SHEETS_ID }}
@@ -30,7 +30,7 @@ jobs:
 
   # Step 2: Web検索 (並列実行)
   web-search:
-    uses: ../.github/workflows/modules/module-web-search.yml
+    uses: ./.github/workflows/module-web-search.yml
     with:
       product_name: ${{ inputs.product_name }}
     secrets:
@@ -40,7 +40,7 @@ jobs:
   # Step 3: 商品分析 (データ取得完了後)
   analyze-product:
     needs: [fetch-data, web-search]
-    uses: ../.github/workflows/modules/module-product-analysis.yml
+    uses: ./.github/workflows/module-product-analysis.yml
     with:
       product_name: ${{ inputs.product_name }}
     secrets:
@@ -49,7 +49,7 @@ jobs:
   # Step 3: ターゲット1分析 (商品分析完了後)
   analyze-target1:
     needs: analyze-product
-    uses: ../.github/workflows/modules/module-target1-analysis.yml
+    uses: ./.github/workflows/module-target1-analysis.yml
     with:
       product_name: ${{ inputs.product_name }}
     secrets:
@@ -58,7 +58,7 @@ jobs:
   # Step 3: ターゲット2分析 (商品分析完了後)
   analyze-target2:
     needs: analyze-product
-    uses: ../.github/workflows/modules/module-target2-analysis.yml
+    uses: ./.github/workflows/module-target2-analysis.yml
     with:
       product_name: ${{ inputs.product_name }}
     secrets:
@@ -67,7 +67,7 @@ jobs:
   # Step 3: ターゲット3分析 (商品分析完了後)
   analyze-target3:
     needs: analyze-product
-    uses: ../.github/workflows/modules/module-target3-analysis.yml
+    uses: ./.github/workflows/module-target3-analysis.yml
     with:
       product_name: ${{ inputs.product_name }}
     secrets:
@@ -76,7 +76,7 @@ jobs:
   # Step 4: ペルソナ生成 (分析完了後)
   generate-personas:
     needs: [analyze-target1, analyze-target2, analyze-target3]
-    uses: ../.github/workflows/modules/module-generate-personas.yml
+    uses: ./.github/workflows/module-generate-personas.yml
     with:
       product_name: ${{ inputs.product_name }}
     secrets:
@@ -85,7 +85,7 @@ jobs:
   # Step 5: ライター生成 (分析完了後)
   generate-writers:
     needs: [analyze-target1, analyze-target2, analyze-target3]
-    uses: ../.github/workflows/modules/module-generate-writers.yml
+    uses: ./.github/workflows/module-generate-writers.yml
     with:
       product_name: ${{ inputs.product_name }}
     secrets:
@@ -94,7 +94,7 @@ jobs:
   # Step 6: 初期評価基準設定 (ペルソナ・ライター完了後)
   initialize-criteria:
     needs: [generate-personas, generate-writers]
-    uses: ../.github/workflows/modules/module-initialize-criteria.yml
+    uses: ./.github/workflows/module-initialize-criteria.yml
     with:
       product_name: ${{ inputs.product_name }}
     secrets:
