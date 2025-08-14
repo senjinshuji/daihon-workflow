@@ -149,6 +149,45 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: ./artifacts-temp
+      
+      - name: Organize artifacts into directory structure
+        run: |
+          echo "📁 Organizing Phase 3 artifacts for ${{ inputs.product_name }}..."
+          
+          # Create directory structure if not exists
+          mkdir -p "${{ inputs.product_name }}/bulk_scripts"
+          mkdir -p "${{ inputs.product_name }}/evaluations"
+          mkdir -p "${{ inputs.product_name }}/artifacts"
+          
+          # Move generated scripts
+          for writer in 1 2 3; do
+            if [ -d "artifacts-temp/${{ inputs.product_name }}-writer${writer}-scripts" ]; then
+              cp -r artifacts-temp/${{ inputs.product_name }}-writer${writer}-scripts/* "${{ inputs.product_name }}/bulk_scripts/" 2>/dev/null || true
+            fi
+          done
+          
+          # Move evaluation results
+          if [ -d "artifacts-temp/${{ inputs.product_name }}-evaluation-results" ]; then
+            cp -r artifacts-temp/${{ inputs.product_name }}-evaluation-results/* "${{ inputs.product_name }}/evaluations/" 2>/dev/null || true
+          fi
+          
+          # Move filtering results
+          if [ -d "artifacts-temp/${{ inputs.product_name }}-filtered-scripts" ]; then
+            cp -r artifacts-temp/${{ inputs.product_name }}-filtered-scripts/* "${{ inputs.product_name }}/artifacts/" 2>/dev/null || true
+          fi
+          
+          # Clean up temp directory
+          rm -rf artifacts-temp
+          
+          # List created structure
+          echo "📂 Phase 3 directory structure:"
+          find "${{ inputs.product_name }}/bulk_scripts" -type f | head -10
+          find "${{ inputs.product_name }}/evaluations" -type f | head -10
+      
       - name: Commit Results
         run: |
           git config --global user.name "github-actions[bot]"

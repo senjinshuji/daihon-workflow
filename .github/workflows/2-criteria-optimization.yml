@@ -26,20 +26,6 @@ jobs:
         with:
           python-version: '3.10'
       - run: pip install pandas numpy
-
-      - name: Download data artifacts
-        uses: actions/download-artifact@v4
-        with:
-          path: ./
-      
-      - name: Organize data files
-        run: |
-          mkdir -p "${{ inputs.product_name }}/data" "${{ inputs.product_name }}/artifacts"
-          
-          # Move data files
-          if [ -d "${{ inputs.product_name }}-data" ]; then
-            cp -r "${{ inputs.product_name }}-data"/* "${{ inputs.product_name }}/data/" 2>/dev/null || true
-          fi
       
       - id: extract
         run: |
@@ -57,6 +43,15 @@ jobs:
           name: ${{ inputs.product_name }}-sample-scripts
           path: ${{ inputs.product_name }}/artifacts/sample_scripts_for_evaluation.json
           retention-days: 1
+      
+      - name: Commit sample scripts
+        if: steps.extract.outputs.completed == 'true'
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add "${{ inputs.product_name }}/artifacts/sample_scripts_for_evaluation.json"
+          git commit -m "📊 [${{ inputs.product_name }}] Phase 2: サンプル台本抽出" || echo "No changes to commit"
+          git push || echo "Nothing to push"
 
   # Step 2: ペルソナ評価（並列実行）
   evaluate_persona1:
@@ -103,7 +98,7 @@ jobs:
       - name: Download persona evaluation artifacts
         uses: actions/download-artifact@v4
         with:
-          path: ./
+          path: ./artifacts-temp
       
       - name: Organize evaluation files
         run: |
@@ -111,8 +106,8 @@ jobs:
           
           # Move persona evaluations
           for i in 1 2 3; do
-            if [ -d "${{ inputs.product_name }}-persona${i}-evaluation" ]; then
-              cp -r "${{ inputs.product_name }}-persona${i}-evaluation"/* "${{ inputs.product_name }}/artifacts/" 2>/dev/null || true
+            if [ -d "artifacts-temp/${{ inputs.product_name }}-persona${i}-evaluation" ]; then
+              cp -r "artifacts-temp/${{ inputs.product_name }}-persona${i}-evaluation"/* "${{ inputs.product_name }}/artifacts/" 2>/dev/null || true
             fi
           done
       
@@ -131,6 +126,15 @@ jobs:
           name: ${{ inputs.product_name }}-persona-averages
           path: ${{ inputs.product_name }}/artifacts/persona_evaluation_results.json
           retention-days: 1
+      
+      - name: Commit persona averages
+        if: steps.calc-averages.outputs.calculation_completed == 'true'
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add "${{ inputs.product_name }}/artifacts/persona_evaluation_results.json"
+          git commit -m "📊 [${{ inputs.product_name }}] Phase 2: ペルソナ評価平均値計算完了" || echo "No changes to commit"
+          git push || echo "Nothing to push"
 
   # Step 3: 精度確認（Pythonコード）
   check_precision:
@@ -146,30 +150,6 @@ jobs:
         with:
           python-version: '3.10'
       - run: pip install pandas numpy
-
-      - name: Download required artifacts
-        uses: actions/download-artifact@v4
-        with:
-          path: ./
-      
-      - name: Organize files for precision check
-        run: |
-          mkdir -p "${{ inputs.product_name }}/artifacts" "${{ inputs.product_name }}/data"
-          
-          # Move sample scripts
-          if [ -d "${{ inputs.product_name }}-sample-scripts" ]; then
-            cp -r "${{ inputs.product_name }}-sample-scripts"/* "${{ inputs.product_name }}/artifacts/" 2>/dev/null || true
-          fi
-          
-          # Move persona averages
-          if [ -d "${{ inputs.product_name }}-persona-averages" ]; then
-            cp -r "${{ inputs.product_name }}-persona-averages"/* "${{ inputs.product_name }}/artifacts/" 2>/dev/null || true
-          fi
-          
-          # Move data files
-          if [ -d "${{ inputs.product_name }}-data" ]; then
-            cp -r "${{ inputs.product_name }}-data"/* "${{ inputs.product_name }}/data/" 2>/dev/null || true
-          fi
       
       - id: precision
         run: |
@@ -199,30 +179,6 @@ jobs:
           python-version: '3.10'
       - run: pip install pandas numpy
       - run: npm install -g @anthropic-ai/claude-code
-      
-      - name: Download all required artifacts
-        uses: actions/download-artifact@v4
-        with:
-          path: ./
-      
-      - name: Organize all artifacts
-        run: |
-          mkdir -p "${{ inputs.product_name }}/artifacts" "${{ inputs.product_name }}/data"
-          
-          # Move precision check results
-          if [ -d "${{ inputs.product_name }}-precision-check" ]; then
-            cp -r "${{ inputs.product_name }}-precision-check"/* "${{ inputs.product_name }}/artifacts/" 2>/dev/null || true
-          fi
-          
-          # Move persona averages
-          if [ -d "${{ inputs.product_name }}-persona-averages" ]; then
-            cp -r "${{ inputs.product_name }}-persona-averages"/* "${{ inputs.product_name }}/artifacts/" 2>/dev/null || true
-          fi
-          
-          # Move criteria
-          if [ -d "${{ inputs.product_name }}-criteria" ]; then
-            cp -r "${{ inputs.product_name }}-criteria"/* "${{ inputs.product_name }}/artifacts/" 2>/dev/null || true
-          fi
 
       - id: action
         env:

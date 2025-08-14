@@ -108,6 +108,65 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
       
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: ./artifacts-temp
+      
+      - name: Organize artifacts into directory structure
+        run: |
+          echo "📁 Organizing artifacts for ${{ inputs.product_name }}..."
+          
+          # Create directory structure
+          mkdir -p "${{ inputs.product_name }}/data"
+          mkdir -p "${{ inputs.product_name }}/artifacts"
+          mkdir -p "${{ inputs.product_name }}/personas"
+          mkdir -p "${{ inputs.product_name }}/writers"
+          
+          # Move data files
+          if [ -d "artifacts-temp/${{ inputs.product_name }}-data" ]; then
+            cp -r artifacts-temp/${{ inputs.product_name }}-data/* "${{ inputs.product_name }}/data/" 2>/dev/null || true
+          fi
+          
+          # Move web search results
+          if [ -d "artifacts-temp/${{ inputs.product_name }}-web-search" ]; then
+            cp -r artifacts-temp/${{ inputs.product_name }}-web-search/* "${{ inputs.product_name }}/artifacts/" 2>/dev/null || true
+          fi
+          
+          # Move analysis results
+          if [ -d "artifacts-temp/${{ inputs.product_name }}-analysis" ]; then
+            cp -r artifacts-temp/${{ inputs.product_name }}-analysis/* "${{ inputs.product_name }}/artifacts/" 2>/dev/null || true
+          fi
+          
+          # Move target analyses
+          for i in 1 2 3; do
+            if [ -d "artifacts-temp/${{ inputs.product_name }}-target${i}-analysis" ]; then
+              cp -r artifacts-temp/${{ inputs.product_name }}-target${i}-analysis/* "${{ inputs.product_name }}/artifacts/" 2>/dev/null || true
+            fi
+          done
+          
+          # Move personas
+          if [ -d "artifacts-temp/${{ inputs.product_name }}-personas" ]; then
+            cp -r artifacts-temp/${{ inputs.product_name }}-personas/* "${{ inputs.product_name }}/personas/" 2>/dev/null || true
+          fi
+          
+          # Move writers
+          if [ -d "artifacts-temp/${{ inputs.product_name }}-writers" ]; then
+            cp -r artifacts-temp/${{ inputs.product_name }}-writers/* "${{ inputs.product_name }}/writers/" 2>/dev/null || true
+          fi
+          
+          # Move criteria
+          if [ -d "artifacts-temp/${{ inputs.product_name }}-criteria" ]; then
+            cp -r artifacts-temp/${{ inputs.product_name }}-criteria/* "${{ inputs.product_name }}/artifacts/" 2>/dev/null || true
+          fi
+          
+          # Clean up temp directory
+          rm -rf artifacts-temp
+          
+          # List created structure
+          echo "📂 Created directory structure:"
+          find "${{ inputs.product_name }}" -type f | head -20
+      
       - name: Commit Phase 1 Results
         run: |
           git config --global user.name "github-actions[bot]"
