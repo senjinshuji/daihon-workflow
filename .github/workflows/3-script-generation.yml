@@ -11,7 +11,7 @@ on:
 permissions:
   contents: write
   pull-requests: write
-  actions: read
+  actions: write
 
 jobs:
   # Step 1: 台本生成（並列実行）
@@ -139,7 +139,7 @@ jobs:
             -f product_name="${{ inputs.product_name }}" \
             --repo ${{ github.repository }}
         env:
-          GITHUB_TOKEN: ${{ secrets.WORKFLOW_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   # Step 5: 結果集計とコミット
   finalize:

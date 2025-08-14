@@ -11,7 +11,7 @@ on:
 permissions:
   contents: write
   pull-requests: write
-  actions: read
+  actions: write
 
 jobs:
   # Step 1: データ抽出（Pythonコード）
@@ -227,7 +227,7 @@ jobs:
       - id: action
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-          GITHUB_TOKEN: ${{ secrets.WORKFLOW_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           # 精度確認結果に基づくアクション実行
           if [ "${{ needs.check_precision.outputs.precision_check }}" = "pass" ]; then
