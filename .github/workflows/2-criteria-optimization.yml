@@ -199,26 +199,17 @@ jobs:
             # 精度不足: 評価基準最適化
             echo "⚠️ 精度が不足しています。評価基準を最適化します..."
             
-            # Claude Code SDKで評価基準最適化
-            cat << 'EOF' > optimize_criteria_prompt.txt
-            評価基準の最適化を実行してください：
+            # 外部プロンプトファイルを読み込み
+            if [ -f ".github/prompts/optimization/optimize_criteria.txt" ]; then
+              PROMPT=$(cat .github/prompts/optimization/optimize_criteria.txt)
+            else
+              echo "::error::Prompt file not found: .github/prompts/optimization/optimize_criteria.txt"
+              exit 1
+            fi
             
-            ## 現状分析
-            {PRODUCT_NAME}/artifacts/precision_check.json の結果を詳細分析し、
-            精度向上のために {PRODUCT_NAME}/artifacts/criteria.json の重み付けを最適化してください。
-            
-            ## 最適化要件
-            - 目標精度: 80%以上
-            - 各グループで3本以上の差分をなくす
-            - version番号をインクリメント
-            - 変更理由をdescriptionに記録
-            
-            ## 出力
-            最適化された criteria.json を保存してください。
-            EOF
-            
-            PROMPT=$(cat optimize_criteria_prompt.txt)
+            # プレースホルダーを置換
             PROMPT="${PROMPT//\{PRODUCT_NAME\}/${{ inputs.product_name }}}"
+            PROMPT="${PROMPT//\{LOOP_NUMBER\}/2}"  # Phase 2なので2を設定
             
             npx @anthropic-ai/claude-code \
               --allowedTools "Read,Write" \
