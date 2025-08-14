@@ -1,3 +1,21 @@
+評価基準の最適化を実行してください：
+
+## 現状分析
+{PRODUCT_NAME}/artifacts/precision_check.json の結果を詳細分析し、
+精度向上のために {PRODUCT_NAME}/artifacts/criteria.json の重み付けを最適化してください。
+
+## 最適化要件
+- 目標精度: 80%以上
+- 各グループで3本以上の差分をなくす
+- version番号をインクリメント
+- 変更理由をdescriptionに記録
+
+## 出力
+最適化された criteria.json を保存してください。
+
+---
+# 詳細な評価基準最適化ガイド
+
 評価結果を分析し、評価基準の重み付けを最適化してください。
 
 入力:
