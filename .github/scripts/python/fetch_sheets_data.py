@@ -95,11 +95,12 @@ def main():
         sys.exit(1)
     
     # 取得するシートと範囲の定義
+    # スプレッドシートの実際のシート名 → 出力CSVファイル名のマッピング
     sheets_to_fetch = {
-        'market_bestsellers': 'market_bestsellers!A:Z',
-        'internal_top_group': 'internal_top_group!A:Z',
-        'internal_middle_group': 'internal_middle_group!A:Z',
-        'internal_bottom_group': 'internal_bottom_group!A:Z'
+        'market_bestsellers': 'レジェンド台本!A:Z',  # 市場ベストセラー
+        'internal_top_group': '【配信結果】上位!A:Z',  # 高パフォーマンス台本
+        'internal_middle_group': '【配信結果】中位!A:Z',  # 中パフォーマンス台本
+        'internal_bottom_group': '【配信結果】下位!A:Z'  # 低パフォーマンス台本
     }
     
     # 出力ディレクトリ
