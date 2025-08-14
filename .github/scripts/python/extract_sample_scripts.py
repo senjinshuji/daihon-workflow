@@ -107,7 +107,22 @@ def extract_sample_scripts(product_name, data_dir, random_seed=None):
                     score_value = 0
                     if score_col and score_col in row:
                         try:
-                            score_value = float(row[score_col])
+                            # パーセンテージ文字列の処理
+                            value = row[score_col]
+                            if isinstance(value, str):
+                                # "0.003%" -> 0.003/100 = 0.00003
+                                # "0.000%" or "0%" or "0" -> 0
+                                value = value.replace('%', '').strip()
+                                if value and value != '0' and value != '0.000':
+                                    score_value = float(value) / 100
+                                else:
+                                    score_value = 0
+                            else:
+                                # 数値型の場合
+                                if pd.notna(value) and value != 0:
+                                    score_value = float(value)
+                                else:
+                                    score_value = 0
                         except (ValueError, TypeError):
                             score_value = 0
                     

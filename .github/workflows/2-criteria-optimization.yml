@@ -246,6 +246,8 @@ jobs:
     needs: [extract_sample_data, calculate_averages, check_precision, execute_next_action]
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
+      
       - name: Commit Results
         run: |
           git config --global user.name "github-actions[bot]"
