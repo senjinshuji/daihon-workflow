@@ -139,7 +139,7 @@ jobs:
             -f product_name="${{ inputs.product_name }}" \
             --repo ${{ github.repository }}
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.WORKFLOW_TOKEN }}
 
   # Step 5: 結果集計とコミット
   finalize:
