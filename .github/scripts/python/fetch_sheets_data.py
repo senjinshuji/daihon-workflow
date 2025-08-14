@@ -49,19 +49,19 @@ def fetch_sheet_data(spreadsheet_id, range_name, credentials):
         values = result.get('values', [])
         
         if not values:
-            print(f"No data found in range: {range_name}")
+            print(f"No data found in range: {range_name}", file=sys.stderr)
             return []
         
         return values
         
     except HttpError as err:
-        print(f"An error occurred: {err}")
+        print(f"An error occurred: {err}", file=sys.stderr)
         return []
 
 def save_to_csv(data, output_path, sheet_name):
     """データをCSVファイルとして保存"""
     if not data:
-        print(f"No data to save for {sheet_name}")
+        print(f"No data to save for {sheet_name}", file=sys.stderr)
         return False
     
     output_file = Path(output_path) / f"{sheet_name}.csv"
@@ -71,14 +71,14 @@ def save_to_csv(data, output_path, sheet_name):
         writer = csv.writer(csvfile)
         writer.writerows(data)
     
-    print(f"Saved {len(data)} rows to {output_file}")
+    print(f"Saved {len(data)} rows to {output_file}", file=sys.stderr)
     return True
 
 def main():
     """メイン処理"""
     # コマンドライン引数から商品名を取得
     if len(sys.argv) < 2:
-        print("Usage: python fetch_sheets_data.py <product_name>")
+        print("Usage: python fetch_sheets_data.py <product_name>", file=sys.stderr)
         sys.exit(1)
     
     product_name = sys.argv[1]
@@ -89,9 +89,9 @@ def main():
     # 認証セットアップ
     try:
         credentials = setup_credentials()
-        print("✅ Authentication successful")
+        print("Authentication successful", file=sys.stderr)
     except Exception as e:
-        print(f"❌ Authentication failed: {e}")
+        print(f"Authentication failed: {e}", file=sys.stderr)
         sys.exit(1)
     
     # 取得するシートと範囲の定義
@@ -109,14 +109,14 @@ def main():
     # 各シートからデータを取得して保存
     success_count = 0
     for sheet_name, range_name in sheets_to_fetch.items():
-        print(f"\nFetching {sheet_name}...")
+        print(f"Fetching {sheet_name}...", file=sys.stderr)
         data = fetch_sheet_data(spreadsheet_id, range_name, credentials)
         
         if save_to_csv(data, output_dir, sheet_name):
             success_count += 1
     
-    # GitHub Actions出力
-    print(f"\n✅ Successfully fetched {success_count}/{len(sheets_to_fetch)} sheets")
+    # GitHub Actions出力（標準出力のみ、key=value形式）
+    print(f"Successfully fetched {success_count}/{len(sheets_to_fetch)} sheets", file=sys.stderr)
     print(f"completed=true")
     print(f"sheets_fetched={success_count}")
     
