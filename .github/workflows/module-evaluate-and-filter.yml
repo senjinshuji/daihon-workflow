@@ -31,7 +31,7 @@ jobs:
       - run: npm install -g @anthropic-ai/claude-code
       
       - name: Download required artifacts
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           path: ./
       
@@ -144,7 +144,7 @@ jobs:
       
       - name: Upload evaluation artifact
         if: steps.evaluate.outputs.completed == 'true'
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ inputs.product_name }}-persona1-script-eval
           path: ${{ inputs.product_name }}/evaluations/persona1_script_evaluation.json
@@ -162,7 +162,7 @@ jobs:
       - run: npm install -g @anthropic-ai/claude-code
       
       - name: Download required artifacts
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           path: ./
       
@@ -275,7 +275,7 @@ jobs:
       
       - name: Upload evaluation artifact
         if: steps.evaluate.outputs.completed == 'true'
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ inputs.product_name }}-persona2-script-eval
           path: ${{ inputs.product_name }}/evaluations/persona2_script_evaluation.json
@@ -293,7 +293,7 @@ jobs:
       - run: npm install -g @anthropic-ai/claude-code
       
       - name: Download required artifacts
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           path: ./
       
@@ -406,7 +406,7 @@ jobs:
       
       - name: Upload evaluation artifact
         if: steps.evaluate.outputs.completed == 'true'
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ inputs.product_name }}-persona3-script-eval
           path: ${{ inputs.product_name }}/evaluations/persona3_script_evaluation.json
@@ -423,7 +423,7 @@ jobs:
       - run: pip install pandas numpy
       
       - name: Download evaluation artifacts
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           path: ./
       
@@ -458,7 +458,7 @@ jobs:
       
       - name: Upload averaged evaluation artifact
         if: steps.calculate.outputs.completed == 'true'
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ inputs.product_name }}-averaged-eval
           path: ${{ inputs.product_name }}/evaluations/averaged_script_evaluation.json
@@ -477,7 +477,7 @@ jobs:
       - run: pip install pandas numpy
       
       - name: Download required artifacts
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           path: ./
       
@@ -537,7 +537,7 @@ jobs:
       
       - name: Upload filtering results
         if: steps.filter.outputs.approved_count != ''
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ inputs.product_name }}-filtering-results
           path: |
@@ -560,7 +560,7 @@ jobs:
       - run: npm install -g @anthropic-ai/claude-code
       
       - name: Download required artifacts for adjustment
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           path: ./
       
@@ -653,7 +653,7 @@ jobs:
       
       - name: Upload adjusted writers
         if: steps.adjust.outputs.completed == 'true'
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ inputs.product_name }}-writers-adjusted
           path: ${{ inputs.product_name }}/writers/

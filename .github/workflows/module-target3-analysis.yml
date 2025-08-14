@@ -35,20 +35,20 @@ jobs:
         run: npm install -g @anthropic-ai/claude-code
       
       - name: Download data artifacts
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: ${{ inputs.product_name }}-data
           path: ${{ inputs.product_name }}/data/
       
       - name: Download web search artifacts
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: ${{ inputs.product_name }}-web-search
           path: ${{ inputs.product_name }}/artifacts/
         continue-on-error: true
       
       - name: Download analysis artifacts
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: ${{ inputs.product_name }}-analysis
           path: ${{ inputs.product_name }}/artifacts/
@@ -98,7 +98,7 @@ jobs:
       
       - name: Upload target analysis artifacts
         if: steps.analyze.outputs.analysis_completed == 'true'
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ inputs.product_name }}-target3
           path: ${{ inputs.product_name }}/artifacts/target_analysis_3.md

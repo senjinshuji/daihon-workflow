@@ -113,7 +113,7 @@ jobs:
       
       - name: Upload web search artifacts
         if: steps.web-search.outputs.summary_created == 'true'
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ inputs.product_name }}-web-search
           path: ${{ inputs.product_name }}/artifacts/web_search_summary.md

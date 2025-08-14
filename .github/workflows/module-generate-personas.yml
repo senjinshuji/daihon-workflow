@@ -39,7 +39,7 @@ jobs:
         run: npm install -g @anthropic-ai/claude-code
       
       - name: Download all required artifacts
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           path: ./
       
@@ -138,7 +138,7 @@ jobs:
       
       - name: Upload personas artifact
         if: steps.generate-personas.outputs.completed == 'true'
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ inputs.product_name }}-personas
           path: ${{ inputs.product_name }}/personas/

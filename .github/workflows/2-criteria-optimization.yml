@@ -28,7 +28,7 @@ jobs:
       - run: pip install pandas numpy
 
       - name: Download data artifacts
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           path: ./
       
@@ -52,7 +52,7 @@ jobs:
       
       - name: Upload sample scripts artifact
         if: steps.extract.outputs.completed == 'true'
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ inputs.product_name }}-sample-scripts
           path: ${{ inputs.product_name }}/artifacts/sample_scripts_for_evaluation.json
@@ -101,7 +101,7 @@ jobs:
       - run: pip install pandas numpy
 
       - name: Download persona evaluation artifacts
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           path: ./
       
@@ -126,7 +126,7 @@ jobs:
       
       - name: Upload averaged evaluation artifact
         if: steps.calc-averages.outputs.calculation_completed == 'true'
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ inputs.product_name }}-persona-averages
           path: ${{ inputs.product_name }}/artifacts/persona_evaluation_results.json
@@ -148,7 +148,7 @@ jobs:
       - run: pip install pandas numpy
 
       - name: Download required artifacts
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           path: ./
       
@@ -180,7 +180,7 @@ jobs:
           done
       
       - name: Upload precision check results
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ inputs.product_name }}-precision-check
           path: ${{ inputs.product_name }}/artifacts/precision_check.json
@@ -201,7 +201,7 @@ jobs:
       - run: npm install -g @anthropic-ai/claude-code
       
       - name: Download all required artifacts
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           path: ./
       
@@ -280,7 +280,7 @@ jobs:
       
       - name: Upload threshold if set
         if: needs.check_precision.outputs.precision_check == 'pass'
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ inputs.product_name }}-threshold
           path: ${{ inputs.product_name }}/artifacts/approval_threshold.txt
@@ -288,7 +288,7 @@ jobs:
       
       - name: Upload updated criteria if optimized
         if: needs.check_precision.outputs.precision_check != 'pass'
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ inputs.product_name }}-criteria
           path: ${{ inputs.product_name }}/artifacts/criteria.json

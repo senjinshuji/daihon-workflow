@@ -29,7 +29,7 @@ jobs:
       - run: npm install -g @anthropic-ai/claude-code
 
       - name: Download required artifacts
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           path: ./
       
@@ -141,7 +141,7 @@ jobs:
       
       - name: Upload evaluation artifact
         if: steps.evaluate-persona3.outputs.completed == 'true'
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ inputs.product_name }}-persona3-evaluation
           path: ${{ inputs.product_name }}/artifacts/persona3_evaluation.json
