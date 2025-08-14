@@ -130,10 +130,14 @@ flowchart TD
 ### 必要なシークレット
 ```yaml
 ANTHROPIC_API_KEY: "Claude-3.5-Sonnet用APIキー"
-GOOGLE_SHEETS_API_KEY: "Google Sheets API用キー"
-GEMINI_API_KEY: "Google Gemini API用キー"
+GOOGLE_SERVICE_ACCOUNT_JSON: "Google サービスアカウントJSON（全体）"
+GEMINI_API_KEY: "Google Gemini API用キー（オプション）"
 GOOGLE_SHEETS_ID: "対象Google SheetsのID"
 ```
+
+### Google認証設定
+- **[📝 サービスアカウント設定](./SERVICE_ACCOUNT_SETUP.md)**: Google Sheets API認証
+- **[🔑 Google Sheets API設定](./GOOGLE_SHEETS_API_SETUP.md)**: APIキー取得方法（代替）
 
 ### 実行時間・リソース
 - **合計実行時間**: 40-90分

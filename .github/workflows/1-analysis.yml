@@ -25,7 +25,7 @@ jobs:
       product_name: ${{ inputs.product_name }}
       sheets_id: ${{ inputs.sheets_id }}
     secrets:
-      google_sheets_api_key: ${{ secrets.GOOGLE_SHEETS_API_KEY }}
+      google_service_account_json: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
       anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
 
   # Step 2: Web検索 (並列実行)

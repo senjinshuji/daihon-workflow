@@ -13,7 +13,7 @@ on:
       completed:
         value: ${{ jobs.fetch.outputs.completed }}
     secrets:
-      google_sheets_api_key:
+      google_service_account_json:
         required: true
       anthropic_api_key:
         required: true
@@ -25,39 +25,22 @@ jobs:
       completed: ${{ steps.execute.outputs.completed }}
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-python@v4
         with:
-          node-version: '20'
-      - run: npm install -g @anthropic-ai/claude-code
+          python-version: '3.10'
+      - run: pip install -r requirements.txt
       - run: mkdir -p "${{ inputs.product_name }}/data"
       
       - id: execute
         env:
-          ANTHROPIC_API_KEY: ${{ secrets.anthropic_api_key }}
-          GOOGLE_SHEETS_API_KEY: ${{ secrets.google_sheets_api_key }}
+          GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.google_service_account_json }}
+          GOOGLE_SHEETS_ID: ${{ inputs.sheets_id }}
         run: |
-          cat << 'EOF' > fetch_data_prompt.txt
-          Google Sheets（ID: {SHEETS_ID}）から4つのCSVファイルを取得してください：
-          
-          1. market_bestsellers.csv
-          2. internal_top_group.csv
-          3. internal_middle_group.csv
-          4. internal_bottom_group.csv
-          
-          取得したデータを {PRODUCT_NAME}/data/ ディレクトリに保存し、
-          データクリーニング（空白行削除、UTF-8統一、ヘッダー正規化）を実行してください。
-          EOF
-          
-          PROMPT=$(cat fetch_data_prompt.txt)
-          PROMPT="${PROMPT//\{PRODUCT_NAME\}/${{ inputs.product_name }}}"
-          PROMPT="${PROMPT//\{SHEETS_ID\}/${{ inputs.sheets_id }}}"
-          
-          npx @anthropic-ai/claude-code \
-            --allowedTools "Read,Write,Bash" \
-            --max-turns 30 \
-            --verbose \
-            --permission-mode "acceptEdits" \
-            -p "$PROMPT"
+          # Pythonスクリプトを使用してデータを取得
+          python .github/scripts/python/fetch_sheets_data.py "${{ inputs.product_name }}" | \
+          while read line; do
+            echo "$line" >> $GITHUB_OUTPUT
+          done
           
           # 成功確認
           if [ -f "${{ inputs.product_name }}/data/market_bestsellers.csv" ]; then
