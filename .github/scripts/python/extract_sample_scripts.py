@@ -58,34 +58,81 @@ def extract_sample_scripts(product_name, data_dir, random_seed=None):
             logger.error(f"❌ ファイルが見つかりません: {filepath}")
             continue
         
-        df = pd.read_csv(filepath)
-        logger.info(f"📊 {group}グループ: {len(df)}本の台本")
-        
-        # ランダムに5本を抽出（データが5本未満の場合は全て取得）
-        if len(df) <= 5:
-            sample_scripts = df
-            logger.warning(f"⚠️ {group}グループは{len(df)}本しかありません。全て抽出します。")
-        else:
-            # ランダムサンプリング
-            sample_indices = random.sample(range(len(df)), 5)
-            sample_scripts = df.iloc[sample_indices]
-            logger.info(f"🎲 {group}グループから{len(sample_scripts)}本をランダム抽出")
-        
-        for i, (idx, row) in enumerate(sample_scripts.iterrows()):
-            script_data = {
-                'id': f"{group}_{i+1:02d}",  # 連番でID生成（ランダム抽出後の順序）
-                'original_group': group,
-                'title': row.get('title', f"{group}_script_{i+1}"),
-                'content': row.get('content', row.get('script', '')),
-                'score': row.get('score', 0),
-                'metadata': {
-                    'source_file': filename,
-                    'source_index': int(idx),  # 元のCSVでのインデックス
-                    'extraction_order': i + 1  # 抽出後の順序
-                }
-            }
-            extracted_scripts.append(script_data)
-            group_mapping[script_data['id']] = group
+        try:
+            # CSVを読み込み（複数行のテキストに対応）
+            df = pd.read_csv(filepath, encoding='utf-8')
+            # インデックスをリセット
+            df = df.reset_index(drop=True)
+            logger.info(f"📊 {group}グループ: {len(df)}本の台本")
+            
+            # カラム名を確認して適切に取得
+            logger.debug(f"利用可能なカラム: {df.columns.tolist()}")
+            
+            # 台本カラムの特定
+            content_col = None
+            if '台本' in df.columns:
+                content_col = '台本'
+            elif 'script' in df.columns:
+                content_col = 'script'
+            elif 'content' in df.columns:
+                content_col = 'content'
+            elif len(df.columns) > 0:
+                content_col = df.columns[0]  # 最初のカラムを使用
+            
+            # スコアカラムの特定
+            score_col = None
+            if 'CTR×CVR' in df.columns:
+                score_col = 'CTR×CVR'
+            elif 'score' in df.columns:
+                score_col = 'score'
+            elif 'CVR' in df.columns:
+                score_col = 'CVR'
+            
+            # ランダムに5本を抽出（データが5本未満の場合は全て取得）
+            if len(df) <= 5:
+                sample_scripts = df
+                logger.warning(f"⚠️ {group}グループは{len(df)}本しかありません。全て抽出します。")
+            else:
+                # ランダムサンプリング
+                sample_indices = random.sample(range(len(df)), 5)
+                sample_scripts = df.iloc[sample_indices]
+                logger.info(f"🎲 {group}グループから{len(sample_scripts)}本をランダム抽出")
+            
+            for i, (idx, row) in enumerate(sample_scripts.iterrows()):
+                try:
+                    # コンテンツの取得
+                    content = row.get(content_col, '') if content_col else ''
+                    
+                    # スコアの取得と変換
+                    score_value = 0
+                    if score_col and score_col in row:
+                        try:
+                            score_value = float(row[score_col])
+                        except (ValueError, TypeError):
+                            score_value = 0
+                    
+                    script_data = {
+                        'id': f"{group}_{i+1:02d}",  # 連番でID生成（ランダム抽出後の順序）
+                        'original_group': group,
+                        'title': row.get('title', f"{group}_script_{i+1}"),
+                        'content': str(content),  # 文字列に変換
+                        'score': score_value,
+                        'metadata': {
+                            'source_file': filename,
+                            'source_index': idx if isinstance(idx, int) else i,  # エラー対策
+                            'extraction_order': i + 1  # 抽出後の順序
+                        }
+                    }
+                    extracted_scripts.append(script_data)
+                    group_mapping[script_data['id']] = group
+                    
+                except Exception as row_error:
+                    logger.error(f"❌ {group}グループの行 {i} の処理中にエラー: {row_error}")
+                    continue
+                    
+        except Exception as e:
+            logger.error(f"❌ {group}グループのデータ読み込みに失敗: {e}")
+            continue
     
     # 抽出結果を保存
     extraction_result = {
@@ -131,6 +178,8 @@ def main():
     except Exception as e:
         logger = setup_logging()
         logger.error(f"❌ データ抽出に失敗: {str(e)}")
+        import traceback
+        logger.error(f"詳細なエラー情報:\n{traceback.format_exc()}")
         print("scripts_count=0")
         print("completed=false")
         sys.exit(1)
