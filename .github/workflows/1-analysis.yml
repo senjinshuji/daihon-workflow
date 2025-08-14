@@ -145,4 +145,4 @@ jobs:
           echo "🚀 Phase 2 (評価基準最適化) を自動起動します..."
           gh workflow run 2-criteria-optimization.yml -f product_name=${{ inputs.product_name }}
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.WORKFLOW_TOKEN }}
