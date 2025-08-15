@@ -132,6 +132,7 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git pull --rebase
           git add "${{ inputs.product_name }}/artifacts/persona_evaluation_results.json"
           git commit -m "📊 [${{ inputs.product_name }}] Phase 2: ペルソナ評価平均値計算完了" || echo "No changes to commit"
           git push || echo "Nothing to push"
@@ -150,6 +151,18 @@ jobs:
         with:
           python-version: '3.10'
       - run: pip install pandas numpy
+      
+      - name: Download persona averages artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{ inputs.product_name }}-persona-averages
+          path: ${{ inputs.product_name }}/artifacts/
+      
+      - name: Download sample scripts artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{ inputs.product_name }}-sample-scripts
+          path: ${{ inputs.product_name }}/artifacts/
       
       - id: precision
         run: |
