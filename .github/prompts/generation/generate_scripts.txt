@@ -35,7 +35,7 @@
 - 音声は1.2倍速再生を前提に、文量を1.2倍にする（600文字以上必須）
 
 ## 出力先
-- {PRODUCT_NAME}/scripts/{WRITER_NAME}/script_{NUMBER}_v{VERSION}.md （5本）
+- {PRODUCT_NAME}/bulk_scripts/{WRITER_NAME}_script_{NUMBER}.md （5本）
 
 台本フォーマット:
 
@@ -44,7 +44,6 @@
 
 ## メタデータ
 - ライター: {WRITER_NAME}
-- バージョン: v{VERSION}
 - 作成日: YYYY-MM-DD
 - 長さ: 60秒
 - フォーマット: 動画
