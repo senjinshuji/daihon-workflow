@@ -153,15 +153,19 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           
-          # 最新の変更を取得
-          git pull origin main
+          # 最新の状態を取得してローカル変更を破棄
+          git fetch origin main
+          git reset --hard origin/main
           
-          # ファイルを追加してコミット
+          # 評価結果ファイルのみを追加してコミット
           git add "${{ inputs.product_name }}/artifacts/persona3_evaluation.json"
           git commit -m "📊 [${{ inputs.product_name }}] Persona3 evaluation results" || echo "No changes to commit"
           
           # リトライ付きでpush
           for i in {1..5}; do
-            git pull --rebase origin main
-            git push && break || sleep 2
+            git push && break || {
+              echo "Push failed, retrying..."
+              git pull --rebase origin main
+              sleep 2
+            }
           done
