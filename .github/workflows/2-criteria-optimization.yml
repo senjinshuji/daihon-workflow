@@ -132,9 +132,15 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git pull --rebase
+          
+          # まず変更をステージング
           git add "${{ inputs.product_name }}/artifacts/persona_evaluation_results.json"
+          
+          # コミット
           git commit -m "📊 [${{ inputs.product_name }}] Phase 2: ペルソナ評価平均値計算完了" || echo "No changes to commit"
+          
+          # pullしてからpush
+          git pull --rebase origin main
           git push || echo "Nothing to push"
 
   # Step 3: 精度確認（Pythonコード）

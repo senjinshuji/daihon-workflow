@@ -152,6 +152,16 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          
+          # 最新の変更を取得
+          git pull origin main
+          
+          # ファイルを追加してコミット
           git add "${{ inputs.product_name }}/artifacts/persona2_evaluation.json"
           git commit -m "📊 [${{ inputs.product_name }}] Persona2 evaluation results" || echo "No changes to commit"
-          git push || echo "Nothing to push"
+          
+          # リトライ付きでpush
+          for i in {1..5}; do
+            git pull --rebase origin main
+            git push && break || sleep 2
+          done

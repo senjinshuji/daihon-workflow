@@ -53,7 +53,7 @@ class AnthropicClient:
     
     @retry_with_exponential_backoff()
     def generate(self, prompt: str, system_prompt: Optional[str] = None, 
-                 max_tokens: int = 4000, temperature: float = 0.7) -> str:
+                 max_tokens: int = 4000, temperature: float = 0) -> str:
         """Generate text using Claude API"""
         try:
             messages = [{"role": "user", "content": prompt}]
