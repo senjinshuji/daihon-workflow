@@ -1,0 +1,154 @@
+{
+  "persona_id": "persona1",
+  "persona_summary": "28歳美意識高い系OL麻衣。大手商社営業職、年収550万円。「努力しているのに報われない」理不尽への怒りと絶望感を抱く。下半身痩せに特に悩み、効率重視で楽に確実に美しくなりたいという欲求を持つ。SNS映えする結果への憧れが強く、周囲との比較による劣等感が行動動機の核。過去の美容投資失敗により懐疑的だが、医療技術への信頼と投資対効果を重視する。",
+  "evaluation_timestamp": "2025-08-28T09:25:00",
+  "criteria_used": {
+    "instinct_alignment": {
+      "weight": 0.30,
+      "description": "生存戦略としての美への執着、承認欲求本能への訴求度"
+    },
+    "insight_resonance": {
+      "weight": 0.25,
+      "description": "「努力しているのに報われない」絶望感への共感度"
+    },
+    "concept_impact": {
+      "weight": 0.25,
+      "description": "価格破壊力と確実性訴求のインパクト"
+    },
+    "cognitive_shift": {
+      "weight": 0.20,
+      "description": "既存認知から新認知への転換促進度"
+    }
+  },
+  "evaluations": {
+    "top_01": {
+      "instinct_alignment": 85,
+      "insight_resonance": 75,
+      "concept_impact": 90,
+      "cognitive_shift": 80,
+      "total_score": 82.5,
+      "evaluation_reason": "「常にここ太ってる人」という直球すぎる表現が私のコンプレックスを正面からえぐってくる。100万円無料という価格破壊力は確かに魅力的だが、冒頭があまりにも攻撃的で傷つく。医療技術への信頼感は伝わるものの、もう少し配慮のある表現が欲しい。でも脂肪細胞破壊による根本解決とリバウンドしない体への訴求は私の課題を的確に捉えている。"
+    },
+    "top_02": {
+      "instinct_alignment": 88,
+      "insight_resonance": 78,
+      "concept_impact": 92,
+      "cognitive_shift": 85,
+      "total_score": 85.25,
+      "evaluation_reason": "「ここだけ太ってる女性」という表現が私の下半身太りの悩みにピンポイントで響く。100万円分無料という圧倒的価値提供に心が動く。30分寝るだけという楽さと確実性の両立が理想的。過去のダイエット失敗への不信を「どうせ後出しでの追加料金とかある」で先回りして解消している点も評価できる。限定性による緊急性も適度で、行動を促される。"
+    },
+    "top_03": {
+      "instinct_alignment": 90,
+      "insight_resonance": 82,
+      "concept_impact": 88,
+      "cognitive_shift": 83,
+      "total_score": 86.05,
+      "evaluation_reason": "「ここだけ太ってる人、絶対聞いて！」の呼びかけが私の状況を完全に理解しているように感じる。12か月分無料という長期的価値提供が魅力的。梅雨の時期というタイミングも現実的で信憑性がある。リバウンドほぼゼロという表現も安心感を与える。医療技術への信頼を高める表現が多く、私の懐疑的な心理状態を理解した構成になっている。"
+    },
+    "top_04": {
+      "instinct_alignment": 95,
+      "insight_resonance": 88,
+      "concept_impact": 90,
+      "cognitive_shift": 87,
+      "total_score": 90.0,
+      "evaluation_reason": "「足痩せしたい骨格ウェーブの方」という超具体的なターゲティングに完全に自分のことだと感じる。骨格診断という現代女性が関心を持つトレンドも取り入れており、私の美意識の高さに響く。おめでとうございます！という祝福的なアプローチが前向きな感情を引き出す。100万円無料の価値提供と医療技術の確実性が完璧に組み合わさっている。私が求める「楽に、確実に、美しく」を体現した台本。"
+    },
+    "top_05": {
+      "instinct_alignment": 45,
+      "insight_resonance": 30,
+      "concept_impact": 85,
+      "cognitive_shift": 40,
+      "total_score": 50.0,
+      "evaluation_reason": "男性向けの台本のため、私には全く響かない。「ちょっと痛くてもいいから」という表現も私が求める「楽さ」とは真逆。100万円無料の価値提案は魅力的だが、ターゲットが違いすぎて評価が困難。私の美意識や悩みとは全く関係のない内容で、共感度が非常に低い。"
+    },
+    "middle_01": {
+      "instinct_alignment": 75,
+      "insight_resonance": 70,
+      "concept_impact": 88,
+      "cognitive_shift": 78,
+      "total_score": 77.75,
+      "evaluation_reason": "「おっぱいよりお腹が出ている」という表現が体型コンプレックスに響くが、私の主要な悩みは下半身なので完全にはマッチしない。100万円無料の価値提案は魅力的で、30分寝るだけの楽さも理想的。医療技術による脂肪細胞破壊の確実性も安心できる。ただし、私の核心的な悩み（下半身太り）を直接的に解決する内容ではないため、やや響きが弱い。"
+    },
+    "middle_02": {
+      "instinct_alignment": 40,
+      "insight_resonance": 35,
+      "concept_impact": 70,
+      "cognitive_shift": 45,
+      "total_score": 47.5,
+      "evaluation_reason": "男性向け（体重80kg以上の男性モニター）のため、私には全く関係ない。マンジャロ無料プレゼントや6万円アマギフは魅力的だが、ターゲットが違いすぎる。店員同士のやり取りという演出も私の美意識の高さには合わない。佐々木という人物の存在も不自然で信頼性に欠ける。私の求める上品で確実な医療ダイエットのイメージとは程遠い。"
+    },
+    "middle_03": {
+      "instinct_alignment": 65,
+      "insight_resonance": 80,
+      "concept_impact": 60,
+      "cognitive_shift": 70,
+      "total_score": 68.75,
+      "evaluation_reason": "「生理止まって痩せない人」という表現が過度なダイエットの弊害を指摘しており、私の「努力しているのに報われない」絶望感に深く共感できる。ただし価格表示が途中で消えており、価値提案が不明確。医療技術の確実性は伝わるが、具体的な金額がないため決断材料に欠ける。私の投資価値重視の思考には不十分。"
+    },
+    "middle_04": {
+      "instinct_alignment": 85,
+      "insight_resonance": 75,
+      "concept_impact": 88,
+      "cognitive_shift": 78,
+      "total_score": 81.5,
+      "evaluation_reason": "「常にここ太ってる人」が私の局所的な悩みにピンポイントで響く。100万円無料という価値提案も明確で魅力的。30分寝るだけの楽さと医療技術の確実性も理想的。ただし冒頭の表現がやや攻撃的で、私の美意識の高さを考慮するともう少し洗練された表現が欲しい。全体的には私のニーズを理解した構成になっている。"
+    },
+    "middle_05": {
+      "instinct_alignment": 92,
+      "insight_resonance": 85,
+      "concept_impact": 88,
+      "cognitive_shift": 88,
+      "total_score": 88.25,
+      "evaluation_reason": "「結婚式に向けて15キロ痩せたい女性」という具体的なシチュエーションが私の将来への憧れと重なる。結婚式というライフイベントは私の承認欲求本能を強く刺激する。100万円無料の価値提案と医療技術の確実性も完璧。30分寝るだけという楽さも理想的。私が求める「周囲から羨ましがられる存在」になるイメージが明確に描ける優秀な台本。"
+    },
+    "bottom_01": {
+      "instinct_alignment": 88,
+      "insight_resonance": 75,
+      "concept_impact": 88,
+      "cognitive_shift": 78,
+      "total_score": 82.25,
+      "evaluation_reason": "「ここだけ太ってる女性」という表現が私の局所的な悩みに響く。100万円無料の価値提案も魅力的で、30分寝るだけの楽さも理想的。医療技術による脂肪細胞破壊の確実性も安心できる。ただし、内容が他の台本とほぼ同じで新鮮味に欠ける。私の美意識の高さを考えると、もう少し差別化されたアプローチが欲しい。"
+    },
+    "bottom_02": {
+      "instinct_alignment": 55,
+      "insight_resonance": 50,
+      "concept_impact": 88,
+      "cognitive_shift": 60,
+      "total_score": 63.25,
+      "evaluation_reason": "「更年期で太ってきた人」というターゲティングが28歳の私には該当しない。年齢層が違いすぎて共感度が低い。100万円無料の価値提案は魅力的だが、私の現在の状況や悩みとはマッチしない。医療技術の内容は魅力的だが、ターゲット設定のミスマッチにより響きが弱い。"
+    },
+    "bottom_03": {
+      "instinct_alignment": 85,
+      "insight_resonance": 75,
+      "concept_impact": 88,
+      "cognitive_shift": 78,
+      "total_score": 81.5,
+      "evaluation_reason": "「ここだけ太ってる女性」が私の局所的な悩みに響き、無料での脂肪除去提案も魅力的。30分寝るだけの楽さと医療技術の確実性も理想的。ただし、他の台本との差別化が不十分で、私の美意識の高さを刺激する特別感に欠ける。内容は良いが印象に残りにくい。"
+    },
+    "bottom_04": {
+      "instinct_alignment": 75,
+      "insight_resonance": 65,
+      "concept_impact": 85,
+      "cognitive_shift": 70,
+      "total_score": 73.75,
+      "evaluation_reason": "「おっぱい残したまま痩せたい」というニーズは理解できるが、私の主要な悩みは下半身なので完全にはマッチしない。マンジャロ無料プレゼントは魅力的。「やらない理由なくない！？」という軽いノリが私の美意識の高さには少し合わない。医療技術の内容は良いが、全体的に品格に欠ける印象。"
+    },
+    "bottom_05": {
+      "instinct_alignment": 40,
+      "insight_resonance": 35,
+      "concept_impact": 70,
+      "cognitive_shift": 45,
+      "total_score": 47.5,
+      "evaluation_reason": "男性向け（体重80kg以上の男性モニター）で私には関係ない。マンジャロ無料や6万円アマギフは魅力的だが、ターゲットが完全に違う。佐々木とのやり取りも不自然で信頼性に欠ける。私の美意識の高さや上品さを求める価値観とは正反対の内容。全く響かない台本。"
+    }
+  },
+  "evaluation_metadata": {
+    "total_scripts_evaluated": 15,
+    "average_score": 72.18,
+    "score_distribution": {
+      "high": 4,
+      "medium": 7,
+      "low": 4
+    }
+  }
+}
