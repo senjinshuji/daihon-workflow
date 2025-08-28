@@ -133,14 +133,17 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           
-          # まず変更をステージング
+          # まず最新の状態を取得
+          git fetch origin main
+          git reset --hard origin/main
+          
+          # 変更をステージング
           git add "${{ inputs.product_name }}/artifacts/persona_evaluation_results.json"
           
           # コミット
           git commit -m "📊 [${{ inputs.product_name }}] Phase 2: ペルソナ評価平均値計算完了" || echo "No changes to commit"
           
-          # pullしてからpush
-          git pull --rebase origin main
+          # push
           git push || echo "Nothing to push"
 
   # Step 3: 精度確認（Pythonコード）
