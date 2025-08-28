@@ -1,0 +1,829 @@
+{
+  "calculation_metadata": {
+    "timestamp": "2025-08-28T09:24:38.784217",
+    "product_name": "DIOクリニック",
+    "calculation_method": "3ペルソナ平均値",
+    "personas_included": [
+      "persona1",
+      "persona2",
+      "persona3"
+    ],
+    "total_scripts_processed": 15
+  },
+  "averaged_scores": {
+    "top_02": 80.18,
+    "bottom_01": 76.62,
+    "bottom_03": 76.83,
+    "bottom_05": 50.5,
+    "top_01": 78.9,
+    "middle_05": 82.63,
+    "top_03": 80.93,
+    "middle_04": 77.27,
+    "top_05": 61.7,
+    "top_04": 79.18,
+    "bottom_04": 70.75,
+    "middle_02": 53.5,
+    "middle_01": 74.2,
+    "middle_03": 69.82,
+    "bottom_02": 72.88
+  },
+  "ranking": [
+    {
+      "rank": 1,
+      "script_id": "middle_05",
+      "average_score": 82.63
+    },
+    {
+      "rank": 2,
+      "script_id": "top_03",
+      "average_score": 80.93
+    },
+    {
+      "rank": 3,
+      "script_id": "top_02",
+      "average_score": 80.18
+    },
+    {
+      "rank": 4,
+      "script_id": "top_04",
+      "average_score": 79.18
+    },
+    {
+      "rank": 5,
+      "script_id": "top_01",
+      "average_score": 78.9
+    },
+    {
+      "rank": 6,
+      "script_id": "middle_04",
+      "average_score": 77.27
+    },
+    {
+      "rank": 7,
+      "script_id": "bottom_03",
+      "average_score": 76.83
+    },
+    {
+      "rank": 8,
+      "script_id": "bottom_01",
+      "average_score": 76.62
+    },
+    {
+      "rank": 9,
+      "script_id": "middle_01",
+      "average_score": 74.2
+    },
+    {
+      "rank": 10,
+      "script_id": "bottom_02",
+      "average_score": 72.88
+    },
+    {
+      "rank": 11,
+      "script_id": "bottom_04",
+      "average_score": 70.75
+    },
+    {
+      "rank": 12,
+      "script_id": "middle_03",
+      "average_score": 69.82
+    },
+    {
+      "rank": 13,
+      "script_id": "top_05",
+      "average_score": 61.7
+    },
+    {
+      "rank": 14,
+      "script_id": "middle_02",
+      "average_score": 53.5
+    },
+    {
+      "rank": 15,
+      "script_id": "bottom_05",
+      "average_score": 50.5
+    }
+  ],
+  "detailed_analysis": {
+    "top_02": {
+      "persona_scores": [
+        85.25,
+        77.2,
+        78.1
+      ],
+      "average_score": 80.18,
+      "score_variance": 19.46,
+      "consensus_level": "high",
+      "detailed_scores": {
+        "persona1": {
+          "total_score": 85.25,
+          "instinct_alignment": 88,
+          "insight_resonance": 78,
+          "concept_impact": 92,
+          "cognitive_shift": 85
+        },
+        "persona2": {
+          "total_score": 77.2,
+          "appeal_direction_clarity": 75,
+          "differentiation_clarity": 80,
+          "usp_strength": 85,
+          "selection_reason_clarity": 82,
+          "opening_hook_intensity": 78,
+          "sales_pitch_elimination": 70,
+          "character_edge": 65,
+          "who_fmt_usp_integration": 80,
+          "flow_naturalness": 75,
+          "right_brain_impact": 72,
+          "trust_building": 88
+        },
+        "persona3": {
+          "total_score": 78.1,
+          "instinct_alignment": 75,
+          "insight_resonance": 72,
+          "concept_impact": 85,
+          "cognitive_shift": 82
+        }
+      },
+      "evaluation_reasons": [
+        "persona1: 「ここだけ太ってる女性」という表現が私の下半身太りの悩みにピンポイントで響く。100万円分無料という圧倒的価値提供に心が動く。30分寝るだけという楽さと確実性の両立が理想的。過去のダイエット失敗への不信を「どうせ後出しでの追加料金とかある」で先回りして解消している点も評価できる。限定性による緊急性も適度で、行動を促される。",
+        "persona2: 「ここだけ太ってる女性」という表現が、産後のお腹周りの体型変化を的確に指摘していて、まさに私の悩みそのもの。医療ダイエットという安全性の高いアプローチと「100万円分無料」という経済的メリットが、家計を預かる主婦として非常に魅力的。「30分寝てるだけ」は子供を預ける時間も最小限で済み、罪悪感を感じずに済む。「顔出しなし」も授乳期の見た目を気にする私には安心材料。ただし冒頭の表現がもう少しデリケートであれば、女性としてのプライドを傷つけずに済んだかも。",
+        "persona3: top_01と似た構成だが「お願いです」の謙虚さがプロへの敬意を感じさせる。100万円分の価値提案と医療ダイエットの確実性は魅力的。ただし表現が少し軽すぎて、エグゼクティブ向けの品格に欠ける部分がある。"
+      ],
+      "divergent_reasons": "分散: 19.46 (低一致)"
+    },
+    "bottom_01": {
+      "persona_scores": [
+        82.25,
+        75.75,
+        71.85
+      ],
+      "average_score": 76.62,
+      "score_variance": 27.6,
+      "consensus_level": "medium",
+      "detailed_scores": {
+        "persona1": {
+          "total_score": 82.25,
+          "instinct_alignment": 88,
+          "insight_resonance": 75,
+          "concept_impact": 88,
+          "cognitive_shift": 78
+        },
+        "persona2": {
+          "total_score": 75.75,
+          "appeal_direction_clarity": 75,
+          "differentiation_clarity": 78,
+          "usp_strength": 80,
+          "selection_reason_clarity": 78,
+          "opening_hook_intensity": 75,
+          "sales_pitch_elimination": 70,
+          "character_edge": 65,
+          "who_fmt_usp_integration": 78,
+          "flow_naturalness": 75,
+          "right_brain_impact": 72,
+          "trust_building": 85
+        },
+        "persona3": {
+          "total_score": 71.85,
+          "instinct_alignment": 70,
+          "insight_resonance": 65,
+          "concept_impact": 80,
+          "cognitive_shift": 72
+        }
+      },
+      "evaluation_reasons": [
+        "persona1: 「ここだけ太ってる女性」という表現が私の局所的な悩みに響く。100万円無料の価値提案も魅力的で、30分寝るだけの楽さも理想的。医療技術による脂肪細胞破壊の確実性も安心できる。ただし、内容が他の台本とほぼ同じで新鮮味に欠ける。私の美意識の高さを考えると、もう少し差別化されたアプローチが欲しい。",
+        "persona2: 「ここだけ太ってる女性」という表現が産後の部分的体型変化を的確に指摘している。医療ダイエットの安全性と「100万円分無料」の経済的メリット、「30分寝てるだけ」の時短効果は魅力的。「99%リバウンドしない」という根本的解決の約束も評価できる。顔出しなしという配慮も重要。全体的には産後女性のニーズを理解した内容だが、他の台本と比較して特に際立った特徴がなく、印象に残りにくい。冒頭の体型指摘がややストレートすぎる点も気になる。",
+        "persona3: 基本的な構成は理解できるが、表現に新鮮味がない。100万円分無料の価値提案は魅力的だが、他の台本と似すぎていて印象に残らない。医療技術の説明も標準的で、特別感が不足している。"
+      ],
+      "divergent_reasons": "分散: 27.6 (中一致)"
+    },
+    "bottom_03": {
+      "persona_scores": [
+        81.5,
+        75.75,
+        73.25
+      ],
+      "average_score": 76.83,
+      "score_variance": 17.9,
+      "consensus_level": "high",
+      "detailed_scores": {
+        "persona1": {
+          "total_score": 81.5,
+          "instinct_alignment": 85,
+          "insight_resonance": 75,
+          "concept_impact": 88,
+          "cognitive_shift": 78
+        },
+        "persona2": {
+          "total_score": 75.75,
+          "appeal_direction_clarity": 75,
+          "differentiation_clarity": 78,
+          "usp_strength": 80,
+          "selection_reason_clarity": 78,
+          "opening_hook_intensity": 75,
+          "sales_pitch_elimination": 70,
+          "character_edge": 65,
+          "who_fmt_usp_integration": 78,
+          "flow_naturalness": 75,
+          "right_brain_impact": 72,
+          "trust_building": 85
+        },
+        "persona3": {
+          "total_score": 73.25,
+          "instinct_alignment": 72,
+          "insight_resonance": 68,
+          "concept_impact": 78,
+          "cognitive_shift": 75
+        }
+      },
+      "evaluation_reasons": [
+        "persona1: 「ここだけ太ってる女性」が私の局所的な悩みに響き、無料での脂肪除去提案も魅力的。30分寝るだけの楽さと医療技術の確実性も理想的。ただし、他の台本との差別化が不十分で、私の美意識の高さを刺激する特別感に欠ける。内容は良いが印象に残りにくい。",
+        "persona2: 基本的な構成はbottom_01とほぼ同じで、「ここだけ太ってる女性」への呼びかけから始まる産後女性向けの内容。医療ダイエットの安全性や経済的メリットは評価できるが、特に新しい要素がなく印象に残りにくい。「ディオクリニック」という表記ミスも気になる。全体的には悪くないが、他の台本と差別化できる要素が不足している。冒頭の体型指摘も相変わらずややデリケートさに欠ける。",
+        "persona3: 標準的な構成で安定感はあるが、特別なインパクトに欠ける。「ディオクリニック」の表記が他と違うのが気になる。内容は理解できるが、経営者として特別感や差別化要素をもっと求めたい。"
+      ],
+      "divergent_reasons": "分散: 17.9 (低一致)"
+    },
+    "bottom_05": {
+      "persona_scores": [
+        47.5,
+        56.5,
+        47.5
+      ],
+      "average_score": 50.5,
+      "score_variance": 27.0,
+      "consensus_level": "medium",
+      "detailed_scores": {
+        "persona1": {
+          "total_score": 47.5,
+          "instinct_alignment": 40,
+          "insight_resonance": 35,
+          "concept_impact": 70,
+          "cognitive_shift": 45
+        },
+        "persona2": {
+          "total_score": 56.5,
+          "appeal_direction_clarity": 50,
+          "differentiation_clarity": 55,
+          "usp_strength": 65,
+          "selection_reason_clarity": 60,
+          "opening_hook_intensity": 70,
+          "sales_pitch_elimination": 45,
+          "character_edge": 80,
+          "who_fmt_usp_integration": 35,
+          "flow_naturalness": 40,
+          "right_brain_impact": 65,
+          "trust_building": 55
+        },
+        "persona3": {
+          "total_score": 47.5,
+          "instinct_alignment": 45,
+          "insight_resonance": 40,
+          "concept_impact": 55,
+          "cognitive_shift": 50
+        }
+      },
+      "evaluation_reasons": [
+        "persona1: 男性向け（体重80kg以上の男性モニター）で私には関係ない。マンジャロ無料や6万円アマギフは魅力的だが、ターゲットが完全に違う。佐々木とのやり取りも不自然で信頼性に欠ける。私の美意識の高さや上品さを求める価値観とは正反対の内容。全く響かない台本。",
+        "persona2: 「やばいマンジャロを仕入れすぎちゃった」という冒頭が、医療機関としては非常に不適切で信頼性を著しく損ねる。「体重80kg以上の男性モニター」とあり、産後女性の私には全く該当しない。「佐々木」とのやり取りが内輪すぎて理解しにくく、医療機関としてのプロフェッショナリズムに欠ける。薬剤の在庫処理的な表現は、安全性を重視する私には非常に不安。全体的に場当たり的で医療機関としての信頼性が最も低い。完全にターゲット違いで論外。",
+        "persona3: 「佐々木」とのコメディ調のやりとりが、真剣な健康問題を扱う医療ダイエットとしては不適切。経営者として品格のある対応を求めており、このような軽いノリは信頼性を損なう。アマギフプレゼントも安っぽい印象。"
+      ],
+      "divergent_reasons": "分散: 27.0 (中一致)"
+    },
+    "top_01": {
+      "persona_scores": [
+        82.5,
+        77.2,
+        77.0
+      ],
+      "average_score": 78.9,
+      "score_variance": 9.73,
+      "consensus_level": "high",
+      "detailed_scores": {
+        "persona1": {
+          "total_score": 82.5,
+          "instinct_alignment": 85,
+          "insight_resonance": 75,
+          "concept_impact": 90,
+          "cognitive_shift": 80
+        },
+        "persona2": {
+          "total_score": 77.2,
+          "appeal_direction_clarity": 75,
+          "differentiation_clarity": 80,
+          "usp_strength": 85,
+          "selection_reason_clarity": 82,
+          "opening_hook_intensity": 78,
+          "sales_pitch_elimination": 70,
+          "character_edge": 65,
+          "who_fmt_usp_integration": 80,
+          "flow_naturalness": 75,
+          "right_brain_impact": 72,
+          "trust_building": 88
+        },
+        "persona3": {
+          "total_score": 77.0,
+          "instinct_alignment": 75,
+          "insight_resonance": 70,
+          "concept_impact": 85,
+          "cognitive_shift": 80
+        }
+      },
+      "evaluation_reasons": [
+        "persona1: 「常にここ太ってる人」という直球すぎる表現が私のコンプレックスを正面からえぐってくる。100万円無料という価格破壊力は確かに魅力的だが、冒頭があまりにも攻撃的で傷つく。医療技術への信頼感は伝わるものの、もう少し配慮のある表現が欲しい。でも脂肪細胞破壊による根本解決とリバウンドしない体への訴求は私の課題を的確に捉えている。",
+        "persona2: 「常にここ太ってる人」という直接的な呼びかけが、産後体型を気にする私にはややストレートすぎて恥ずかしさを感じる。ただし、医療技術による安全性と「100万円分無料」という家計負担なしの提案は非常に魅力的。「30分寝てるだけ」は忙しい育児中でも実現可能で時短効果に惹かれる。「99%リバウンドしない」という根本解決の約束が、ダイエット失敗経験のある私には響く。全体的に安全性への配慮と経済的メリットが明確で信頼感はあるが、もう少し女性としてのプライドに配慮した表現があれば完璧。",
+        "persona3: 「常にここ太ってる人」の直接的な表現が経営者としてのプライドを傷つける感じがする。しかし100万円分無料という価値提案は魅力的で、30分寝るだけという効率性は忙しい経営者に響く。医療技術による確実性もプロとして信頼できそう。"
+      ],
+      "divergent_reasons": "分散: 9.73 (低一致)"
+    },
+    "middle_05": {
+      "persona_scores": [
+        88.25,
+        78.6,
+        81.05
+      ],
+      "average_score": 82.63,
+      "score_variance": 25.16,
+      "consensus_level": "medium",
+      "detailed_scores": {
+        "persona1": {
+          "total_score": 88.25,
+          "instinct_alignment": 92,
+          "insight_resonance": 85,
+          "concept_impact": 88,
+          "cognitive_shift": 88
+        },
+        "persona2": {
+          "total_score": 78.6,
+          "appeal_direction_clarity": 78,
+          "differentiation_clarity": 80,
+          "usp_strength": 82,
+          "selection_reason_clarity": 80,
+          "opening_hook_intensity": 85,
+          "sales_pitch_elimination": 72,
+          "character_edge": 68,
+          "who_fmt_usp_integration": 82,
+          "flow_naturalness": 78,
+          "right_brain_impact": 78,
+          "trust_building": 85
+        },
+        "persona3": {
+          "total_score": 81.05,
+          "instinct_alignment": 78,
+          "insight_resonance": 85,
+          "concept_impact": 82,
+          "cognitive_shift": 80
+        }
+      },
+      "evaluation_reasons": [
+        "persona1: 「結婚式に向けて15キロ痩せたい女性」という具体的なシチュエーションが私の将来への憧れと重なる。結婚式というライフイベントは私の承認欲求本能を強く刺激する。100万円無料の価値提案と医療技術の確実性も完璧。30分寝るだけという楽さも理想的。私が求める「周囲から羨ましがられる存在」になるイメージが明確に描ける優秀な台本。",
+        "persona2: 「結婚式に向けて15キロ痩せたい女性」という明確な目的設定が、看護師復帰という私の具体的な目標と重なって強く響く。「絶対聞いて」という緊迫感のある呼びかけが注意を引く。医療ダイエットによる確実性と「100万円分無料」の経済的メリット、「30分寝てるだけ」の時短効果が完璧に組み合わさっている。「15kg」という具体的な数値目標も産後20kg増の私には現実的で魅力的。夏用データという季節性の理由も自然で信頼できる。全体的に女性の特別なイベントへの想いに寄り添った内容で非常に魅力的。",
+        "persona3: 「結婚式に向けて15キロ痩せたい」という具体的な目標設定が経営者マインドに響く。100万円分無料の価値提案と医療技術による確実性が魅力的。期限のある目標達成という点で、ビジネス感覚と合致している。"
+      ],
+      "divergent_reasons": "分散: 25.16 (中一致)"
+    },
+    "top_03": {
+      "persona_scores": [
+        86.05,
+        78.1,
+        78.65
+      ],
+      "average_score": 80.93,
+      "score_variance": 19.71,
+      "consensus_level": "high",
+      "detailed_scores": {
+        "persona1": {
+          "total_score": 86.05,
+          "instinct_alignment": 90,
+          "insight_resonance": 82,
+          "concept_impact": 88,
+          "cognitive_shift": 83
+        },
+        "persona2": {
+          "total_score": 78.1,
+          "appeal_direction_clarity": 78,
+          "differentiation_clarity": 82,
+          "usp_strength": 85,
+          "selection_reason_clarity": 83,
+          "opening_hook_intensity": 82,
+          "sales_pitch_elimination": 72,
+          "character_edge": 68,
+          "who_fmt_usp_integration": 82,
+          "flow_naturalness": 78,
+          "right_brain_impact": 75,
+          "trust_building": 85
+        },
+        "persona3": {
+          "total_score": 78.65,
+          "instinct_alignment": 78,
+          "insight_resonance": 75,
+          "concept_impact": 82,
+          "cognitive_shift": 80
+        }
+      },
+      "evaluation_reasons": [
+        "persona1: 「ここだけ太ってる人、絶対聞いて！」の呼びかけが私の状況を完全に理解しているように感じる。12か月分無料という長期的価値提供が魅力的。梅雨の時期というタイミングも現実的で信憑性がある。リバウンドほぼゼロという表現も安心感を与える。医療技術への信頼を高める表現が多く、私の懐疑的な心理状態を理解した構成になっている。",
+        "persona2: 「ここだけ太ってる人、絶対聞いて！」という強い呼びかけが、産後の部分的体型変化に悩む私の状況を的確に表現している。「12か月分無料」は「100万円分」よりも具体的で理解しやすく、長期的なサポートを感じられて安心。医療技術による根本的解決「脂肪細胞の破壊」は看護師の知識から信頼性を感じる。「30分寝てるだけ」は育児疲れの私にとって理想的な時短解決法。「リバウンドほぼゼロ」という表現も現実的で信頼できる。全体的に安全性と効率性のバランスが良く、母親としての責任感と女性としての欲求両方に応えている。",
+        "persona3: 「絶対聞いて」という緊急性がビジネス感覚に響く。12か月分無料は長期的価値が高い。医療技術によるリバウンドゼロは更年期の代謝低下への不安を解消してくれる。先着5名限定の希少性も経営者の決断を促す。"
+      ],
+      "divergent_reasons": "分散: 19.71 (低一致)"
+    },
+    "middle_04": {
+      "persona_scores": [
+        81.5,
+        75.5,
+        74.8
+      ],
+      "average_score": 77.27,
+      "score_variance": 13.56,
+      "consensus_level": "high",
+      "detailed_scores": {
+        "persona1": {
+          "total_score": 81.5,
+          "instinct_alignment": 85,
+          "insight_resonance": 75,
+          "concept_impact": 88,
+          "cognitive_shift": 78
+        },
+        "persona2": {
+          "total_score": 75.5,
+          "appeal_direction_clarity": 75,
+          "differentiation_clarity": 78,
+          "usp_strength": 82,
+          "selection_reason_clarity": 80,
+          "opening_hook_intensity": 72,
+          "sales_pitch_elimination": 70,
+          "character_edge": 65,
+          "who_fmt_usp_integration": 78,
+          "flow_naturalness": 75,
+          "right_brain_impact": 70,
+          "trust_building": 85
+        },
+        "persona3": {
+          "total_score": 74.8,
+          "instinct_alignment": 72,
+          "insight_resonance": 68,
+          "concept_impact": 82,
+          "cognitive_shift": 78
+        }
+      },
+      "evaluation_reasons": [
+        "persona1: 「常にここ太ってる人」が私の局所的な悩みにピンポイントで響く。100万円無料という価値提案も明確で魅力的。30分寝るだけの楽さと医療技術の確実性も理想的。ただし冒頭の表現がやや攻撃的で、私の美意識の高さを考慮するともう少し洗練された表現が欲しい。全体的には私のニーズを理解した構成になっている。",
+        "persona2: 「常にここ太ってる人」という表現が産後の部分的体型変化を的確に指摘している。「100万円分無料」の経済的メリットと「30分寝てるだけ」の時短効果は育児中の私に完璧にマッチ。医療技術による脂肪細胞破壊という根本的解決法は看護師として信頼性を感じる。「99%リバウンドしない」という約束も魅力的。顔出しなしという配慮も授乳期の私には重要。全体的に安全性と効率性のバランスが良く、産後女性のニーズをよく理解した内容。ただし冒頭の表現がもう少しデリケートであれば完璧だった。",
+        "persona3: 「常にここ太ってる人」の表現は直接的だが、100万円分無料という価値提案は魅力的。30分寝るだけの効率性と医療技術による確実性が忙しい経営者のニーズに合致。先着5名限定の希少性も決断を促す。"
+      ],
+      "divergent_reasons": "分散: 13.56 (低一致)"
+    },
+    "top_05": {
+      "persona_scores": [
+        50.0,
+        68.85,
+        66.25
+      ],
+      "average_score": 61.7,
+      "score_variance": 104.36,
+      "consensus_level": "low",
+      "detailed_scores": {
+        "persona1": {
+          "total_score": 50.0,
+          "instinct_alignment": 45,
+          "insight_resonance": 30,
+          "concept_impact": 85,
+          "cognitive_shift": 40
+        },
+        "persona2": {
+          "total_score": 68.85,
+          "appeal_direction_clarity": 60,
+          "differentiation_clarity": 65,
+          "usp_strength": 75,
+          "selection_reason_clarity": 70,
+          "opening_hook_intensity": 88,
+          "sales_pitch_elimination": 65,
+          "character_edge": 75,
+          "who_fmt_usp_integration": 45,
+          "flow_naturalness": 70,
+          "right_brain_impact": 85,
+          "trust_brain_impact": 70,
+          "trust_building": 75
+        },
+        "persona3": {
+          "total_score": 66.25,
+          "instinct_alignment": 60,
+          "insight_resonance": 55,
+          "concept_impact": 80,
+          "cognitive_shift": 70
+        }
+      },
+      "evaluation_reasons": [
+        "persona1: 男性向けの台本のため、私には全く響かない。「ちょっと痛くてもいいから」という表現も私が求める「楽さ」とは真逆。100万円無料の価値提案は魅力的だが、ターゲットが違いすぎて評価が困難。私の美意識や悩みとは全く関係のない内容で、共感度が非常に低い。",
+        "persona2: 「ちょっと痛くてもいいから個室でみっちり痩せさせてくれる男性を探しています」という冒頭が、女性である私には全く関係なく、むしろ不適切に感じる。男性向けの内容なので、産後ダイエットを検討している私には全く響かない。医療ダイエットの技術面や経済的メリットは評価できるが、ターゲットが完全に違うため、私のニーズや状況とは全くマッチしない。個室での施術は魅力的だが、男性向けサービスでは安心感も得られない。完全にミスマッチな内容。",
+        "persona3: 男性向けの内容で、私のニーズとは合わない。「個室でみっちり痩せさせてくれる男性」という表現も美容業界のプロとしては違和感がある。技術的価値は理解できるが、ターゲットが完全に異なる。"
+      ],
+      "divergent_reasons": "分散: 104.36 (高一致)"
+    },
+    "top_04": {
+      "persona_scores": [
+        90.0,
+        76.3,
+        71.25
+      ],
+      "average_score": 79.18,
+      "score_variance": 94.13,
+      "consensus_level": "medium",
+      "detailed_scores": {
+        "persona1": {
+          "total_score": 90.0,
+          "instinct_alignment": 95,
+          "insight_resonance": 88,
+          "concept_impact": 90,
+          "cognitive_shift": 87
+        },
+        "persona2": {
+          "total_score": 76.3,
+          "appeal_direction_clarity": 72,
+          "differentiation_clarity": 75,
+          "usp_strength": 80,
+          "selection_reason_clarity": 78,
+          "opening_hook_intensity": 85,
+          "sales_pitch_elimination": 68,
+          "character_edge": 70,
+          "who_fmt_usp_integration": 85,
+          "flow_naturalness": 75,
+          "right_brain_impact": 80,
+          "trust_building": 82
+        },
+        "persona3": {
+          "total_score": 71.25,
+          "instinct_alignment": 65,
+          "insight_resonance": 60,
+          "concept_impact": 85,
+          "cognitive_shift": 75
+        }
+      },
+      "evaluation_reasons": [
+        "persona1: 「足痩せしたい骨格ウェーブの方」という超具体的なターゲティングに完全に自分のことだと感じる。骨格診断という現代女性が関心を持つトレンドも取り入れており、私の美意識の高さに響く。おめでとうございます！という祝福的なアプローチが前向きな感情を引き出す。100万円無料の価値提供と医療技術の確実性が完璧に組み合わさっている。私が求める「楽に、確実に、美しく」を体現した台本。",
+        "persona2: 「足痩せしたい骨格ウェーブの方おめでとうございます！」という特定体型への呼びかけが、産後の体型変化で骨格が気になる私にピンポイントで響く。「おめでとうございます」という肯定的な表現が、体型コンプレックスに悩む心を軽くしてくれる。医療ダイエットの安全性と「100万円分無料」の経済的メリット、「30分寝てるだけ」の時短効果は完璧。特に「足痩せ」というピンポイントな効果への期待が高い。ただし、骨格ウェーブという専門用語を知らない女性には伝わりにくい可能性があり、ターゲットが限定的になるかも。",
+        "persona3: 「足痩せしたい骨格ウェーブ」のターゲティングが具体的で専門性を感じる。しかし美容業界の経営者として、もう少し洗練された訴求を期待したい。技術的内容と価値提案は魅力的だが、表現の品格が物足りない。"
+      ],
+      "divergent_reasons": "分散: 94.13 (中一致)"
+    },
+    "bottom_04": {
+      "persona_scores": [
+        73.75,
+        68.95,
+        69.55
+      ],
+      "average_score": 70.75,
+      "score_variance": 6.84,
+      "consensus_level": "high",
+      "detailed_scores": {
+        "persona1": {
+          "total_score": 73.75,
+          "instinct_alignment": 75,
+          "insight_resonance": 65,
+          "concept_impact": 85,
+          "cognitive_shift": 70
+        },
+        "persona2": {
+          "total_score": 68.95,
+          "appeal_direction_clarity": 65,
+          "differentiation_clarity": 70,
+          "usp_strength": 75,
+          "selection_reason_clarity": 72,
+          "opening_hook_intensity": 70,
+          "sales_pitch_elimination": 60,
+          "character_edge": 75,
+          "who_fmt_usp_integration": 68,
+          "flow_naturalness": 65,
+          "right_brain_impact": 72,
+          "trust_building": 70
+        },
+        "persona3": {
+          "total_score": 69.55,
+          "instinct_alignment": 68,
+          "insight_resonance": 65,
+          "concept_impact": 75,
+          "cognitive_shift": 70
+        }
+      },
+      "evaluation_reasons": [
+        "persona1: 「おっぱい残したまま痩せたい」というニーズは理解できるが、私の主要な悩みは下半身なので完全にはマッチしない。マンジャロ無料プレゼントは魅力的。「やらない理由なくない！？」という軽いノリが私の美意識の高さには少し合わない。医療技術の内容は良いが、全体的に品格に欠ける印象。",
+        "persona2: 「ここだけ太ってるひと」から「おっぱい残したまま痩せたい」という部分的ダイエットへの言及は、産後の体型変化に悩む私に響く。「マンジャロ1ヶ月分無料」の薬剤提供は魅力的だが、看護師として適応や副作用への説明不足が気になる。「もうまじでやらない理由なくない！？」という軽い表現が医療機関としての信頼性を損ねる。全体的にカジュアルすぎて、安全性への不安を感じる。医療ダイエットとしてはもう少し専門性と信頼性が欲しい。",
+        "persona3: 「おっぱい残したまま痩せたい」という表現は理解できるが、美容業界のプロとしては表現がカジュアルすぎる。マンジャロプレゼントは魅力的だが、全体的に軽いトーンで経営者向けの重厚感に欠ける。"
+      ],
+      "divergent_reasons": "分散: 6.84 (低一致)"
+    },
+    "middle_02": {
+      "persona_scores": [
+        47.5,
+        60.5,
+        52.5
+      ],
+      "average_score": 53.5,
+      "score_variance": 43.0,
+      "consensus_level": "medium",
+      "detailed_scores": {
+        "persona1": {
+          "total_score": 47.5,
+          "instinct_alignment": 40,
+          "insight_resonance": 35,
+          "concept_impact": 70,
+          "cognitive_shift": 45
+        },
+        "persona2": {
+          "total_score": 60.5,
+          "appeal_direction_clarity": 55,
+          "differentiation_clarity": 60,
+          "usp_strength": 70,
+          "selection_reason_clarity": 65,
+          "opening_hook_intensity": 75,
+          "sales_pitch_elimination": 50,
+          "character_edge": 80,
+          "who_fmt_usp_integration": 40,
+          "flow_naturalness": 45,
+          "right_brain_impact": 70,
+          "trust_building": 60
+        },
+        "persona3": {
+          "total_score": 52.5,
+          "instinct_alignment": 50,
+          "insight_resonance": 45,
+          "concept_impact": 60,
+          "cognitive_shift": 55
+        }
+      },
+      "evaluation_reasons": [
+        "persona1: 男性向け（体重80kg以上の男性モニター）のため、私には全く関係ない。マンジャロ無料プレゼントや6万円アマギフは魅力的だが、ターゲットが違いすぎる。店員同士のやり取りという演出も私の美意識の高さには合わない。佐々木という人物の存在も不自然で信頼性に欠ける。私の求める上品で確実な医療ダイエットのイメージとは程遠い。",
+        "persona2: 「マンジャロを1か月分無料でプレゼント」という薬剤名の提示は看護師として気になるが、適応や副作用への言及がなく不安。「体重80kg以上の男性モニター」とあり、私には該当しない。「佐々木」とのやり取りが内輪感があって信頼性に欠ける。アマギフ6万円というインセンティブは魅力的だが、全体的に場当たり的で医療機関としての信頼性が低い。男性向けの内容が混在しており、産後女性の私にはターゲット不明瞭。構成も散漫で安心感が得られない。",
+        "persona3: 「佐々木」とのやりとりがコメディ調で、経営者としての真剣さに欠ける。マンジャロの話は興味深いが、全体的に軽すぎてプロフェッショナル向けの訴求としては不適切。アマギフプレゼントも安っぽく感じる。"
+      ],
+      "divergent_reasons": "分散: 43.0 (中一致)"
+    },
+    "middle_01": {
+      "persona_scores": [
+        77.75,
+        72.25,
+        72.6
+      ],
+      "average_score": 74.2,
+      "score_variance": 9.48,
+      "consensus_level": "high",
+      "detailed_scores": {
+        "persona1": {
+          "total_score": 77.75,
+          "instinct_alignment": 75,
+          "insight_resonance": 70,
+          "concept_impact": 88,
+          "cognitive_shift": 78
+        },
+        "persona2": {
+          "total_score": 72.25,
+          "appeal_direction_clarity": 70,
+          "differentiation_clarity": 75,
+          "usp_strength": 80,
+          "selection_reason_clarity": 78,
+          "opening_hook_intensity": 65,
+          "sales_pitch_elimination": 68,
+          "character_edge": 62,
+          "who_fmt_usp_integration": 75,
+          "flow_naturalness": 70,
+          "right_brain_impact": 68,
+          "trust_building": 85
+        },
+        "persona3": {
+          "total_score": 72.6,
+          "instinct_alignment": 70,
+          "insight_resonance": 65,
+          "concept_impact": 82,
+          "cognitive_shift": 75
+        }
+      },
+      "evaluation_reasons": [
+        "persona1: 「おっぱいよりお腹が出ている」という表現が体型コンプレックスに響くが、私の主要な悩みは下半身なので完全にはマッチしない。100万円無料の価値提案は魅力的で、30分寝るだけの楽さも理想的。医療技術による脂肪細胞破壊の確実性も安心できる。ただし、私の核心的な悩み（下半身太り）を直接的に解決する内容ではないため、やや響きが弱い。",
+        "persona2: 「おっぱいよりお腹が出ている女性」という表現が、産後の体型変化の現実を的確に表現していて、まさに私の状況そのもの。授乳で胸は大きくなったけれど、お腹の方が出ているという産後特有の体型コンプレックスに直球で響く。医療技術による安全性と「100万円分無料」の経済的メリットは魅力的。「30分寝てるだけ」は育児中でも実現可能。ただし、冒頭の体型描写がややデリケートで、女性としてのプライドを少し傷つける可能性がある。もう少し配慮のある表現であれば完璧だった。",
+        "persona3: 「おっぱいよりお腹が出ている」という表現が具体的で、更年期の体型変化への共感がある。100万円分無料の価値提案は魅力的だが、表現がやや下品で経営者向けとしては品格に欠ける。内容は理解できるが洗練度が足りない。"
+      ],
+      "divergent_reasons": "分散: 9.48 (低一致)"
+    },
+    "middle_03": {
+      "persona_scores": [
+        68.75,
+        68.7,
+        72.0
+      ],
+      "average_score": 69.82,
+      "score_variance": 3.58,
+      "consensus_level": "high",
+      "detailed_scores": {
+        "persona1": {
+          "total_score": 68.75,
+          "instinct_alignment": 65,
+          "insight_resonance": 80,
+          "concept_impact": 60,
+          "cognitive_shift": 70
+        },
+        "persona2": {
+          "total_score": 68.7,
+          "appeal_direction_clarity": 65,
+          "differentiation_clarity": 70,
+          "usp_strength": 75,
+          "selection_reason_clarity": 72,
+          "opening_hook_intensity": 60,
+          "sales_pitch_elimination": 65,
+          "character_edge": 58,
+          "who_fmt_usp_integration": 70,
+          "flow_naturalness": 68,
+          "right_brain_impact": 65,
+          "trust_building": 80
+        },
+        "persona3": {
+          "total_score": 72.0,
+          "instinct_alignment": 65,
+          "insight_resonance": 80,
+          "concept_impact": 75,
+          "cognitive_shift": 70
+        }
+      },
+      "evaluation_reasons": [
+        "persona1: 「生理止まって痩せない人」という表現が過度なダイエットの弊害を指摘しており、私の「努力しているのに報われない」絶望感に深く共感できる。ただし価格表示が途中で消えており、価値提案が不明確。医療技術の確実性は伝わるが、具体的な金額がないため決断材料に欠ける。私の投資価値重視の思考には不十分。",
+        "persona2: 「生理止まって痩せない人おめでとうございます！」という表現が、産後の生理不順や体重減少の停滞に悩む私の状況に当てはまる。ただし「おめでとうございます」という表現が、深刻な健康問題を軽く扱っているように感じられ、看護師として違和感がある。医療ダイエットの安全性は評価できるが、途中でモニター価格の具体的な記載が抜けており、情報として不完全。全体的に産後の身体的変化への理解は感じられるが、表現の配慮と情報の完全性に課題がある。",
+        "persona3: 「生理止まって痩せない人」は更年期の私の状況に完全に当てはまる。この表現は少し衝撃的だが、現実を直視している点で共感できる。医療技術への信頼性も高いが、途中で文章が途切れているのが気になる。"
+      ],
+      "divergent_reasons": "分散: 3.58 (低一致)"
+    },
+    "bottom_02": {
+      "persona_scores": [
+        63.25,
+        71.15,
+        84.25
+      ],
+      "average_score": 72.88,
+      "score_variance": 112.5,
+      "consensus_level": "low",
+      "detailed_scores": {
+        "persona1": {
+          "total_score": 63.25,
+          "instinct_alignment": 55,
+          "insight_resonance": 50,
+          "concept_impact": 88,
+          "cognitive_shift": 60
+        },
+        "persona2": {
+          "total_score": 71.15,
+          "appeal_direction_clarity": 70,
+          "differentiation_clarity": 75,
+          "usp_strength": 78,
+          "selection_reason_clarity": 75,
+          "opening_hook_intensity": 65,
+          "sales_pitch_elimination": 68,
+          "character_edge": 62,
+          "who_fmt_usp_integration": 72,
+          "flow_naturalness": 70,
+          "right_brain_impact": 68,
+          "trust_building": 82
+        },
+        "persona3": {
+          "total_score": 84.25,
+          "instinct_alignment": 85,
+          "insight_resonance": 90,
+          "concept_impact": 80,
+          "cognitive_shift": 82
+        }
+      },
+      "evaluation_reasons": [
+        "persona1: 「更年期で太ってきた人」というターゲティングが28歳の私には該当しない。年齢層が違いすぎて共感度が低い。100万円無料の価値提案は魅力的だが、私の現在の状況や悩みとはマッチしない。医療技術の内容は魅力的だが、ターゲット設定のミスマッチにより響きが弱い。",
+        "persona2: 「更年期で太ってきた人」という表現が、35歳の私にはまだ早すぎて関連性を感じにくい。更年期は一般的に45歳以降の症状なので、産後太りと更年期太りは原因が異なる。医療ダイエットの内容自体は評価できるが、ターゲット設定が私の状況とズレている。「100万円分無料」や「30分寝てるだけ」といった条件は魅力的だが、根本的にターゲット年齢層が異なるため、自分事として感じられない。もう少し産後女性に特化した内容であれば良かった。",
+        "persona3: 「更年期で太ってきた人」という表現が私の状況に完全に一致している。この直接的なアプローチは、プロとして現実を受け入れる必要があるという認識を促す。医療技術による解決策も説得力がある。最も共感できる内容。"
+      ],
+      "divergent_reasons": "分散: 112.5 (高一致)"
+    }
+  },
+  "result_statistics": {
+    "total_scripts": 15,
+    "average_of_averages": 72.39,
+    "median_score": 76.62,
+    "score_range": {
+      "min": 50.5,
+      "max": 82.63
+    },
+    "high_consensus_count": 8,
+    "medium_consensus_count": 5,
+    "low_consensus_count": 2
+  },
+  "persona_summaries": {
+    "persona1": {
+      "persona_summary": "28歳美意識高い系OL麻衣。大手商社営業職、年収550万円。「努力しているのに報われない」理不尽への怒りと絶望感を抱く。下半身痩せに特に悩み、効率重視で楽に確実に美しくなりたいという欲求を持つ。SNS映えする結果への憧れが強く、周囲との比較による劣等感が行動動機の核。過去の美容投資失敗により懐疑的だが、医療技術への信頼と投資対効果を重視する。",
+      "total_scripts_evaluated": 15,
+      "average_score_given": 73.72
+    },
+    "persona2": {
+      "persona_summary": "35歳産後ダイエット主婦・由香。看護師復帰を控え、産後20kg増の現実と「母親である前に女性でありたい」という深層的欲求の間で揺れ動く。安全性・時短効果・家計への負担回避を重視し、罪悪感なく美容投資できる合理的理由を求める。授乳中でも安全で家族に迷惑をかけない確実な解決法への強いニーズがある。",
+      "total_scripts_evaluated": 15,
+      "average_score_given": 72.09
+    },
+    "persona3": {
+      "persona_summary": "42歳・美容サロン経営者恵子。地位保全本能と完璧主義本能が強く、プロとしてのプライドと更年期による体型変化のギャップに悩む。エグゼクティブ向けの確実性と品質を重視し、投資対効果を厳密に判断する。",
+      "total_scripts_evaluated": 15,
+      "average_score_given": 71.37
+    }
+  }
+}
