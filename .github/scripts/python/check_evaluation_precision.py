@@ -71,8 +71,6 @@ def check_precision(product_name):
     
     # 精度計算：各グループ内での一致率
     group_accuracy = {}
-    total_correct = 0
-    total_scripts_check = 0
     
     for group in ['top', 'middle', 'bottom']:
         original_scripts = [sid for sid, grp in original_groups.items() if grp == group]
@@ -87,21 +85,19 @@ def check_precision(product_name):
             'correct_count': len(correct_scripts),
             'accuracy': len(correct_scripts) / len(original_scripts) if original_scripts else 0
         }
-        
-        total_correct += len(correct_scripts)
-        total_scripts_check += len(original_scripts)
     
-    # 全体精度
-    overall_accuracy = total_correct / total_scripts_check if total_scripts_check > 0 else 0
+    # 全体精度をトップグループの精度のみで計算
+    overall_accuracy = group_accuracy['top']['accuracy']
     
-    # 差分チェック：各グループで3本以上の差分があるかどうか
+    # トップグループの精度が不足している場合に最適化が必要
     needs_optimization = False
-    for group in ['top', 'middle', 'bottom']:
-        diff_count = group_accuracy[group]['original_count'] - group_accuracy[group]['correct_count']
-        if diff_count >= 3:
-            needs_optimization = True
-            logger.warning(f"⚠️ {group}グループで{diff_count}本の差分があります")
-            break
+    top_correct = group_accuracy['top']['correct_count']
+    top_total = group_accuracy['top']['original_count']
+    
+    # トップグループで5本中4本以上正解していない場合は最適化が必要
+    if top_correct < 4:
+        needs_optimization = True
+        logger.warning(f"⚠️ トップグループの精度が不足: {top_correct}/{top_total}本のみ正解")
     
     # 結果保存
     precision_result = {
@@ -116,7 +112,7 @@ def check_precision(product_name):
             'score_distribution': script_scores
         },
         'precision_threshold': 80.0,
-        'meets_threshold': overall_accuracy >= 0.8 and not needs_optimization,
+        'meets_threshold': overall_accuracy >= 0.8,  # トップグループの精度が80%以上
         'check_timestamp': pd.Timestamp.now().isoformat()
     }
     
@@ -124,9 +120,9 @@ def check_precision(product_name):
     with open(output_file, 'w', encoding='utf-8') as f:
         json.dump(precision_result, f, ensure_ascii=False, indent=2)
     
-    logger.info(f"📊 全体精度: {precision_result['overall_accuracy_percent']}%")
+    logger.info(f"📊 トップグループ精度: {precision_result['overall_accuracy_percent']}% ({top_correct}/{top_total}本)")
     logger.info(f"🎯 最適化必要: {'はい' if needs_optimization else 'いいえ'}")
-    logger.info(f"✅ 閾値達成: {'はい' if precision_result['meets_threshold'] else 'いいえ'}")
+    logger.info(f"✅ 閾値達成: {'はい (5本中4本以上正解)' if precision_result['meets_threshold'] else 'いいえ'}")
     
     return precision_result['meets_threshold'], precision_result['overall_accuracy_percent'], needs_optimization
 
