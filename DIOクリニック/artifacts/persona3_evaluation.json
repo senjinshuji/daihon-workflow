@@ -1,0 +1,142 @@
+{
+  "persona_id": "persona3",
+  "persona_summary": "42歳・美容サロン経営者恵子。地位保全本能と完璧主義本能が強く、プロとしてのプライドと更年期による体型変化のギャップに悩む。エグゼクティブ向けの確実性と品質を重視し、投資対効果を厳密に判断する。",
+  "evaluation_timestamp": "2025-08-28T09:21:00",
+  "criteria_used": {
+    "instinct_alignment": 0.30,
+    "insight_resonance": 0.25,
+    "concept_impact": 0.25,
+    "cognitive_shift": 0.20
+  },
+  "evaluations": {
+    "top_01": {
+      "instinct_alignment": 75,
+      "insight_resonance": 70,
+      "concept_impact": 85,
+      "cognitive_shift": 80,
+      "total_score": 77.0,
+      "evaluation_reason": "「常にここ太ってる人」の直接的な表現が経営者としてのプライドを傷つける感じがする。しかし100万円分無料という価値提案は魅力的で、30分寝るだけという効率性は忙しい経営者に響く。医療技術による確実性もプロとして信頼できそう。"
+    },
+    "top_02": {
+      "instinct_alignment": 75,
+      "insight_resonance": 72,
+      "concept_impact": 85,
+      "cognitive_shift": 82,
+      "total_score": 78.1,
+      "evaluation_reason": "top_01と似た構成だが「お願いです」の謙虚さがプロへの敬意を感じさせる。100万円分の価値提案と医療ダイエットの確実性は魅力的。ただし表現が少し軽すぎて、エグゼクティブ向けの品格に欠ける部分がある。"
+    },
+    "top_03": {
+      "instinct_alignment": 78,
+      "insight_resonance": 75,
+      "concept_impact": 82,
+      "cognitive_shift": 80,
+      "total_score": 78.65,
+      "evaluation_reason": "「絶対聞いて」という緊急性がビジネス感覚に響く。12か月分無料は長期的価値が高い。医療技術によるリバウンドゼロは更年期の代謝低下への不安を解消してくれる。先着5名限定の希少性も経営者の決断を促す。"
+    },
+    "top_04": {
+      "instinct_alignment": 65,
+      "insight_resonance": 60,
+      "concept_impact": 85,
+      "cognitive_shift": 75,
+      "total_score": 71.25,
+      "evaluation_reason": "「足痩せしたい骨格ウェーブ」のターゲティングが具体的で専門性を感じる。しかし美容業界の経営者として、もう少し洗練された訴求を期待したい。技術的内容と価値提案は魅力的だが、表現の品格が物足りない。"
+    },
+    "top_05": {
+      "instinct_alignment": 60,
+      "insight_resonance": 55,
+      "concept_impact": 80,
+      "cognitive_shift": 70,
+      "total_score": 66.25,
+      "evaluation_reason": "男性向けの内容で、私のニーズとは合わない。「個室でみっちり痩せさせてくれる男性」という表現も美容業界のプロとしては違和感がある。技術的価値は理解できるが、ターゲットが完全に異なる。"
+    },
+    "middle_01": {
+      "instinct_alignment": 70,
+      "insight_resonance": 65,
+      "concept_impact": 82,
+      "cognitive_shift": 75,
+      "total_score": 72.6,
+      "evaluation_reason": "「おっぱいよりお腹が出ている」という表現が具体的で、更年期の体型変化への共感がある。100万円分無料の価値提案は魅力的だが、表現がやや下品で経営者向けとしては品格に欠ける。内容は理解できるが洗練度が足りない。"
+    },
+    "middle_02": {
+      "instinct_alignment": 50,
+      "insight_resonance": 45,
+      "concept_impact": 60,
+      "cognitive_shift": 55,
+      "total_score": 52.5,
+      "evaluation_reason": "「佐々木」とのやりとりがコメディ調で、経営者としての真剣さに欠ける。マンジャロの話は興味深いが、全体的に軽すぎてプロフェッショナル向けの訴求としては不適切。アマギフプレゼントも安っぽく感じる。"
+    },
+    "middle_03": {
+      "instinct_alignment": 65,
+      "insight_resonance": 80,
+      "concept_impact": 75,
+      "cognitive_shift": 70,
+      "total_score": 72.0,
+      "evaluation_reason": "「生理止まって痩せない人」は更年期の私の状況に完全に当てはまる。この表現は少し衝撃的だが、現実を直視している点で共感できる。医療技術への信頼性も高いが、途中で文章が途切れているのが気になる。"
+    },
+    "middle_04": {
+      "instinct_alignment": 72,
+      "insight_resonance": 68,
+      "concept_impact": 82,
+      "cognitive_shift": 78,
+      "total_score": 74.8,
+      "evaluation_reason": "「常にここ太ってる人」の表現は直接的だが、100万円分無料という価値提案は魅力的。30分寝るだけの効率性と医療技術による確実性が忙しい経営者のニーズに合致。先着5名限定の希少性も決断を促す。"
+    },
+    "middle_05": {
+      "instinct_alignment": 78,
+      "insight_resonance": 85,
+      "concept_impact": 82,
+      "cognitive_shift": 80,
+      "total_score": 81.05,
+      "evaluation_reason": "「結婚式に向けて15キロ痩せたい」という具体的な目標設定が経営者マインドに響く。100万円分無料の価値提案と医療技術による確実性が魅力的。期限のある目標達成という点で、ビジネス感覚と合致している。"
+    },
+    "bottom_01": {
+      "instinct_alignment": 70,
+      "insight_resonance": 65,
+      "concept_impact": 80,
+      "cognitive_shift": 72,
+      "total_score": 71.85,
+      "evaluation_reason": "基本的な構成は理解できるが、表現に新鮮味がない。100万円分無料の価値提案は魅力的だが、他の台本と似すぎていて印象に残らない。医療技術の説明も標準的で、特別感が不足している。"
+    },
+    "bottom_02": {
+      "instinct_alignment": 85,
+      "insight_resonance": 90,
+      "concept_impact": 80,
+      "cognitive_shift": 82,
+      "total_score": 84.25,
+      "evaluation_reason": "「更年期で太ってきた人」という表現が私の状況に完全に一致している。この直接的なアプローチは、プロとして現実を受け入れる必要があるという認識を促す。医療技術による解決策も説得力がある。最も共感できる内容。"
+    },
+    "bottom_03": {
+      "instinct_alignment": 72,
+      "insight_resonance": 68,
+      "concept_impact": 78,
+      "cognitive_shift": 75,
+      "total_score": 73.25,
+      "evaluation_reason": "標準的な構成で安定感はあるが、特別なインパクトに欠ける。「ディオクリニック」の表記が他と違うのが気になる。内容は理解できるが、経営者として特別感や差別化要素をもっと求めたい。"
+    },
+    "bottom_04": {
+      "instinct_alignment": 68,
+      "insight_resonance": 65,
+      "concept_impact": 75,
+      "cognitive_shift": 70,
+      "total_score": 69.55,
+      "evaluation_reason": "「おっぱい残したまま痩せたい」という表現は理解できるが、美容業界のプロとしては表現がカジュアルすぎる。マンジャロプレゼントは魅力的だが、全体的に軽いトーンで経営者向けの重厚感に欠ける。"
+    },
+    "bottom_05": {
+      "instinct_alignment": 45,
+      "insight_resonance": 40,
+      "concept_impact": 55,
+      "cognitive_shift": 50,
+      "total_score": 47.5,
+      "evaluation_reason": "「佐々木」とのコメディ調のやりとりが、真剣な健康問題を扱う医療ダイエットとしては不適切。経営者として品格のある対応を求めており、このような軽いノリは信頼性を損なう。アマギフプレゼントも安っぽい印象。"
+    }
+  },
+  "evaluation_metadata": {
+    "total_scripts_evaluated": 15,
+    "average_score": 71.13,
+    "score_distribution": {
+      "high": 2,
+      "medium": 11,
+      "low": 2
+    }
+  }
+}
