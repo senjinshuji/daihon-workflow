@@ -52,7 +52,7 @@ def execute_next_action(product_name, precision_check, accuracy_rate):
             logger.info("🚀 Phase 3を起動します...")
             try:
                 result = subprocess.run([
-                    'gh', 'workflow', 'run', 'orchestrator/3-script-generation.yml',
+                    'gh', 'workflow', 'run', '3-script-generation.yml',
                     '-f', f'product_name={product_name}'
                 ], check=True, capture_output=True, text=True)
                 logger.info("✅ Phase 3が正常に起動されました")
