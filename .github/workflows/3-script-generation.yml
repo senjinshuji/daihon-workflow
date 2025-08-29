@@ -152,10 +152,10 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.WORKFLOW_TOKEN }}
 
-  # Step 5: 結果集計とコミット
+  # Step 5: 結果集計とコミット（常に実行）
   finalize:
     needs: [evaluate_and_filter, adjust_writers]
-    if: needs.evaluate_and_filter.outputs.writer_adjustment_needed == 'false' || (needs.evaluate_and_filter.outputs.writer_adjustment_needed == 'true' && needs.adjust_writers.outputs.adjustment_completed == 'false')
+    if: always()  # 常に実行（エラー時も含む）
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -175,10 +175,14 @@ jobs:
           mkdir -p "${{ inputs.product_name }}/artifacts"
           mkdir -p "${{ inputs.product_name }}/approved_scripts/loop_${{ inputs.loop_number }}"
           
-          # Move generated scripts
+          # Move generated scripts - アーティファクト名を修正
           for writer in 1 2 3; do
-            if [ -d "artifacts-temp/${{ inputs.product_name }}-writer${writer}-scripts" ]; then
-              cp -r artifacts-temp/${{ inputs.product_name }}-writer${writer}-scripts/* "${{ inputs.product_name }}/bulk_scripts/" 2>/dev/null || true
+            # Writer生成スクリプトのアーティファクト名に合わせる
+            if [ -d "artifacts-temp/${{ inputs.product_name }}-scripts-writer${writer}" ]; then
+              echo "Found writer${writer} scripts in artifacts-temp/${{ inputs.product_name }}-scripts-writer${writer}"
+              cp -r artifacts-temp/${{ inputs.product_name }}-scripts-writer${writer}/* "${{ inputs.product_name }}/bulk_scripts/" 2>/dev/null || true
+            else
+              echo "Warning: No scripts found for writer${writer} at artifacts-temp/${{ inputs.product_name }}-scripts-writer${writer}"
             fi
           done
           
