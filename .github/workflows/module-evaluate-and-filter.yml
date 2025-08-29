@@ -6,6 +6,10 @@ on:
       product_name:
         required: true
         type: string
+      loop_number:
+        required: false
+        type: string
+        default: '1'
     outputs:
       approved_count:
         value: ${{ jobs.filter-scripts.outputs.approved_count }}
@@ -483,7 +487,7 @@ jobs:
       
       - name: Organize artifacts for filtering
         run: |
-          mkdir -p "${{ inputs.product_name }}/evaluations" "${{ inputs.product_name }}/artifacts" "${{ inputs.product_name }}/approved_scripts" "${{ inputs.product_name }}/bulk_scripts"
+          mkdir -p "${{ inputs.product_name }}/evaluations" "${{ inputs.product_name }}/artifacts" "${{ inputs.product_name }}/approved_scripts/loop_${{ inputs.loop_number }}" "${{ inputs.product_name }}/bulk_scripts"
           
           # Move averaged evaluation
           if [ -d "${{ inputs.product_name }}-averaged-eval" ]; then
@@ -510,8 +514,9 @@ jobs:
             --product-name "${{ inputs.product_name }}" \
             --evaluation-file "${{ inputs.product_name }}/evaluations/averaged_script_evaluation.json" \
             --threshold-file "${{ inputs.product_name }}/artifacts/approval_threshold.txt" \
-            --output-dir "${{ inputs.product_name }}/approved_scripts" \
-            --results-file "${{ inputs.product_name }}/artifacts/filtering_results.json"
+            --output-dir "${{ inputs.product_name }}/approved_scripts/loop_${{ inputs.loop_number }}" \
+            --results-file "${{ inputs.product_name }}/artifacts/filtering_results.json" \
+            --loop-number "${{ inputs.loop_number }}"
           
           # 結果出力
           RESULTS_FILE="${{ inputs.product_name }}/artifacts/filtering_results.json"
@@ -542,7 +547,7 @@ jobs:
           name: ${{ inputs.product_name }}-filtering-results
           path: |
             ${{ inputs.product_name }}/artifacts/filtering_results.json
-            ${{ inputs.product_name }}/approved_scripts/
+            ${{ inputs.product_name }}/approved_scripts/loop_${{ inputs.loop_number }}/
           retention-days: 1
 
   # Step 4: Writer調整（必要時のみ）

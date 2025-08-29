@@ -7,6 +7,11 @@ on:
         description: '商品名'
         required: true
         type: string
+      loop_number:
+        description: 'ループ回数（自動インクリメント）'
+        required: false
+        type: string
+        default: '1'
 
 permissions:
   contents: write
@@ -42,6 +47,7 @@ jobs:
     uses: ./.github/workflows/module-evaluate-and-filter.yml
     with:
       product_name: ${{ inputs.product_name }}
+      loop_number: ${{ inputs.loop_number }}
     secrets:
       anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
 
@@ -134,9 +140,14 @@ jobs:
         run: |
           echo "🔄 Triggering Phase 3 retry after writer adjustment..."
           
+          # ループ番号をインクリメント
+          NEXT_LOOP=$((${{ inputs.loop_number }} + 1))
+          echo "📈 Next loop number: $NEXT_LOOP"
+          
           # GitHub CLIを使用してワークフローを再実行
           gh workflow run "3-script-generation.yml" \
             -f product_name="${{ inputs.product_name }}" \
+            -f loop_number="$NEXT_LOOP" \
             --repo ${{ github.repository }}
         env:
           GITHUB_TOKEN: ${{ secrets.WORKFLOW_TOKEN }}
@@ -162,6 +173,7 @@ jobs:
           mkdir -p "${{ inputs.product_name }}/bulk_scripts"
           mkdir -p "${{ inputs.product_name }}/evaluations"
           mkdir -p "${{ inputs.product_name }}/artifacts"
+          mkdir -p "${{ inputs.product_name }}/approved_scripts/loop_${{ inputs.loop_number }}"
           
           # Move generated scripts
           for writer in 1 2 3; do

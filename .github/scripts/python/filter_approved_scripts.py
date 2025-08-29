@@ -56,7 +56,8 @@ def copy_script_file(script_file: str, product_name: str, output_dir: str) -> bo
 def filter_scripts(evaluation_data: Dict[str, Any], 
                   threshold: float, 
                   product_name: str, 
-                  output_dir: str) -> Dict[str, Any]:
+                  output_dir: str,
+                  loop_number: int = 1) -> Dict[str, Any]:
     """台本をフィルタリングして承認台本を抽出"""
     
     if 'script_evaluations' not in evaluation_data:
@@ -143,6 +144,7 @@ def filter_scripts(evaluation_data: Dict[str, Any],
     
     results = {
         'filtering_date': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
+        'loop_number': loop_number,
         'threshold_used': threshold,
         'total_generated': total_generated,
         'approved_count': total_approved,
@@ -167,6 +169,7 @@ def generate_report(results: Dict[str, Any], product_name: str) -> str:
         f"# 台本評価・フィルタリング結果レポート",
         f"",
         f"**商品名**: {product_name}",
+        f"**ループ番号**: {results.get('loop_number', 1)}",
         f"**実行日時**: {results['filtering_date']}",
         f"**承認閾値**: {results['threshold_used']}",
         f"",
@@ -219,6 +222,7 @@ def main():
     parser.add_argument('--threshold-file', required=True, help='Approval threshold file')
     parser.add_argument('--output-dir', required=True, help='Output directory for approved scripts')
     parser.add_argument('--results-file', required=True, help='Output file for filtering results')
+    parser.add_argument('--loop-number', type=int, default=1, help='Current loop iteration number')
     
     args = parser.parse_args()
     
@@ -236,7 +240,7 @@ def main():
     os.makedirs(os.path.dirname(args.results_file), exist_ok=True)
     
     # フィルタリングを実行
-    results = filter_scripts(evaluation_data, threshold, args.product_name, args.output_dir)
+    results = filter_scripts(evaluation_data, threshold, args.product_name, args.output_dir, args.loop_number)
     
     # 結果を保存
     with open(args.results_file, 'w', encoding='utf-8') as f:
