@@ -78,12 +78,25 @@ jobs:
           PROMPT="${PROMPT//\{PRODUCT_NAME\}/${{ inputs.product_name }}}"
           PROMPT="${PROMPT//\{WRITER_NAME\}/writer3}"
           
-          npx @anthropic-ai/claude-code \
-            --allowedTools "Read,Write" \
-            --max-turns 50 \
-            --verbose \
-            --permission-mode "acceptEdits" \
-            -p "$PROMPT"
+          # リトライロジック（最大3回試行）
+          for attempt in 1 2 3; do
+            echo "🔄 Attempt $attempt of 3 for Writer3..."
+            
+            npx @anthropic-ai/claude-code \
+              --allowedTools "Read,Write" \
+              --max-turns 30 \
+              --verbose \
+              --permission-mode "acceptEdits" \
+              -p "$PROMPT" && break
+            
+            # 失敗時の処理
+            if [ $attempt -lt 3 ]; then
+              echo "⏳ API call failed. Waiting 30 seconds before retry..."
+              sleep 30
+            else
+              echo "❌ Failed after 3 attempts"
+            fi
+          done
           
           # 生成数カウント（Writer3のみ）
           if [ -d "${{ inputs.product_name }}/bulk_scripts" ]; then
