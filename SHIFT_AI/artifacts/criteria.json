@@ -1,0 +1,132 @@
+{
+  "version": 1,
+  "created_at": "2025-09-04",
+  "product_name": "SHIFT_AI",
+  "description": "SHIFT_AI台本評価基準（11項目・各10点満点）- AI教育/副業支援サービス特化版",
+  "weights": {
+    "appeal_direction_clarity": 0.13,
+    "differentiation_clarity": 0.13,
+    "usp_strength": 0.12,
+    "selection_reason_clarity": 0.12,
+    "opening_hook_intensity": 0.11,
+    "sales_pitch_elimination": 0.09,
+    "character_edge": 0.08,
+    "who_fmt_usp_integration": 0.09,
+    "flow_naturalness": 0.07,
+    "right_brain_impact": 0.08,
+    "trust_building": 0.08
+  },
+  "criteria_details": {
+    "appeal_direction_clarity": {
+      "name": "訴求方向性の明確性・一貫性",
+      "description": "効果訴求（具体的収入実績・習得期間・成功率）が明確で一貫しているか",
+      "max_score": 10,
+      "shift_ai_focus": "「2時間習得→月10万収入」「3週間で7万→1ヶ月で20万」など具体的効果の明示"
+    },
+    "differentiation_clarity": {
+      "name": "他選択肢との差別化の明確性", 
+      "description": "他のAI教育サービス・副業方法・学習方法との決定的違いが明確に示されているか",
+      "max_score": 10,
+      "shift_ai_focus": "完全無料・2時間習得・AI人材バブル活用・木内氏の実績など独自要素の強調"
+    },
+    "usp_strength": {
+      "name": "独自価値提案(USP)の強度",
+      "description": "SHIFT_AI独自の価値（2時間完全習得・自動化収入・社会貢献ミッション）が際立っているか",
+      "max_score": 10,
+      "shift_ai_focus": "他社にない「2時間完全習得システム」「24時間自動収益化」の独自性強調"
+    },
+    "selection_reason_clarity": {
+      "name": "選ばれる理由の決定的明確性",
+      "description": "なぜ他の学習方法でなくSHIFT_AIを選ぶべきか決定的な理由が示されているか",
+      "max_score": 10,
+      "shift_ai_focus": "完全無料・即効性・実績・権威性を統合した選択必然性の構築"
+    },
+    "opening_hook_intensity": {
+      "name": "冒頭フックの強烈さ",
+      "description": "最初の5秒で興味を引き、続きを見たくなる強烈なインパクトがあるか",
+      "max_score": 10,
+      "shift_ai_focus": "「月50万達成主婦」「ChatGPT時代終了」「西野推薦」など数値・逆説・権威性フック"
+    },
+    "sales_pitch_elimination": {
+      "name": "売り込み感の排除度",
+      "description": "自然な流れで価値提案し、「日本AI先進国化」ミッションで売り込み感を中和しているか",
+      "max_score": 10,
+      "shift_ai_focus": "社会貢献目的・完全無料提供による売り込み感の自然な排除"
+    },
+    "character_edge": {
+      "name": "キャラクターのエッジ立ち",
+      "description": "語り手の個性が明確で、ターゲット別（会社員・主婦・若年層）に適した口調・人格か",
+      "max_score": 10,
+      "shift_ai_focus": "成功体験者・専門家・仲介者など明確なキャラクター設定とターゲット適合性"
+    },
+    "who_fmt_usp_integration": {
+      "name": "WHO-FMT-USP戦略的統合性",
+      "description": "3つのターゲット・効果的フォーマット・独自価値が戦略的に統合されているか",
+      "max_score": 10,
+      "shift_ai_focus": "ターゲット特性（効率性・安全性・競争性）とフォーマット・USPの整合性"
+    },
+    "flow_naturalness": {
+      "name": "構成フローの自然さ",
+      "description": "冒頭フック→共感→解決策→実績→CTAの流れが自然で60秒内で完結しているか",
+      "max_score": 10,
+      "shift_ai_focus": "60秒・1.2倍速対応の最適化された構成フローの実現"
+    },
+    "right_brain_impact": {
+      "name": "右脳直撃インパクト",
+      "description": "感情に訴え、理屈より感覚に響き「今すぐ行動したい」衝動を生み出すか",
+      "max_score": 10,
+      "shift_ai_focus": "収入実現・時代遅れ回避・先行者利益など感情的動機の喚起"
+    },
+    "trust_building": {
+      "name": "先回り対処による信頼構築",
+      "description": "「無料の裏がある」「難しそう」「時間ない」等の不安を先回りして解消し信頼を構築しているか",
+      "max_score": 10,
+      "shift_ai_focus": "社会貢献目的・簡単さ・短時間習得による典型的不安要素の事前解消"
+    }
+  },
+  "target_specific_considerations": {
+    "会社員層": {
+      "重視項目": ["appeal_direction_clarity", "selection_reason_clarity", "trust_building"],
+      "理由": "効率性重視・具体的ROI・リスク回避志向への対応"
+    },
+    "主婦層": {
+      "重視項目": ["trust_building", "sales_pitch_elimination", "differentiation_clarity"], 
+      "理由": "安全性重視・家族配慮・簡単さへの訴求"
+    },
+    "若年層": {
+      "重視項目": ["differentiation_clarity", "opening_hook_intensity", "right_brain_impact"],
+      "理由": "差別化志向・注意獲得・感情的動機への訴求"
+    }
+  },
+  "structure_weights": {
+    "opening_hook": 0.35,
+    "development": 0.25,
+    "solution": 0.20,
+    "trust": 0.10,
+    "cta": 0.10
+  },
+  "weighting_rationale": {
+    "highest_weights": {
+      "appeal_direction_clarity": "効果訴求が最重要。具体的数値（月収・期間・実績）による信頼性構築",
+      "differentiation_clarity": "競合激戦のAI教育市場での明確な差別化が成功の鍵"
+    },
+    "high_weights": {
+      "usp_strength": "2時間習得・自動化収入など他社にない独自価値の強調",
+      "selection_reason_clarity": "無料提供への疑念を払拭する選択理由の明確化"
+    },
+    "medium_weights": {
+      "opening_hook_intensity": "60秒動画での注意獲得。ただし内容の質がより重要",
+      "sales_pitch_elimination": "無料オファーで売り込み感は元々低い",
+      "who_fmt_usp_integration": "ターゲット別最適化による効果最大化"
+    },
+    "lower_weights": {
+      "character_edge": "商品力が強いため、キャラクター依存度は相対的に低い",
+      "right_brain_impact": "論理的説得力が重要。感情訴求は補助的役割",
+      "flow_naturalness": "基本的な構成力。差別化要因としては優先度低",
+      "trust_building": "権威性・実績による信頼性は既に高い。追加的信頼構築の必要性は限定的"
+    }
+  },
+  "max_score": 10,
+  "total_weight": 1.0,
+  "optimization_target": "AI教育・副業支援市場での効果的な顧客獲得と信頼性構築"
+}
