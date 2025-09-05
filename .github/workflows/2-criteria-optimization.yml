@@ -246,6 +246,8 @@ jobs:
             
             echo "final_action=phase2_rerun" >> $GITHUB_OUTPUT
           fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.WORKFLOW_TOKEN }}
       
       - name: Upload threshold if set
         if: needs.check_precision.outputs.precision_check == 'pass'

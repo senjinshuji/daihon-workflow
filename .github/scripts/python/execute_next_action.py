@@ -48,12 +48,17 @@ def execute_next_action(product_name, precision_check, accuracy_rate):
             
             logger.info(f"📊 承認閾値設定: {fifth_score}")
             
-            # Phase 3を起動
+            # Phase 3を起動（GITHUB_TOKENは環境変数から取得）
             logger.info("🚀 Phase 3を起動します...")
             try:
+                # GITHUB_TOKENが環境変数にセットされていることを確認
+                if not os.environ.get('GITHUB_TOKEN'):
+                    logger.warning("⚠️ GITHUB_TOKENが設定されていません")
+                    
                 result = subprocess.run([
                     'gh', 'workflow', 'run', '3-script-generation.yml',
-                    '-f', f'product_name={product_name}'
+                    '-f', f'product_name={product_name}',
+                    '-f', 'loop_number=1'  # 初回ループ
                 ], check=True, capture_output=True, text=True)
                 logger.info("✅ Phase 3が正常に起動されました")
             except subprocess.CalledProcessError as e:

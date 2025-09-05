@@ -136,13 +136,23 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       
-      - name: Trigger Phase 3 Retry
+      - name: Check loop limit and trigger retry
         run: |
-          echo "🔄 Triggering Phase 3 retry after writer adjustment..."
+          echo "🔄 Checking loop limit and triggering retry if needed..."
           
           # ループ番号をインクリメント
           NEXT_LOOP=$((${{ inputs.loop_number }} + 1))
           echo "📈 Next loop number: $NEXT_LOOP"
+          
+          # 最大ループ数のチェック（デフォルト: 10回）
+          MAX_LOOPS=10
+          if [ $NEXT_LOOP -gt $MAX_LOOPS ]; then
+            echo "⚠️ Maximum loop limit ($MAX_LOOPS) reached. Stopping iteration."
+            echo "📊 Please check the approved scripts from all loops in the final report."
+            exit 0
+          fi
+          
+          echo "🚀 Triggering Phase 3 retry (Loop $NEXT_LOOP)..."
           
           # GitHub CLIを使用してワークフローを再実行
           gh workflow run "3-script-generation.yml" \
@@ -216,11 +226,21 @@ jobs:
             echo "Nothing to push"
           }
       
+      - name: Generate Final Report if completed
+        if: needs.evaluate_and_filter.outputs.writer_adjustment_needed == 'false'
+        run: |
+          echo "📊 Generating final report for all loops..."
+          pip install pandas numpy
+          python .github/scripts/python/generate_final_report.py \
+            --product-name "${{ inputs.product_name }}" \
+            --output-dir "${{ inputs.product_name }}/reports"
+      
       - name: Generate Summary
         run: |
-          echo "## 📝 Phase 3 実行完了: 台本生成とフィルタリング" >> $GITHUB_STEP_SUMMARY
+          echo "## 📝 Phase 3 実行完了: 台本生成とフィルタリング (Loop ${{ inputs.loop_number }})" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "### 📊 実行結果" >> $GITHUB_STEP_SUMMARY
+          echo "- **ループ番号**: ${{ inputs.loop_number }}" >> $GITHUB_STEP_SUMMARY
           echo "- **Writer1台本数**: ${{ needs.generate_scripts_writer1.outputs.scripts_generated }}本" >> $GITHUB_STEP_SUMMARY
           echo "- **Writer2台本数**: ${{ needs.generate_scripts_writer2.outputs.scripts_generated }}本" >> $GITHUB_STEP_SUMMARY
           echo "- **Writer3台本数**: ${{ needs.generate_scripts_writer3.outputs.scripts_generated }}本" >> $GITHUB_STEP_SUMMARY
@@ -230,13 +250,16 @@ jobs:
           echo "" >> $GITHUB_STEP_SUMMARY
           
           if [ "${{ needs.evaluate_and_filter.outputs.writer_adjustment_needed }}" = "false" ]; then
-            echo "### 🎉 Phase 4準備完了!" >> $GITHUB_STEP_SUMMARY
+            echo "### 🎉 目標達成！" >> $GITHUB_STEP_SUMMARY
             echo "全てのWriterで3本以上の承認台本が生成されました。" >> $GITHUB_STEP_SUMMARY
+            echo "最終レポートが生成されました: ${{ inputs.product_name }}/reports/approved_scripts_report.md" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
             echo "承認済み台本を確認して制作を開始してください。" >> $GITHUB_STEP_SUMMARY
           elif [ "${{ needs.evaluate_and_filter.outputs.writer_adjustment_needed }}" = "true" ]; then
             if [ "${{ needs.adjust_writers.outputs.adjustment_completed }}" = "true" ]; then
-              echo "### 🔄 Writer調整完了 - 再実行中" >> $GITHUB_STEP_SUMMARY
-              echo "Writer人格を調整しました。Phase 3を再実行しています。" >> $GITHUB_STEP_SUMMARY
+              NEXT_LOOP=$((${{ inputs.loop_number }} + 1))
+              echo "### 🔄 Writer調整完了 - Loop $NEXT_LOOP を実行中" >> $GITHUB_STEP_SUMMARY
+              echo "Writer人格を調整しました。次のループを開始しています。" >> $GITHUB_STEP_SUMMARY
             else
               echo "### ❌ Writer調整失敗" >> $GITHUB_STEP_SUMMARY
               echo "Writer調整に失敗しました。手動での確認が必要です。" >> $GITHUB_STEP_SUMMARY
