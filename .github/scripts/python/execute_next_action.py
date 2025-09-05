@@ -24,7 +24,7 @@ def execute_next_action(product_name, precision_check, accuracy_rate):
     
     logger = setup_logging()
     artifacts_dir = Path(f"{product_name}/artifacts")
-    precision_file = artifacts_dir / 'precision_check.json'
+    precision_file = artifacts_dir / 'precision_evaluation.json'
     
     if not precision_file.exists():
         logger.error("❌ 精度チェック結果が見つかりません")
