@@ -255,6 +255,29 @@ jobs:
           path: ${{ inputs.product_name }}/artifacts/approval_threshold.txt
           retention-days: 1
       
+      - name: Commit threshold to repository
+        if: needs.check_precision.outputs.precision_check == 'pass'
+        run: |
+          echo "💾 Committing approval threshold..."
+          
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          
+          # Add threshold file
+          git add "${{ inputs.product_name }}/artifacts/approval_threshold.txt" || true
+          
+          # Commit
+          git commit -m "📊 [${{ inputs.product_name }}] Phase 2: 承認閾値を設定" || {
+            echo "No changes to commit"
+          }
+          
+          # Push to repository
+          git push || {
+            echo "Nothing to push"
+          }
+          
+          echo "✅ Approval threshold committed to repository"
+      
       - name: Upload updated criteria if optimized
         if: needs.check_precision.outputs.precision_check != 'pass'
         uses: actions/upload-artifact@v4

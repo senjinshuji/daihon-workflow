@@ -549,6 +549,32 @@ jobs:
             ${{ inputs.product_name }}/artifacts/filtering_results.json
             ${{ inputs.product_name }}/approved_scripts/loop_${{ inputs.loop_number }}/
           retention-days: 1
+      
+      - name: Commit approved scripts to repository
+        if: steps.filter.outputs.approved_count != '0'
+        run: |
+          echo "💾 Committing approved scripts for loop ${{ inputs.loop_number }}..."
+          
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          
+          # Add approved scripts and bulk scripts
+          git add "${{ inputs.product_name }}/approved_scripts/loop_${{ inputs.loop_number }}/" || true
+          git add "${{ inputs.product_name }}/bulk_scripts/" || true
+          git add "${{ inputs.product_name }}/artifacts/filtering_results.json" || true
+          git add "${{ inputs.product_name }}/evaluations/" || true
+          
+          # Commit with loop information
+          git commit -m "✅ [${{ inputs.product_name }}] Loop ${{ inputs.loop_number }}: 承認済み台本 ${{ steps.filter.outputs.approved_count }}本を保存" || {
+            echo "No changes to commit"
+          }
+          
+          # Push to repository
+          git push || {
+            echo "Nothing to push"
+          }
+          
+          echo "✅ Approved scripts committed to repository"
 
   # Step 4: Writer調整（必要時のみ）
   adjust-writers:

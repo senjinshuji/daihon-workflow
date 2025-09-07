@@ -201,9 +201,16 @@ jobs:
             cp -r artifacts-temp/${{ inputs.product_name }}-evaluation-results/* "${{ inputs.product_name }}/evaluations/" 2>/dev/null || true
           fi
           
-          # Move filtering results
-          if [ -d "artifacts-temp/${{ inputs.product_name }}-filtered-scripts" ]; then
-            cp -r artifacts-temp/${{ inputs.product_name }}-filtered-scripts/* "${{ inputs.product_name }}/artifacts/" 2>/dev/null || true
+          # Move filtering results and approved scripts
+          if [ -d "artifacts-temp/${{ inputs.product_name }}-filtering-results" ]; then
+            # Move filtering_results.json to artifacts
+            if [ -f "artifacts-temp/${{ inputs.product_name }}-filtering-results/filtering_results.json" ]; then
+              cp "artifacts-temp/${{ inputs.product_name }}-filtering-results/filtering_results.json" "${{ inputs.product_name }}/artifacts/" 2>/dev/null || true
+            fi
+            # Move approved scripts to the correct loop directory
+            if [ -d "artifacts-temp/${{ inputs.product_name }}-filtering-results/approved_scripts" ]; then
+              cp -r artifacts-temp/${{ inputs.product_name }}-filtering-results/approved_scripts/loop_${{ inputs.loop_number }}"/* "${{ inputs.product_name }}/approved_scripts/loop_${{ inputs.loop_number }}/" 2>/dev/null || true
+            fi
           fi
           
           # Clean up temp directory
