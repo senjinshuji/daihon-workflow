@@ -201,6 +201,18 @@ jobs:
           python-version: '3.10'
       - run: pip install pandas numpy
       - run: npm install -g @anthropic-ai/claude-code
+      
+      - name: Download precision check artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{ inputs.product_name }}-precision-check
+          path: ${{ inputs.product_name }}/artifacts/
+      
+      - name: Download persona averages artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{ inputs.product_name }}-persona-averages
+          path: ${{ inputs.product_name }}/artifacts/
 
       - id: action
         env:
