@@ -285,7 +285,7 @@ def main():
     
     # 出力ディレクトリ作成
     output_dir = Path(args.output_dir)
-    output_dir.makedirs(exist_ok=True)
+    output_dir.mkdir(parents=True, exist_ok=True)
     
     # JSONサマリー生成
     summary = generate_summary_json(args.product_name, data)
