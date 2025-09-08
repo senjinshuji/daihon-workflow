@@ -37,9 +37,9 @@ def load_threshold(threshold_file: str) -> float:
         print(f"Warning: Could not load threshold from {threshold_file}: {e}", file=sys.stderr)
         return 70.0  # デフォルト閾値
 
-def copy_script_file(script_file: str, product_name: str, output_dir: str) -> bool:
+def copy_script_file(script_file: str, product_name: str, output_dir: str, loop_number: int = 1) -> bool:
     """台本ファイルを承認ディレクトリにコピー"""
-    source_path = os.path.join(product_name, 'bulk_scripts', script_file)
+    source_path = os.path.join(product_name, 'bulk_scripts', f'loop_{loop_number}', script_file)
     dest_path = os.path.join(output_dir, script_file)
     
     try:
@@ -100,7 +100,7 @@ def filter_scripts(evaluation_data: Dict[str, Any],
             })
             
             # ファイルをコピー
-            copy_success = copy_script_file(script_file, product_name, output_dir)
+            copy_success = copy_script_file(script_file, product_name, output_dir, loop_number)
             if not copy_success:
                 print(f"Warning: Failed to copy approved script: {script_file}", file=sys.stderr)
         else:

@@ -6,6 +6,10 @@ on:
       product_name:
         required: true
         type: string
+      loop_number:
+        required: false
+        type: string
+        default: '1'
     outputs:
       scripts_generated:
         value: ${{ jobs.generate.outputs.scripts_generated }}
@@ -32,8 +36,8 @@ jobs:
       
       - name: Organize downloaded artifacts
         run: |
-          # Create necessary directories
-          mkdir -p "${{ inputs.product_name }}/writers" "${{ inputs.product_name }}/personas" "${{ inputs.product_name }}/artifacts" "${{ inputs.product_name }}/bulk_scripts"
+          # Create necessary directories including loop-specific directory
+          mkdir -p "${{ inputs.product_name }}/writers" "${{ inputs.product_name }}/personas" "${{ inputs.product_name }}/artifacts" "${{ inputs.product_name }}/bulk_scripts/loop_${{ inputs.loop_number }}"
           
           # Move writers
           if [ -d "${{ inputs.product_name }}-writers" ]; then
@@ -77,6 +81,7 @@ jobs:
           # プレースホルダーの置換
           PROMPT="${PROMPT//\{PRODUCT_NAME\}/${{ inputs.product_name }}}"
           PROMPT="${PROMPT//\{WRITER_NAME\}/writer2}"
+          PROMPT="${PROMPT//\{OUTPUT_DIR\}/${{ inputs.product_name }}/bulk_scripts/loop_${{ inputs.loop_number }}}"
           
           # リトライロジック（最大3回試行）
           for attempt in 1 2 3; do
@@ -98,14 +103,14 @@ jobs:
             fi
           done
           
-          # 生成数カウント（Writer2のみ）
-          if [ -d "${{ inputs.product_name }}/bulk_scripts" ]; then
-            COUNT=$(ls -1 "${{ inputs.product_name }}/bulk_scripts/writer2_"*.md 2>/dev/null | wc -l)
+          # 生成数カウント（Writer2のみ、現在のループのみ）
+          if [ -d "${{ inputs.product_name }}/bulk_scripts/loop_${{ inputs.loop_number }}" ]; then
+            COUNT=$(ls -1 "${{ inputs.product_name }}/bulk_scripts/loop_${{ inputs.loop_number }}/writer2_"*.md 2>/dev/null | wc -l)
             echo "count=$COUNT" >> $GITHUB_OUTPUT
-            echo "✅ Writer2 scripts generated: $COUNT"
+            echo "✅ Writer2 scripts generated in loop ${{ inputs.loop_number }}: $COUNT"
           else
             echo "count=0" >> $GITHUB_OUTPUT
-            echo "❌ No Writer2 scripts generated"
+            echo "❌ No Writer2 scripts generated in loop ${{ inputs.loop_number }}"
           fi
       
       - name: Upload generated scripts
@@ -113,5 +118,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: ${{ inputs.product_name }}-scripts-writer2
-          path: ${{ inputs.product_name }}/bulk_scripts/writer2_*.md
+          path: ${{ inputs.product_name }}/bulk_scripts/loop_${{ inputs.loop_number }}/writer2_*.md
           retention-days: 1

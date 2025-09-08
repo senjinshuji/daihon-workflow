@@ -41,12 +41,12 @@ jobs:
       
       - name: Organize downloaded artifacts
         run: |
-          mkdir -p "${{ inputs.product_name }}/bulk_scripts" "${{ inputs.product_name }}/personas" "${{ inputs.product_name }}/artifacts" "${{ inputs.product_name }}/evaluations"
+          mkdir -p "${{ inputs.product_name }}/bulk_scripts/loop_${{ inputs.loop_number }}" "${{ inputs.product_name }}/personas" "${{ inputs.product_name }}/artifacts" "${{ inputs.product_name }}/evaluations"
           
-          # Move scripts from all writers
+          # Move scripts from all writers (loop-specific)
           for writer in writer1 writer2 writer3; do
             if [ -d "${{ inputs.product_name }}-scripts-${writer}" ]; then
-              cp -r "${{ inputs.product_name }}-scripts-${writer}"/* "${{ inputs.product_name }}/bulk_scripts/" 2>/dev/null || true
+              cp -r "${{ inputs.product_name }}-scripts-${writer}"/* "${{ inputs.product_name }}/bulk_scripts/loop_${{ inputs.loop_number }}/" 2>/dev/null || true
             fi
           done
           
@@ -76,7 +76,7 @@ jobs:
           {PRODUCT_NAME}/personas/persona1.md で定義されたペルソナ1として、人格定義を読み込んでから評価を実行してください。
           
           ## 評価対象
-          {PRODUCT_NAME}/bulk_scripts/ の全台本（15本）
+          {PRODUCT_NAME}/bulk_scripts/loop_{LOOP_NUMBER}/ の全台本（15本）
           
           ## 評価基準
           {PRODUCT_NAME}/artifacts/criteria.json から評価軸と重み付けを動的に読み込み、その基準に従って評価してください。
@@ -127,6 +127,7 @@ jobs:
           
           PROMPT=$(cat evaluate_persona1_prompt.txt)
           PROMPT="${PROMPT//\{PRODUCT_NAME\}/${{ inputs.product_name }}}"
+          PROMPT="${PROMPT//\{LOOP_NUMBER\}/${{ inputs.loop_number }}}"
           
           echo "🎭 Persona1 evaluating scripts for ${{ inputs.product_name }}..."
           
@@ -172,12 +173,12 @@ jobs:
       
       - name: Organize downloaded artifacts
         run: |
-          mkdir -p "${{ inputs.product_name }}/bulk_scripts" "${{ inputs.product_name }}/personas" "${{ inputs.product_name }}/artifacts" "${{ inputs.product_name }}/evaluations"
+          mkdir -p "${{ inputs.product_name }}/bulk_scripts/loop_${{ inputs.loop_number }}" "${{ inputs.product_name }}/personas" "${{ inputs.product_name }}/artifacts" "${{ inputs.product_name }}/evaluations"
           
-          # Move scripts from all writers
+          # Move scripts from all writers (loop-specific)
           for writer in writer1 writer2 writer3; do
             if [ -d "${{ inputs.product_name }}-scripts-${writer}" ]; then
-              cp -r "${{ inputs.product_name }}-scripts-${writer}"/* "${{ inputs.product_name }}/bulk_scripts/" 2>/dev/null || true
+              cp -r "${{ inputs.product_name }}-scripts-${writer}"/* "${{ inputs.product_name }}/bulk_scripts/loop_${{ inputs.loop_number }}/" 2>/dev/null || true
             fi
           done
           
@@ -207,7 +208,7 @@ jobs:
           {PRODUCT_NAME}/personas/persona2.md で定義されたペルソナ2として、人格定義を読み込んでから評価を実行してください。
           
           ## 評価対象
-          {PRODUCT_NAME}/bulk_scripts/ の全台本（15本）
+          {PRODUCT_NAME}/bulk_scripts/loop_{LOOP_NUMBER}/ の全台本（15本）
           
           ## 評価基準
           {PRODUCT_NAME}/artifacts/criteria.json から評価軸と重み付けを動的に読み込み、その基準に従って評価してください。
@@ -258,6 +259,7 @@ jobs:
           
           PROMPT=$(cat evaluate_persona2_prompt.txt)
           PROMPT="${PROMPT//\{PRODUCT_NAME\}/${{ inputs.product_name }}}"
+          PROMPT="${PROMPT//\{LOOP_NUMBER\}/${{ inputs.loop_number }}}"
           
           echo "🎭 Persona2 evaluating scripts for ${{ inputs.product_name }}..."
           
@@ -303,12 +305,12 @@ jobs:
       
       - name: Organize downloaded artifacts
         run: |
-          mkdir -p "${{ inputs.product_name }}/bulk_scripts" "${{ inputs.product_name }}/personas" "${{ inputs.product_name }}/artifacts" "${{ inputs.product_name }}/evaluations"
+          mkdir -p "${{ inputs.product_name }}/bulk_scripts/loop_${{ inputs.loop_number }}" "${{ inputs.product_name }}/personas" "${{ inputs.product_name }}/artifacts" "${{ inputs.product_name }}/evaluations"
           
-          # Move scripts from all writers
+          # Move scripts from all writers (loop-specific)
           for writer in writer1 writer2 writer3; do
             if [ -d "${{ inputs.product_name }}-scripts-${writer}" ]; then
-              cp -r "${{ inputs.product_name }}-scripts-${writer}"/* "${{ inputs.product_name }}/bulk_scripts/" 2>/dev/null || true
+              cp -r "${{ inputs.product_name }}-scripts-${writer}"/* "${{ inputs.product_name }}/bulk_scripts/loop_${{ inputs.loop_number }}/" 2>/dev/null || true
             fi
           done
           
@@ -338,7 +340,7 @@ jobs:
           {PRODUCT_NAME}/personas/persona3.md で定義されたペルソナ3として、人格定義を読み込んでから評価を実行してください。
           
           ## 評価対象
-          {PRODUCT_NAME}/bulk_scripts/ の全台本（15本）
+          {PRODUCT_NAME}/bulk_scripts/loop_{LOOP_NUMBER}/ の全台本（15本）
           
           ## 評価基準
           {PRODUCT_NAME}/artifacts/criteria.json から評価軸と重み付けを動的に読み込み、その基準に従って評価してください。
@@ -389,6 +391,7 @@ jobs:
           
           PROMPT=$(cat evaluate_persona3_prompt.txt)
           PROMPT="${PROMPT//\{PRODUCT_NAME\}/${{ inputs.product_name }}}"
+          PROMPT="${PROMPT//\{LOOP_NUMBER\}/${{ inputs.loop_number }}}"
           
           echo "🎭 Persona3 evaluating scripts for ${{ inputs.product_name }}..."
           
@@ -487,7 +490,7 @@ jobs:
       
       - name: Organize artifacts for filtering
         run: |
-          mkdir -p "${{ inputs.product_name }}/evaluations" "${{ inputs.product_name }}/artifacts" "${{ inputs.product_name }}/approved_scripts/loop_${{ inputs.loop_number }}" "${{ inputs.product_name }}/bulk_scripts"
+          mkdir -p "${{ inputs.product_name }}/evaluations" "${{ inputs.product_name }}/artifacts" "${{ inputs.product_name }}/approved_scripts/loop_${{ inputs.loop_number }}" "${{ inputs.product_name }}/bulk_scripts/loop_${{ inputs.loop_number }}"
           
           # Move averaged evaluation
           if [ -d "${{ inputs.product_name }}-averaged-eval" ]; then
@@ -499,10 +502,10 @@ jobs:
             cp -r "${{ inputs.product_name }}-threshold"/* "${{ inputs.product_name }}/artifacts/" 2>/dev/null || true
           fi
           
-          # Move scripts for copying approved ones
+          # Move scripts for copying approved ones (loop-specific)
           for writer in writer1 writer2 writer3; do
             if [ -d "${{ inputs.product_name }}-scripts-${writer}" ]; then
-              cp -r "${{ inputs.product_name }}-scripts-${writer}"/* "${{ inputs.product_name }}/bulk_scripts/" 2>/dev/null || true
+              cp -r "${{ inputs.product_name }}-scripts-${writer}"/* "${{ inputs.product_name }}/bulk_scripts/loop_${{ inputs.loop_number }}/" 2>/dev/null || true
             fi
           done
       
