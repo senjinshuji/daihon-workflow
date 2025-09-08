@@ -209,7 +209,7 @@ jobs:
             fi
             # Move approved scripts to the correct loop directory
             if [ -d "artifacts-temp/${{ inputs.product_name }}-filtering-results/approved_scripts" ]; then
-              cp -r artifacts-temp/${{ inputs.product_name }}-filtering-results/approved_scripts/loop_${{ inputs.loop_number }}"/* "${{ inputs.product_name }}/approved_scripts/loop_${{ inputs.loop_number }}/" 2>/dev/null || true
+              cp -r "artifacts-temp/${{ inputs.product_name }}-filtering-results/approved_scripts/loop_${{ inputs.loop_number }}"/* "${{ inputs.product_name }}/approved_scripts/loop_${{ inputs.loop_number }}/" 2>/dev/null || true
             fi
           fi
           
