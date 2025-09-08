@@ -69,7 +69,14 @@ def calculate_averages(persona1_data: Dict[str, Any],
             continue
             
         for eval_data in persona_data['script_evaluations']:
-            script_file = eval_data['script_file']
+            # script_file or script_name キーの両方に対応
+            script_file = eval_data.get('script_file') or eval_data.get('script_name')
+            if not script_file:
+                print(f"Warning: No script file/name found in evaluation data", file=sys.stderr)
+                continue
+            # .md拡張子がない場合は追加
+            if not script_file.endswith('.md'):
+                script_file += '.md'
             writer = eval_data.get('writer', 'unknown')
             weighted_score = eval_data.get('weighted_score', 0)
             detailed_scores = eval_data.get('detailed_scores', {})
