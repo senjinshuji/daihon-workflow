@@ -1,122 +1,252 @@
 {
-  "filtering_date": "2025-09-09 08:09:24",
-  "loop_number": 12,
+  "filtering_date": "2025-09-09 11:41:28",
+  "loop_number": 2,
   "threshold_used": 70.0,
-  "total_generated": 15,
-  "approved_count": 12,
-  "approval_rate": 80.0,
+  "total_generated": 37,
+  "approved_count": 21,
+  "approval_rate": 56.76,
   "writer_adjustment_needed": false,
   "insufficient_writers": [],
   "writer_breakdown": {
     "writer3": {
-      "total_scripts": 15,
+      "total_scripts": 16,
       "approved_scripts": 12,
-      "approval_rate": 80.0,
-      "average_score": 80.29333333333334,
+      "approval_rate": 75.0,
+      "average_score": 76.503125,
       "approved_files": [
         {
-          "file": "writer3_script_8.md",
-          "score": 93.4,
+          "file": "writer3_script_10.md",
+          "score": 87.4,
           "rank": 1
         },
         {
-          "file": "writer3_script_new3.md",
-          "score": 92.1,
-          "rank": 2
-        },
-        {
-          "file": "writer3_script_5.md",
-          "score": 91.5,
+          "file": "writer3_script_2.md",
+          "score": 85.9,
           "rank": 3
         },
         {
-          "file": "writer3_script_2.md",
-          "score": 90.5,
+          "file": "writer3_script_8.md",
+          "score": 85.7,
           "rank": 4
         },
         {
-          "file": "writer3_script_4.md",
-          "score": 84.6,
+          "file": "writer3_script_5.md",
+          "score": 83.7,
           "rank": 5
         },
         {
-          "file": "writer3_script_new4.md",
-          "score": 83.0,
-          "rank": 6
-        },
-        {
-          "file": "writer3_script_10.md",
-          "score": 82.5,
+          "file": "writer3_script_new3.md",
+          "score": 83.5,
           "rank": 7
         },
         {
-          "file": "writer3_script_new2.md",
-          "score": 81.6,
-          "rank": 8
-        },
-        {
-          "file": "writer3_script_new1.md",
-          "score": 81.0,
-          "rank": 9
-        },
-        {
-          "file": "writer3_script_new5.md",
-          "score": 80.6,
-          "rank": 10
-        },
-        {
-          "file": "writer3_script_3.md",
-          "score": 75.4,
+          "file": "writer3_script_new4.md",
+          "score": 82.1,
           "rank": 11
         },
         {
-          "file": "writer3_script_6.md",
-          "score": 72.4,
-          "rank": 12
+          "file": "writer3_script_new1.md",
+          "score": 81.4,
+          "rank": 13
+        },
+        {
+          "file": "writer3_script_4.md",
+          "score": 81.15,
+          "rank": 14
+        },
+        {
+          "file": "writer3_script_new2.md",
+          "score": 80.25,
+          "rank": 15
+        },
+        {
+          "file": "writer3_script_3.md",
+          "score": 77.4,
+          "rank": 16
+        },
+        {
+          "file": "writer3_script_new5.md",
+          "score": 75.65,
+          "rank": 17
+        },
+        {
+          "file": "writer3_script_9.md",
+          "score": 70.1,
+          "rank": 21
         }
       ],
       "rejected_files": [
         {
-          "file": "writer3_script_9.md",
-          "score": 69.5,
-          "rank": 13
-        },
-        {
-          "file": "writer3_script_7.md",
-          "score": 67.4,
-          "rank": 14
+          "file": "writer3_script_6.md",
+          "score": 69.8,
+          "rank": 22
         },
         {
           "file": "writer3_script_11.md",
-          "score": 58.9,
-          "rank": 15
+          "score": 60.7,
+          "rank": 32
+        },
+        {
+          "file": "writer3_script_7.md",
+          "score": 60.099999999999994,
+          "rank": 33
+        },
+        {
+          "file": "writer3_script3.md",
+          "score": 59.2,
+          "rank": 34
+        }
+      ]
+    },
+    "writer2": {
+      "total_scripts": 10,
+      "approved_scripts": 4,
+      "approval_rate": 40.0,
+      "average_score": 65.325,
+      "approved_files": [
+        {
+          "file": "writer2_script5.md",
+          "score": 87.2,
+          "rank": 2
+        },
+        {
+          "file": "writer2_script4.md",
+          "score": 81.7,
+          "rank": 12
+        },
+        {
+          "file": "writer2_script1.md",
+          "score": 73.05000000000001,
+          "rank": 19
+        },
+        {
+          "file": "writer2_script3.md",
+          "score": 71.6,
+          "rank": 20
+        }
+      ],
+      "rejected_files": [
+        {
+          "file": "writer2_script_3.md",
+          "score": 64.3,
+          "rank": 23
+        },
+        {
+          "file": "writer2_script_a4.md",
+          "score": 61.4,
+          "rank": 29
+        },
+        {
+          "file": "writer2_script_4.md",
+          "score": 61.3,
+          "rank": 30
+        },
+        {
+          "file": "writer2_script_8.md",
+          "score": 58.5,
+          "rank": 35
+        },
+        {
+          "file": "writer2_script_a2.md",
+          "score": 55.1,
+          "rank": 36
+        },
+        {
+          "file": "writer2_script2.md",
+          "score": 39.1,
+          "rank": 37
+        }
+      ]
+    },
+    "writer1": {
+      "total_scripts": 11,
+      "approved_scripts": 5,
+      "approval_rate": 45.45454545454545,
+      "average_score": 70.75,
+      "approved_files": [
+        {
+          "file": "writer1_script_7.md",
+          "score": 83.6,
+          "rank": 6
+        },
+        {
+          "file": "writer1_script_10.md",
+          "score": 82.5,
+          "rank": 8
+        },
+        {
+          "file": "writer1_script2.md",
+          "score": 82.3,
+          "rank": 9
+        },
+        {
+          "file": "writer1_script_9.md",
+          "score": 82.2,
+          "rank": 10
+        },
+        {
+          "file": "writer1_script_5.md",
+          "score": 75.55000000000001,
+          "rank": 18
+        }
+      ],
+      "rejected_files": [
+        {
+          "file": "writer1_script3.md",
+          "score": 63.8,
+          "rank": 24
+        },
+        {
+          "file": "writer1_script1.md",
+          "score": 61.9,
+          "rank": 25
+        },
+        {
+          "file": "writer1_script_8.md",
+          "score": 61.9,
+          "rank": 26
+        },
+        {
+          "file": "writer1_script_6.md",
+          "score": 61.9,
+          "rank": 27
+        },
+        {
+          "file": "writer1_script_3.md",
+          "score": 61.5,
+          "rank": 28
+        },
+        {
+          "file": "writer1_script_4.md",
+          "score": 61.1,
+          "rank": 31
         }
       ]
     }
   },
   "approved_scripts": [
     {
-      "script_file": "writer3_script_8.md",
+      "script_file": "writer3_script_10.md",
       "writer": "writer3",
       "persona_scores": {
-        "persona3": 93.4
+        "persona3": 87.4
       },
-      "average_weighted_score": 93.4,
+      "average_weighted_score": 87.4,
       "score_std_deviation": 0.0,
       "consensus_score": 1.0,
       "detailed_scores": {
         "appeal_direction_clarity": {
-          "average_score": 10.0,
+          "average_score": 8.0,
           "std_deviation": 0,
           "individual_scores": [
-            10
+            8
           ]
         },
         "differentiation_clarity": {
-          "average_score": 10.0,
+          "average_score": 9.0,
           "std_deviation": 0,
           "individual_scores": [
-            10
+            9
           ]
         },
         "usp_strength": {
@@ -134,17 +264,17 @@
           ]
         },
         "opening_hook_intensity": {
+          "average_score": 9.0,
+          "std_deviation": 0,
+          "individual_scores": [
+            9
+          ]
+        },
+        "sales_pitch_elimination": {
           "average_score": 10.0,
           "std_deviation": 0,
           "individual_scores": [
             10
-          ]
-        },
-        "sales_pitch_elimination": {
-          "average_score": 8.0,
-          "std_deviation": 0,
-          "individual_scores": [
-            8
           ]
         },
         "character_edge": {
@@ -155,24 +285,24 @@
           ]
         },
         "who_fmt_usp_integration": {
-          "average_score": 10.0,
-          "std_deviation": 0,
-          "individual_scores": [
-            10
-          ]
-        },
-        "flow_naturalness": {
           "average_score": 9.0,
           "std_deviation": 0,
           "individual_scores": [
             9
           ]
         },
-        "right_brain_impact": {
-          "average_score": 10.0,
+        "flow_naturalness": {
+          "average_score": 8.0,
           "std_deviation": 0,
           "individual_scores": [
-            10
+            8
+          ]
+        },
+        "right_brain_impact": {
+          "average_score": 9.0,
+          "std_deviation": 0,
+          "individual_scores": [
+            9
           ]
         },
         "trust_building": {
@@ -186,27 +316,27 @@
       "rank": 1
     },
     {
-      "script_file": "writer3_script_new3.md",
-      "writer": "writer3",
+      "script_file": "writer2_script5.md",
+      "writer": "writer2",
       "persona_scores": {
-        "persona3": 92.1
+        "persona2": 87.2
       },
-      "average_weighted_score": 92.1,
+      "average_weighted_score": 87.2,
       "score_std_deviation": 0.0,
       "consensus_score": 1.0,
       "detailed_scores": {
         "appeal_direction_clarity": {
-          "average_score": 10.0,
+          "average_score": 9.0,
           "std_deviation": 0,
           "individual_scores": [
-            10
+            9
           ]
         },
         "differentiation_clarity": {
-          "average_score": 10.0,
+          "average_score": 9.0,
           "std_deviation": 0,
           "individual_scores": [
-            10
+            9
           ]
         },
         "usp_strength": {
@@ -217,24 +347,24 @@
           ]
         },
         "selection_reason_clarity": {
-          "average_score": 9.0,
-          "std_deviation": 0,
-          "individual_scores": [
-            9
-          ]
-        },
-        "opening_hook_intensity": {
-          "average_score": 9.0,
-          "std_deviation": 0,
-          "individual_scores": [
-            9
-          ]
-        },
-        "sales_pitch_elimination": {
           "average_score": 8.0,
           "std_deviation": 0,
           "individual_scores": [
             8
+          ]
+        },
+        "opening_hook_intensity": {
+          "average_score": 10.0,
+          "std_deviation": 0,
+          "individual_scores": [
+            10
+          ]
+        },
+        "sales_pitch_elimination": {
+          "average_score": 9.0,
+          "std_deviation": 0,
+          "individual_scores": [
+            9
           ]
         },
         "character_edge": {
@@ -245,51 +375,51 @@
           ]
         },
         "who_fmt_usp_integration": {
-          "average_score": 10.0,
+          "average_score": 9.0,
           "std_deviation": 0,
           "individual_scores": [
-            10
+            9
           ]
         },
         "flow_naturalness": {
-          "average_score": 9.0,
+          "average_score": 8.0,
           "std_deviation": 0,
           "individual_scores": [
-            9
+            8
           ]
         },
         "right_brain_impact": {
-          "average_score": 10.0,
-          "std_deviation": 0,
-          "individual_scores": [
-            10
-          ]
-        },
-        "trust_building": {
           "average_score": 9.0,
           "std_deviation": 0,
           "individual_scores": [
             9
+          ]
+        },
+        "trust_building": {
+          "average_score": 8.0,
+          "std_deviation": 0,
+          "individual_scores": [
+            8
           ]
         }
       },
       "rank": 2
     },
     {
-      "script_file": "writer3_script_5.md",
+      "script_file": "writer3_script_2.md",
       "writer": "writer3",
       "persona_scores": {
-        "persona3": 91.5
+        "persona3": 85.9
       },
-      "average_weighted_score": 91.5,
+      "average_weighted_score": 85.9,
       "score_std_deviation": 0.0,
       "consensus_score": 1.0,
       "detailed_scores": {
         "appeal_direction_clarity": {
-          "average_score": 10.0,
+          "average_score": 9.0,
           "std_deviation": 0,
           "individual_scores": [
-            10
+            9
           ]
         },
         "differentiation_clarity": {
@@ -300,17 +430,17 @@
           ]
         },
         "usp_strength": {
-          "average_score": 9.0,
-          "std_deviation": 0,
-          "individual_scores": [
-            9
-          ]
-        },
-        "selection_reason_clarity": {
           "average_score": 8.0,
           "std_deviation": 0,
           "individual_scores": [
             8
+          ]
+        },
+        "selection_reason_clarity": {
+          "average_score": 9.0,
+          "std_deviation": 0,
+          "individual_scores": [
+            9
           ]
         },
         "opening_hook_intensity": {
@@ -321,10 +451,10 @@
           ]
         },
         "sales_pitch_elimination": {
-          "average_score": 8.0,
+          "average_score": 7.0,
           "std_deviation": 0,
           "individual_scores": [
-            8
+            7
           ]
         },
         "character_edge": {
@@ -342,36 +472,36 @@
           ]
         },
         "flow_naturalness": {
-          "average_score": 9.0,
+          "average_score": 8.0,
           "std_deviation": 0,
           "individual_scores": [
-            9
+            8
           ]
         },
         "right_brain_impact": {
-          "average_score": 10.0,
-          "std_deviation": 0,
-          "individual_scores": [
-            10
-          ]
-        },
-        "trust_building": {
           "average_score": 9.0,
           "std_deviation": 0,
           "individual_scores": [
             9
+          ]
+        },
+        "trust_building": {
+          "average_score": 8.0,
+          "std_deviation": 0,
+          "individual_scores": [
+            8
           ]
         }
       },
       "rank": 3
     },
     {
-      "script_file": "writer3_script_2.md",
+      "script_file": "writer3_script_8.md",
       "writer": "writer3",
       "persona_scores": {
-        "persona3": 90.5
+        "persona3": 85.7
       },
-      "average_weighted_score": 90.5,
+      "average_weighted_score": 85.7,
       "score_std_deviation": 0.0,
       "consensus_score": 1.0,
       "detailed_scores": {
@@ -383,17 +513,17 @@
           ]
         },
         "differentiation_clarity": {
-          "average_score": 10.0,
-          "std_deviation": 0,
-          "individual_scores": [
-            10
-          ]
-        },
-        "usp_strength": {
           "average_score": 9.0,
           "std_deviation": 0,
           "individual_scores": [
             9
+          ]
+        },
+        "usp_strength": {
+          "average_score": 8.0,
+          "std_deviation": 0,
+          "individual_scores": [
+            8
           ]
         },
         "selection_reason_clarity": {
@@ -404,10 +534,10 @@
           ]
         },
         "opening_hook_intensity": {
-          "average_score": 9.0,
+          "average_score": 10.0,
           "std_deviation": 0,
           "individual_scores": [
-            9
+            10
           ]
         },
         "sales_pitch_elimination": {
@@ -425,17 +555,17 @@
           ]
         },
         "who_fmt_usp_integration": {
-          "average_score": 10.0,
-          "std_deviation": 0,
-          "individual_scores": [
-            10
-          ]
-        },
-        "flow_naturalness": {
           "average_score": 9.0,
           "std_deviation": 0,
           "individual_scores": [
             9
+          ]
+        },
+        "flow_naturalness": {
+          "average_score": 8.0,
+          "std_deviation": 0,
+          "individual_scores": [
+            8
           ]
         },
         "right_brain_impact": {
@@ -446,22 +576,22 @@
           ]
         },
         "trust_building": {
-          "average_score": 9.0,
+          "average_score": 8.0,
           "std_deviation": 0,
           "individual_scores": [
-            9
+            8
           ]
         }
       },
       "rank": 4
     },
     {
-      "script_file": "writer3_script_4.md",
+      "script_file": "writer3_script_5.md",
       "writer": "writer3",
       "persona_scores": {
-        "persona3": 84.6
+        "persona3": 83.7
       },
-      "average_weighted_score": 84.6,
+      "average_weighted_score": 83.7,
       "score_std_deviation": 0.0,
       "consensus_score": 1.0,
       "detailed_scores": {
@@ -473,17 +603,17 @@
           ]
         },
         "differentiation_clarity": {
-          "average_score": 9.0,
-          "std_deviation": 0,
-          "individual_scores": [
-            9
-          ]
-        },
-        "usp_strength": {
           "average_score": 8.0,
           "std_deviation": 0,
           "individual_scores": [
             8
+          ]
+        },
+        "usp_strength": {
+          "average_score": 9.0,
+          "std_deviation": 0,
+          "individual_scores": [
+            9
           ]
         },
         "selection_reason_clarity": {
@@ -494,10 +624,10 @@
           ]
         },
         "opening_hook_intensity": {
-          "average_score": 9.0,
+          "average_score": 10.0,
           "std_deviation": 0,
           "individual_scores": [
-            9
+            10
           ]
         },
         "sales_pitch_elimination": {
@@ -515,10 +645,10 @@
           ]
         },
         "who_fmt_usp_integration": {
-          "average_score": 9.0,
+          "average_score": 8.0,
           "std_deviation": 0,
           "individual_scores": [
-            9
+            8
           ]
         },
         "flow_naturalness": {
@@ -546,12 +676,12 @@
       "rank": 5
     },
     {
-      "script_file": "writer3_script_new4.md",
-      "writer": "writer3",
+      "script_file": "writer1_script_7.md",
+      "writer": "writer1",
       "persona_scores": {
-        "persona3": 83.0
+        "persona2": 83.6
       },
-      "average_weighted_score": 83.0,
+      "average_weighted_score": 83.6,
       "score_std_deviation": 0.0,
       "consensus_score": 1.0,
       "detailed_scores": {
@@ -563,17 +693,17 @@
           ]
         },
         "differentiation_clarity": {
-          "average_score": 9.0,
-          "std_deviation": 0,
-          "individual_scores": [
-            9
-          ]
-        },
-        "usp_strength": {
           "average_score": 8.0,
           "std_deviation": 0,
           "individual_scores": [
             8
+          ]
+        },
+        "usp_strength": {
+          "average_score": 9.0,
+          "std_deviation": 0,
+          "individual_scores": [
+            9
           ]
         },
         "selection_reason_clarity": {
@@ -591,10 +721,10 @@
           ]
         },
         "sales_pitch_elimination": {
-          "average_score": 8.0,
+          "average_score": 9.0,
           "std_deviation": 0,
           "individual_scores": [
-            8
+            9
           ]
         },
         "character_edge": {
@@ -619,10 +749,10 @@
           ]
         },
         "right_brain_impact": {
-          "average_score": 9.0,
+          "average_score": 8.0,
           "std_deviation": 0,
           "individual_scores": [
-            9
+            8
           ]
         },
         "trust_building": {
@@ -636,10 +766,112 @@
       "rank": 6
     },
     {
-      "script_file": "writer3_script_10.md",
+      "script_file": "writer3_script_new3.md",
       "writer": "writer3",
       "persona_scores": {
-        "persona3": 82.5
+        "persona1": 78.8,
+        "persona3": 88.2
+      },
+      "average_weighted_score": 83.5,
+      "score_std_deviation": 4.700000000000003,
+      "consensus_score": 0.17543859649122798,
+      "detailed_scores": {
+        "appeal_direction_clarity": {
+          "average_score": 9.0,
+          "std_deviation": 1.0,
+          "individual_scores": [
+            8,
+            10
+          ]
+        },
+        "differentiation_clarity": {
+          "average_score": 9.0,
+          "std_deviation": 1.0,
+          "individual_scores": [
+            8,
+            10
+          ]
+        },
+        "usp_strength": {
+          "average_score": 8.5,
+          "std_deviation": 0.5,
+          "individual_scores": [
+            8,
+            9
+          ]
+        },
+        "selection_reason_clarity": {
+          "average_score": 8.5,
+          "std_deviation": 0.5,
+          "individual_scores": [
+            8,
+            9
+          ]
+        },
+        "opening_hook_intensity": {
+          "average_score": 9.5,
+          "std_deviation": 0.5,
+          "individual_scores": [
+            9,
+            10
+          ]
+        },
+        "sales_pitch_elimination": {
+          "average_score": 7.5,
+          "std_deviation": 0.5,
+          "individual_scores": [
+            8,
+            7
+          ]
+        },
+        "character_edge": {
+          "average_score": 7.5,
+          "std_deviation": 0.5,
+          "individual_scores": [
+            7,
+            8
+          ]
+        },
+        "who_fmt_usp_integration": {
+          "average_score": 8.0,
+          "std_deviation": 1.0,
+          "individual_scores": [
+            7,
+            9
+          ]
+        },
+        "flow_naturalness": {
+          "average_score": 8.0,
+          "std_deviation": 0.0,
+          "individual_scores": [
+            8,
+            8
+          ]
+        },
+        "right_brain_impact": {
+          "average_score": 8.5,
+          "std_deviation": 0.5,
+          "individual_scores": [
+            8,
+            9
+          ]
+        },
+        "trust_building": {
+          "average_score": 8.0,
+          "std_deviation": 0.0,
+          "individual_scores": [
+            8,
+            8
+          ]
+        }
+      },
+      "rank": 7
+    },
+    {
+      "script_file": "writer1_script_10.md",
+      "writer": "writer1",
+      "persona_scores": {
+        "persona1": 82.5
       },
       "average_weighted_score": 82.5,
       "score_std_deviation": 0.0,
@@ -660,31 +892,31 @@
           ]
         },
         "usp_strength": {
-          "average_score": 9.0,
+          "average_score": 8.0,
           "std_deviation": 0,
           "individual_scores": [
-            9
+            8
           ]
         },
         "selection_reason_clarity": {
-          "average_score": 8.0,
-          "std_deviation": 0,
-          "individual_scores": [
-            8
-          ]
-        },
-        "opening_hook_intensity": {
-          "average_score": 8.0,
-          "std_deviation": 0,
-          "individual_scores": [
-            8
-          ]
-        },
-        "sales_pitch_elimination": {
           "average_score": 9.0,
           "std_deviation": 0,
           "individual_scores": [
             9
+          ]
+        },
+        "opening_hook_intensity": {
+          "average_score": 10.0,
+          "std_deviation": 0,
+          "individual_scores": [
+            10
+          ]
+        },
+        "sales_pitch_elimination": {
+          "average_score": 7.0,
+          "std_deviation": 0,
+          "individual_scores": [
+            7
           ]
         },
         "character_edge": {
@@ -709,96 +941,6 @@
           ]
         },
         "right_brain_impact": {
-          "average_score": 8.0,
-          "std_deviation": 0,
-          "individual_scores": [
-            8
-          ]
-        },
-        "trust_building": {
-          "average_score": 9.0,
-          "std_deviation": 0,
-          "individual_scores": [
-            9
-          ]
-        }
-      },
-      "rank": 7
-    },
-    {
-      "script_file": "writer3_script_new2.md",
-      "writer": "writer3",
-      "persona_scores": {
-        "persona3": 81.6
-      },
-      "average_weighted_score": 81.6,
-      "score_std_deviation": 0.0,
-      "consensus_score": 1.0,
-      "detailed_scores": {
-        "appeal_direction_clarity": {
-          "average_score": 9.0,
-          "std_deviation": 0,
-          "individual_scores": [
-            9
-          ]
-        },
-        "differentiation_clarity": {
-          "average_score": 8.0,
-          "std_deviation": 0,
-          "individual_scores": [
-            8
-          ]
-        },
-        "usp_strength": {
-          "average_score": 8.0,
-          "std_deviation": 0,
-          "individual_scores": [
-            8
-          ]
-        },
-        "selection_reason_clarity": {
-          "average_score": 7.0,
-          "std_deviation": 0,
-          "individual_scores": [
-            7
-          ]
-        },
-        "opening_hook_intensity": {
-          "average_score": 9.0,
-          "std_deviation": 0,
-          "individual_scores": [
-            9
-          ]
-        },
-        "sales_pitch_elimination": {
-          "average_score": 8.0,
-          "std_deviation": 0,
-          "individual_scores": [
-            8
-          ]
-        },
-        "character_edge": {
-          "average_score": 7.0,
-          "std_deviation": 0,
-          "individual_scores": [
-            7
-          ]
-        },
-        "who_fmt_usp_integration": {
-          "average_score": 8.0,
-          "std_deviation": 0,
-          "individual_scores": [
-            8
-          ]
-        },
-        "flow_naturalness": {
-          "average_score": 8.0,
-          "std_deviation": 0,
-          "individual_scores": [
-            8
-          ]
-        },
-        "right_brain_impact": {
           "average_score": 9.0,
           "std_deviation": 0,
           "individual_scores": [
@@ -806,22 +948,22 @@
           ]
         },
         "trust_building": {
-          "average_score": 8.0,
+          "average_score": 7.0,
           "std_deviation": 0,
           "individual_scores": [
-            8
+            7
           ]
         }
       },
       "rank": 8
     },
     {
-      "script_file": "writer3_script_new1.md",
-      "writer": "writer3",
+      "script_file": "writer1_script2.md",
+      "writer": "writer1",
       "persona_scores": {
-        "persona3": 81.0
+        "persona2": 82.3
       },
-      "average_weighted_score": 81.0,
+      "average_weighted_score": 82.3,
       "score_std_deviation": 0.0,
       "consensus_score": 1.0,
       "detailed_scores": {
@@ -833,17 +975,17 @@
           ]
         },
         "differentiation_clarity": {
-          "average_score": 9.0,
-          "std_deviation": 0,
-          "individual_scores": [
-            9
-          ]
-        },
-        "usp_strength": {
           "average_score": 8.0,
           "std_deviation": 0,
           "individual_scores": [
             8
+          ]
+        },
+        "usp_strength": {
+          "average_score": 9.0,
+          "std_deviation": 0,
+          "individual_scores": [
+            9
           ]
         },
         "selection_reason_clarity": {
@@ -861,24 +1003,24 @@
           ]
         },
         "sales_pitch_elimination": {
-          "average_score": 8.0,
+          "average_score": 9.0,
           "std_deviation": 0,
           "individual_scores": [
-            8
+            9
           ]
         },
         "character_edge": {
-          "average_score": 7.0,
-          "std_deviation": 0,
-          "individual_scores": [
-            7
-          ]
-        },
-        "who_fmt_usp_integration": {
           "average_score": 8.0,
           "std_deviation": 0,
           "individual_scores": [
             8
+          ]
+        },
+        "who_fmt_usp_integration": {
+          "average_score": 9.0,
+          "std_deviation": 0,
+          "individual_scores": [
+            9
           ]
         },
         "flow_naturalness": {
@@ -906,27 +1048,27 @@
       "rank": 9
     },
     {
-      "script_file": "writer3_script_new5.md",
-      "writer": "writer3",
+      "script_file": "writer1_script_9.md",
+      "writer": "writer1",
       "persona_scores": {
-        "persona3": 80.6
+        "persona2": 82.2
       },
-      "average_weighted_score": 80.6,
+      "average_weighted_score": 82.2,
       "score_std_deviation": 0.0,
       "consensus_score": 1.0,
       "detailed_scores": {
         "appeal_direction_clarity": {
-          "average_score": 9.0,
-          "std_deviation": 0,
-          "individual_scores": [
-            9
-          ]
-        },
-        "differentiation_clarity": {
           "average_score": 8.0,
           "std_deviation": 0,
           "individual_scores": [
             8
+          ]
+        },
+        "differentiation_clarity": {
+          "average_score": 9.0,
+          "std_deviation": 0,
+          "individual_scores": [
+            9
           ]
         },
         "usp_strength": {
@@ -937,10 +1079,10 @@
           ]
         },
         "selection_reason_clarity": {
-          "average_score": 7.0,
+          "average_score": 9.0,
           "std_deviation": 0,
           "individual_scores": [
-            7
+            9
           ]
         },
         "opening_hook_intensity": {
@@ -951,10 +1093,10 @@
           ]
         },
         "sales_pitch_elimination": {
-          "average_score": 8.0,
+          "average_score": 10.0,
           "std_deviation": 0,
           "individual_scores": [
-            8
+            10
           ]
         },
         "character_edge": {
@@ -965,10 +1107,10 @@
           ]
         },
         "who_fmt_usp_integration": {
-          "average_score": 8.0,
+          "average_score": 7.0,
           "std_deviation": 0,
           "individual_scores": [
-            8
+            7
           ]
         },
         "flow_naturalness": {
@@ -979,29 +1121,29 @@
           ]
         },
         "right_brain_impact": {
-          "average_score": 9.0,
+          "average_score": 7.0,
           "std_deviation": 0,
           "individual_scores": [
-            9
+            7
           ]
         },
         "trust_building": {
-          "average_score": 8.0,
+          "average_score": 10.0,
           "std_deviation": 0,
           "individual_scores": [
-            8
+            10
           ]
         }
       },
       "rank": 10
     },
     {
-      "script_file": "writer3_script_3.md",
+      "script_file": "writer3_script_new4.md",
       "writer": "writer3",
       "persona_scores": {
-        "persona3": 75.4
+        "persona3": 82.1
       },
-      "average_weighted_score": 75.4,
+      "average_weighted_score": 82.1,
       "score_std_deviation": 0.0,
       "consensus_score": 1.0,
       "detailed_scores": {
@@ -1013,31 +1155,31 @@
           ]
         },
         "differentiation_clarity": {
-          "average_score": 7.0,
-          "std_deviation": 0,
-          "individual_scores": [
-            7
-          ]
-        },
-        "usp_strength": {
-          "average_score": 7.0,
-          "std_deviation": 0,
-          "individual_scores": [
-            7
-          ]
-        },
-        "selection_reason_clarity": {
-          "average_score": 7.0,
-          "std_deviation": 0,
-          "individual_scores": [
-            7
-          ]
-        },
-        "opening_hook_intensity": {
           "average_score": 8.0,
           "std_deviation": 0,
           "individual_scores": [
             8
+          ]
+        },
+        "usp_strength": {
+          "average_score": 9.0,
+          "std_deviation": 0,
+          "individual_scores": [
+            9
+          ]
+        },
+        "selection_reason_clarity": {
+          "average_score": 8.0,
+          "std_deviation": 0,
+          "individual_scores": [
+            8
+          ]
+        },
+        "opening_hook_intensity": {
+          "average_score": 9.0,
+          "std_deviation": 0,
+          "individual_scores": [
+            9
           ]
         },
         "sales_pitch_elimination": {
@@ -1048,24 +1190,24 @@
           ]
         },
         "character_edge": {
-          "average_score": 7.0,
+          "average_score": 8.0,
           "std_deviation": 0,
           "individual_scores": [
-            7
+            8
           ]
         },
         "who_fmt_usp_integration": {
-          "average_score": 7.0,
+          "average_score": 9.0,
           "std_deviation": 0,
           "individual_scores": [
-            7
+            9
           ]
         },
         "flow_naturalness": {
-          "average_score": 7.0,
+          "average_score": 8.0,
           "std_deviation": 0,
           "individual_scores": [
-            7
+            8
           ]
         },
         "right_brain_impact": {
@@ -1086,12 +1228,396 @@
       "rank": 11
     },
     {
-      "script_file": "writer3_script_6.md",
+      "script_file": "writer2_script4.md",
+      "writer": "writer2",
+      "persona_scores": {
+        "persona2": 81.7
+      },
+      "average_weighted_score": 81.7,
+      "score_std_deviation": 0.0,
+      "consensus_score": 1.0,
+      "detailed_scores": {
+        "appeal_direction_clarity": {
+          "average_score": 9.0,
+          "std_deviation": 0,
+          "individual_scores": [
+            9
+          ]
+        },
+        "differentiation_clarity": {
+          "average_score": 8.0,
+          "std_deviation": 0,
+          "individual_scores": [
+            8
+          ]
+        },
+        "usp_strength": {
+          "average_score": 8.0,
+          "std_deviation": 0,
+          "individual_scores": [
+            8
+          ]
+        },
+        "selection_reason_clarity": {
+          "average_score": 8.0,
+          "std_deviation": 0,
+          "individual_scores": [
+            8
+          ]
+        },
+        "opening_hook_intensity": {
+          "average_score": 9.0,
+          "std_deviation": 0,
+          "individual_scores": [
+            9
+          ]
+        },
+        "sales_pitch_elimination": {
+          "average_score": 8.0,
+          "std_deviation": 0,
+          "individual_scores": [
+            8
+          ]
+        },
+        "character_edge": {
+          "average_score": 8.0,
+          "std_deviation": 0,
+          "individual_scores": [
+            8
+          ]
+        },
+        "who_fmt_usp_integration": {
+          "average_score": 8.0,
+          "std_deviation": 0,
+          "individual_scores": [
+            8
+          ]
+        },
+        "flow_naturalness": {
+          "average_score": 8.0,
+          "std_deviation": 0,
+          "individual_scores": [
+            8
+          ]
+        },
+        "right_brain_impact": {
+          "average_score": 8.0,
+          "std_deviation": 0,
+          "individual_scores": [
+            8
+          ]
+        },
+        "trust_building": {
+          "average_score": 8.0,
+          "std_deviation": 0,
+          "individual_scores": [
+            8
+          ]
+        }
+      },
+      "rank": 12
+    },
+    {
+      "script_file": "writer3_script_new1.md",
       "writer": "writer3",
       "persona_scores": {
-        "persona3": 72.4
+        "persona3": 81.4
       },
-      "average_weighted_score": 72.4,
+      "average_weighted_score": 81.4,
+      "score_std_deviation": 0.0,
+      "consensus_score": 1.0,
+      "detailed_scores": {
+        "appeal_direction_clarity": {
+          "average_score": 8.0,
+          "std_deviation": 0,
+          "individual_scores": [
+            8
+          ]
+        },
+        "differentiation_clarity": {
+          "average_score": 9.0,
+          "std_deviation": 0,
+          "individual_scores": [
+            9
+          ]
+        },
+        "usp_strength": {
+          "average_score": 8.0,
+          "std_deviation": 0,
+          "individual_scores": [
+            8
+          ]
+        },
+        "selection_reason_clarity": {
+          "average_score": 8.0,
+          "std_deviation": 0,
+          "individual_scores": [
+            8
+          ]
+        },
+        "opening_hook_intensity": {
+          "average_score": 9.0,
+          "std_deviation": 0,
+          "individual_scores": [
+            9
+          ]
+        },
+        "sales_pitch_elimination": {
+          "average_score": 8.0,
+          "std_deviation": 0,
+          "individual_scores": [
+            8
+          ]
+        },
+        "character_edge": {
+          "average_score": 8.0,
+          "std_deviation": 0,
+          "individual_scores": [
+            8
+          ]
+        },
+        "who_fmt_usp_integration": {
+          "average_score": 8.0,
+          "std_deviation": 0,
+          "individual_scores": [
+            8
+          ]
+        },
+        "flow_naturalness": {
+          "average_score": 8.0,
+          "std_deviation": 0,
+          "individual_scores": [
+            8
+          ]
+        },
+        "right_brain_impact": {
+          "average_score": 8.0,
+          "std_deviation": 0,
+          "individual_scores": [
+            8
+          ]
+        },
+        "trust_building": {
+          "average_score": 8.0,
+          "std_deviation": 0,
+          "individual_scores": [
+            8
+          ]
+        }
+      },
+      "rank": 13
+    },
+    {
+      "script_file": "writer3_script_4.md",
+      "writer": "writer3",
+      "persona_scores": {
+        "persona1": 77.4,
+        "persona3": 84.9
+      },
+      "average_weighted_score": 81.15,
+      "score_std_deviation": 3.75,
+      "consensus_score": 0.21052631578947367,
+      "detailed_scores": {
+        "appeal_direction_clarity": {
+          "average_score": 8.5,
+          "std_deviation": 0.5,
+          "individual_scores": [
+            8,
+            9
+          ]
+        },
+        "differentiation_clarity": {
+          "average_score": 8.0,
+          "std_deviation": 0.0,
+          "individual_scores": [
+            8,
+            8
+          ]
+        },
+        "usp_strength": {
+          "average_score": 8.5,
+          "std_deviation": 0.5,
+          "individual_scores": [
+            8,
+            9
+          ]
+        },
+        "selection_reason_clarity": {
+          "average_score": 7.5,
+          "std_deviation": 0.5,
+          "individual_scores": [
+            7,
+            8
+          ]
+        },
+        "opening_hook_intensity": {
+          "average_score": 9.5,
+          "std_deviation": 0.5,
+          "individual_scores": [
+            9,
+            10
+          ]
+        },
+        "sales_pitch_elimination": {
+          "average_score": 8.0,
+          "std_deviation": 0.0,
+          "individual_scores": [
+            8,
+            8
+          ]
+        },
+        "character_edge": {
+          "average_score": 7.0,
+          "std_deviation": 1.0,
+          "individual_scores": [
+            6,
+            8
+          ]
+        },
+        "who_fmt_usp_integration": {
+          "average_score": 8.0,
+          "std_deviation": 1.0,
+          "individual_scores": [
+            7,
+            9
+          ]
+        },
+        "flow_naturalness": {
+          "average_score": 8.0,
+          "std_deviation": 0.0,
+          "individual_scores": [
+            8,
+            8
+          ]
+        },
+        "right_brain_impact": {
+          "average_score": 8.5,
+          "std_deviation": 0.5,
+          "individual_scores": [
+            8,
+            9
+          ]
+        },
+        "trust_building": {
+          "average_score": 8.0,
+          "std_deviation": 0.0,
+          "individual_scores": [
+            8,
+            8
+          ]
+        }
+      },
+      "rank": 14
+    },
+    {
+      "script_file": "writer3_script_new2.md",
+      "writer": "writer3",
+      "persona_scores": {
+        "persona1": 77.8,
+        "persona3": 82.7
+      },
+      "average_weighted_score": 80.25,
+      "score_std_deviation": 2.450000000000003,
+      "consensus_score": 0.2898550724637679,
+      "detailed_scores": {
+        "appeal_direction_clarity": {
+          "average_score": 8.5,
+          "std_deviation": 0.5,
+          "individual_scores": [
+            8,
+            9
+          ]
+        },
+        "differentiation_clarity": {
+          "average_score": 8.0,
+          "std_deviation": 0.0,
+          "individual_scores": [
+            8,
+            8
+          ]
+        },
+        "usp_strength": {
+          "average_score": 8.5,
+          "std_deviation": 0.5,
+          "individual_scores": [
+            8,
+            9
+          ]
+        },
+        "selection_reason_clarity": {
+          "average_score": 7.5,
+          "std_deviation": 0.5,
+          "individual_scores": [
+            7,
+            8
+          ]
+        },
+        "opening_hook_intensity": {
+          "average_score": 9.5,
+          "std_deviation": 0.5,
+          "individual_scores": [
+            9,
+            10
+          ]
+        },
+        "sales_pitch_elimination": {
+          "average_score": 7.5,
+          "std_deviation": 0.5,
+          "individual_scores": [
+            8,
+            7
+          ]
+        },
+        "character_edge": {
+          "average_score": 7.0,
+          "std_deviation": 1.0,
+          "individual_scores": [
+            6,
+            8
+          ]
+        },
+        "who_fmt_usp_integration": {
+          "average_score": 7.5,
+          "std_deviation": 0.5,
+          "individual_scores": [
+            7,
+            8
+          ]
+        },
+        "flow_naturalness": {
+          "average_score": 8.0,
+          "std_deviation": 0.0,
+          "individual_scores": [
+            8,
+            8
+          ]
+        },
+        "right_brain_impact": {
+          "average_score": 8.5,
+          "std_deviation": 0.5,
+          "individual_scores": [
+            8,
+            9
+          ]
+        },
+        "trust_building": {
+          "average_score": 8.0,
+          "std_deviation": 0.0,
+          "individual_scores": [
+            8,
+            8
+          ]
+        }
+      },
+      "rank": 15
+    },
+    {
+      "script_file": "writer3_script_3.md",
+      "writer": "writer3",
+      "persona_scores": {
+        "persona3": 77.4
+      },
+      "average_weighted_score": 77.4,
       "score_std_deviation": 0.0,
       "consensus_score": 1.0,
       "detailed_scores": {
@@ -1110,10 +1636,10 @@
           ]
         },
         "usp_strength": {
-          "average_score": 7.0,
+          "average_score": 8.0,
           "std_deviation": 0,
           "individual_scores": [
-            7
+            8
           ]
         },
         "selection_reason_clarity": {
@@ -1124,10 +1650,10 @@
           ]
         },
         "opening_hook_intensity": {
-          "average_score": 7.0,
+          "average_score": 9.0,
           "std_deviation": 0,
           "individual_scores": [
-            7
+            9
           ]
         },
         "sales_pitch_elimination": {
@@ -1152,17 +1678,17 @@
           ]
         },
         "flow_naturalness": {
-          "average_score": 7.0,
+          "average_score": 8.0,
           "std_deviation": 0,
           "individual_scores": [
-            7
+            8
           ]
         },
         "right_brain_impact": {
-          "average_score": 7.0,
+          "average_score": 8.0,
           "std_deviation": 0,
           "individual_scores": [
-            7
+            8
           ]
         },
         "trust_building": {
@@ -1173,13 +1699,511 @@
           ]
         }
       },
-      "rank": 12
+      "rank": 16
+    },
+    {
+      "script_file": "writer3_script_new5.md",
+      "writer": "writer3",
+      "persona_scores": {
+        "persona1": 67.8,
+        "persona3": 83.5
+      },
+      "average_weighted_score": 75.65,
+      "score_std_deviation": 7.850000000000001,
+      "consensus_score": 0.11299435028248586,
+      "detailed_scores": {
+        "appeal_direction_clarity": {
+          "average_score": 8.0,
+          "std_deviation": 1.0,
+          "individual_scores": [
+            7,
+            9
+          ]
+        },
+        "differentiation_clarity": {
+          "average_score": 8.0,
+          "std_deviation": 1.0,
+          "individual_scores": [
+            7,
+            9
+          ]
+        },
+        "usp_strength": {
+          "average_score": 7.5,
+          "std_deviation": 0.5,
+          "individual_scores": [
+            7,
+            8
+          ]
+        },
+        "selection_reason_clarity": {
+          "average_score": 7.0,
+          "std_deviation": 1.0,
+          "individual_scores": [
+            6,
+            8
+          ]
+        },
+        "opening_hook_intensity": {
+          "average_score": 8.5,
+          "std_deviation": 1.5,
+          "individual_scores": [
+            7,
+            10
+          ]
+        },
+        "sales_pitch_elimination": {
+          "average_score": 8.0,
+          "std_deviation": 0.0,
+          "individual_scores": [
+            8,
+            8
+          ]
+        },
+        "character_edge": {
+          "average_score": 7.5,
+          "std_deviation": 1.5,
+          "individual_scores": [
+            6,
+            9
+          ]
+        },
+        "who_fmt_usp_integration": {
+          "average_score": 7.0,
+          "std_deviation": 1.0,
+          "individual_scores": [
+            6,
+            8
+          ]
+        },
+        "flow_naturalness": {
+          "average_score": 7.5,
+          "std_deviation": 0.5,
+          "individual_scores": [
+            7,
+            8
+          ]
+        },
+        "right_brain_impact": {
+          "average_score": 7.5,
+          "std_deviation": 1.5,
+          "individual_scores": [
+            6,
+            9
+          ]
+        },
+        "trust_building": {
+          "average_score": 7.5,
+          "std_deviation": 0.5,
+          "individual_scores": [
+            8,
+            7
+          ]
+        }
+      },
+      "rank": 17
+    },
+    {
+      "script_file": "writer1_script_5.md",
+      "writer": "writer1",
+      "persona_scores": {
+        "persona1": 69.9,
+        "persona2": 81.2
+      },
+      "average_weighted_score": 75.55000000000001,
+      "score_std_deviation": 5.649999999999999,
+      "consensus_score": 0.15037593984962408,
+      "detailed_scores": {
+        "appeal_direction_clarity": {
+          "average_score": 7.0,
+          "std_deviation": 1.0,
+          "individual_scores": [
+            6,
+            8
+          ]
+        },
+        "differentiation_clarity": {
+          "average_score": 8.0,
+          "std_deviation": 1.0,
+          "individual_scores": [
+            7,
+            9
+          ]
+        },
+        "usp_strength": {
+          "average_score": 8.0,
+          "std_deviation": 1.0,
+          "individual_scores": [
+            7,
+            9
+          ]
+        },
+        "selection_reason_clarity": {
+          "average_score": 7.5,
+          "std_deviation": 0.5,
+          "individual_scores": [
+            7,
+            8
+          ]
+        },
+        "opening_hook_intensity": {
+          "average_score": 8.5,
+          "std_deviation": 0.5,
+          "individual_scores": [
+            8,
+            9
+          ]
+        },
+        "sales_pitch_elimination": {
+          "average_score": 8.5,
+          "std_deviation": 0.5,
+          "individual_scores": [
+            8,
+            9
+          ]
+        },
+        "character_edge": {
+          "average_score": 6.5,
+          "std_deviation": 0.5,
+          "individual_scores": [
+            6,
+            7
+          ]
+        },
+        "who_fmt_usp_integration": {
+          "average_score": 6.5,
+          "std_deviation": 0.5,
+          "individual_scores": [
+            6,
+            7
+          ]
+        },
+        "flow_naturalness": {
+          "average_score": 7.5,
+          "std_deviation": 0.5,
+          "individual_scores": [
+            7,
+            8
+          ]
+        },
+        "right_brain_impact": {
+          "average_score": 7.5,
+          "std_deviation": 0.5,
+          "individual_scores": [
+            7,
+            8
+          ]
+        },
+        "trust_building": {
+          "average_score": 8.0,
+          "std_deviation": 0.0,
+          "individual_scores": [
+            8,
+            8
+          ]
+        }
+      },
+      "rank": 18
+    },
+    {
+      "script_file": "writer2_script1.md",
+      "writer": "writer2",
+      "persona_scores": {
+        "persona1": 60.7,
+        "persona2": 85.4
+      },
+      "average_weighted_score": 73.05000000000001,
+      "score_std_deviation": 12.350000000000001,
+      "consensus_score": 0.07490636704119849,
+      "detailed_scores": {
+        "appeal_direction_clarity": {
+          "average_score": 7.5,
+          "std_deviation": 1.5,
+          "individual_scores": [
+            6,
+            9
+          ]
+        },
+        "differentiation_clarity": {
+          "average_score": 7.0,
+          "std_deviation": 1.0,
+          "individual_scores": [
+            6,
+            8
+          ]
+        },
+        "usp_strength": {
+          "average_score": 7.5,
+          "std_deviation": 1.5,
+          "individual_scores": [
+            6,
+            9
+          ]
+        },
+        "selection_reason_clarity": {
+          "average_score": 7.0,
+          "std_deviation": 1.0,
+          "individual_scores": [
+            6,
+            8
+          ]
+        },
+        "opening_hook_intensity": {
+          "average_score": 7.5,
+          "std_deviation": 1.5,
+          "individual_scores": [
+            6,
+            9
+          ]
+        },
+        "sales_pitch_elimination": {
+          "average_score": 8.5,
+          "std_deviation": 0.5,
+          "individual_scores": [
+            8,
+            9
+          ]
+        },
+        "character_edge": {
+          "average_score": 7.0,
+          "std_deviation": 2.0,
+          "individual_scores": [
+            5,
+            9
+          ]
+        },
+        "who_fmt_usp_integration": {
+          "average_score": 7.0,
+          "std_deviation": 2.0,
+          "individual_scores": [
+            5,
+            9
+          ]
+        },
+        "flow_naturalness": {
+          "average_score": 7.5,
+          "std_deviation": 0.5,
+          "individual_scores": [
+            7,
+            8
+          ]
+        },
+        "right_brain_impact": {
+          "average_score": 7.0,
+          "std_deviation": 2.0,
+          "individual_scores": [
+            5,
+            9
+          ]
+        },
+        "trust_building": {
+          "average_score": 7.5,
+          "std_deviation": 0.5,
+          "individual_scores": [
+            7,
+            8
+          ]
+        }
+      },
+      "rank": 19
+    },
+    {
+      "script_file": "writer2_script3.md",
+      "writer": "writer2",
+      "persona_scores": {
+        "persona1": 54.6,
+        "persona2": 88.6
+      },
+      "average_weighted_score": 71.6,
+      "score_std_deviation": 16.999999999999996,
+      "consensus_score": 0.055555555555555566,
+      "detailed_scores": {
+        "appeal_direction_clarity": {
+          "average_score": 7.5,
+          "std_deviation": 1.5,
+          "individual_scores": [
+            6,
+            9
+          ]
+        },
+        "differentiation_clarity": {
+          "average_score": 7.0,
+          "std_deviation": 2.0,
+          "individual_scores": [
+            5,
+            9
+          ]
+        },
+        "usp_strength": {
+          "average_score": 7.0,
+          "std_deviation": 2.0,
+          "individual_scores": [
+            5,
+            9
+          ]
+        },
+        "selection_reason_clarity": {
+          "average_score": 7.0,
+          "std_deviation": 2.0,
+          "individual_scores": [
+            5,
+            9
+          ]
+        },
+        "opening_hook_intensity": {
+          "average_score": 6.5,
+          "std_deviation": 1.5,
+          "individual_scores": [
+            5,
+            8
+          ]
+        },
+        "sales_pitch_elimination": {
+          "average_score": 9.0,
+          "std_deviation": 1.0,
+          "individual_scores": [
+            8,
+            10
+          ]
+        },
+        "character_edge": {
+          "average_score": 6.5,
+          "std_deviation": 2.5,
+          "individual_scores": [
+            4,
+            9
+          ]
+        },
+        "who_fmt_usp_integration": {
+          "average_score": 6.5,
+          "std_deviation": 2.5,
+          "individual_scores": [
+            4,
+            9
+          ]
+        },
+        "flow_naturalness": {
+          "average_score": 7.5,
+          "std_deviation": 0.5,
+          "individual_scores": [
+            7,
+            8
+          ]
+        },
+        "right_brain_impact": {
+          "average_score": 6.5,
+          "std_deviation": 2.5,
+          "individual_scores": [
+            4,
+            9
+          ]
+        },
+        "trust_building": {
+          "average_score": 7.5,
+          "std_deviation": 1.5,
+          "individual_scores": [
+            6,
+            9
+          ]
+        }
+      },
+      "rank": 20
+    },
+    {
+      "script_file": "writer3_script_9.md",
+      "writer": "writer3",
+      "persona_scores": {
+        "persona3": 70.1
+      },
+      "average_weighted_score": 70.1,
+      "score_std_deviation": 0.0,
+      "consensus_score": 1.0,
+      "detailed_scores": {
+        "appeal_direction_clarity": {
+          "average_score": 7.0,
+          "std_deviation": 0,
+          "individual_scores": [
+            7
+          ]
+        },
+        "differentiation_clarity": {
+          "average_score": 7.0,
+          "std_deviation": 0,
+          "individual_scores": [
+            7
+          ]
+        },
+        "usp_strength": {
+          "average_score": 8.0,
+          "std_deviation": 0,
+          "individual_scores": [
+            8
+          ]
+        },
+        "selection_reason_clarity": {
+          "average_score": 7.0,
+          "std_deviation": 0,
+          "individual_scores": [
+            7
+          ]
+        },
+        "opening_hook_intensity": {
+          "average_score": 6.0,
+          "std_deviation": 0,
+          "individual_scores": [
+            6
+          ]
+        },
+        "sales_pitch_elimination": {
+          "average_score": 8.0,
+          "std_deviation": 0,
+          "individual_scores": [
+            8
+          ]
+        },
+        "character_edge": {
+          "average_score": 6.0,
+          "std_deviation": 0,
+          "individual_scores": [
+            6
+          ]
+        },
+        "who_fmt_usp_integration": {
+          "average_score": 6.0,
+          "std_deviation": 0,
+          "individual_scores": [
+            6
+          ]
+        },
+        "flow_naturalness": {
+          "average_score": 8.0,
+          "std_deviation": 0,
+          "individual_scores": [
+            8
+          ]
+        },
+        "right_brain_impact": {
+          "average_score": 7.0,
+          "std_deviation": 0,
+          "individual_scores": [
+            7
+          ]
+        },
+        "trust_building": {
+          "average_score": 7.0,
+          "std_deviation": 0,
+          "individual_scores": [
+            7
+          ]
+        }
+      },
+      "rank": 21
     }
   ],
   "summary": {
     "ready_for_phase4": true,
     "min_scripts_per_writer": 3,
-    "writers_meeting_requirement": 1,
-    "total_writers": 1
+    "writers_meeting_requirement": 3,
+    "total_writers": 3
   }
 }
