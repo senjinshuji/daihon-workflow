@@ -117,6 +117,6 @@ jobs:
         if: steps.generate-scripts.outputs.count != '0'
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ inputs.product_name }}-scripts-writer3
+          name: ${{ inputs.product_name }}-scripts-writer3-loop${{ inputs.loop_number }}
           path: ${{ inputs.product_name }}/bulk_scripts/loop_${{ inputs.loop_number }}/writer3_*.md
           retention-days: 1
