@@ -215,16 +215,29 @@ jobs:
               cp "artifacts-temp/${{ inputs.product_name }}-filtering-results/filtering_results.json" "${{ inputs.product_name }}/artifacts/" 2>/dev/null || true
             fi
             
-            # Move approved scripts to the correct loop directory
-            # The approved scripts are directly in the artifact root, not in a subdirectory
-            echo "📝 Copying approved scripts..."
-            cp "artifacts-temp/${{ inputs.product_name }}-filtering-results"/*.md "${{ inputs.product_name }}/approved_scripts/loop_${{ inputs.loop_number }}/" 2>/dev/null || {
-              echo "⚠️ No approved scripts found or copy failed"
-            }
+            # Move approved scripts - check multiple possible locations
+            echo "📝 Looking for approved scripts..."
             
-            # Count approved scripts
-            APPROVED_COUNT=$(ls -1 "${{ inputs.product_name }}/approved_scripts/loop_${{ inputs.loop_number }}/"*.md 2>/dev/null | wc -l)
-            echo "✅ Copied $APPROVED_COUNT approved scripts to loop_${{ inputs.loop_number }}"
+            # Option 1: Scripts directly in artifact root
+            SCRIPTS_FOUND=$(ls -1 "artifacts-temp/${{ inputs.product_name }}-filtering-results/"*.md 2>/dev/null | wc -l)
+            if [ "$SCRIPTS_FOUND" -gt 0 ]; then
+              echo "Found $SCRIPTS_FOUND scripts in artifact root"
+              cp "artifacts-temp/${{ inputs.product_name }}-filtering-results/"*.md "${{ inputs.product_name }}/approved_scripts/loop_${{ inputs.loop_number }}/" 2>/dev/null || true
+            fi
+            
+            # Option 2: Scripts in loop subdirectory
+            if [ -d "artifacts-temp/${{ inputs.product_name }}-filtering-results/loop_${{ inputs.loop_number }}" ]; then
+              echo "Found scripts in loop_${{ inputs.loop_number }} subdirectory"
+              cp -r "artifacts-temp/${{ inputs.product_name }}-filtering-results/loop_${{ inputs.loop_number }}/"* "${{ inputs.product_name }}/approved_scripts/loop_${{ inputs.loop_number }}/" 2>/dev/null || true
+            fi
+            
+            # Count approved scripts after copying
+            if [ -d "${{ inputs.product_name }}/approved_scripts/loop_${{ inputs.loop_number }}" ]; then
+              APPROVED_COUNT=$(ls -1 "${{ inputs.product_name }}/approved_scripts/loop_${{ inputs.loop_number }}/"*.md 2>/dev/null | wc -l)
+              echo "✅ Total approved scripts in loop_${{ inputs.loop_number }}: $APPROVED_COUNT"
+            else
+              echo "⚠️ No approved scripts directory found"
+            fi
           fi
           
           # Clean up temp directory
@@ -237,12 +250,43 @@ jobs:
       
       - name: Commit Results
         run: |
+          echo "💾 Preparing to commit results..."
+          
+          # Check what we have before committing
+          echo "📂 Checking approved scripts:"
+          if [ -d "${{ inputs.product_name }}/approved_scripts/loop_${{ inputs.loop_number }}" ]; then
+            APPROVED_COUNT=$(ls -1 "${{ inputs.product_name }}/approved_scripts/loop_${{ inputs.loop_number }}/"*.md 2>/dev/null | wc -l)
+            echo "✅ Found $APPROVED_COUNT approved scripts in loop_${{ inputs.loop_number }}"
+            ls -la "${{ inputs.product_name }}/approved_scripts/loop_${{ inputs.loop_number }}/" | head -10
+          else
+            echo "⚠️ No approved scripts directory for loop_${{ inputs.loop_number }}"
+          fi
+          
+          echo "📂 Checking bulk scripts:"
+          if [ -d "${{ inputs.product_name }}/bulk_scripts/loop_${{ inputs.loop_number }}" ]; then
+            BULK_COUNT=$(ls -1 "${{ inputs.product_name }}/bulk_scripts/loop_${{ inputs.loop_number }}/"*.md 2>/dev/null | wc -l)
+            echo "✅ Found $BULK_COUNT bulk scripts in loop_${{ inputs.loop_number }}"
+          fi
+          
+          # Git configuration
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          
+          # Add all changes
           git add -A
-          git commit -m "📝 [${{ inputs.product_name }}] Phase 3 実行完了: 台本生成とフィルタリング" || {
-            echo "No changes to commit"
-          }
+          
+          # Create detailed commit message
+          if [ -d "${{ inputs.product_name }}/approved_scripts/loop_${{ inputs.loop_number }}" ]; then
+            APPROVED_COUNT=$(ls -1 "${{ inputs.product_name }}/approved_scripts/loop_${{ inputs.loop_number }}/"*.md 2>/dev/null | wc -l)
+            git commit -m "📝 [${{ inputs.product_name }}] Loop ${{ inputs.loop_number }}: 台本生成完了 (承認: ${APPROVED_COUNT}本)" || {
+              echo "No changes to commit"
+            }
+          else
+            git commit -m "📝 [${{ inputs.product_name }}] Loop ${{ inputs.loop_number }}: 台本生成とフィルタリング完了" || {
+              echo "No changes to commit"
+            }
+          fi
+          
           git push || {
             echo "Nothing to push"
           }
