@@ -206,14 +206,25 @@ jobs:
           
           # Move filtering results and approved scripts
           if [ -d "artifacts-temp/${{ inputs.product_name }}-filtering-results" ]; then
+            # Debug: Show artifact structure
+            echo "📁 Artifact structure:"
+            ls -la "artifacts-temp/${{ inputs.product_name }}-filtering-results/"
+            
             # Move filtering_results.json to artifacts
             if [ -f "artifacts-temp/${{ inputs.product_name }}-filtering-results/filtering_results.json" ]; then
               cp "artifacts-temp/${{ inputs.product_name }}-filtering-results/filtering_results.json" "${{ inputs.product_name }}/artifacts/" 2>/dev/null || true
             fi
+            
             # Move approved scripts to the correct loop directory
-            if [ -d "artifacts-temp/${{ inputs.product_name }}-filtering-results/approved_scripts" ]; then
-              cp -r "artifacts-temp/${{ inputs.product_name }}-filtering-results/approved_scripts/loop_${{ inputs.loop_number }}"/* "${{ inputs.product_name }}/approved_scripts/loop_${{ inputs.loop_number }}/" 2>/dev/null || true
-            fi
+            # The approved scripts are directly in the artifact root, not in a subdirectory
+            echo "📝 Copying approved scripts..."
+            cp "artifacts-temp/${{ inputs.product_name }}-filtering-results"/*.md "${{ inputs.product_name }}/approved_scripts/loop_${{ inputs.loop_number }}/" 2>/dev/null || {
+              echo "⚠️ No approved scripts found or copy failed"
+            }
+            
+            # Count approved scripts
+            APPROVED_COUNT=$(ls -1 "${{ inputs.product_name }}/approved_scripts/loop_${{ inputs.loop_number }}/"*.md 2>/dev/null | wc -l)
+            echo "✅ Copied $APPROVED_COUNT approved scripts to loop_${{ inputs.loop_number }}"
           fi
           
           # Clean up temp directory
