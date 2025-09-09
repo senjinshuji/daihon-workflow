@@ -183,19 +183,19 @@ jobs:
           echo "📁 Organizing Phase 3 artifacts for ${{ inputs.product_name }}..."
           
           # Create directory structure if not exists
-          mkdir -p "${{ inputs.product_name }}/bulk_scripts"
+          mkdir -p "${{ inputs.product_name }}/bulk_scripts/loop_${{ inputs.loop_number }}"
           mkdir -p "${{ inputs.product_name }}/evaluations"
           mkdir -p "${{ inputs.product_name }}/artifacts"
           mkdir -p "${{ inputs.product_name }}/approved_scripts/loop_${{ inputs.loop_number }}"
           
-          # Move generated scripts - アーティファクト名を修正
+          # Move generated scripts - アーティファクト名を修正（ループ番号付き）
           for writer in 1 2 3; do
-            # Writer生成スクリプトのアーティファクト名に合わせる
-            if [ -d "artifacts-temp/${{ inputs.product_name }}-scripts-writer${writer}" ]; then
-              echo "Found writer${writer} scripts in artifacts-temp/${{ inputs.product_name }}-scripts-writer${writer}"
-              cp -r artifacts-temp/${{ inputs.product_name }}-scripts-writer${writer}/* "${{ inputs.product_name }}/bulk_scripts/" 2>/dev/null || true
+            # Writer生成スクリプトのアーティファクト名に合わせる（ループ番号付き）
+            if [ -d "artifacts-temp/${{ inputs.product_name }}-scripts-writer${writer}-loop${{ inputs.loop_number }}" ]; then
+              echo "Found writer${writer} scripts in artifacts-temp/${{ inputs.product_name }}-scripts-writer${writer}-loop${{ inputs.loop_number }}"
+              cp -r artifacts-temp/${{ inputs.product_name }}-scripts-writer${writer}-loop${{ inputs.loop_number }}/* "${{ inputs.product_name }}/bulk_scripts/loop_${{ inputs.loop_number }}/" 2>/dev/null || true
             else
-              echo "Warning: No scripts found for writer${writer} at artifacts-temp/${{ inputs.product_name }}-scripts-writer${writer}"
+              echo "Warning: No scripts found for writer${writer} at artifacts-temp/${{ inputs.product_name }}-scripts-writer${writer}-loop${{ inputs.loop_number }}"
             fi
           done
           
