@@ -34,8 +34,19 @@
 - ライターのキャラクターエッジを一貫して維持する
 - 音声は1.2倍速再生を前提に、文量を1.2倍にする（600文字以上必須）
 
-## 出力先
-- {PRODUCT_NAME}/bulk_scripts/{WRITER_NAME}_script_{NUMBER}.md （5本）
+## 出力先（重要：以下のパスに正確に保存してください）
+以下の5つのファイルを必ず作成・上書きしてください：
+1. {OUTPUT_DIR}/script_1.md
+2. {OUTPUT_DIR}/script_2.md
+3. {OUTPUT_DIR}/script_3.md
+4. {OUTPUT_DIR}/script_4.md
+5. {OUTPUT_DIR}/script_5.md
+
+注意：
+- {OUTPUT_DIR}は既に存在するディレクトリです
+- ファイル名は必ずscript_1.md〜script_5.mdの形式を厳守してください
+- 他の場所にファイルを作成しないでください
+- 5本全て作成することが必須です
 
 台本フォーマット:
 

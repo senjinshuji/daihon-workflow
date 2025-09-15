@@ -34,10 +34,22 @@ jobs:
         with:
           path: ./
       
+      - name: Prepare directory structure
+        run: |
+          echo "📁 Preparing directory structure for Writer2..."
+          # Create writer-specific subdirectory
+          mkdir -p "${{ inputs.product_name }}/bulk_scripts/loop_${{ inputs.loop_number }}/writer2"
+
+          # Create placeholder files to guide SDK
+          for i in 1 2 3 4 5; do
+            touch "${{ inputs.product_name }}/bulk_scripts/loop_${{ inputs.loop_number }}/writer2/script_${i}.md"
+          done
+          echo "✅ Created directory: ${{ inputs.product_name }}/bulk_scripts/loop_${{ inputs.loop_number }}/writer2"
+
       - name: Organize downloaded artifacts
         run: |
-          # Create necessary directories including loop-specific directory
-          mkdir -p "${{ inputs.product_name }}/writers" "${{ inputs.product_name }}/personas" "${{ inputs.product_name }}/artifacts" "${{ inputs.product_name }}/bulk_scripts/loop_${{ inputs.loop_number }}"
+          # Create necessary directories
+          mkdir -p "${{ inputs.product_name }}/writers" "${{ inputs.product_name }}/personas" "${{ inputs.product_name }}/artifacts"
           
           # Move writers
           if [ -d "${{ inputs.product_name }}-writers" ]; then
@@ -81,7 +93,7 @@ jobs:
           # プレースホルダーの置換
           PROMPT="${PROMPT//\{PRODUCT_NAME\}/${{ inputs.product_name }}}"
           PROMPT="${PROMPT//\{WRITER_NAME\}/writer2}"
-          PROMPT="${PROMPT//\{OUTPUT_DIR\}/${{ inputs.product_name }}/bulk_scripts/loop_${{ inputs.loop_number }}}"
+          PROMPT="${PROMPT//\{OUTPUT_DIR\}/${{ inputs.product_name }}/bulk_scripts/loop_${{ inputs.loop_number }}/writer2}"
           
           # リトライロジック（最大3回試行）
           for attempt in 1 2 3; do
@@ -103,9 +115,16 @@ jobs:
             fi
           done
           
+          # ファイル整理スクリプトを実行
+          echo "🔧 Organizing generated scripts..."
+          python .github/scripts/python/organize_scripts.py \
+            --product-name "${{ inputs.product_name }}" \
+            --writer-name "writer2" \
+            --loop-number ${{ inputs.loop_number }} || true
+
           # 生成数カウント（Writer2のみ、現在のループのみ）
-          if [ -d "${{ inputs.product_name }}/bulk_scripts/loop_${{ inputs.loop_number }}" ]; then
-            COUNT=$(ls -1 "${{ inputs.product_name }}/bulk_scripts/loop_${{ inputs.loop_number }}/writer2_"*.md 2>/dev/null | wc -l)
+          if [ -d "${{ inputs.product_name }}/bulk_scripts/loop_${{ inputs.loop_number }}/writer2" ]; then
+            COUNT=$(ls -1 "${{ inputs.product_name }}/bulk_scripts/loop_${{ inputs.loop_number }}/writer2/"*.md 2>/dev/null | wc -l)
             echo "count=$COUNT" >> $GITHUB_OUTPUT
             echo "✅ Writer2 scripts generated in loop ${{ inputs.loop_number }}: $COUNT"
           else
@@ -118,5 +137,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: ${{ inputs.product_name }}-scripts-writer2-loop${{ inputs.loop_number }}
-          path: ${{ inputs.product_name }}/bulk_scripts/loop_${{ inputs.loop_number }}/writer2_*.md
+          path: ${{ inputs.product_name }}/bulk_scripts/loop_${{ inputs.loop_number }}/writer2/*.md
           retention-days: 1

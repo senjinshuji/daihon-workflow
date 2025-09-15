@@ -39,7 +39,26 @@ def load_threshold(threshold_file: str) -> float:
 
 def copy_script_file(script_file: str, product_name: str, output_dir: str, loop_number: int = 1) -> bool:
     """台本ファイルを承認ディレクトリにコピー"""
-    source_path = os.path.join(product_name, 'bulk_scripts', f'loop_{loop_number}', script_file)
+    # script_fileがwriter1_script_1.mdのような形式の場合、writer名を抽出
+    parts = script_file.split('_')
+    if len(parts) >= 2 and parts[0].startswith('writer'):
+        writer_name = parts[0]  # writer1, writer2, writer3
+        # 新しいディレクトリ構造: loop_X/writerY/script_Z.md
+        script_name = script_file.replace(f'{writer_name}_', '')  # writer1_script_1.md -> script_1.md
+        source_path = os.path.join(product_name, 'bulk_scripts', f'loop_{loop_number}', writer_name, script_name)
+
+        # 新構造でファイルが見つからない場合、旧構造も確認
+        if not os.path.exists(source_path):
+            # 旧構造: bulk_scripts/loop_X/writer1_script_1.md
+            source_path = os.path.join(product_name, 'bulk_scripts', f'loop_{loop_number}', script_file)
+
+            # それでも見つからない場合、bulk_scripts直下を確認
+            if not os.path.exists(source_path):
+                source_path = os.path.join(product_name, 'bulk_scripts', script_file)
+    else:
+        # 旧形式の場合のフォールバック
+        source_path = os.path.join(product_name, 'bulk_scripts', f'loop_{loop_number}', script_file)
+    
     dest_path = os.path.join(output_dir, script_file)
     
     try:
